@@ -478,6 +478,7 @@ function renderExecutive() {
 
   $('#execContent').innerHTML = `
     <div class="print-only" style="margin-bottom:20px;border-bottom:2px solid var(--rojo);padding-bottom:14px">
+      <img src="/logo.jpg" alt="Grupo Bimbo" style="height:54px;width:auto;border-radius:6px;margin:0 0 10px;display:block">
       <h1 style="margin:0;font-size:24px;color:var(--rojo)">Informe Ejecutivo · Precios Bimbo Uruguay</h1>
       <p style="margin:6px 0 0;color:#555;font-size:12px">Generado: ${escape(date)} · Tata · Disco · Devoto · Tienda Inglesa</p>
     </div>

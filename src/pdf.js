@@ -1,4 +1,5 @@
 import { readFile, writeFile, readdir, mkdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { chromium } from 'playwright-extra';
 
@@ -7,14 +8,24 @@ const SUPERS = ['tata', 'disco', 'devoto', 'tiendainglesa'];
 
 async function latestJson() {
   const dir = 'data/output';
-  const files = (await readdir(dir)).filter((f) => f.endsWith('.json')).sort().reverse();
-  if (!files.length) throw new Error('No hay JSONs en data/output. Corre "node src/main.js" primero.');
-  return join(dir, files[0]);
+  const files = existsSync(dir)
+    ? (await readdir(dir)).filter((f) => f.endsWith('.json')).sort().reverse()
+    : [];
+  if (files.length) return join(dir, files[0]);
+  if (existsSync('public/data/latest.json')) return 'public/data/latest.json';
+  throw new Error('No JSON data found. Run "node src/main.js" first.');
 }
 
 const escape = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fmtPrice = (p) => (p == null ? '-' : '$ ' + p.toLocaleString('es-UY'));
 const cap = (s) => String(s).replace(/\b\w/g, (c) => c.toUpperCase());
+
+async function loadLogoDataUri() {
+  const logoPath = 'public/logo.jpg';
+  if (!existsSync(logoPath)) return null;
+  const logo = await readFile(logoPath);
+  return `data:image/jpeg;base64,${logo.toString('base64')}`;
+}
 
 function stripAccents(s) {
   return s.normalize('NFD').replace(/\p{Diacritic}/gu, '');
@@ -86,7 +97,7 @@ function avg(values) {
   return nums.length ? Math.round(nums.reduce((sum, n) => sum + n, 0) / nums.length) : null;
 }
 
-function buildHtml({ items, generatedAt, brands = [] }) {
+function buildHtml({ items, generatedAt, brands = [], logoDataUri = null }) {
   const date = new Date(generatedAt);
   const fmtDate = date.toLocaleString('es-UY', { dateStyle: 'long', timeStyle: 'short' });
   const bimboItems = items.filter((i) => i.group === 'bimbo');
@@ -135,6 +146,8 @@ function buildHtml({ items, generatedAt, brands = [] }) {
     .slice(0, 10);
 
   const summary = `Se relevaron ${bimboItems.length} productos del Grupo Bimbo en ${new Set(bimboItems.map((i) => i.super)).size}/4 supermercados. Se detectaron ${byBrand.length} submarcas con precio promedio ${fmtPrice(avg(prices))}.`;
+  const logo = logoDataUri ? `<img class="report-logo" src="${logoDataUri}" alt="Grupo Bimbo">` : '';
+  const headerLogo = logoDataUri ? `<img class="page-logo" src="${logoDataUri}" alt="Grupo Bimbo">` : '';
 
   return `<!doctype html>
 <html lang="es">
@@ -147,6 +160,7 @@ function buildHtml({ items, generatedAt, brands = [] }) {
   body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #1a1a1a; font-size: 10.5px; margin: 0; line-height: 1.5; }
   .cover { page-break-after: always; min-height: 95vh; display: flex; flex-direction: column; justify-content: space-between; padding: 30px 10px; }
   .cover-top { border-left: 6px solid #E1251B; padding-left: 22px; }
+  .report-logo { width: 170px; height: auto; display: block; margin: 0 0 24px; border-radius: 6px; }
   .cover-eyebrow { font-size: 11px; color: #002E6D; text-transform: uppercase; letter-spacing: .15em; font-weight: 700; margin-bottom: 8px; }
   h1 { font-size: 38px; margin: 0 0 8px; line-height: 1.15; font-weight: 800; }
   h2 { font-size: 14px; margin: 0 0 12px; padding: 7px 14px; background: #002E6D; color: #fff; border-radius: 4px; display: inline-block; }
@@ -155,6 +169,8 @@ function buildHtml({ items, generatedAt, brands = [] }) {
   .cover-meta { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #666; line-height: 1.9; }
   .cover-bottom { text-align: center; color: #999; font-size: 10px; }
   .page-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #E1251B; padding-bottom: 8px; margin-bottom: 18px; }
+  .page-brand { display: flex; align-items: center; gap: 10px; }
+  .page-logo { height: 34px; width: auto; border-radius: 4px; display: block; }
   .page-header .title { font-size: 14px; font-weight: 800; color: #E1251B; }
   .page-header .meta { font-size: 10px; color: #888; }
   section { page-break-inside: avoid; margin-bottom: 22px; }
@@ -181,6 +197,7 @@ function buildHtml({ items, generatedAt, brands = [] }) {
 <div class="cover">
   <div>
     <div class="cover-top">
+      ${logo}
       <div class="cover-eyebrow">Informe Ejecutivo</div>
       <h1>Precios Grupo Bimbo<br>Uruguay</h1>
       <h2>Relevamiento en supermercados online</h2>
@@ -196,7 +213,7 @@ function buildHtml({ items, generatedAt, brands = [] }) {
 </div>
 
 <div class="page-header">
-  <div class="title">Resumen Ejecutivo</div>
+  <div class="page-brand">${headerLogo}<div class="title">Resumen Ejecutivo</div></div>
   <div class="meta">${escape(fmtDate)}</div>
 </div>
 
@@ -227,7 +244,7 @@ function buildHtml({ items, generatedAt, brands = [] }) {
 </section>
 
 <section style="page-break-before:always">
-  <div class="page-header"><div class="title">Oportunidades</div><div class="meta">${escape(fmtDate)}</div></div>
+  <div class="page-header"><div class="page-brand">${headerLogo}<div class="title">Oportunidades</div></div><div class="meta">${escape(fmtDate)}</div></div>
   <h2>Diferencias entre supermercados</h2>
   <table>
     <thead><tr><th>Producto</th><th>Submarca</th><th class="price">Mas barato</th><th class="price">Mas caro</th><th class="price">Diferencia</th></tr></thead>
@@ -258,7 +275,8 @@ async function main() {
   const data = JSON.parse(await readFile(jsonPath, 'utf8'));
   console.log(`Input: ${jsonPath} (${data.items.length} productos)`);
 
-  const html = buildHtml(data);
+  const logoDataUri = await loadLogoDataUri();
+  const html = buildHtml({ ...data, logoDataUri });
   const htmlPath = jsonPath.replace(/\.json$/, '.html');
   const pdfPath = jsonPath.replace(/\.json$/, '.pdf');
   await writeFile(htmlPath, html);

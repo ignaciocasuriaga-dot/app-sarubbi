@@ -2,6 +2,9 @@ name: Scrape Bimbo Prices
 
 on:
   workflow_dispatch: {}
+  schedule:
+    # 08:00 and 18:00 Uruguay time (UTC-3).
+    - cron: '0 11,21 * * *'
 
 permissions:
   contents: write
@@ -34,7 +37,7 @@ jobs:
       - name: Generate PDF
         run: node src/pdf.js
 
-      - name: Telegram notify (si está configurado)
+      - name: Telegram notify if configured
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -42,28 +45,19 @@ jobs:
         run: node src/notify.js
         continue-on-error: true
 
-      - name: Copy PDF to public/data
-        run: |
-          mkdir -p public/data
-          LATEST_PDF=$(ls -t data/output/*.pdf 2>/dev/null | head -n1 || true)
-          if [ -n "$LATEST_PDF" ]; then cp "$LATEST_PDF" public/data/latest.pdf; fi
-          echo "Contenido de public/data/:"
-          ls -lh public/data/
-
-      - name: Commit & push
+      - name: Commit and push public data
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data data/output
+          git add public/data
           if git diff --staged --quiet; then
-            echo "Sin cambios — no commit."
+            echo "No changes to commit."
             exit 0
           fi
           git commit -m "chore: actualizar precios $(date -u +%Y-%m-%dT%H:%M)Z"
-          # Retry con rebase si alguien pusheó en paralelo
           for i in 1 2 3; do
             git pull --rebase origin main && git push && exit 0
-            echo "Push falló (intento $i), esperando 5s..."
+            echo "Push failed (attempt $i), waiting 5s..."
             sleep 5
           done
           exit 1

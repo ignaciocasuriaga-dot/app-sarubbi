@@ -1,10 +1,13 @@
-// GET /api/status — devuelve el estado del último workflow run de scraping.
+// GET /api/status - returns the latest GitHub Actions scrape workflow status.
 
 export default async function handler(req, res) {
   const token = process.env.GITHUB_TOKEN;
   const repo = process.env.GITHUB_REPO;
   if (!token || !repo) {
-    return res.status(500).json({ error: 'Falta GITHUB_TOKEN o GITHUB_REPO' });
+    return res.status(500).json({
+      ok: false,
+      error: 'Missing GITHUB_TOKEN or GITHUB_REPO in Vercel',
+    });
   }
 
   try {
@@ -18,22 +21,30 @@ export default async function handler(req, res) {
         },
       },
     );
+
     if (!resp.ok) {
       const body = await resp.text();
-      return res.status(resp.status).json({ error: `GitHub respondió ${resp.status}`, detail: body });
+      return res.status(resp.status).json({
+        ok: false,
+        error: `GitHub returned ${resp.status}`,
+        detail: body,
+      });
     }
+
     const data = await resp.json();
     const run = data.workflow_runs?.[0];
-    if (!run) return res.status(200).json({ status: 'idle', message: 'Aún no se corrió ningún scrape' });
     res.setHeader('Cache-Control', 'no-store');
+    if (!run) return res.status(200).json({ ok: true, status: 'idle', message: 'No scrape workflow has run yet' });
+
     return res.status(200).json({
-      status: run.status,                 // queued | in_progress | completed
-      conclusion: run.conclusion,         // success | failure | cancelled | null mientras corre
+      ok: true,
+      status: run.status,
+      conclusion: run.conclusion,
       createdAt: run.created_at,
       updatedAt: run.updated_at,
       url: run.html_url,
     });
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    return res.status(500).json({ ok: false, error: err.message });
   }
 }

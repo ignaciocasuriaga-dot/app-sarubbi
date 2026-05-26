@@ -1,36 +1,49 @@
 # Precios Bimbo - Supermercados Uruguay
 
-App para relevar precios de productos del Grupo Bimbo en Tata, Disco, Devoto y Tienda Inglesa.
+Monitor de precios de productos del Grupo Bimbo en Tata, Disco, Devoto y Tienda Inglesa.
 
-## Instalación (una sola vez)
+## Uso local
 
-1. **Instalar Node.js**
-   - Bajar de [nodejs.org](https://nodejs.org) la versión "LTS"
-   - Instalar con todas las opciones por defecto
-   - **Reiniciar la computadora** después de instalar (importante)
+1. Ejecuta `INSTALAR.bat` una sola vez.
+2. Ejecuta `EJECUTAR.bat` cada vez que quieras relevar precios.
 
-2. **Doble click en `INSTALAR.bat`**
-   - Va a tardar unos minutos (descarga ~190 MB en total)
-   - Cuando termine va a decir "Listo"
+El proceso genera:
 
-## Uso
+- `public/data/latest.json`
+- `public/data/latest.csv`
+- `public/data/latest.pdf`
+- archivos fechados locales en `data/output/` (ignorados por Git)
 
-Doble click en **`EJECUTAR.bat`**.
+## Web
 
-Tarda alrededor de 1-2 minutos. Cuando termina:
-- Se abre solo la carpeta `data\output\`
-- Ahí están los archivos: `bimbo_<fecha>.csv` y `bimbo_<fecha>.pdf`
+Produccion: https://precios-bimbo.vercel.app
+
+La web se despliega en Vercel desde `public/` y consume los archivos de `public/data/`.
 
 ## Marcas relevadas
 
 - Bimbo
 - Los Sorchantes
 - Maestro Cubano
-- Nutrabien
-- Salmas
-- Tía Rosa
+- Nutrabien / Nutra Bien
+- Sanissimo / Salmas
+- Pancatalan
+- Tia Rosa
+- Rapiditas
+- Vital
+- Artesano
+
+## Actualizacion automatica
+
+GitHub Actions ejecuta `.github/workflows/scrape.yml` dos veces por dia y tambien puede dispararse manualmente desde la web con el boton "Actualizar precios".
+
+Para que el boton funcione en Vercel, el proyecto necesita:
+
+- `GITHUB_TOKEN`
+- `GITHUB_REPO`
 
 ## Si algo falla
 
-- Verificá que Node.js esté instalado: abrí "cmd" y escribí `node --version` (tiene que mostrar v18 o superior).
-- Si la app dice que algún super no responde, esperá 5 min y volvé a correrla. Los supers a veces bloquean temporalmente si detectan muchos pedidos seguidos.
+- Verifica Node.js: `node --version` debe ser v18 o superior.
+- Si un supermercado no responde, espera unos minutos y vuelve a correr el scrape.
+- Revisa `/api/status` en produccion para ver el ultimo estado del workflow.
