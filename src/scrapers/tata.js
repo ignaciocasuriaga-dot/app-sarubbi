@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { matchedBrand } from '../brands.js';
+import { matchedBrand, brandGroup } from '../brands.js';
 
 const ENDPOINT = 'https://www.tata.com.uy/api/graphql';
 const HEADERS = {
@@ -50,6 +50,7 @@ export async function scrapeTata(terms) {
         sku,
         name: n.name,
         brand,
+        group: brandGroup(brand),
         price: o?.price ?? null,
         listPrice: o?.listPrice ?? null,
         currency: v?.offers?.priceCurrency ?? 'UYU',
@@ -62,8 +63,8 @@ export async function scrapeTata(terms) {
 
 import { fileURLToPath } from 'node:url';
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const { BIMBO_BRANDS } = await import('../brands.js');
-  scrapeTata(BIMBO_BRANDS).then((items) => {
+  const { ALL_BRANDS } = await import('../brands.js');
+  scrapeTata(ALL_BRANDS).then((items) => {
     console.log(JSON.stringify(items, null, 2));
     console.error(`✓ Tata: ${items.length} productos`);
   }).catch((e) => { console.error(e); process.exit(1); });

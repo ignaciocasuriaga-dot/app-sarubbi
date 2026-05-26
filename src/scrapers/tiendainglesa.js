@@ -1,5 +1,5 @@
 import { launchBrowser, randomDelay } from '../browser.js';
-import { matchedBrand } from '../brands.js';
+import { matchedBrand, brandGroup } from '../brands.js';
 
 const SEARCH_URL = (term) => `https://www.tiendainglesa.com.uy/supermercado/busqueda?0,0,${encodeURIComponent(term)},0`;
 
@@ -77,6 +77,7 @@ export async function scrapeTiendaInglesa(terms) {
           sku: i.sku,
           name: i.name,
           brand,
+          group: brandGroup(brand),
           price: i.price,
           listPrice: i.listPrice,
           currency: 'UYU',
@@ -92,8 +93,8 @@ export async function scrapeTiendaInglesa(terms) {
 
 import { fileURLToPath } from 'node:url';
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const { BIMBO_BRANDS } = await import('../brands.js');
-  scrapeTiendaInglesa(BIMBO_BRANDS).then((items) => {
+  const { ALL_BRANDS } = await import('../brands.js');
+  scrapeTiendaInglesa(ALL_BRANDS).then((items) => {
     console.log(JSON.stringify(items, null, 2));
     console.error(`✓ TI: ${items.length} productos`);
   }).catch((e) => { console.error(e); process.exit(1); });

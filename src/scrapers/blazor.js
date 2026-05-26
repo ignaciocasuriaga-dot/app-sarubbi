@@ -1,5 +1,5 @@
 import { launchBrowser, randomDelay } from '../browser.js';
-import { matchedBrand } from '../brands.js';
+import { matchedBrand, brandGroup } from '../brands.js';
 
 async function searchTermBlazor(page, baseUrl, term) {
   const url = `${baseUrl}/productos/keyword/${encodeURIComponent(term)}`;
@@ -77,6 +77,7 @@ async function scrapeBlazorSite({ store, baseUrl, terms }) {
           sku: i.sku,
           name: i.name,
           brand,
+          group: brandGroup(brand),
           price: i.price,
           listPrice: i.listPrice,
           currency: 'UYU',
@@ -95,10 +96,10 @@ export const scrapeDevoto = (terms) => scrapeBlazorSite({ store: 'devoto', baseU
 
 import { fileURLToPath } from 'node:url';
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const { BIMBO_BRANDS } = await import('../brands.js');
+  const { ALL_BRANDS } = await import('../brands.js');
   const which = process.argv[2] || 'disco';
   const fn = which === 'devoto' ? scrapeDevoto : scrapeDisco;
-  fn(BIMBO_BRANDS).then((items) => {
+  fn(ALL_BRANDS).then((items) => {
     console.log(JSON.stringify(items, null, 2));
     console.error(`✓ ${which}: ${items.length} productos`);
   }).catch((e) => { console.error(e); process.exit(1); });
