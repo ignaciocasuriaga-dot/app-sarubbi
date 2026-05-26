@@ -93,8 +93,8 @@ export async function scrapeTiendaInglesa(terms) {
 
 import { fileURLToPath } from 'node:url';
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const { ALL_BRANDS } = await import('../brands.js');
-  scrapeTiendaInglesa(ALL_BRANDS).then((items) => {
+  const { SEARCH_TERMS } = await import('../brands.js');
+  scrapeTiendaInglesa(SEARCH_TERMS).then((items) => {
     console.log(JSON.stringify(items, null, 2));
     console.error(`✓ TI: ${items.length} productos`);
   }).catch((e) => { console.error(e); process.exit(1); });

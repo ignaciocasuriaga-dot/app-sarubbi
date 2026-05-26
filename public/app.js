@@ -1,12 +1,12 @@
-// App principal - vistas: Catálogo, Comparador, Ofertas, Posicionamiento, Informe Gerencial
+// App principal - vistas: Catalogo, Comparador, Ofertas, Cobertura, Informe Gerencial
 
 const SUPER_LABEL = { tata: 'Tata', disco: 'Disco', devoto: 'Devoto', tiendainglesa: 'Tienda Inglesa' };
 const SUPERS = ['tata', 'disco', 'devoto', 'tiendainglesa'];
-const GROUP_LABEL = { bimbo: 'Grupo Bimbo', competencia: 'Competencia', otra: 'Otra' };
+const GROUP_LABEL = { bimbo: 'Grupo Bimbo' };
 
 const state = {
   items: [],
-  groups: { bimbo: [], competencia: [] },
+  groups: { bimbo: [] },
   generatedAt: null,
   view: 'catalog',
   history: null,           // array de snapshots {t, prices}
@@ -51,7 +51,7 @@ function extractSize(name) {
 
 function normalizeName(name) {
   let n = stripAccents(name.toLowerCase());
-  n = n.replace(/\b(bimbo|lalo|los\s*sorchantes|maestro\s*cubano|nutrabien|salmas|tia\s*rosa|pagnifique|pan\s*felipe|trigal|granix|el\s*trigal)\b/g, ' ');
+  n = n.replace(/\b(bimbo|los\s*sorchantes|sorchantes|maestro\s*cubano|nutra\s*bien|nutrabien|sanissimo|sanisimo|salmas|pan\s*catalan|pancatalan|pancatlan|tia\s*rosa|rapiditas|vital|artesano)\b/g, ' ');
   n = n.replace(/\d+(?:[.,]\d+)?\s*(kg|kilos?|gr?|gramos|ml|cc|lts?|litros?|un|u|unid(?:ades?)?|x\s*\d+)\b/g, ' ');
   n = n.replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
   const stop = new Set(['de', 'la', 'el', 'con', 'sin', 'y', 'a', 'en', 'para', 'gr', 'g']);
@@ -106,7 +106,7 @@ async function load() {
     if (!r.ok) throw new Error('No se pudo cargar latest.json');
     const data = await r.json();
     state.items = data.items || [];
-    state.groups = data.groups || { bimbo: [], competencia: [] };
+    state.groups = data.groups || { bimbo: [] };
     state.generatedAt = data.generatedAt;
     state.clusters = clusterProducts(state.items);
     renderAll();
@@ -145,11 +145,10 @@ function renderHeader() {
 
 function renderKPIs() {
   const bimboItems = state.items.filter((i) => i.group === 'bimbo');
-  const compItems = state.items.filter((i) => i.group === 'competencia');
   const offers = state.items.filter((i) => i.listPrice && i.price && i.listPrice > i.price);
   const avgBimbo = bimboItems.length ? Math.round(bimboItems.reduce((s, i) => s + (i.price ?? 0), 0) / bimboItems.length) : 0;
-  const avgComp = compItems.length ? Math.round(compItems.reduce((s, i) => s + (i.price ?? 0), 0) / compItems.length) : 0;
-  const diff = avgComp ? Math.round((avgBimbo / avgComp - 1) * 100) : 0;
+  const brands = new Set(bimboItems.map((i) => i.brand));
+  const supers = new Set(bimboItems.map((i) => i.super));
 
   $('#kpis').innerHTML = `
     <div class="kpi">
@@ -158,14 +157,14 @@ function renderKPIs() {
       <div class="kpi-sub">prom ${fmtPrice(avgBimbo)}</div>
     </div>
     <div class="kpi azul">
-      <div class="kpi-label">Productos Competencia</div>
-      <div class="kpi-value">${compItems.length}</div>
-      <div class="kpi-sub">prom ${fmtPrice(avgComp)}</div>
+      <div class="kpi-label">Submarcas detectadas</div>
+      <div class="kpi-value">${brands.size}</div>
+      <div class="kpi-sub">${state.groups.bimbo?.length || brands.size} configuradas</div>
     </div>
-    <div class="kpi ${diff >= 0 ? 'amarillo' : 'verde'}">
-      <div class="kpi-label">Posición Bimbo vs Comp.</div>
-      <div class="kpi-value">${diff >= 0 ? '+' : ''}${diff}%</div>
-      <div class="kpi-sub">${diff >= 0 ? 'más caro que' : 'más barato que'} competencia</div>
+    <div class="kpi amarillo">
+      <div class="kpi-label">Supers con productos</div>
+      <div class="kpi-value">${supers.size}/4</div>
+      <div class="kpi-sub">${[...supers].map((s) => SUPER_LABEL[s] || s).join(', ') || 'sin datos'}</div>
     </div>
     <div class="kpi verde">
       <div class="kpi-label">Ofertas activas</div>
@@ -232,7 +231,7 @@ function renderCatalog() {
       const key = `${i.super}:${i.sku}`;
       return `<tr>
         <td><a href="#" class="product-link" data-key="${escape(key)}">${escape(i.name)}</a></td>
-        <td class="brand">${escape(i.brand)} ${i.group === 'competencia' ? '<span style="font-size:9px;color:var(--azul);background:#e3f2fd;padding:1px 5px;border-radius:6px;margin-left:4px">COMP</span>' : ''}</td>
+        <td class="brand">${escape(i.brand)}</td>
         <td><span class="pill ${i.super}">${SUPER_LABEL[i.super] || i.super}</span></td>
         <td class="price">${fmtPrice(i.price)}${isOffer ? `<br><span class="price list">${fmtPrice(i.listPrice)}</span>` : ''}</td>
         <td>${isOffer ? `<span class="discount-badge">−${discountPct}%</span>` : ''}</td>
@@ -292,7 +291,7 @@ function renderCompare() {
       <div class="compare-prod">
         <div>
           <div class="compare-prod-name">${escape(g.label)}</div>
-          <div class="compare-prod-brand">${escape(g.brand)} · ${g.items.length} supers ${g.group === 'competencia' ? '· <span style="color:var(--azul);font-weight:700">Competencia</span>' : ''}</div>
+          <div class="compare-prod-brand">${escape(g.brand)} · ${g.items.length} supers</div>
         </div>
         ${savings > 0 ? `<div style="text-align:right">
           <div style="font-size:11px;color:var(--texto-muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em">Ahorro máx</div>
@@ -337,45 +336,48 @@ function renderOffers() {
   $('#offersCount').textContent = filtered.length;
 }
 
-// ===== Posicionamiento (Bimbo vs Competencia) =====
+// ===== Cobertura Grupo Bimbo =====
 function renderPositioning() {
   const bimbo = state.items.filter((i) => i.group === 'bimbo');
-  const comp = state.items.filter((i) => i.group === 'competencia');
-
-  // Por super: precio promedio Bimbo vs Competencia
   const perSuper = SUPERS.map((s) => {
-    const b = bimbo.filter((i) => i.super === s).map((i) => i.price).filter((p) => p != null);
-    const c = comp.filter((i) => i.super === s).map((i) => i.price).filter((p) => p != null);
-    const avgB = b.length ? Math.round(b.reduce((sum, x) => sum + x, 0) / b.length) : null;
-    const avgC = c.length ? Math.round(c.reduce((sum, x) => sum + x, 0) / c.length) : null;
-    return { super: s, countBimbo: b.length, countComp: c.length, avgBimbo: avgB, avgComp: avgC };
+    const arr = bimbo.filter((i) => i.super === s);
+    const prices = arr.map((i) => i.price).filter((p) => p != null);
+    return {
+      super: s,
+      count: arr.length,
+      avg: prices.length ? Math.round(prices.reduce((sum, x) => sum + x, 0) / prices.length) : null,
+      min: prices.length ? Math.min(...prices) : null,
+      max: prices.length ? Math.max(...prices) : null,
+      offers: arr.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length,
+    };
   });
 
-  // Productos competidores ordenados por precio
-  const compTop = comp.filter((i) => i.price != null).sort((a, b) => a.price - b.price);
-
-  const maxAvg = Math.max(...perSuper.flatMap((s) => [s.avgBimbo, s.avgComp]).filter((x) => x != null), 1);
+  const maxCount = Math.max(...perSuper.map((s) => s.count), 1);
+  const byBrand = Object.entries(bimbo.reduce((acc, item) => {
+    (acc[item.brand] ??= []).push(item);
+    return acc;
+  }, {})).map(([brand, items]) => ({
+    brand,
+    count: items.length,
+    supers: new Set(items.map((i) => i.super)).size,
+    offers: items.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length,
+  })).sort((a, b) => b.count - a.count);
 
   $('#positioningContent').innerHTML = `
     <div class="exec-grid">
       <div class="exec-card">
-        <h3>Precio promedio por super</h3>
+        <h3>Cobertura por super</h3>
         <div style="display:flex;flex-direction:column;gap:14px">
           ${perSuper.map((s) => `
             <div>
-              <div style="font-size:12px;font-weight:700;margin-bottom:6px"><span class="pill ${s.super}">${SUPER_LABEL[s.super]}</span></div>
-              <div style="font-size:11px;color:var(--texto-muted);margin-bottom:3px;display:flex;justify-content:space-between">
-                <span>Bimbo (${s.countBimbo})</span><span style="font-weight:700;color:var(--rojo)">${fmtPrice(s.avgBimbo)}</span>
+              <div style="font-size:12px;font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between">
+                <span><span class="pill ${s.super}">${SUPER_LABEL[s.super]}</span> ${s.count} SKUs</span>
+                <span style="color:var(--azul)">prom ${fmtPrice(s.avg)}</span>
               </div>
-              <div style="background:var(--crema);height:8px;border-radius:4px;overflow:hidden;margin-bottom:6px">
-                <div style="background:var(--rojo);height:100%;width:${s.avgBimbo ? (s.avgBimbo / maxAvg * 100).toFixed(0) : 0}%"></div>
+              <div style="background:var(--crema);height:9px;border-radius:5px;overflow:hidden">
+                <div style="background:var(--rojo);height:100%;width:${(s.count / maxCount * 100).toFixed(0)}%"></div>
               </div>
-              <div style="font-size:11px;color:var(--texto-muted);margin-bottom:3px;display:flex;justify-content:space-between">
-                <span>Competencia (${s.countComp})</span><span style="font-weight:700;color:var(--azul)">${fmtPrice(s.avgComp)}</span>
-              </div>
-              <div style="background:var(--crema);height:8px;border-radius:4px;overflow:hidden">
-                <div style="background:var(--azul);height:100%;width:${s.avgComp ? (s.avgComp / maxAvg * 100).toFixed(0) : 0}%"></div>
-              </div>
+              <div style="font-size:11px;color:var(--texto-muted);margin-top:4px">Rango ${fmtPrice(s.min)} a ${fmtPrice(s.max)} · ${s.offers} ofertas</div>
             </div>
           `).join('')}
         </div>
@@ -383,44 +385,41 @@ function renderPositioning() {
 
       <div class="exec-card">
         <h3>Resumen ejecutivo</h3>
-        <p style="font-size:13px;line-height:1.6;margin:0 0 12px;color:var(--texto)">${buildExecutiveSummary(bimbo, comp)}</p>
+        <p style="font-size:13px;line-height:1.6;margin:0 0 12px;color:var(--texto)">${buildExecutiveSummary(bimbo)}</p>
         <hr style="border:none;border-top:1px solid var(--border);margin:14px 0">
         <div style="font-size:12px;line-height:1.7">
-          <div><b>SKUs Bimbo:</b> ${bimbo.length} en ${new Set(bimbo.map((i) => i.super)).size} supers</div>
-          <div><b>SKUs Competencia:</b> ${comp.length} en ${new Set(comp.map((i) => i.super)).size} supers</div>
-          <div><b>Marcas Bimbo:</b> ${new Set(bimbo.map((i) => i.brand)).size}</div>
-          <div><b>Marcas Competencia:</b> ${new Set(comp.map((i) => i.brand)).size}</div>
+          <div><b>SKUs Bimbo:</b> ${bimbo.length}</div>
+          <div><b>Submarcas detectadas:</b> ${new Set(bimbo.map((i) => i.brand)).size}</div>
+          <div><b>Supermercados con presencia:</b> ${new Set(bimbo.map((i) => i.super)).size}/4</div>
+          <div><b>Ofertas activas:</b> ${bimbo.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length}</div>
         </div>
       </div>
     </div>
 
     <div class="exec-card">
-      <h3>Productos de competencia (${compTop.length})</h3>
-      ${compTop.length === 0 ? '<div class="empty" style="padding:20px">No se encontraron productos de competencia en el último scrape. Editá <code>src/brands.js</code> para sumar marcas.</div>' :
-      `<table>
-        <thead><tr><th>Producto</th><th>Marca</th><th>Super</th><th class="price">Precio</th></tr></thead>
-        <tbody>${compTop.slice(0, 20).map((i) => `
+      <h3>Cobertura por submarca (${byBrand.length})</h3>
+      <table>
+        <thead><tr><th>Submarca</th><th class="price">SKUs</th><th class="price">Supers</th><th class="price">Ofertas</th></tr></thead>
+        <tbody>${byBrand.map((b) => `
           <tr>
-            <td>${i.url ? `<a href="${escape(i.url)}" target="_blank" rel="noopener">${escape(i.name)}</a>` : escape(i.name)}</td>
-            <td class="brand">${escape(i.brand)}</td>
-            <td><span class="pill ${i.super}">${SUPER_LABEL[i.super]}</span></td>
-            <td class="price">${fmtPrice(i.price)}</td>
+            <td class="brand">${escape(b.brand)}</td>
+            <td class="price">${b.count}</td>
+            <td class="price">${b.supers}/4</td>
+            <td class="price">${b.offers}</td>
           </tr>
         `).join('')}</tbody>
-      </table>${compTop.length > 20 ? `<div style="margin-top:8px;font-size:11px;color:var(--texto-muted);text-align:center">Mostrando los 20 más baratos de ${compTop.length}</div>` : ''}`}
+      </table>
     </div>
   `;
 }
 
-function buildExecutiveSummary(bimbo, comp) {
-  if (!bimbo.length) return 'Aún no hay datos de Bimbo. Tocá "Actualizar precios" para hacer el primer scrape.';
-  if (!comp.length) return `Se relevaron <b>${bimbo.length}</b> productos del Grupo Bimbo. No se encontraron productos de las marcas competidoras configuradas. Considerá ajustar <code>src/brands.js</code>.`;
-  const avgB = Math.round(bimbo.reduce((s, i) => s + (i.price ?? 0), 0) / bimbo.length);
-  const avgC = Math.round(comp.reduce((s, i) => s + (i.price ?? 0), 0) / comp.length);
-  const diff = ((avgB - avgC) / avgC * 100);
-  const direction = diff > 0 ? 'por encima' : 'por debajo';
-  const absDiff = Math.abs(diff).toFixed(1);
-  return `El precio promedio del catálogo Bimbo es <b>${fmtPrice(avgB)}</b>, ubicándose <b>${absDiff}% ${direction}</b> del promedio de la competencia (<b>${fmtPrice(avgC)}</b>). Se relevaron ${bimbo.length} SKUs Bimbo y ${comp.length} de competencia en ${new Set(state.items.map((i) => i.super)).size} supermercados.`;
+function buildExecutiveSummary(bimbo) {
+  if (!bimbo.length) return 'Aun no hay datos de Bimbo. Toca "Actualizar precios" para hacer el primer scrape.';
+  const prices = bimbo.map((i) => i.price).filter((p) => p != null);
+  const avg = prices.length ? Math.round(prices.reduce((s, p) => s + p, 0) / prices.length) : null;
+  const brands = new Set(bimbo.map((i) => i.brand));
+  const supers = new Set(bimbo.map((i) => i.super));
+  return `Se relevaron <b>${bimbo.length}</b> productos del Grupo Bimbo en <b>${supers.size}/4</b> supermercados, con <b>${brands.size}</b> submarcas detectadas y precio promedio de <b>${fmtPrice(avg)}</b>.`;
 }
 
 // ===== Informe Gerencial =====
@@ -432,7 +431,6 @@ function renderExecutive() {
   const items = state.items;
   const total = items.length;
   const bimbo = items.filter((i) => i.group === 'bimbo');
-  const comp = items.filter((i) => i.group === 'competencia');
   const offers = items.filter((i) => i.listPrice && i.price && i.listPrice > i.price);
 
   const byBrand = {};
@@ -455,7 +453,6 @@ function renderExecutive() {
       max: prices.length ? Math.max(...prices) : null,
       offers: arr.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length,
       bimbo: arr.filter((i) => i.group === 'bimbo').length,
-      comp: arr.filter((i) => i.group === 'competencia').length,
     };
   }).filter((s) => s.count);
   const maxCount = Math.max(...superStats.map((s) => s.count));
@@ -486,7 +483,7 @@ function renderExecutive() {
     </div>
 
     <div class="kpis" style="margin-bottom:20px">
-      <div class="kpi"><div class="kpi-label">SKUs totales</div><div class="kpi-value">${total}</div><div class="kpi-sub">${bimbo.length} Bimbo · ${comp.length} comp.</div></div>
+      <div class="kpi"><div class="kpi-label">SKUs totales</div><div class="kpi-value">${total}</div><div class="kpi-sub">${bimbo.length} Grupo Bimbo</div></div>
       <div class="kpi azul"><div class="kpi-label">Marcas relevadas</div><div class="kpi-value">${brandStats.length}</div></div>
       <div class="kpi verde"><div class="kpi-label">Ofertas vigentes</div><div class="kpi-value">${offers.length}</div><div class="kpi-sub">${Math.round(offers.length / total * 100)}% del catálogo</div></div>
       <div class="kpi amarillo"><div class="kpi-label">Productos comparables</div><div class="kpi-value">${clustersWithSpread.length}</div><div class="kpi-sub">presentes en 2+ supers</div></div>
@@ -494,7 +491,7 @@ function renderExecutive() {
 
     <div class="exec-card" style="margin-bottom:16px">
       <h3>Resumen</h3>
-      <p style="margin:0;font-size:13px;line-height:1.6">${buildExecutiveSummary(bimbo, comp)}</p>
+      <p style="margin:0;font-size:13px;line-height:1.6">${buildExecutiveSummary(bimbo)}</p>
     </div>
 
     <div class="exec-grid">
@@ -504,7 +501,7 @@ function renderExecutive() {
           ${brandStats.map((b) => `
             <div class="brand-stat">
               <div>
-                <div class="brand-stat-name">${escape(b.brand)} ${b.group === 'competencia' ? '<span style="font-size:9px;color:var(--azul);background:#e3f2fd;padding:1px 5px;border-radius:6px;margin-left:4px">COMP</span>' : ''}</div>
+                <div class="brand-stat-name">${escape(b.brand)}</div>
                 <div class="brand-stat-detail">${b.count} SKUs · ${b.supersCovered}/4 supers · ${b.offers} ofertas</div>
               </div>
               <div style="text-align:right">
@@ -522,7 +519,7 @@ function renderExecutive() {
           ${superStats.map((s) => `
             <div class="super-bar">
               <div class="super-bar-header">
-                <span><span class="pill ${s.super}">${SUPER_LABEL[s.super]}</span> ${s.count} SKUs (${s.bimbo}B · ${s.comp}C) · ${s.offers} ofertas</span>
+                <span><span class="pill ${s.super}">${SUPER_LABEL[s.super]}</span> ${s.count} SKUs Bimbo · ${s.offers} ofertas</span>
                 <span style="font-variant-numeric:tabular-nums">prom ${fmtPrice(s.avg)}</span>
               </div>
               <div class="super-bar-track">
@@ -619,7 +616,7 @@ function openProductModal(key) {
     <div style="font-size:13px;color:var(--texto-muted);margin-bottom:14px">
       <span style="text-transform:capitalize;font-weight:600">${escape(item.brand)}</span> ·
       <span class="pill ${item.super}">${SUPER_LABEL[item.super]}</span> ·
-      ${item.group === 'competencia' ? '<span style="color:var(--azul);font-weight:700">Competencia</span>' : '<span style="color:var(--rojo);font-weight:700">Grupo Bimbo</span>'}
+      <span style="color:var(--rojo);font-weight:700">Grupo Bimbo</span>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">
@@ -741,30 +738,6 @@ function initEvents() {
   $('#modalClose').addEventListener('click', closeModal);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 }
-
-// ===== Auto-swap de assets =====
-function trySwapAsset(name, slotEl, imgClass) {
-  if (!slotEl) return;
-  const candidates = [`/${name}.svg`, `/${name}.png`, `/${name}.webp`, `/${name}.jpg`];
-  let i = 0;
-  const tryNext = () => {
-    if (i >= candidates.length) return;
-    const test = new Image();
-    test.onload = () => {
-      const img = document.createElement('img');
-      img.src = candidates[i];
-      img.className = imgClass;
-      img.alt = '';
-      slotEl.replaceWith(img);
-    };
-    test.onerror = () => { i++; tryNext(); };
-    test.src = candidates[i];
-  };
-  tryNext();
-}
-
-trySwapAsset('mascot', document.getElementById('mascotSlot'), 'brand-mark-img');
-trySwapAsset('logo', document.getElementById('logoSlot'), 'brand-logo-img');
 
 initEvents();
 load();

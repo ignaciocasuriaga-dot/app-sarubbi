@@ -57,9 +57,7 @@ header.app {
   align-items: center;
   gap: 12px;
 }
-.brand-mark { width: 56px; height: 56px; flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(0,0,0,.08)); }
-.brand-mark-img { height: 56px; width: auto; max-width: 80px; flex-shrink: 0; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.12)); }
-.brand-logo-img { height: 44px; width: auto; max-width: 180px; object-fit: contain; }
+.brand-logo-img { height: 64px; width: auto; max-width: 220px; object-fit: contain; border-radius: 6px; display: block; }
 .brand-text {
   display: flex;
   flex-direction: column;
@@ -541,7 +539,7 @@ td a:hover { color: var(--rojo); text-decoration: underline; }
 @media (max-width: 720px) {
   .app-bar { flex-wrap: wrap; }
   .brand-name { font-size: 18px; }
-  .brand-mark { width: 44px; height: 44px; }
+  .brand-logo-img { height: 52px; max-width: 180px; }
   .last-update { display: none; }
   main { padding: 14px; }
   .compare-prices { grid-template-columns: repeat(2, 1fr); }

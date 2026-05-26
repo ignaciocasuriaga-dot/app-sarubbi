@@ -7,6 +7,7 @@ data/catalog/
 .DS_Store
 .vercel
 .claude/
+.playwright-mcp/
 memory/
 
 .vercel

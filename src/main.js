@@ -1,7 +1,7 @@
 import { scrapeTata } from './scrapers/tata.js';
 import { scrapeTiendaInglesa } from './scrapers/tiendainglesa.js';
 import { scrapeDisco, scrapeDevoto } from './scrapers/blazor.js';
-import { ALL_BRANDS, BRAND_GROUPS } from './brands.js';
+import { ALL_BRANDS, BRAND_GROUPS, SEARCH_TERMS } from './brands.js';
 import { writeFile, mkdir, appendFile, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
@@ -15,7 +15,7 @@ const SCRAPERS = [
 async function runOne(name, fn) {
   const t0 = Date.now();
   try {
-    const items = await fn(ALL_BRANDS);
+    const items = await fn(SEARCH_TERMS);
     const ms = Date.now() - t0;
     console.log(`✓ ${name.padEnd(15)} | ${String(items.length).padStart(3)} productos | ${(ms / 1000).toFixed(1)}s`);
     return { name, items, ok: true };
@@ -26,7 +26,7 @@ async function runOne(name, fn) {
   }
 }
 
-console.log(`Buscando ${ALL_BRANDS.length} marcas (Bimbo: ${BRAND_GROUPS.bimbo.length}, Competencia: ${BRAND_GROUPS.competencia.length})\n`);
+console.log(`Buscando ${SEARCH_TERMS.length} terminos de Grupo Bimbo (${ALL_BRANDS.length} marcas/submarcas)\n`);
 const results = await Promise.all(SCRAPERS.map((s) => runOne(s.name, s.fn)));
 const all = results.flatMap((r) => r.items);
 const generatedAt = new Date().toISOString();

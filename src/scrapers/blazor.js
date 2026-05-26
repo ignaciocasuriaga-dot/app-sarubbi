@@ -96,10 +96,10 @@ export const scrapeDevoto = (terms) => scrapeBlazorSite({ store: 'devoto', baseU
 
 import { fileURLToPath } from 'node:url';
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const { ALL_BRANDS } = await import('../brands.js');
+  const { SEARCH_TERMS } = await import('../brands.js');
   const which = process.argv[2] || 'disco';
   const fn = which === 'devoto' ? scrapeDevoto : scrapeDisco;
-  fn(ALL_BRANDS).then((items) => {
+  fn(SEARCH_TERMS).then((items) => {
     console.log(JSON.stringify(items, null, 2));
     console.error(`✓ ${which}: ${items.length} productos`);
   }).catch((e) => { console.error(e); process.exit(1); });
