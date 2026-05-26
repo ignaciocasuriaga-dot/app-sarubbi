@@ -615,5 +615,30 @@ function initEvents() {
   $('#offersQ').addEventListener('input', (e) => { state.offers.q = e.target.value; renderOffers(); });
 }
 
+// ===== Auto-swap de assets oficiales si están subidos en public/ =====
+// Busca /mascot.{png,svg,jpg,webp} y /logo.{png,svg,jpg,webp}. Si encuentra, swappea el placeholder.
+function trySwapAsset(name, slotEl, imgClass) {
+  if (!slotEl) return;
+  const candidates = [`/${name}.svg`, `/${name}.png`, `/${name}.webp`, `/${name}.jpg`];
+  let i = 0;
+  const tryNext = () => {
+    if (i >= candidates.length) return;
+    const test = new Image();
+    test.onload = () => {
+      const img = document.createElement('img');
+      img.src = candidates[i];
+      img.className = imgClass;
+      img.alt = '';
+      slotEl.replaceWith(img);
+    };
+    test.onerror = () => { i++; tryNext(); };
+    test.src = candidates[i];
+  };
+  tryNext();
+}
+
+trySwapAsset('mascot', document.getElementById('mascotSlot'), 'brand-mark-img');
+trySwapAsset('logo', document.getElementById('logoSlot'), 'brand-logo-img');
+
 initEvents();
 load();

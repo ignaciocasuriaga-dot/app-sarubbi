@@ -1,10 +1,12 @@
 /* Tema visual inspirado en panadería: rojo, azul oscuro, crema, blanco */
 
 :root {
-  --rojo: #E2231A;
+  /* Paleta corporativa (colores libres, no marcas) */
+  --rojo: #E1251B;
   --rojo-dark: #B71C1C;
-  --azul: #1B3D91;
-  --azul-dark: #122a66;
+  --azul: #002E6D;
+  --azul-dark: #001f4c;
+  --azul-light: #1B3D91;
   --crema: #FFF8E7;
   --crema2: #F5E8C7;
   --beige: #E8D9B0;
@@ -56,6 +58,8 @@ header.app {
   gap: 12px;
 }
 .brand-mark { width: 56px; height: 56px; flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(0,0,0,.08)); }
+.brand-mark-img { height: 56px; width: auto; max-width: 80px; flex-shrink: 0; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.12)); }
+.brand-logo-img { height: 44px; width: auto; max-width: 180px; object-fit: contain; }
 .brand-text {
   display: flex;
   flex-direction: column;
