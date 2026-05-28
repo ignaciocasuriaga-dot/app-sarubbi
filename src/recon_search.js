@@ -4,7 +4,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 const TARGETS = [
   { name: 'tiendainglesa', home: 'https://www.tiendainglesa.com.uy/supermercado', searchInput: 'input[type="search"], input[placeholder*="usca" i], input[name*="search" i], input[name*="q" i]' },
   { name: 'disco',         home: 'https://www.disco.com.uy',                       searchInput: 'input[type="search"], input[placeholder*="usca" i], input[name*="search" i]' },
-  { name: 'devoto',        home: 'https://www.devoto.com.uy',                      searchInput: 'input[type="search"], input[placeholder*="usca" i], input[name*="search" i]' },
+  { name: 'eldorado',      home: 'https://www.eldorado.com.uy',                    searchInput: 'input[type="search"], input[placeholder*="usca" i], input[name*="search" i]' },
 ];
 
 const SKIP = [/\.(png|jpe?g|webp|svg|gif|ico|woff2?|ttf|css|js|map)(\?|$)/i, /analytics|googletagmanager|facebook\.net|hotjar|clarity\.ms|doubleclick|pixel/i];

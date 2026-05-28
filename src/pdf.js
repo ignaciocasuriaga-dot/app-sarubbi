@@ -3,8 +3,8 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { chromium } from 'playwright-extra';
 
-const SUPER_LABEL = { tata: 'Tata', disco: 'Disco', devoto: 'Devoto', tiendainglesa: 'Tienda Inglesa' };
-const SUPERS = ['tata', 'disco', 'devoto', 'tiendainglesa'];
+const SUPER_LABEL = { tata: 'Tata', disco: 'Disco', eldorado: 'El Dorado', tiendainglesa: 'Tienda Inglesa' };
+const SUPERS = ['tata', 'disco', 'eldorado', 'tiendainglesa'];
 
 async function latestJson() {
   const dir = 'data/output';
@@ -18,6 +18,7 @@ async function latestJson() {
 
 const escape = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fmtPrice = (p) => (p == null ? '-' : '$ ' + p.toLocaleString('es-UY'));
+const fmtPct = (p) => (p == null ? '-' : `${p > 0 ? '+' : ''}${Number(p).toFixed(1)}%`);
 const cap = (s) => String(s).replace(/\b\w/g, (c) => c.toUpperCase());
 
 async function loadLogoDataUri() {
@@ -33,7 +34,7 @@ function stripAccents(s) {
 
 function normalizeName(name) {
   return stripAccents(name.toLowerCase())
-    .replace(/\b(bimbo|los\s*sorchantes|sorchantes|maestro\s*cubano|nutra\s*bien|nutrabien|sanissimo|sanisimo|salmas|pan\s*catalan|pancatalan|pancatlan|tia\s*rosa|rapiditas|vital|artesano)\b/g, ' ')
+    .replace(/\b(bimbo|los\s*sorchantes|sorchantes|maestro\s*cubano|nutra\s*bien|nutrabien|tia\s*rosa|rapiditas|merienda\s*hit|merienda\s*xl|takis|salmas|artesano)\b/g, ' ')
     .replace(/\d+(?:[.,]\d+)?\s*(kg|kilos?|gr?|gramos|ml|cc|lts?|litros?|un|u|unid(?:ades?)?)\b/g, ' ')
     .replace(/[^a-z0-9\s]/g, ' ')
     .replace(/\s+/g, ' ')
@@ -145,7 +146,14 @@ function buildHtml({ items, generatedAt, brands = [], logoDataUri = null }) {
     .sort((a, b) => b.pct - a.pct)
     .slice(0, 10);
 
-  const summary = `Se relevaron ${bimboItems.length} productos del Grupo Bimbo en ${new Set(bimboItems.map((i) => i.super)).size}/4 supermercados. Se detectaron ${byBrand.length} submarcas con precio promedio ${fmtPrice(avg(prices))}.`;
+  const suggested = bimboItems.filter((i) => i.suggestedPrice != null);
+  const suggestedAbove = suggested.filter((i) => i.suggestedStatus === 'above').length;
+  const suggestedRows = suggested
+    .slice()
+    .sort((a, b) => Math.abs(b.gapPct ?? b.suggestedDeviationPct ?? 0) - Math.abs(a.gapPct ?? a.suggestedDeviationPct ?? 0))
+    .slice(0, 12);
+
+  const summary = `Se relevaron ${bimboItems.length} productos del Grupo Bimbo en ${new Set(bimboItems.map((i) => i.super)).size}/4 supermercados. Se detectaron ${byBrand.length} submarcas con precio promedio ${fmtPrice(avg(prices))}. Control PVP: ${suggested.length} productos cruzados.`;
   const logo = logoDataUri ? `<img class="report-logo" src="${logoDataUri}" alt="Grupo Bimbo">` : '';
   const headerLogo = logoDataUri ? `<img class="page-logo" src="${logoDataUri}" alt="Grupo Bimbo">` : '';
 
@@ -185,10 +193,13 @@ function buildHtml({ items, generatedAt, brands = [], logoDataUri = null }) {
   td { padding: 6px 8px; border-bottom: 1px solid #f0e8d0; vertical-align: top; }
   td.price, th.price { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
   td.brand { color: #666; text-transform: capitalize; }
+  .gap.above { color: #E1251B; }
+  .gap.ok { color: #2e7d32; }
+  .gap.below { color: #002E6D; }
   .pill { display: inline-block; padding: 1.5px 7px; border-radius: 8px; color: #fff; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
   .pill.tata { background: #e5002b; }
   .pill.disco { background: #0070d2; }
-  .pill.devoto { background: #f15c22; }
+  .pill.eldorado { background: #c8102e; }
   .pill.tiendainglesa { background: #19744a; }
   footer { margin-top: 24px; padding-top: 10px; border-top: 1px solid #ddd; text-align: center; color: #999; font-size: 8.5px; }
 </style>
@@ -204,9 +215,10 @@ function buildHtml({ items, generatedAt, brands = [], logoDataUri = null }) {
     </div>
     <div class="cover-meta">
       <b>Fecha:</b> ${escape(fmtDate)}<br>
-      <b>Supermercados:</b> Tata · Disco · Devoto · Tienda Inglesa<br>
+      <b>Supermercados:</b> Tata · Disco · El Dorado · Tienda Inglesa<br>
       <b>SKUs analizados:</b> ${bimboItems.length}<br>
-      <b>Submarcas configuradas:</b> ${brands.length || byBrand.length}
+      <b>Submarcas configuradas:</b> ${brands.length || byBrand.length}<br>
+      <b>Control PVP:</b> ${suggested.length} productos cruzados
     </div>
   </div>
   <div class="cover-bottom">Generado automaticamente con datos relevados de los sitios oficiales.</div>
@@ -224,6 +236,7 @@ function buildHtml({ items, generatedAt, brands = [], logoDataUri = null }) {
     <div class="kpi"><div class="kpi-label">Submarcas</div><div class="kpi-value">${byBrand.length}</div><div class="kpi-sub">detectadas</div></div>
     <div class="kpi"><div class="kpi-label">Promedio</div><div class="kpi-value">${fmtPrice(avg(prices))}</div><div class="kpi-sub">precio actual</div></div>
     <div class="kpi"><div class="kpi-label">Ofertas</div><div class="kpi-value">${offers.length}</div><div class="kpi-sub">${bimboItems.length ? Math.round(offers.length / bimboItems.length * 100) : 0}% del catalogo</div></div>
+    <div class="kpi"><div class="kpi-label">PVP cruzados</div><div class="kpi-value">${suggested.length}</div><div class="kpi-sub">${suggestedAbove} sobre PVP</div></div>
   </div>
 </section>
 
@@ -265,7 +278,19 @@ function buildHtml({ items, generatedAt, brands = [], logoDataUri = null }) {
   </table>
 </section>
 
-<footer>Informe generado automaticamente · Datos relevados de Tata, Disco, Devoto y Tienda Inglesa · Uso interno.</footer>
+<section>
+  <h2>Control PVP sugerido</h2>
+  <table>
+    <thead><tr><th>Producto</th><th>Submarca</th><th>Super</th><th class="price">Precio</th><th class="price">PVP</th><th class="price">GAP</th></tr></thead>
+    <tbody>${suggestedRows.map((i) => {
+      const gap = i.gapPct ?? i.suggestedDeviationPct;
+      const status = i.suggestedStatus || '';
+      return `<tr><td>${escape(i.name)}<br><span style="color:#888;font-size:8.5px">${escape(i.suggestedProduct || '')}</span></td><td class="brand">${escape(i.brand)}</td><td><span class="pill ${i.super}">${SUPER_LABEL[i.super]}</span></td><td class="price">${fmtPrice(i.price)}</td><td class="price">${fmtPrice(i.suggestedPrice)}</td><td class="price gap ${escape(status)}">${fmtPct(gap)}</td></tr>`;
+    }).join('') || '<tr><td colspan="6" style="text-align:center;color:#999">Sin PVP cruzado.</td></tr>'}</tbody>
+  </table>
+</section>
+
+<footer>Informe generado automaticamente · Datos relevados de Tata, Disco, El Dorado y Tienda Inglesa · Uso interno.</footer>
 </body>
 </html>`;
 }

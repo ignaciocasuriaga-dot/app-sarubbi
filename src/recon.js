@@ -5,7 +5,7 @@ import { dirname } from 'node:path';
 const TARGETS = [
   { name: 'tata',           home: 'https://www.tata.com.uy',           explore: 'https://www.tata.com.uy/almacen' },
   { name: 'disco',          home: 'https://www.disco.com.uy',          explore: 'https://www.disco.com.uy/almacen' },
-  { name: 'devoto',         home: 'https://www.devoto.com.uy',         explore: 'https://www.devoto.com.uy/almacen' },
+  { name: 'eldorado',       home: 'https://www.eldorado.com.uy',       explore: 'https://www.eldorado.com.uy' },
   { name: 'tiendainglesa',  home: 'https://www.tiendainglesa.com.uy',  explore: 'https://www.tiendainglesa.com.uy/supermercado' },
 ];
 

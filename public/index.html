@@ -39,6 +39,10 @@
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
     <span>Ofertas</span><span class="badge" id="badgeOffers">0</span>
   </button>
+  <button class="tab" data-tab="prices">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"></path><path d="M4 5h16"></path><path d="M4 12h12"></path><path d="M4 19h8"></path></svg>
+    <span>PVP</span><span class="badge" id="badgePrices">0</span>
+  </button>
   <button class="tab" data-tab="positioning">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
     <span>Cobertura</span>
@@ -73,6 +77,8 @@
           <th data-sort="brand">Marca</th>
           <th data-sort="super">Super</th>
           <th data-sort="price" class="sorted asc">Precio</th>
+          <th data-sort="suggestedPrice">PVP Sugerido</th>
+          <th data-sort="gapPct">GAP (%)</th>
           <th>Oferta</th>
         </tr></thead>
         <tbody id="catalogRows"></tbody>
@@ -105,10 +111,35 @@
         <input type="text" id="offersQ" placeholder="Buscar producto en ofertas..." autocomplete="off" />
       </div>
       <table>
-        <thead><tr><th>Producto</th><th>Marca</th><th>Super</th><th class="price">Lista</th><th class="price">Oferta</th><th class="price">Ahorra</th><th>%</th></tr></thead>
+        <thead><tr><th>Producto</th><th>Marca</th><th>Super</th><th class="price">Lista</th><th class="price">Oferta</th><th class="price">PVP Sugerido</th><th class="price">GAP (%)</th><th class="price">Ahorra</th><th>%</th></tr></thead>
         <tbody id="offersRows"></tbody>
       </table>
       <div class="empty" id="offersEmpty" style="display:none">No hay ofertas activas en este momento.</div>
+    </div>
+  </section>
+
+  <section class="view" id="view-prices">
+    <div class="panel">
+      <h2 class="panel-title">Lista PVP - <span id="priceListCount">0</span> lineas</h2>
+      <div class="price-upload-grid">
+        <input type="file" id="priceFile" accept=".csv,.json,application/json,text/csv" />
+        <select id="priceStore">
+          <option value="">Usar cadena del archivo</option>
+          <option value="tata">Tata</option>
+          <option value="disco">Disco</option>
+          <option value="eldorado">El Dorado</option>
+          <option value="tiendainglesa">Tienda Inglesa</option>
+          <option value="all">Todos</option>
+        </select>
+        <button class="btn primary" id="priceImport">Importar</button>
+        <button class="btn" id="priceClear">Limpiar</button>
+      </div>
+      <div class="suggested-summary" id="priceSummary"></div>
+      <table class="mini-table">
+        <thead><tr><th>Producto</th><th>Marca</th><th>Cadena</th><th class="price">PVP</th><th>Match</th></tr></thead>
+        <tbody id="priceRows"></tbody>
+      </table>
+      <div class="empty" id="priceEmpty" style="display:none">Sin lista PVP cargada.</div>
     </div>
   </section>
 

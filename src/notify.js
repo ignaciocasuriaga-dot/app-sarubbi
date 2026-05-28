@@ -9,7 +9,7 @@ const THRESHOLD_PCT = Number(process.env.ALERT_THRESHOLD_PCT || 5);
 
 const HISTORY = 'public/data/history.jsonl';
 const PRODUCTS = 'public/data/products.json';
-const SUPER_LABEL = { tata: 'Tata', disco: 'Disco', devoto: 'Devoto', tiendainglesa: 'Tienda Inglesa' };
+const SUPER_LABEL = { tata: 'Tata', disco: 'Disco', eldorado: 'El Dorado', tiendainglesa: 'Tienda Inglesa' };
 
 if (!TOKEN || !CHAT) {
   console.log('Telegram not configured. Skip.');

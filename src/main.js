@@ -1,7 +1,9 @@
 import { scrapeTata } from './scrapers/tata.js';
 import { scrapeTiendaInglesa } from './scrapers/tiendainglesa.js';
-import { scrapeDisco, scrapeDevoto } from './scrapers/blazor.js';
+import { scrapeDisco } from './scrapers/blazor.js';
+import { scrapeElDorado } from './scrapers/eldorado.js';
 import { ALL_BRANDS, BRAND_GROUPS, SEARCH_TERMS } from './brands.js';
+import { applySuggestedPrices, suggestedSummary } from './suggested.js';
 import { writeFile, mkdir, appendFile, readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
@@ -9,7 +11,7 @@ const SCRAPERS = [
   { name: 'tata',          fn: scrapeTata },
   { name: 'tiendainglesa', fn: scrapeTiendaInglesa },
   { name: 'disco',         fn: scrapeDisco },
-  { name: 'devoto',        fn: scrapeDevoto },
+  { name: 'eldorado',      fn: scrapeElDorado },
 ];
 
 async function runOne(name, fn) {
@@ -28,7 +30,8 @@ async function runOne(name, fn) {
 
 console.log(`Buscando ${SEARCH_TERMS.length} terminos de Grupo Bimbo (${ALL_BRANDS.length} marcas/submarcas)\n`);
 const results = await Promise.all(SCRAPERS.map((s) => runOne(s.name, s.fn)));
-const all = results.flatMap((r) => r.items);
+const raw = results.flatMap((r) => r.items).filter(Boolean);
+const all = applySuggestedPrices(raw);
 const generatedAt = new Date().toISOString();
 
 await mkdir('data/output', { recursive: true });
@@ -37,25 +40,68 @@ const stamp = generatedAt.replace(/[:.]/g, '-');
 const csvPath = `data/output/bimbo_${stamp}.csv`;
 const jsonPath = `data/output/bimbo_${stamp}.json`;
 
-// CSV con grupo
-const headers = ['producto', 'marca', 'grupo', 'precio', 'precio_lista', 'super', 'url'];
+function csvCell(value) {
+  const s = String(value ?? '').replace(/"/g, '""');
+  return /[",\n]/.test(s) ? `"${s}"` : s;
+}
+
+// CSV con grupo y control de PVP sugerido
+const headers = [
+  'producto',
+  'marca',
+  'grupo',
+  'precio',
+  'precio_lista',
+  'pvp_sugerido',
+  'gap_pct',
+  'estado_sugerido',
+  'producto_sugerido',
+  'fuente_sugerido',
+  'super',
+  'sku',
+  'url',
+];
 const csvLines = [headers.join(',')];
 const sorted = [...all].sort((a, b) => {
   const k = (x) => `${x.group}|${x.brand}|${x.name.toLowerCase()}|${x.super}`;
   return k(a).localeCompare(k(b), 'es');
 });
 for (const item of sorted) {
-  const row = [item.name, item.brand, item.group, item.price ?? '', item.listPrice ?? '', item.super, item.url ?? ''];
-  csvLines.push(row.map((v) => {
-    const s = String(v ?? '').replace(/"/g, '""');
-    return /[",\n]/.test(s) ? `"${s}"` : s;
-  }).join(','));
+  const row = [
+    item.name,
+    item.brand,
+    item.group,
+    item.price ?? '',
+    item.listPrice ?? '',
+    item.suggestedPrice ?? '',
+    item.gapPct ?? '',
+    item.suggestedStatus ?? '',
+    item.suggestedProduct ?? '',
+    item.suggestedSource ?? '',
+    item.super,
+    item.sku,
+    item.url ?? '',
+  ];
+  csvLines.push(row.map(csvCell).join(','));
 }
 await writeFile(csvPath, csvLines.join('\n'));
-await writeFile(jsonPath, JSON.stringify({ brands: ALL_BRANDS, groups: BRAND_GROUPS, generatedAt, items: sorted }, null, 2));
+const payload = {
+  brands: ALL_BRANDS,
+  groups: BRAND_GROUPS,
+  generatedAt,
+  items: sorted,
+  suggested: suggestedSummary(sorted),
+  scrapeResults: results.map(({ name, ok, error, items }) => ({
+    name,
+    ok,
+    error,
+    count: items.length,
+  })),
+};
+await writeFile(jsonPath, JSON.stringify(payload, null, 2));
 
 // ===== Copias en public/data para que la web los sirva =====
-await writeFile('public/data/latest.json', JSON.stringify({ brands: ALL_BRANDS, groups: BRAND_GROUPS, generatedAt, items: sorted }));
+await writeFile('public/data/latest.json', JSON.stringify(payload));
 await writeFile('public/data/latest.csv', csvLines.join('\n'));
 
 // ===== Histórico: append snapshot a JSONL =====
@@ -79,7 +125,18 @@ if (existsSync('public/data/products.json')) {
 }
 for (const i of sorted) {
   meta[`${i.super}:${i.sku}`] = {
-    name: i.name, brand: i.brand, group: i.group, super: i.super, sku: i.sku, url: i.url,
+    name: i.name,
+    brand: i.brand,
+    group: i.group,
+    super: i.super,
+    sku: i.sku,
+    url: i.url,
+    suggestedPrice: i.suggestedPrice,
+    gapPct: i.gapPct,
+    suggestedDeviationPct: i.suggestedDeviationPct,
+    suggestedStatus: i.suggestedStatus,
+    suggestedSource: i.suggestedSource,
+    suggestedProduct: i.suggestedProduct,
   };
 }
 await writeFile('public/data/products.json', JSON.stringify(meta));

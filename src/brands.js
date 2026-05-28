@@ -1,20 +1,18 @@
-// Marcas/submarcas de Grupo Bimbo en Uruguay.
-// Fuente: https://www.grupobimbo.com/es/marcas/sudamerica/uruguay
+// Portfolio pedido para el monitor de Nacho.
+// Las lineas genericas se atan a contexto para evitar productos de terceros.
 
 const BRAND_DEFINITIONS = [
-  { name: 'bimbo', aliases: ['bimbo'] },
   { name: 'los sorchantes', aliases: ['los sorchantes', 'sorchantes'] },
-  { name: 'maestro cubano', aliases: ['maestro cubano', 'el maestro cubano'] },
-  { name: 'nutrabien', aliases: ['nutrabien', 'nutra bien'] },
-  { name: 'sanissimo', aliases: ['sanissimo', 'sanisimo', 'salmas'] },
-  { name: 'pancatalan', aliases: ['pancatalan', 'pancatlan', 'pan catalan'] },
   { name: 'tia rosa', aliases: ['tia rosa'] },
+  { name: 'bimbo', aliases: ['bimbo'] },
   { name: 'rapiditas', aliases: ['rapiditas'] },
-
-  // Lineas oficiales, pero muy genericas como texto de producto.
-  // Se detectan solo cuando aparecen junto a otra marca fuerte de Bimbo.
-  { name: 'vital', aliases: ['vital'], requiresBimboContext: true },
   { name: 'artesano', aliases: ['artesano'], requiresBimboContext: true },
+  { name: 'maestro cubano', aliases: ['maestro cubano', 'el maestro cubano'] },
+  { name: 'merienda hit', aliases: ['merienda hit', 'hit merienda'] },
+  { name: 'merienda xl', aliases: ['merienda xl', 'xl merienda'] },
+  { name: 'takis', aliases: ['takis'] },
+  { name: 'salmas', aliases: ['salmas', 'sanissimo salmas', 'sanisimo salmas'], include: isSalmasPack },
+  { name: 'nutrabien', aliases: ['nutrabien', 'nutra bien'] },
 ];
 
 export const BRAND_GROUPS = {
@@ -24,24 +22,32 @@ export const BRAND_GROUPS = {
 export const ALL_BRANDS = BRAND_GROUPS.bimbo;
 
 export const SEARCH_TERMS = [
-  'bimbo',
   'los sorchantes',
   'sorchantes',
+  'tia rosa',
+  'bimbo',
+  'rapiditas',
+  'artesano bimbo',
   'maestro cubano',
+  'merienda hit',
+  'merienda xl',
+  'takis',
+  'salmas',
+  'salmas 6',
+  'salmas 12',
+  'tostaditas salmas',
   'nutrabien',
   'nutra bien',
-  'sanissimo',
-  'sanisimo',
-  'salmas',
-  'pancatalan',
-  'pancatlan',
-  'pan catalan',
-  'tia rosa',
-  'rapiditas',
 ];
 
 function stripAccents(s) {
-  return s.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+  return String(s ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '');
+}
+
+function isSalmasPack(norm) {
+  if (!/\bsalmas\b/i.test(norm)) return false;
+  return /\b(?:x\s*)?(?:6|12)\s*(?:u|un|unid|unidades)?\b/i.test(norm)
+    || /\b(?:108|216)\s*(?:g|gr|gramos)\b/i.test(norm);
 }
 
 function escapeRegex(s) {
@@ -60,6 +66,7 @@ const MATCHERS = BRAND_DEFINITIONS.flatMap((brand) =>
   brand.aliases.map((alias) => ({
     brand: brand.name,
     requiresBimboContext: Boolean(brand.requiresBimboContext),
+    include: brand.include,
     weight: brand.requiresBimboContext ? 1 : 0,
     length: alias.length,
     rx: new RegExp(`\\b${aliasPattern(alias)}\\b`, 'i'),
@@ -74,6 +81,7 @@ export function matchedBrand(text) {
   const hasBimboContext = STRONG_MATCHERS.some((m) => m.rx.test(norm));
   const match = MATCHERS.find((m) => {
     if (m.requiresBimboContext && !hasBimboContext) return false;
+    if (m.include && !m.include(norm)) return false;
     return m.rx.test(norm);
   });
   return match?.brand ?? null;

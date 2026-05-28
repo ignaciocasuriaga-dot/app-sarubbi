@@ -1,12 +1,17 @@
 // App principal - vistas: Catalogo, Comparador, Ofertas, Cobertura, Informe Gerencial
 
-const SUPER_LABEL = { tata: 'Tata', disco: 'Disco', devoto: 'Devoto', tiendainglesa: 'Tienda Inglesa' };
-const SUPERS = ['tata', 'disco', 'devoto', 'tiendainglesa'];
+const SUPER_LABEL = { tata: 'Tata', disco: 'Disco', eldorado: 'El Dorado', tiendainglesa: 'Tienda Inglesa' };
+const SUPERS = ['tata', 'disco', 'eldorado', 'tiendainglesa'];
 const GROUP_LABEL = { bimbo: 'Grupo Bimbo' };
+const PORTFOLIO_BRANDS = ['los sorchantes', 'tia rosa', 'bimbo', 'rapiditas', 'artesano', 'maestro cubano', 'merienda hit', 'merienda xl', 'takis', 'salmas', 'nutrabien'];
+const PRICE_LIST_KEY = 'precios-bimbo-pvp-v1';
+const GAP_LABEL = { above: 'Sobre PVP', ok: 'En linea', below: 'Bajo PVP' };
 
 const state = {
   items: [],
   groups: { bimbo: [] },
+  suggested: null,
+  priceList: [],
   generatedAt: null,
   view: 'catalog',
   history: null,           // array de snapshots {t, prices}
@@ -21,6 +26,7 @@ const $  = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const escape = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fmtPrice = (p) => p == null ? '—' : '$ ' + p.toLocaleString('es-UY');
+const fmtPct = (p) => p == null ? '-' : `${p > 0 ? '+' : ''}${Number(p).toFixed(1)}%`;
 const stripAccents = (s) => s.normalize('NFD').replace(/\p{Diacritic}/gu, '');
 
 function toast(msg, kind = '') {
@@ -51,7 +57,7 @@ function extractSize(name) {
 
 function normalizeName(name) {
   let n = stripAccents(name.toLowerCase());
-  n = n.replace(/\b(bimbo|los\s*sorchantes|sorchantes|maestro\s*cubano|nutra\s*bien|nutrabien|sanissimo|sanisimo|salmas|pan\s*catalan|pancatalan|pancatlan|tia\s*rosa|rapiditas|vital|artesano)\b/g, ' ');
+  n = n.replace(/\b(bimbo|los\s*sorchantes|sorchantes|maestro\s*cubano|nutra\s*bien|nutrabien|tia\s*rosa|rapiditas|merienda\s*hit|merienda\s*xl|takis|salmas|artesano)\b/g, ' ');
   n = n.replace(/\d+(?:[.,]\d+)?\s*(kg|kilos?|gr?|gramos|ml|cc|lts?|litros?|un|u|unid(?:ades?)?|x\s*\d+)\b/g, ' ');
   n = n.replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
   const stop = new Set(['de', 'la', 'el', 'con', 'sin', 'y', 'a', 'en', 'para', 'gr', 'g']);
@@ -99,14 +105,247 @@ function clusterProducts(items) {
   return groups;
 }
 
+// ===== PVP sugerido local =====
+function normalizeStore(value) {
+  const n = stripAccents(String(value ?? '').toLowerCase())
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!n) return '';
+  if (['todos', 'todas', 'all', 'global'].includes(n)) return 'all';
+  const map = {
+    tata: 'tata',
+    'ta ta': 'tata',
+    'ta-ta': 'tata',
+    disco: 'disco',
+    eldorado: 'eldorado',
+    'el dorado': 'eldorado',
+    tiendainglesa: 'tiendainglesa',
+    'tienda inglesa': 'tiendainglesa',
+  };
+  return map[n] || '';
+}
+
+function normalizeBrand(value) {
+  const n = stripAccents(String(value ?? '').toLowerCase())
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const map = {
+    bimbo: 'bimbo',
+    sorchantes: 'los sorchantes',
+    'los sorchantes': 'los sorchantes',
+    'tia rosa': 'tia rosa',
+    rapiditas: 'rapiditas',
+    artesano: 'artesano',
+    'maestro cubano': 'maestro cubano',
+    'el maestro cubano': 'maestro cubano',
+    'merienda hit': 'merienda hit',
+    hit: 'merienda hit',
+    'merienda xl': 'merienda xl',
+    xl: 'merienda xl',
+    takis: 'takis',
+    salmas: 'salmas',
+    'sanissimo salmas': 'salmas',
+    'sanisimo salmas': 'salmas',
+    nutrabien: 'nutrabien',
+    'nutra bien': 'nutrabien',
+  };
+  return map[n] || n || '';
+}
+
+function isSalmasPackName(name) {
+  const n = stripAccents(String(name ?? '').toLowerCase());
+  if (!/\bsalmas\b/.test(n)) return false;
+  return /\b(?:x\s*)?(?:6|12)\s*(?:u|un|unid|unidades|p)?\b/.test(n)
+    || /\b(?:108|216)\s*(?:g|gr|gramos)\b/.test(n);
+}
+
+function normalizeLoadedItem(item) {
+  if (!item || !SUPERS.includes(item.super)) return null;
+  const next = { ...item };
+  if (next.brand === 'sanissimo' && isSalmasPackName(next.name)) next.brand = 'salmas';
+  if (next.brand === 'vital' && /\bbimbo\b/i.test(stripAccents(next.name || ''))) next.brand = 'bimbo';
+  if (!PORTFOLIO_BRANDS.includes(next.brand)) return null;
+  return next;
+}
+
+function numberOrNull(value) {
+  if (value == null || value === '') return null;
+  if (typeof value === 'number') return Number.isFinite(value) ? value : null;
+  let s = String(value).trim().replace(/[^\d,.-]/g, '');
+  if (!s) return null;
+  const comma = s.lastIndexOf(',');
+  const dot = s.lastIndexOf('.');
+  if (comma >= 0 && dot >= 0) s = comma > dot ? s.replace(/\./g, '').replace(',', '.') : s.replace(/,/g, '');
+  else if (comma >= 0) s = s.replace(',', '.');
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
+}
+
+function csvDelimiter(text) {
+  const firstLine = String(text).split(/\r?\n/, 1)[0] || '';
+  return (firstLine.match(/;/g) || []).length > (firstLine.match(/,/g) || []).length ? ';' : ',';
+}
+
+function parseCsv(text, delimiter = csvDelimiter(text)) {
+  const rows = [];
+  let row = [];
+  let cell = '';
+  let quoted = false;
+  for (let i = 0; i < text.length; i += 1) {
+    const ch = text[i], next = text[i + 1];
+    if (quoted) {
+      if (ch === '"' && next === '"') { cell += '"'; i += 1; }
+      else if (ch === '"') quoted = false;
+      else cell += ch;
+    } else if (ch === '"') quoted = true;
+    else if (ch === delimiter) { row.push(cell); cell = ''; }
+    else if (ch === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+    else if (ch !== '\r') cell += ch;
+  }
+  row.push(cell);
+  if (row.some((v) => String(v).trim())) rows.push(row);
+  return rows;
+}
+
+function headerKey(value) {
+  return stripAccents(String(value ?? '').toLowerCase())
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
+function rowsFromCsv(text) {
+  const rows = parseCsv(text).filter((row) => row.some((cell) => String(cell).trim()));
+  if (!rows.length) return [];
+  const headers = rows[0].map(headerKey);
+  return rows.slice(1).map((row) => {
+    const record = {};
+    headers.forEach((key, index) => { record[key] = row[index] ?? ''; });
+    return record;
+  });
+}
+
+function pick(row, keys) {
+  for (const key of keys) {
+    const v = row[headerKey(key)];
+    if (v != null && String(v).trim() !== '') return v;
+  }
+  return '';
+}
+
+function rowsFromJson(text) {
+  const parsed = JSON.parse(text);
+  return Array.isArray(parsed) ? parsed : (parsed.rows || parsed.items || []);
+}
+
+function normalizePriceRows(rows, storeOverride = '', source = 'archivo') {
+  const override = normalizeStore(storeOverride);
+  return rows.map((row, index) => {
+    const rawStore = override || pick(row, ['super', 'cadena', 'supermercado', 'tienda']);
+    const store = normalizeStore(rawStore);
+    const stores = store === 'all' ? SUPERS : (store ? [store] : []);
+    const product = String(pick(row, ['producto', 'nombre', 'descripcion', 'articulo'])).trim();
+    const brand = normalizeBrand(pick(row, ['marca', 'brand', 'submarca']));
+    const price = numberOrNull(pick(row, ['pvp_sugerido', 'pvpSugerido', 'precio_sugerido', 'precioSugerido', 'suggestedPrice', 'pvs', 'pvp', 'precio']));
+    const sku = String(pick(row, ['sku', 'codigo', 'id_producto', 'id'])).trim();
+    if (price == null || (!product && !sku) || !stores.length) return null;
+    return { index, stores, sku, brand, product, price, source };
+  }).filter(Boolean);
+}
+
+function loadLocalPriceList() {
+  try {
+    state.priceList = JSON.parse(localStorage.getItem(PRICE_LIST_KEY) || '[]');
+  } catch {
+    state.priceList = [];
+  }
+}
+
+function saveLocalPriceList() {
+  localStorage.setItem(PRICE_LIST_KEY, JSON.stringify(state.priceList));
+}
+
+function sizeCompatible(rowSize, itemSize) {
+  if (!rowSize) return true;
+  if (!itemSize || rowSize.unit !== itemSize.unit) return false;
+  const ratio = Math.min(rowSize.value, itemSize.value) / Math.max(rowSize.value, itemSize.value);
+  return ratio >= 0.85;
+}
+
+function scorePriceRow(row, item) {
+  if (!row.stores.includes(item.super)) return null;
+  if (row.sku && String(row.sku) === String(item.sku)) return 999;
+  if (row.brand && row.brand !== item.brand) return null;
+
+  const rowSize = extractSize(row.product || '');
+  const itemSize = extractSize(item.name || '');
+  if (!sizeCompatible(rowSize, itemSize)) return null;
+
+  const wanted = tokenize(row.product || '');
+  const got = tokenize(item.name || '');
+  if (!wanted.size) return null;
+  let overlap = 0;
+  for (const token of wanted) if (got.has(token)) overlap += 1;
+  const ratio = overlap / wanted.size;
+  if (ratio < (rowSize ? 0.2 : 0.45)) return null;
+  return (row.brand ? 30 : 8) + (rowSize ? 35 : 0) + Math.round(ratio * 35);
+}
+
+function matchLocalSuggested(item) {
+  let best = null;
+  for (const row of state.priceList) {
+    const score = scorePriceRow(row, item);
+    if (score == null) continue;
+    if (!best || score > best.score) best = { row, score };
+  }
+  return best && best.score >= 45 ? best.row : null;
+}
+
+function gapStatus(gap) {
+  if (gap == null) return '';
+  if (gap > 0.5) return 'above';
+  if (gap < -0.5) return 'below';
+  return 'ok';
+}
+
+function suggestedFor(item) {
+  const local = matchLocalSuggested(item);
+  if (local) return { price: local.price, product: local.product, source: local.source || 'lista local', local: true };
+  if (item.suggestedPrice != null) {
+    return { price: item.suggestedPrice, product: item.suggestedProduct, source: item.suggestedSource || 'archivo backend', local: false };
+  }
+  return null;
+}
+
+function gapFor(item) {
+  const suggested = suggestedFor(item);
+  if (!suggested?.price || item.price == null) return null;
+  return Number((((Number(item.price) - suggested.price) / suggested.price) * 100).toFixed(2));
+}
+
+function pvpCell(item) {
+  const suggested = suggestedFor(item);
+  if (!suggested?.price) return '<span class="suggested-empty">-</span>';
+  return `<div class="suggested-cell"><span class="suggested-price">${fmtPrice(suggested.price)}</span>${suggested.local ? '<span class="suggested-ref">local</span>' : ''}</div>`;
+}
+
+function gapCell(item) {
+  const gap = gapFor(item);
+  if (gap == null) return '<span class="suggested-empty">-</span>';
+  const status = gapStatus(gap);
+  return `<span class="gap-badge ${escape(status)}" title="${escape(GAP_LABEL[status] || '')}">${fmtPct(gap)}</span>`;
+}
+
 // ===== Carga =====
 async function load() {
   try {
     const r = await fetch('/data/latest.json', { cache: 'no-store' });
     if (!r.ok) throw new Error('No se pudo cargar latest.json');
     const data = await r.json();
-    state.items = data.items || [];
-    state.groups = data.groups || { bimbo: [] };
+    state.items = (data.items || []).map(normalizeLoadedItem).filter(Boolean);
+    state.groups = { bimbo: PORTFOLIO_BRANDS };
+    state.suggested = data.suggested || null;
     state.generatedAt = data.generatedAt;
     state.clusters = clusterProducts(state.items);
     renderAll();
@@ -132,6 +371,7 @@ function renderAll() {
   renderCatalog();
   renderCompare();
   renderOffers();
+  renderPrices();
   renderPositioning();
   renderExecutive();
   updateTabBadges();
@@ -149,6 +389,8 @@ function renderKPIs() {
   const avgBimbo = bimboItems.length ? Math.round(bimboItems.reduce((s, i) => s + (i.price ?? 0), 0) / bimboItems.length) : 0;
   const brands = new Set(bimboItems.map((i) => i.brand));
   const supers = new Set(bimboItems.map((i) => i.super));
+  const withPvp = state.items.filter((i) => suggestedFor(i)?.price != null);
+  const avgGap = withPvp.length ? withPvp.reduce((sum, i) => sum + (gapFor(i) ?? 0), 0) / withPvp.length : null;
 
   $('#kpis').innerHTML = `
     <div class="kpi">
@@ -169,7 +411,12 @@ function renderKPIs() {
     <div class="kpi verde">
       <div class="kpi-label">Ofertas activas</div>
       <div class="kpi-value">${offers.length}</div>
-      <div class="kpi-sub">${state.items.length ? Math.round(offers.length / state.items.length * 100) : 0}% del catálogo</div>
+      <div class="kpi-sub">${state.items.length ? Math.round(offers.length / state.items.length * 100) : 0}% del catalogo</div>
+    </div>
+    <div class="kpi azul">
+      <div class="kpi-label">PVP cruzados</div>
+      <div class="kpi-value">${withPvp.length}</div>
+      <div class="kpi-sub">GAP prom ${avgGap == null ? '-' : fmtPct(avgGap)}</div>
     </div>
   `;
 }
@@ -205,8 +452,13 @@ function filterItems(items, q, brands, supers, groups) {
 
 function sortItems(items, sort) {
   const dir = sort.asc ? 1 : -1;
+  const valueFor = (item) => {
+    if (sort.key === 'suggestedPrice') return suggestedFor(item)?.price ?? null;
+    if (sort.key === 'gapPct') return gapFor(item);
+    return item[sort.key];
+  };
   return items.slice().sort((a, b) => {
-    const va = a[sort.key], vb = b[sort.key];
+    const va = valueFor(a), vb = valueFor(b);
     if (va == null && vb == null) return 0;
     if (va == null) return 1;
     if (vb == null) return -1;
@@ -234,6 +486,8 @@ function renderCatalog() {
         <td class="brand">${escape(i.brand)}</td>
         <td><span class="pill ${i.super}">${SUPER_LABEL[i.super] || i.super}</span></td>
         <td class="price">${fmtPrice(i.price)}${isOffer ? `<br><span class="price list">${fmtPrice(i.listPrice)}</span>` : ''}</td>
+        <td class="price">${pvpCell(i)}</td>
+        <td class="price">${gapCell(i)}</td>
         <td>${isOffer ? `<span class="discount-badge">−${discountPct}%</span>` : ''}</td>
       </tr>`;
     }).join('');
@@ -327,6 +581,8 @@ function renderOffers() {
         <td><span class="pill ${o.super}">${SUPER_LABEL[o.super] || o.super}</span></td>
         <td class="price list">${fmtPrice(o.listPrice)}</td>
         <td class="price">${fmtPrice(o.price)}</td>
+        <td class="price">${pvpCell(o)}</td>
+        <td class="price">${gapCell(o)}</td>
         <td class="price" style="color:var(--offer)">${fmtPrice(o.savings)}</td>
         <td><span class="discount-badge">−${Math.round(o.discount * 100)}%</span></td>
       </tr>`;
@@ -334,6 +590,44 @@ function renderOffers() {
     bindProductLinks(tbody);
   }
   $('#offersCount').textContent = filtered.length;
+}
+
+function renderPrices() {
+  const localRows = state.priceList || [];
+  const withPvp = state.items.filter((i) => suggestedFor(i)?.price != null);
+  const stats = {
+    above: withPvp.filter((i) => gapStatus(gapFor(i)) === 'above').length,
+    ok: withPvp.filter((i) => gapStatus(gapFor(i)) === 'ok').length,
+    below: withPvp.filter((i) => gapStatus(gapFor(i)) === 'below').length,
+    local: state.items.filter((i) => matchLocalSuggested(i)).length,
+  };
+  const backendRows = state.suggested?.rowsWithSuggested || 0;
+  $('#priceSummary').innerHTML = `
+    <div class="suggested-card above"><div class="suggested-card-label">Sobre PVP</div><div class="suggested-card-value">${stats.above}</div></div>
+    <div class="suggested-card ok"><div class="suggested-card-label">En linea</div><div class="suggested-card-value">${stats.ok}</div></div>
+    <div class="suggested-card below"><div class="suggested-card-label">Bajo PVP</div><div class="suggested-card-value">${stats.below}</div></div>
+    <div class="suggested-card"><div class="suggested-card-label">Lista local</div><div class="suggested-card-value">${localRows.length}</div><div class="suggested-ref">${stats.local} matches locales - ${backendRows} backend</div></div>
+  `;
+
+  const tbody = $('#priceRows');
+  const empty = $('#priceEmpty');
+  if (!localRows.length) {
+    tbody.innerHTML = '';
+    empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+    tbody.innerHTML = localRows.slice(0, 100).map((row) => {
+      const matches = state.items.filter((item) => scorePriceRow(row, item) != null).length;
+      return `<tr>
+        <td>${escape(row.product || row.sku || '-')}</td>
+        <td class="brand">${escape(row.brand || '-')}</td>
+        <td>${row.stores.map((s) => `<span class="pill ${s}">${SUPER_LABEL[s] || s}</span>`).join(' ')}</td>
+        <td class="price">${fmtPrice(row.price)}</td>
+        <td><span class="suggested-badge ${matches ? 'ok' : 'below'}">${matches}</span></td>
+      </tr>`;
+    }).join('');
+  }
+  $('#priceListCount').textContent = localRows.length;
 }
 
 // ===== Cobertura Grupo Bimbo =====
@@ -473,6 +767,11 @@ function renderExecutive() {
     .map((o) => ({ ...o, pct: (1 - o.price / o.listPrice) * 100 }))
     .sort((a, b) => b.pct - a.pct)
     .slice(0, 5);
+  const pvpItems = items.filter((i) => suggestedFor(i)?.price != null);
+  const pvpRows = pvpItems
+    .sort((a, b) => Math.abs(gapFor(b) ?? 0) - Math.abs(gapFor(a) ?? 0))
+    .slice(0, 8);
+  const pvpAbove = pvpItems.filter((i) => gapStatus(gapFor(i)) === 'above').length;
 
   const date = new Date(state.generatedAt).toLocaleString('es-UY', { dateStyle: 'long', timeStyle: 'short' });
 
@@ -480,7 +779,7 @@ function renderExecutive() {
     <div class="print-only" style="margin-bottom:20px;border-bottom:2px solid var(--rojo);padding-bottom:14px">
       <img src="/logo.jpg" alt="Grupo Bimbo" style="height:54px;width:auto;border-radius:6px;margin:0 0 10px;display:block">
       <h1 style="margin:0;font-size:24px;color:var(--rojo)">Informe Ejecutivo · Precios Bimbo Uruguay</h1>
-      <p style="margin:6px 0 0;color:#555;font-size:12px">Generado: ${escape(date)} · Tata · Disco · Devoto · Tienda Inglesa</p>
+      <p style="margin:6px 0 0;color:#555;font-size:12px">Generado: ${escape(date)} · Tata · Disco · El Dorado · Tienda Inglesa</p>
     </div>
 
     <div class="kpis" style="margin-bottom:20px">
@@ -488,6 +787,7 @@ function renderExecutive() {
       <div class="kpi azul"><div class="kpi-label">Marcas relevadas</div><div class="kpi-value">${brandStats.length}</div></div>
       <div class="kpi verde"><div class="kpi-label">Ofertas vigentes</div><div class="kpi-value">${offers.length}</div><div class="kpi-sub">${Math.round(offers.length / total * 100)}% del catálogo</div></div>
       <div class="kpi amarillo"><div class="kpi-label">Productos comparables</div><div class="kpi-value">${clustersWithSpread.length}</div><div class="kpi-sub">presentes en 2+ supers</div></div>
+      <div class="kpi azul"><div class="kpi-label">PVP cruzados</div><div class="kpi-value">${pvpItems.length}</div><div class="kpi-sub">${pvpAbove} sobre PVP</div></div>
     </div>
 
     <div class="exec-card" style="margin-bottom:16px">
@@ -572,6 +872,28 @@ function renderExecutive() {
       </table>
     </div>
 
+    <div class="exec-card" style="margin-bottom:16px">
+      <h3>Control PVP sugerido</h3>
+      <table>
+        <thead><tr><th>Producto</th><th>Marca</th><th>Super</th><th class="price">Precio</th><th class="price">PVP</th><th class="price">GAP</th></tr></thead>
+        <tbody>
+          ${pvpRows.map((i) => {
+            const suggested = suggestedFor(i);
+            const gap = gapFor(i);
+            const status = gapStatus(gap);
+            return `<tr>
+              <td>${escape(i.name)}</td>
+              <td class="brand">${escape(i.brand)}</td>
+              <td><span class="pill ${i.super}">${SUPER_LABEL[i.super]}</span></td>
+              <td class="price">${fmtPrice(i.price)}</td>
+              <td class="price">${fmtPrice(suggested?.price)}</td>
+              <td class="price"><span class="gap-badge ${escape(status)}">${fmtPct(gap)}</span></td>
+            </tr>`;
+          }).join('') || '<tr><td colspan="6" style="text-align:center;color:var(--texto-muted)">Sin PVP cruzado.</td></tr>'}
+        </tbody>
+      </table>
+    </div>
+
     <div style="text-align:center;margin-top:24px" class="no-print">
       <button class="btn azul btn-print" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
       <a class="btn" href="/data/latest.pdf" download style="margin-left:8px">📄 Descargar PDF generado</a>
@@ -587,6 +909,7 @@ function updateTabBadges() {
   $('#badgeCatalog').textContent = state.items.length;
   $('#badgeCompare').textContent = comparable;
   $('#badgeOffers').textContent = offers;
+  $('#badgePrices').textContent = state.items.filter((i) => suggestedFor(i)?.price != null).length;
 }
 
 function switchTab(name) {
@@ -721,6 +1044,34 @@ async function refresh() {
   }
 }
 
+async function importPriceList() {
+  const file = $('#priceFile').files?.[0];
+  if (!file) {
+    toast('Selecciona un archivo CSV o JSON.', 'error');
+    return;
+  }
+  try {
+    const text = await file.text();
+    const rawRows = file.name.toLowerCase().endsWith('.json') ? rowsFromJson(text) : rowsFromCsv(text);
+    const rows = normalizePriceRows(rawRows, $('#priceStore').value, file.name);
+    if (!rows.length) throw new Error('No se encontraron filas validas con PVP.');
+    state.priceList = rows;
+    saveLocalPriceList();
+    renderAll();
+    toast(`Lista PVP importada: ${rows.length} lineas.`, 'success');
+  } catch (err) {
+    toast('Error importando PVP: ' + err.message, 'error');
+  }
+}
+
+function clearPriceList() {
+  state.priceList = [];
+  localStorage.removeItem(PRICE_LIST_KEY);
+  $('#priceFile').value = '';
+  renderAll();
+  toast('Lista PVP local limpia.', 'success');
+}
+
 // ===== Eventos =====
 function initEvents() {
   $$('.tab').forEach((t) => t.addEventListener('click', () => switchTab(t.dataset.tab)));
@@ -735,10 +1086,13 @@ function initEvents() {
   $('#compareQ').addEventListener('input', (e) => { state.compare.q = e.target.value; renderCompare(); });
   $('#compareBrand').addEventListener('change', (e) => { state.compare.brand = e.target.value; renderCompare(); });
   $('#offersQ').addEventListener('input', (e) => { state.offers.q = e.target.value; renderOffers(); });
+  $('#priceImport').addEventListener('click', importPriceList);
+  $('#priceClear').addEventListener('click', clearPriceList);
   $('#modal').addEventListener('click', (e) => { if (e.target.id === 'modal') closeModal(); });
   $('#modalClose').addEventListener('click', closeModal);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 }
 
+loadLocalPriceList();
 initEvents();
 load();

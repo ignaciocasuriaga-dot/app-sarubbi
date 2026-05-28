@@ -1,6 +1,6 @@
 # Precios Bimbo - Supermercados Uruguay
 
-Monitor de precios de productos del Grupo Bimbo en Tata, Disco, Devoto y Tienda Inglesa.
+Monitor de precios de productos del Grupo Bimbo en Tata, Disco, El Dorado y Tienda Inglesa.
 
 ## Uso local
 
@@ -14,6 +14,9 @@ El proceso genera:
 - `public/data/latest.pdf`
 - archivos fechados locales en `data/output/` (ignorados por Git)
 
+Para cruzar PVP sugerido en el scrape, copia tu lista a `data/suggested/precios_sugeridos.csv`.
+Tambien se puede importar una lista CSV/JSON desde la pestana PVP de la web; esa carga queda guardada en el navegador.
+
 ## Web
 
 Produccion: https://precios-bimbo.vercel.app
@@ -22,16 +25,16 @@ La web se despliega en Vercel desde `public/` y consume los archivos de `public/
 
 ## Marcas relevadas
 
-- Bimbo
 - Los Sorchantes
-- Maestro Cubano
-- Nutrabien / Nutra Bien
-- Sanissimo / Salmas
-- Pancatalan
 - Tia Rosa
+- Bimbo
 - Rapiditas
-- Vital
 - Artesano
+- Maestro Cubano
+- Merienda Hit y XL
+- Takis
+- Salmas (packs de 6 y 12)
+- Nutrabien / Nutra Bien
 
 ## Actualizacion automatica
 

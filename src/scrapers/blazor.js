@@ -5,7 +5,6 @@ async function searchTermBlazor(page, baseUrl, term) {
   const url = `${baseUrl}/productos/keyword/${encodeURIComponent(term)}`;
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
-  // Blazor renderiza vía WebSocket. Esperamos hasta ver precios reales.
   await page.waitForFunction(() => {
     const text = document.body.innerText || '';
     const matches = text.match(/\$\s*\d+[.,]?\d*/g) || [];
@@ -23,7 +22,7 @@ async function searchTermBlazor(page, baseUrl, term) {
     const bySku = new Map();
     links.forEach((link) => {
       const href = link.href;
-      const skuMatch = href.match(/\/product\/[^\/]+\/(\d+)/);
+      const skuMatch = href.match(/\/product\/[^/]+\/(\d+)/);
       if (!skuMatch) return;
       const sku = skuMatch[1];
 
@@ -66,12 +65,11 @@ async function scrapeBlazorSite({ store, baseUrl, terms }) {
     for (const term of terms) {
       let items;
       try { items = await searchTermBlazor(page, baseUrl, term); }
-      catch (e) { console.error(`  ⚠ ${store} "${term}": ${e.message}`); continue; }
+      catch (e) { console.error(`  WARN ${store} "${term}": ${e.message}`); continue; }
 
       for (const i of items) {
         const brand = matchedBrand(i.name);
-        if (!brand) continue;
-        if (bySku.has(i.sku)) continue;
+        if (!brand || bySku.has(i.sku)) continue;
         bySku.set(i.sku, {
           super: store,
           sku: i.sku,
@@ -92,15 +90,12 @@ async function scrapeBlazorSite({ store, baseUrl, terms }) {
 }
 
 export const scrapeDisco = (terms) => scrapeBlazorSite({ store: 'disco', baseUrl: 'https://www.disco.com.uy', terms });
-export const scrapeDevoto = (terms) => scrapeBlazorSite({ store: 'devoto', baseUrl: 'https://www.devoto.com.uy', terms });
 
 import { fileURLToPath } from 'node:url';
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const { SEARCH_TERMS } = await import('../brands.js');
-  const which = process.argv[2] || 'disco';
-  const fn = which === 'devoto' ? scrapeDevoto : scrapeDisco;
-  fn(SEARCH_TERMS).then((items) => {
+  scrapeDisco(SEARCH_TERMS).then((items) => {
     console.log(JSON.stringify(items, null, 2));
-    console.error(`✓ ${which}: ${items.length} productos`);
+    console.error(`OK disco: ${items.length} productos`);
   }).catch((e) => { console.error(e); process.exit(1); });
 }

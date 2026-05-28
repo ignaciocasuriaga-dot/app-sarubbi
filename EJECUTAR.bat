@@ -17,7 +17,7 @@ if not exist "node_modules" (
     exit /b 1
 )
 
-echo [1/2] Bajando precios de Tata, Disco, Devoto y Tienda Inglesa...
+echo [1/2] Bajando precios de Tata, Disco, El Dorado y Tienda Inglesa...
 echo       Tarda alrededor de 1-2 minutos.
 echo.
 call node src\main.js
