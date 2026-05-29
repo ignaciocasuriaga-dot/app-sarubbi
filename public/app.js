@@ -241,17 +241,24 @@ function rowsFromJson(text) {
 
 function normalizePriceRows(rows, storeOverride = '', source = 'archivo') {
   const override = normalizeStore(storeOverride);
-  return rows.map((row, index) => {
+  const diagnostics = { noStore: 0, noPrice: 0, noProduct: 0 };
+  const result = rows.map((row, index) => {
     const rawStore = override || pick(row, ['super', 'cadena', 'supermercado', 'tienda']);
     const store = normalizeStore(rawStore);
-    const stores = store === 'all' ? SUPERS : (store ? [store] : []);
+    // If no store specified at all (no column, no override) → apply to all stores.
+    // If store name provided but unrecognized → reject the row.
+    const stores = store === 'all' ? SUPERS : (store ? [store] : (rawStore ? [] : SUPERS));
     const product = String(pick(row, ['producto', 'nombre', 'descripcion', 'articulo'])).trim();
     const brand = normalizeBrand(pick(row, ['marca', 'brand', 'submarca']));
     const price = numberOrNull(pick(row, ['pvp_sugerido', 'pvpSugerido', 'precio_sugerido', 'precioSugerido', 'suggestedPrice', 'pvs', 'pvp', 'precio']));
     const sku = String(pick(row, ['sku', 'codigo', 'id_producto', 'id'])).trim();
-    if (price == null || (!product && !sku) || !stores.length) return null;
+    if (!stores.length) { diagnostics.noStore++; return null; }
+    if (price == null) { diagnostics.noPrice++; return null; }
+    if (!product && !sku) { diagnostics.noProduct++; return null; }
     return { index, stores, sku, brand, product, price, source };
   }).filter(Boolean);
+  result._diagnostics = diagnostics;
+  return result;
 }
 
 function loadLocalPriceList() {
@@ -280,7 +287,14 @@ function scorePriceRow(row, item) {
 
   const rowSize = extractSize(row.product || '');
   const itemSize = extractSize(item.name || '');
-  if (!sizeCompatible(rowSize, itemSize)) return null;
+  // Only reject if BOTH have sizes with incompatible units. If one is missing, skip size bonus.
+  const sizesKnown = rowSize && itemSize;
+  if (sizesKnown && rowSize.unit !== itemSize.unit) return null;
+  if (sizesKnown) {
+    const ratio = Math.min(rowSize.value, itemSize.value) / Math.max(rowSize.value, itemSize.value);
+    if (ratio < 0.85) return null;
+  }
+  const sizeBonus = sizesKnown ? 35 : 0;
 
   const wanted = tokenize(row.product || '');
   const got = tokenize(item.name || '');
@@ -288,8 +302,8 @@ function scorePriceRow(row, item) {
   let overlap = 0;
   for (const token of wanted) if (got.has(token)) overlap += 1;
   const ratio = overlap / wanted.size;
-  if (ratio < (rowSize ? 0.2 : 0.45)) return null;
-  return (row.brand ? 30 : 8) + (rowSize ? 35 : 0) + Math.round(ratio * 35);
+  if (ratio < (sizeBonus ? 0.2 : 0.45)) return null;
+  return (row.brand ? 30 : 8) + sizeBonus + Math.round(ratio * 35);
 }
 
 function matchLocalSuggested(item) {
@@ -1054,11 +1068,22 @@ async function importPriceList() {
     const text = await file.text();
     const rawRows = file.name.toLowerCase().endsWith('.json') ? rowsFromJson(text) : rowsFromCsv(text);
     const rows = normalizePriceRows(rawRows, $('#priceStore').value, file.name);
-    if (!rows.length) throw new Error('No se encontraron filas validas con PVP.');
+    const d = rows._diagnostics || {};
+    if (!rows.length) {
+      const hints = [];
+      if (d.noPrice > 0) hints.push(`${d.noPrice} filas sin precio (columna: pvp_sugerido, pvp o precio)`);
+      if (d.noStore > 0) hints.push(`${d.noStore} filas con cadena no reconocida (usá Todos, Tata, Disco, El Dorado o Tienda Inglesa)`);
+      if (d.noProduct > 0) hints.push(`${d.noProduct} filas sin producto`);
+      throw new Error('No se encontraron filas validas.' + (hints.length ? ' ' + hints.join('; ') + '.' : ''));
+    }
     state.priceList = rows;
     saveLocalPriceList();
     renderAll();
-    toast(`Lista PVP importada: ${rows.length} lineas.`, 'success');
+    const warnParts = [];
+    if (d.noPrice > 0) warnParts.push(`${d.noPrice} sin precio`);
+    if (d.noStore > 0) warnParts.push(`${d.noStore} con cadena no reconocida`);
+    const warn = warnParts.length ? ` (ignoradas: ${warnParts.join(', ')})` : '';
+    toast(`Lista PVP importada: ${rows.length} lineas${warn}.`, 'success');
   } catch (err) {
     toast('Error importando PVP: ' + err.message, 'error');
   }

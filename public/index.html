@@ -134,6 +134,22 @@
         <button class="btn primary" id="priceImport">Importar</button>
         <button class="btn" id="priceClear">Limpiar</button>
       </div>
+      <details style="margin:10px 0 4px;font-size:12px;color:var(--texto-muted)">
+        <summary style="cursor:pointer;font-weight:600">Formato del archivo CSV</summary>
+        <div style="margin-top:8px;padding:10px 12px;background:var(--crema);border-radius:8px;line-height:1.7">
+          <b>Columnas aceptadas (encabezados flexibles):</b><br>
+          &bull; <code>producto</code> o <code>nombre</code> — descripcion del producto (requerido)<br>
+          &bull; <code>pvp_sugerido</code>, <code>pvp</code> o <code>precio</code> — precio sugerido (requerido)<br>
+          &bull; <code>super</code> o <code>cadena</code> — Tata, Disco, El Dorado, Tienda Inglesa, todos (opcional: si se omite aplica a todas)<br>
+          &bull; <code>marca</code> — submarca Bimbo (opcional pero mejora el matching)<br>
+          &bull; <code>sku</code> — codigo de producto para match exacto (opcional)<br>
+          <br>
+          <b>Ejemplo minimo:</b><br>
+          <code>producto,pvp<br>Pan Lacteado 590g,150<br>Rapiditas Tradicional 10 un,172</code><br>
+          <br>
+          <b>Si tu archivo no tiene columna de cadena</b>, selecciona una cadena del menu o deja "Usar cadena del archivo" para aplicar a todas.
+        </div>
+      </details>
       <div class="suggested-summary" id="priceSummary"></div>
       <table class="mini-table">
         <thead><tr><th>Producto</th><th>Marca</th><th>Cadena</th><th class="price">PVP</th><th>Match</th></tr></thead>
