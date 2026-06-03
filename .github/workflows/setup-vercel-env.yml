@@ -9,31 +9,43 @@ jobs:
     steps:
       - name: Set env vars in Vercel via API
         run: |
-          PROJECT="gondola-sarubbi"
+          set -e
           TOKEN="${{ secrets.VERCEL_TOKEN }}"
+          DISPATCH="${{ secrets.DISPATCH_TOKEN }}"
+          PROJECT="gondola-sarubbi"
 
-          # Get team/user info
-          USER=$(curl -s "https://api.vercel.com/v2/user" \
-            -H "Authorization: Bearer $TOKEN" | jq -r '.user.username // .user.name')
-          echo "Vercel user: $USER"
+          echo "=== Getting Vercel user info ==="
+          USER_INFO=$(curl -sf "https://api.vercel.com/v2/user" \
+            -H "Authorization: Bearer $TOKEN")
+          echo "$USER_INFO" | python3 -c "import json,sys; u=json.load(sys.stdin)['user']; print('User:', u.get('username') or u.get('email'))"
 
-          # Get project ID
-          PROJECT_ID=$(curl -s "https://api.vercel.com/v9/projects/$PROJECT" \
-            -H "Authorization: Bearer $TOKEN" | jq -r '.id')
-          echo "Project ID: $PROJECT_ID"
+          echo "=== Getting teams ==="
+          TEAMS=$(curl -sf "https://api.vercel.com/v2/teams" \
+            -H "Authorization: Bearer $TOKEN")
+          echo "$TEAMS" | python3 -c "import json,sys; [print('Team:', t['slug'], t['id']) for t in json.load(sys.stdin).get('teams',[])]"
 
-          # Set GITHUB_TOKEN
-          curl -s -X POST "https://api.vercel.com/v10/projects/$PROJECT/env" \
-            -H "Authorization: Bearer $TOKEN" \
-            -H "Content-Type: application/json" \
-            -d "{\"key\":\"GITHUB_TOKEN\",\"value\":\"${{ secrets.DISPATCH_TOKEN }}\",\"type\":\"encrypted\",\"target\":[\"production\",\"preview\"]}" \
-            | jq '{key: .key, created: .createdAt}'
+          # Try setting env var on personal account first, then each team
+          set_env() {
+            local QUERY="$1"
+            local KEY="$2"
+            local VALUE="$3"
+            local TYPE="${4:-encrypted}"
+            echo "--- Setting $KEY (query: $QUERY) ---"
+            RESULT=$(curl -s -X POST "https://api.vercel.com/v10/projects/$PROJECT/env$QUERY" \
+              -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "{\"key\":\"$KEY\",\"value\":\"$VALUE\",\"type\":\"$TYPE\",\"target\":[\"production\",\"preview\",\"development\"]}")
+            echo "$RESULT" | python3 -c "import json,sys; d=json.load(sys.stdin); print('  OK -', d.get('key','?')) if d.get('key') else print('  ERR:', d.get('error',d))"
+          }
 
-          # Set GITHUB_REPO
-          curl -s -X POST "https://api.vercel.com/v10/projects/$PROJECT/env" \
-            -H "Authorization: Bearer $TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{"key":"GITHUB_REPO","value":"ignaciocasuriaga-dot/app-sarubbi","type":"plain","target":["production","preview"]}' \
-            | jq '{key: .key, created: .createdAt}'
+          # Personal account (no team)
+          set_env "" "GITHUB_TOKEN" "$DISPATCH"
+          set_env "" "GITHUB_REPO"  "ignaciocasuriaga-dot/app-sarubbi" "plain"
 
-          echo "✅ Done"
+          # Try each team
+          TEAM_SLUGS=$(echo "$TEAMS" | python3 -c "import json,sys; [print(t['slug']) for t in json.load(sys.stdin).get('teams',[])]" 2>/dev/null || echo "")
+          for SLUG in $TEAM_SLUGS; do
+            QUERY="?slug=$SLUG"
+            set_env "$QUERY" "GITHUB_TOKEN" "$DISPATCH"
+            set_env "$QUERY" "GITHUB_REPO"  "ignaciocasuriaga-dot/app-sarubbi" "plain"
+          done
