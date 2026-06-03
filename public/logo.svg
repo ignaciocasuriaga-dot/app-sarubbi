@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="220" height="80">
+  <!-- Fondo azul Sarubbi -->
+  <rect width="220" height="80" rx="10" fill="#1440C0"/>
+  <!-- Marco blanco con forma característica (lados curvados hacia adentro) -->
+  <path d="M12,8 Q18,40 12,72 L208,72 Q202,40 208,8 Z" fill="none" stroke="#ffffff" stroke-width="3.5" rx="6"/>
+  <!-- Texto SARUBBI -->
+  <text x="110" y="50" font-family="Arial Black, Arial, sans-serif" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">SARUBBI</text>
+</svg>

@@ -1,22 +1,22 @@
-/* Tema visual Sarubbi: rojo oscuro, azul oscuro, crema, blanco */
+/* Tema visual Sarubbi: azul corporativo */
 
 :root {
   /* Paleta corporativa Sarubbi */
-  --rojo: #C41230;
-  --rojo-dark: #8B0000;
-  --azul: #002E6D;
-  --azul-dark: #001f4c;
-  --azul-light: #1B3D91;
-  --crema: #FFF8E7;
-  --crema2: #F5E8C7;
-  --beige: #E8D9B0;
-  --texto: #1a1a1a;
-  --texto-muted: #6b6b6b;
-  --bg: #FFFBF1;
+  --rojo: #1440C0;
+  --rojo-dark: #0e2d8a;
+  --azul: #0f2f9e;
+  --azul-dark: #0a1f6e;
+  --azul-light: #2255d4;
+  --crema: #f0f4ff;
+  --crema2: #dce6ff;
+  --beige: #c8d8ff;
+  --texto: #1a1a2e;
+  --texto-muted: #5a6080;
+  --bg: #f5f7ff;
   --panel: #ffffff;
-  --border: #e8dfc8;
-  --shadow: 0 1px 3px rgba(30, 20, 0, .06), 0 4px 14px rgba(30, 20, 0, .06);
-  --shadow-lg: 0 6px 28px rgba(30, 20, 0, .12);
+  --border: #d0d8f0;
+  --shadow: 0 1px 3px rgba(10, 20, 80, .06), 0 4px 14px rgba(10, 20, 80, .06);
+  --shadow-lg: 0 6px 28px rgba(10, 20, 80, .14);
   --tata: #e5002b;
   --disco: #0070d2;
   --eldorado: #c8102e;
@@ -38,8 +38,8 @@ body {
 
 /* ===== Header ===== */
 header.app {
-  background: linear-gradient(180deg, #ffffff 0%, var(--crema) 100%);
-  border-bottom: 3px solid var(--rojo);
+  background: linear-gradient(180deg, #1440C0 0%, #0e2d8a 100%);
+  border-bottom: 3px solid #0a1f6e;
   padding: 14px 24px;
   box-shadow: var(--shadow);
   position: sticky; top: 0; z-index: 100;
@@ -66,14 +66,14 @@ header.app {
 .brand-name {
   font-size: 22px;
   font-weight: 900;
-  color: var(--rojo);
+  color: #ffffff;
   letter-spacing: -.02em;
   font-style: italic;
 }
 .brand-sub {
   font-size: 11px;
   font-weight: 700;
-  color: var(--azul);
+  color: rgba(255,255,255,.75);
   text-transform: uppercase;
   letter-spacing: .12em;
   margin-top: 4px;
@@ -82,11 +82,11 @@ header.app {
 .header-actions { display: flex; gap: 10px; align-items: center; }
 .last-update {
   font-size: 11px;
-  color: var(--texto-muted);
+  color: rgba(255,255,255,.7);
   text-align: right;
   line-height: 1.3;
 }
-.last-update b { color: var(--texto); font-weight: 600; }
+.last-update b { color: #ffffff; font-weight: 600; }
 
 .btn {
   display: inline-flex;
