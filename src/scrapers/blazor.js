@@ -53,7 +53,7 @@ async function searchTermBlazor(page, baseUrl, term) {
         cardText: text,
       });
     });
-    return [...bySku.values()].map(({ cardText, ...rest }) => rest);
+    return [...bySku.values()];
   });
 }
 
@@ -68,7 +68,8 @@ async function scrapeBlazorSite({ store, baseUrl, terms }) {
       catch (e) { console.error(`  WARN ${store} "${term}": ${e.message}`); continue; }
 
       for (const i of items) {
-        const brand = matchedBrand(i.name);
+        const haystack = `${i.name} ${i.cardText || ''}`;
+        const brand = matchedBrand(haystack);
         if (!brand || bySku.has(i.sku)) continue;
         bySku.set(i.sku, {
           super: store,

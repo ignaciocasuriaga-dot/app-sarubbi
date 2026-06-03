@@ -8,11 +8,11 @@ export default async function handler(req, res) {
   }
 
   const token = process.env.GITHUB_TOKEN;
-  const repo = process.env.GITHUB_REPO;
-  if (!token || !repo) {
+  const repo = process.env.GITHUB_REPO || 'ignaciocasuriaga-dot/app-sarubbi';
+  if (!token) {
     return res.status(500).json({
       ok: false,
-      error: 'Missing GITHUB_TOKEN or GITHUB_REPO in Vercel',
+      error: 'Falta configurar GITHUB_TOKEN en las variables de entorno de Vercel. Andá a vercel.com → tu proyecto → Settings → Environment Variables.',
     });
   }
 

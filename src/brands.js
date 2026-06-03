@@ -121,52 +121,121 @@ export const BRAND_GROUPS = {
 export const ALL_BRANDS = [...sarubbiBrands, ...competitorBrands];
 
 export const SEARCH_TERMS = [
-  // Product types
-  'jamon cocido',
-  'jamon crudo',
-  'pancho',
-  'panchos',
-  'frankfurter',
-  'frankfurt',
-  'chorizo',
-  'hamburguesa congelada',
-  'hamburguesas congeladas',
-  'empanada congelada',
-  'empanadas congeladas',
-  'mortadela',
-  'mortadelin',
-  'panceta',
-  'salami',
-  'salamin',
-  'fuet',
-  'chacarero',
-  'cantimpalo',
-  'longaniza',
-  // Brand names as search terms
+  // ── Marcas (traen todos sus productos de una) ──────────────────────────────
   'sarubbi',
   'schneck',
   'centenario',
   'cattivelli',
   'ottonello',
   'camposur',
-  'la constancia',
   'constancia',
+
+  // ── Jamón ─────────────────────────────────────────────────────────────────
+  'jamon cocido',
+  'jamon crudo',
+  'jamon fetas',
+  'jamon feteado',
+  'jamon york',
+
+  // ── Panchos / Salchichas ──────────────────────────────────────────────────
+  'pancho',
+  'panchos',
+  'frankfurter',
+  'salchicha viena',
+  'salchicha tipo viena',
+  'viena',
+
+  // ── Chorizo ───────────────────────────────────────────────────────────────
+  'chorizo',
+
+  // ── Hamburguesas ──────────────────────────────────────────────────────────
+  'hamburguesa congelada',
+  'hamburguesas',
+
+  // ── Empanadas ─────────────────────────────────────────────────────────────
+  'empanada congelada',
+  'empanadas',
+
+  // ── Mortadela / Mortadelin ────────────────────────────────────────────────
+  'mortadela',
+  'mortadelin',
+
+  // ── Panceta ───────────────────────────────────────────────────────────────
+  'panceta',
+
+  // ── Factura seca ─────────────────────────────────────────────────────────
+  'salamin',
+  'salami',
+  'fuet',
+  'chacarero',
+  'cantimpalo',
+  'longaniza',
+
+  // ── Salames ───────────────────────────────────────────────────────────────
+  'salame',
+  'salames',
 ];
 
-// Category detection based on product name keywords
+// Category detection — ordered from most specific to least specific.
+// Patterns use stripped-accent normalized text.
 const CATEGORY_KEYWORDS = [
-  { category: 'jamon_cocido_fetas', patterns: [/jamon\s+cocido\s+en\s+fetas/i, /fetas\s+de\s+jamon/i, /en\s+fetas/i] },
-  { category: 'jamon_cocido', patterns: [/jamon\s+cocido/i, /jamon\s+york/i] },
-  { category: 'jamon_crudo', patterns: [/jamon\s+crudo/i, /jamon\s+serrano/i] },
-  { category: 'panchos', patterns: [/pancho/i, /frankfurter/i, /frankfurt/i, /salchicha/i, /viena/i] },
-  { category: 'chorizo', patterns: [/chorizo/i] },
-  { category: 'hamburguesas', patterns: [/hamburguesa/i] },
-  { category: 'empanadas', patterns: [/empanada/i] },
-  { category: 'mortadelin_pate', patterns: [/mortadelin/i, /pate\s+y\s+mortadelin/i, /pack\s+mortadelin/i] },
-  { category: 'factura_seca', patterns: [/salamin/i, /fuet/i, /chacarero/i, /cantimpalo/i, /longaniza/i] },
-  { category: 'salames', patterns: [/salami/i, /salame/i, /\bsalames\b/i] },
-  { category: 'panceta', patterns: [/panceta/i] },
-  { category: 'mortadela', patterns: [/\bmortadela\b/i] },
+  // Fetas must come before plain jamón cocido
+  {
+    category: 'jamon_cocido_fetas',
+    patterns: [
+      /jamon\s+cocido\s+en\s+fetas/i,
+      /fetas?\s+de\s+jamon/i,
+      /jamon.*\bfeta/i,
+      /\bfetas\b.*jamon/i,
+      /\bfeteado/i,
+      /\bfeteada/i,
+      /\ben\s+fetas\b/i,
+    ],
+  },
+  {
+    category: 'jamon_cocido',
+    patterns: [/jamon\s+cocido/i, /jamon\s+york/i, /\bjamon\s+de\s+pierna/i],
+  },
+  {
+    category: 'jamon_crudo',
+    patterns: [/jamon\s+crudo/i, /jamon\s+serrano/i, /jamon\s+iberico/i, /\bjamon\s+curado/i],
+  },
+  {
+    category: 'panchos',
+    patterns: [/\bpancho/i, /frankfurter/i, /\bfrankfurt\b/i, /salchicha\s+(tipo\s+)?viena/i, /\bviena\b/i, /\bcoctel\b.*\bvaca/i],
+  },
+  {
+    category: 'chorizo',
+    patterns: [/\bchorizo/i],
+  },
+  {
+    category: 'hamburguesas',
+    patterns: [/hamburguesa/i, /\bburger\b/i],
+  },
+  {
+    category: 'empanadas',
+    patterns: [/empanada/i],
+  },
+  {
+    category: 'mortadelin_pate',
+    patterns: [/mortadelin/i, /\bpate\b.*mortadelin/i, /mortadelin.*\bpate\b/i, /pack.*mortadelin/i],
+  },
+  {
+    category: 'factura_seca',
+    patterns: [/\bsalamin\b/i, /\bsalami[n]?\b/i, /\bfuet\b/i, /\bchacarero\b/i, /\bcantimpalo\b/i, /\blonganiza\b/i, /factura\s+seca/i],
+  },
+  {
+    category: 'salames',
+    patterns: [/\bsalame\b/i, /\bsalami\b/i, /\bsalames\b/i],
+  },
+  {
+    category: 'panceta',
+    patterns: [/\bpanceta\b/i, /\bpancetta\b/i, /\btocineta\b/i],
+  },
+  {
+    category: 'mortadela',
+    patterns: [/\bmortadela\b/i],
+  },
 ];
 
 function stripAccents(s) {

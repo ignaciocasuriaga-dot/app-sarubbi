@@ -53,7 +53,7 @@ async function searchTermTI(page, term) {
         url, image, cardText: text,
       });
     });
-    return [...bySku.values()].map(({ cardText, ...rest }) => rest);
+    return [...bySku.values()];
   });
 }
 
@@ -69,7 +69,8 @@ export async function scrapeTiendaInglesa(terms) {
 
       for (const i of items) {
         if (!i.name) continue;
-        const brand = matchedBrand(i.name);
+        const haystack = `${i.name} ${i.cardText || ''}`;
+        const brand = matchedBrand(haystack);
         if (!brand) continue;
         if (bySku.has(i.sku)) continue;
         bySku.set(i.sku, {

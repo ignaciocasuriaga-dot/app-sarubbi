@@ -7,24 +7,9 @@ const HEADERS = {
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
 };
 
-const FALLBACK_TERMS = {
-  'artesano bimbo': ['bimbo', 'artesano'],
-  'los sorchantes': ['sorchantes'],
-  'maestro cubano': ['cubano', 'maestro'],
-  'nutra bien': ['nutrabien'],
-  'tia rosa': ['rosa'],
-  'merienda hit': ['merienda', 'hit'],
-  'merienda xl': ['merienda', 'xl'],
-  'salmas 6': ['salmas'],
-  'salmas 12': ['salmas'],
-  'tostaditas salmas': ['salmas'],
-};
-
+// VTEX full-text supports multi-word queries fine; just pass them through.
 function searchInputsFor(term) {
-  const key = String(term ?? '').toLowerCase().trim();
-  if (FALLBACK_TERMS[key]) return FALLBACK_TERMS[key];
-  if (/\s/.test(key)) return [key.split(/\s+/).sort((a, b) => b.length - a.length)[0]];
-  return [key];
+  return [String(term ?? '').trim()].filter(Boolean);
 }
 
 function offerFrom(product) {
@@ -39,22 +24,37 @@ function offerFrom(product) {
   };
 }
 
-async function searchTerm(term) {
+const PAGE_SIZE = 50;
+const MAX_RESULTS = 500;
+
+async function fetchPage(term, from) {
   const url = new URL(ENDPOINT);
   url.searchParams.set('ft', term);
-  url.searchParams.set('_from', '0');
-  url.searchParams.set('_to', '49');
-
+  url.searchParams.set('_from', String(from));
+  url.searchParams.set('_to', String(from + PAGE_SIZE - 1));
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 30000);
   try {
     const resp = await fetch(url, { headers: HEADERS, signal: controller.signal });
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    if (!resp.ok) {
+      if (resp.status === 416 && from > 0) return [];
+      throw new Error(`HTTP ${resp.status}`);
+    }
     const data = await resp.json();
     return Array.isArray(data) ? data : [];
   } finally {
     clearTimeout(timer);
   }
+}
+
+async function searchTerm(term) {
+  const all = [];
+  for (let from = 0; from < MAX_RESULTS; from += PAGE_SIZE) {
+    const page = await fetchPage(term, from);
+    all.push(...page);
+    if (page.length < PAGE_SIZE) break;
+  }
+  return all;
 }
 
 export async function scrapeElDorado(terms) {

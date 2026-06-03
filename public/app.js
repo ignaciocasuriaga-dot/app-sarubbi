@@ -1132,7 +1132,7 @@ async function refresh() {
     btn.innerHTML = '<span class="spinner"></span> Disparando…';
     const resp = await fetch('/api/refresh', { method: 'POST' });
     const data = await resp.json();
-    if (!resp.ok || data.ok === false) throw new Error(data.error || `HTTP ${resp.status}`);
+    if (!resp.ok || data.ok === false) throw new Error(data.error || data.detail || `HTTP ${resp.status}`);
     toast('Scrape disparado. Esperando resultados (~3-5 min)…');
     btn.innerHTML = '<span class="spinner"></span> Scraping…';
     await pollUntilDone(initial);
