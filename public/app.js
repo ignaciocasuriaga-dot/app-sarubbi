@@ -17,7 +17,7 @@ const state = {
   generatedAt: null,
   view: 'catalog',
   history: null,           // array de snapshots {t, prices}
-  catalog: { q: '', brands: new Set(), supers: new Set(), groups: new Set(), sort: { key: 'price', asc: true } },
+  catalog: { q: '', brands: new Set(), supers: new Set(), groups: new Set(), categories: new Set(), sort: { key: 'price', asc: true } },
   compare: { q: '', brand: '' },
   offers: { q: '' },
   clusters: [],
@@ -447,6 +447,7 @@ async function load() {
     const data = await r.json();
     state.items = (data.items || []).map(normalizeLoadedItem).filter(Boolean);
     state.groups = data.groups || { sarubbi: PORTFOLIO_BRANDS, competencia: [] };
+    state.categoryLabels = data.categoryLabels || {};
     state.suggested = data.suggested || null;
     state.generatedAt = data.generatedAt;
     state.clusters = clusterProducts(state.items);
@@ -541,13 +542,14 @@ function buildChips(items, key, container, stateSet, labels = null) {
   });
 }
 
-function filterItems(items, q, brands, supers, groups) {
+function filterItems(items, q, brands, supers, groups, categories) {
   const qn = stripAccents(q.toLowerCase().trim());
   return items.filter((i) => {
     if (qn && !stripAccents(i.name.toLowerCase()).includes(qn)) return false;
     if (brands.size && !brands.has(i.brand)) return false;
     if (supers.size && !supers.has(i.super)) return false;
     if (groups.size && !groups.has(i.group)) return false;
+    if (categories && categories.size && !categories.has(i.category)) return false;
     return true;
   });
 }
@@ -573,7 +575,8 @@ function renderCatalog() {
   buildChips(state.items, 'group', $('#groupChips'), state.catalog.groups, GROUP_LABEL);
   buildChips(state.items, 'brand', $('#brandChips'), state.catalog.brands);
   buildChips(state.items, 'super', $('#superChips'), state.catalog.supers, SUPER_LABEL);
-  const items = sortItems(filterItems(state.items, state.catalog.q, state.catalog.brands, state.catalog.supers, state.catalog.groups), state.catalog.sort);
+  buildChips(state.items, 'category', $('#categoryChips'), state.catalog.categories, state.categoryLabels || {});
+  const items = sortItems(filterItems(state.items, state.catalog.q, state.catalog.brands, state.catalog.supers, state.catalog.groups, state.catalog.categories), state.catalog.sort);
   const tbody = $('#catalogRows');
   const empty = $('#catalogEmpty');
   if (!items.length) { tbody.innerHTML = ''; empty.style.display = 'block'; }
@@ -1213,6 +1216,13 @@ function initEvents() {
   $('#modal').addEventListener('click', (e) => { if (e.target.id === 'modal') closeModal(); });
   $('#modalClose').addEventListener('click', closeModal);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  const logoEl = $('#logoSlot');
+  if (logoEl) logoEl.addEventListener('click', () => {
+    state.view = 'catalog';
+    $$('.tab').forEach((t) => t.classList.toggle('active', t.dataset.tab === 'catalog'));
+    $$('.view').forEach((v) => v.classList.toggle('active', v.id === 'view-catalog'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 
 loadLocalPriceList();
