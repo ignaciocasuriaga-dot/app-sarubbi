@@ -1,0 +1,20 @@
+name: Setup Vercel Environment
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set GITHUB_TOKEN env var in Vercel
+        run: |
+          npx vercel env rm GITHUB_TOKEN production --yes --token "${{ secrets.VERCEL_TOKEN }}" 2>/dev/null || true
+          echo "${{ secrets.DISPATCH_TOKEN }}" | npx vercel env add GITHUB_TOKEN production --token "${{ secrets.VERCEL_TOKEN }}" --yes
+          echo "Done - GITHUB_TOKEN set in Vercel production"
+
+      - name: Set GITHUB_REPO env var in Vercel
+        run: |
+          npx vercel env rm GITHUB_REPO production --yes --token "${{ secrets.VERCEL_TOKEN }}" 2>/dev/null || true
+          echo "ignaciocasuriaga-dot/app-sarubbi" | npx vercel env add GITHUB_REPO production --token "${{ secrets.VERCEL_TOKEN }}" --yes
+          echo "Done - GITHUB_REPO set in Vercel production"
