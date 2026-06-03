@@ -7,45 +7,45 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - name: Set env vars in Vercel via API
+      - name: Configure Vercel env vars
         run: |
-          set -e
           TOKEN="${{ secrets.VERCEL_TOKEN }}"
           DISPATCH="${{ secrets.DISPATCH_TOKEN }}"
           PROJECT="gondola-sarubbi"
 
-          echo "=== Getting Vercel user info ==="
-          USER_INFO=$(curl -sf "https://api.vercel.com/v2/user" \
-            -H "Authorization: Bearer $TOKEN")
-          echo "$USER_INFO" | python3 -c "import json,sys; u=json.load(sys.stdin)['user']; print('User:', u.get('username') or u.get('email'))"
+          echo "=== Vercel user ==="
+          curl -sf "https://api.vercel.com/v2/user" -H "Authorization: Bearer $TOKEN" \
+            | python3 -c "import json,sys; u=json.load(sys.stdin)['user']; print('  login:', u.get('username') or u.get('email'))"
 
-          echo "=== Getting teams ==="
-          TEAMS=$(curl -sf "https://api.vercel.com/v2/teams" \
-            -H "Authorization: Bearer $TOKEN")
-          echo "$TEAMS" | python3 -c "import json,sys; [print('Team:', t['slug'], t['id']) for t in json.load(sys.stdin).get('teams',[])]"
+          echo "=== Project ID ==="
+          PROJ=$(curl -sf "https://api.vercel.com/v9/projects/$PROJECT" -H "Authorization: Bearer $TOKEN" 2>&1)
+          echo "$PROJ" | python3 -c "import json,sys; d=json.load(sys.stdin); print('  id:', d.get('id','?'), '| accountId:', d.get('accountId','?'))"
+          PROJ_ID=$(echo "$PROJ" | python3 -c "import json,sys; print(json.load(sys.stdin).get('id',''))")
+          ACCOUNT_ID=$(echo "$PROJ" | python3 -c "import json,sys; print(json.load(sys.stdin).get('accountId',''))")
 
-          # Try setting env var on personal account first, then each team
-          set_env() {
-            local QUERY="$1"
-            local KEY="$2"
-            local VALUE="$3"
-            local TYPE="${4:-encrypted}"
-            echo "--- Setting $KEY (query: $QUERY) ---"
-            RESULT=$(curl -s -X POST "https://api.vercel.com/v10/projects/$PROJECT/env$QUERY" \
+          add_env() {
+            local KEY="$1" VALUE="$2" TYPE="${3:-encrypted}"
+            # Delete existing
+            curl -s -X DELETE "https://api.vercel.com/v9/projects/$PROJ_ID/env/$KEY?teamId=$ACCOUNT_ID" \
+              -H "Authorization: Bearer $TOKEN" > /dev/null 2>&1 || true
+            # Add new
+            RESULT=$(curl -s -X POST "https://api.vercel.com/v10/projects/$PROJ_ID/env" \
               -H "Authorization: Bearer $TOKEN" \
               -H "Content-Type: application/json" \
               -d "{\"key\":\"$KEY\",\"value\":\"$VALUE\",\"type\":\"$TYPE\",\"target\":[\"production\",\"preview\",\"development\"]}")
-            echo "$RESULT" | python3 -c "import json,sys; d=json.load(sys.stdin); print('  OK -', d.get('key','?')) if d.get('key') else print('  ERR:', d.get('error',d))"
+            echo "  $KEY: $(echo $RESULT | python3 -c "import json,sys; d=json.load(sys.stdin); print('✅ OK' if d.get('key') else '❌ ' + str(d.get('error',d)[:80]))")"
           }
 
-          # Personal account (no team)
-          set_env "" "GITHUB_TOKEN" "$DISPATCH"
-          set_env "" "GITHUB_REPO"  "ignaciocasuriaga-dot/app-sarubbi" "plain"
+          echo "=== Setting env vars ==="
+          add_env "GITHUB_TOKEN"  "$DISPATCH"
+          add_env "TRIGGER_TOKEN" "$DISPATCH"
+          add_env "GITHUB_REPO"   "ignaciocasuriaga-dot/app-sarubbi" "plain"
 
-          # Try each team
-          TEAM_SLUGS=$(echo "$TEAMS" | python3 -c "import json,sys; [print(t['slug']) for t in json.load(sys.stdin).get('teams',[])]" 2>/dev/null || echo "")
-          for SLUG in $TEAM_SLUGS; do
-            QUERY="?slug=$SLUG"
-            set_env "$QUERY" "GITHUB_TOKEN" "$DISPATCH"
-            set_env "$QUERY" "GITHUB_REPO"  "ignaciocasuriaga-dot/app-sarubbi" "plain"
-          done
+          echo "=== Triggering redeploy ==="
+          DEPLOY=$(curl -s -X POST "https://api.vercel.com/v13/deployments" \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"name\":\"$PROJECT\",\"target\":\"production\",\"gitSource\":{\"repoId\":\"$PROJECT\",\"ref\":\"main\",\"type\":\"github\"}}" 2>&1)
+          echo "  Deploy result: $(echo $DEPLOY | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('url','?') or d.get('error',d)[:60])")"
+
+          echo "=== Done ==="
