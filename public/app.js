@@ -2,14 +2,14 @@
 
 const SUPER_LABEL = { tata: 'Tata', disco: 'Disco', eldorado: 'El Dorado', tiendainglesa: 'Tienda Inglesa' };
 const SUPERS = ['tata', 'disco', 'eldorado', 'tiendainglesa'];
-const GROUP_LABEL = { bimbo: 'Grupo Bimbo' };
-const PORTFOLIO_BRANDS = ['los sorchantes', 'tia rosa', 'bimbo', 'rapiditas', 'artesano', 'maestro cubano', 'merienda hit', 'merienda xl', 'takis', 'salmas', 'nutrabien'];
-const PRICE_LIST_KEY = 'precios-bimbo-pvp-v1';
+const GROUP_LABEL = { sarubbi: 'Sarubbi', competencia: 'Competencia' };
+const PORTFOLIO_BRANDS = ['sarubbi'];
+const PRICE_LIST_KEY = 'sarubbi-pvp-v1';
 const GAP_LABEL = { above: 'Sobre PVP', ok: 'En linea', below: 'Bajo PVP' };
 
 const state = {
   items: [],
-  groups: { bimbo: [] },
+  groups: { sarubbi: [], competencia: [] },
   suggested: null,
   priceList: [],       // lista cargada manualmente por el usuario
   builtinPvp: [],      // lista PVP embebida (pvp.json de los Excel del usuario)
@@ -59,7 +59,7 @@ function extractSize(name) {
 
 function normalizeName(name) {
   let n = stripAccents(name.toLowerCase());
-  n = n.replace(/\b(bimbo|los\s*sorchantes|sorchantes|maestro\s*cubano|nutra\s*bien|nutrabien|tia\s*rosa|rapiditas|merienda\s*hit|merienda\s*xl|takis|salmas|artesano)\b/g, ' ');
+  n = n.replace(/\b(sarubbi|schneck|centenario|cattivelli|ottonello|camposur|constancia)\b/g, ' ');
   n = n.replace(/\d+(?:[.,]\d+)?\s*(kg|kilos?|gr?|gramos|ml|cc|lts?|litros?|un|u|unid(?:ades?)?|x\s*\d+)\b/g, ' ');
   n = n.replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
   const stop = new Set(['de', 'la', 'el', 'con', 'sin', 'y', 'a', 'en', 'para', 'gr', 'g']);
@@ -134,42 +134,27 @@ function normalizeBrand(value) {
     .replace(/\s+/g, ' ')
     .trim();
   const map = {
-    bimbo: 'bimbo',
-    sorchantes: 'los sorchantes',
-    'los sorchantes': 'los sorchantes',
-    'tia rosa': 'tia rosa',
-    rapiditas: 'rapiditas',
-    artesano: 'artesano',
-    'maestro cubano': 'maestro cubano',
-    'el maestro cubano': 'maestro cubano',
-    'merienda hit': 'merienda hit',
-    hit: 'merienda hit',
-    'merienda xl': 'merienda xl',
-    xl: 'merienda xl',
-    takis: 'takis',
-    salmas: 'salmas',
-    'sanissimo salmas': 'salmas',
-    'sanisimo salmas': 'salmas',
-    nutrabien: 'nutrabien',
-    'nutra bien': 'nutrabien',
+    sarubbi: 'sarubbi',
+    schneck: 'schneck',
+    centenario: 'centenario',
+    'alimentos centenario': 'centenario',
+    cattivelli: 'cattivelli',
+    cativelli: 'cattivelli',
+    catibelli: 'cattivelli',
+    ottonello: 'ottonello',
+    otonello: 'ottonello',
+    ottonelo: 'ottonello',
+    camposur: 'camposur',
+    'campo sur': 'camposur',
+    constancia: 'constancia',
+    'la constancia': 'constancia',
   };
   return map[n] || n || '';
 }
 
-function isSalmasPackName(name) {
-  const n = stripAccents(String(name ?? '').toLowerCase());
-  if (!/\bsalmas\b/.test(n)) return false;
-  return /\b(?:x\s*)?(?:6|12)\s*(?:u|un|unid|unidades|p)?\b/.test(n)
-    || /\b(?:108|216)\s*(?:g|gr|gramos)\b/.test(n);
-}
-
 function normalizeLoadedItem(item) {
   if (!item || !SUPERS.includes(item.super)) return null;
-  const next = { ...item };
-  if (next.brand === 'sanissimo' && isSalmasPackName(next.name)) next.brand = 'salmas';
-  if (next.brand === 'vital' && /\bbimbo\b/i.test(stripAccents(next.name || ''))) next.brand = 'bimbo';
-  if (!PORTFOLIO_BRANDS.includes(next.brand)) return null;
-  return next;
+  return { ...item };
 }
 
 function numberOrNull(value) {
@@ -241,7 +226,7 @@ function rowsFromJson(text) {
   return Array.isArray(parsed) ? parsed : (parsed.rows || parsed.items || []);
 }
 
-// Parsea un Excel de lista de precios Bimbo (múltiples pestañas).
+// Parsea un Excel de lista de precios Sarubbi (múltiples pestañas).
 // Detecta la fila de encabezados buscando "descripci" y extrae producto+pvp de cada pestaña.
 // Devuelve filas en el mismo formato que rowsFromCsv para que pasen por normalizePriceRows.
 function rowsFromExcel(buffer, storeOverride) {
@@ -354,7 +339,7 @@ function pvpRowToLocal(r) {
 }
 
 // Match contra la lista embebida pvp.json.
-// Prioridad: EAN exacto > SKU Bimbo > SKU cadena > nombre
+// Prioridad: EAN exacto > SKU interno > SKU cadena > nombre
 function matchBuiltinPvp(item) {
   if (!state.builtinPvp.length) return null;
   const itemEan = String(item.ean || item.barcode || '').trim();
@@ -367,7 +352,7 @@ function matchBuiltinPvp(item) {
     );
     if (byEan) return byEan;
   }
-  // 2. SKU Bimbo exacto
+  // 2. SKU interno exacto
   if (itemSku) {
     const bySku = state.builtinPvp.find(
       (r) => r.super === item.super && r.sku && r.sku === itemSku
@@ -461,7 +446,7 @@ async function load() {
     if (!r || !r.ok) throw new Error('No se pudo cargar latest.json');
     const data = await r.json();
     state.items = (data.items || []).map(normalizeLoadedItem).filter(Boolean);
-    state.groups = { bimbo: PORTFOLIO_BRANDS };
+    state.groups = data.groups || { sarubbi: PORTFOLIO_BRANDS, competencia: [] };
     state.suggested = data.suggested || null;
     state.generatedAt = data.generatedAt;
     state.clusters = clusterProducts(state.items);
@@ -501,27 +486,27 @@ function renderHeader() {
 }
 
 function renderKPIs() {
-  const bimboItems = state.items.filter((i) => i.group === 'bimbo');
+  const sarubbItems = state.items.filter((i) => i.group === 'sarubbi');
+  const competencia = state.items.filter((i) => i.group === 'competencia');
   const offers = state.items.filter((i) => i.listPrice && i.price && i.listPrice > i.price);
-  const avgBimbo = bimboItems.length ? Math.round(bimboItems.reduce((s, i) => s + (i.price ?? 0), 0) / bimboItems.length) : 0;
-  const brands = new Set(bimboItems.map((i) => i.brand));
-  const supers = new Set(bimboItems.map((i) => i.super));
+  const avgSarubbi = sarubbItems.length ? Math.round(sarubbItems.reduce((s, i) => s + (i.price ?? 0), 0) / sarubbItems.length) : 0;
+  const supers = new Set(sarubbItems.map((i) => i.super));
   const withPvp = state.items.filter((i) => suggestedFor(i)?.price != null);
   const avgGap = withPvp.length ? withPvp.reduce((sum, i) => sum + (gapFor(i) ?? 0), 0) / withPvp.length : null;
 
   $('#kpis').innerHTML = `
     <div class="kpi">
-      <div class="kpi-label">Productos Bimbo</div>
-      <div class="kpi-value">${bimboItems.length}</div>
-      <div class="kpi-sub">prom ${fmtPrice(avgBimbo)}</div>
+      <div class="kpi-label">Productos Sarubbi</div>
+      <div class="kpi-value">${sarubbItems.length}</div>
+      <div class="kpi-sub">prom ${fmtPrice(avgSarubbi)}</div>
     </div>
     <div class="kpi azul">
-      <div class="kpi-label">Submarcas detectadas</div>
-      <div class="kpi-value">${brands.size}</div>
-      <div class="kpi-sub">${state.groups.bimbo?.length || brands.size} configuradas</div>
+      <div class="kpi-label">Competencia</div>
+      <div class="kpi-value">${competencia.length}</div>
+      <div class="kpi-sub">${new Set(competencia.map((i) => i.brand)).size} marcas relevadas</div>
     </div>
     <div class="kpi amarillo">
-      <div class="kpi-label">Supers con productos</div>
+      <div class="kpi-label">Supers con Sarubbi</div>
       <div class="kpi-value">${supers.size}/4</div>
       <div class="kpi-sub">${[...supers].map((s) => SUPER_LABEL[s] || s).join(', ') || 'sin datos'}</div>
     </div>
@@ -749,9 +734,9 @@ function renderPrices() {
   $('#priceListCount').textContent = localRows.length;
 }
 
-// ===== Cobertura Grupo Bimbo =====
+// ===== Cobertura Sarubbi =====
 function renderPositioning() {
-  const bimbo = state.items.filter((i) => i.group === 'bimbo');
+  const bimbo = state.items.filter((i) => i.group === 'sarubbi');
   const perSuper = SUPERS.map((s) => {
     const arr = bimbo.filter((i) => i.super === s);
     const prices = arr.map((i) => i.price).filter((p) => p != null);
@@ -801,18 +786,17 @@ function renderPositioning() {
         <p style="font-size:13px;line-height:1.6;margin:0 0 12px;color:var(--texto)">${buildExecutiveSummary(bimbo)}</p>
         <hr style="border:none;border-top:1px solid var(--border);margin:14px 0">
         <div style="font-size:12px;line-height:1.7">
-          <div><b>SKUs Bimbo:</b> ${bimbo.length}</div>
-          <div><b>Submarcas detectadas:</b> ${new Set(bimbo.map((i) => i.brand)).size}</div>
-          <div><b>Supermercados con presencia:</b> ${new Set(bimbo.map((i) => i.super)).size}/4</div>
+          <div><b>SKUs Sarubbi:</b> ${bimbo.length}</div>
+          <div><b>Supers con presencia:</b> ${new Set(bimbo.map((i) => i.super)).size}/4</div>
           <div><b>Ofertas activas:</b> ${bimbo.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length}</div>
         </div>
       </div>
     </div>
 
     <div class="exec-card">
-      <h3>Cobertura por submarca (${byBrand.length})</h3>
+      <h3>Cobertura por marca Sarubbi (${byBrand.length})</h3>
       <table>
-        <thead><tr><th>Submarca</th><th class="price">SKUs</th><th class="price">Supers</th><th class="price">Ofertas</th></tr></thead>
+        <thead><tr><th>Marca</th><th class="price">SKUs</th><th class="price">Supers</th><th class="price">Ofertas</th></tr></thead>
         <tbody>${byBrand.map((b) => `
           <tr>
             <td class="brand">${escape(b.brand)}</td>
@@ -826,13 +810,12 @@ function renderPositioning() {
   `;
 }
 
-function buildExecutiveSummary(bimbo) {
-  if (!bimbo.length) return 'Aun no hay datos de Bimbo. Toca "Actualizar precios" para hacer el primer scrape.';
-  const prices = bimbo.map((i) => i.price).filter((p) => p != null);
+function buildExecutiveSummary(sarubbi) {
+  if (!sarubbi.length) return 'Aun no hay datos de Sarubbi. Toca "Actualizar precios" para hacer el primer scrape.';
+  const prices = sarubbi.map((i) => i.price).filter((p) => p != null);
   const avg = prices.length ? Math.round(prices.reduce((s, p) => s + p, 0) / prices.length) : null;
-  const brands = new Set(bimbo.map((i) => i.brand));
-  const supers = new Set(bimbo.map((i) => i.super));
-  return `Se relevaron <b>${bimbo.length}</b> productos del Grupo Bimbo en <b>${supers.size}/4</b> supermercados, con <b>${brands.size}</b> submarcas detectadas y precio promedio de <b>${fmtPrice(avg)}</b>.`;
+  const supers = new Set(sarubbi.map((i) => i.super));
+  return `Se relevaron <b>${sarubbi.length}</b> productos de Sarubbi en <b>${supers.size}/4</b> supermercados, con precio promedio de <b>${fmtPrice(avg)}</b>.`;
 }
 
 // ===== Informe Gerencial =====
@@ -843,7 +826,7 @@ function renderExecutive() {
   }
   const items = state.items;
   const total = items.length;
-  const bimbo = items.filter((i) => i.group === 'bimbo');
+  const bimbo = items.filter((i) => i.group === 'sarubbi');
   const offers = items.filter((i) => i.listPrice && i.price && i.listPrice > i.price);
 
   const byBrand = {};
@@ -865,7 +848,7 @@ function renderExecutive() {
       min: prices.length ? Math.min(...prices) : null,
       max: prices.length ? Math.max(...prices) : null,
       offers: arr.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length,
-      bimbo: arr.filter((i) => i.group === 'bimbo').length,
+      sarubbi: arr.filter((i) => i.group === 'sarubbi').length,
     };
   }).filter((s) => s.count);
   const maxCount = Math.max(...superStats.map((s) => s.count));
@@ -896,13 +879,13 @@ function renderExecutive() {
 
   $('#execContent').innerHTML = `
     <div class="print-only" style="margin-bottom:20px;border-bottom:2px solid var(--rojo);padding-bottom:14px">
-      <img src="/logo.jpg" alt="Grupo Bimbo" style="height:54px;width:auto;border-radius:6px;margin:0 0 10px;display:block">
-      <h1 style="margin:0;font-size:24px;color:var(--rojo)">Informe Ejecutivo · Precios Bimbo Uruguay</h1>
+      <img src="/logo.jpg" alt="Sarubbi" style="height:54px;width:auto;border-radius:6px;margin:0 0 10px;display:block">
+      <h1 style="margin:0;font-size:24px;color:var(--rojo)">Informe Ejecutivo · Sarubbi Retail Watch Uruguay</h1>
       <p style="margin:6px 0 0;color:#555;font-size:12px">Generado: ${escape(date)} · Tata · Disco · El Dorado · Tienda Inglesa</p>
     </div>
 
     <div class="kpis" style="margin-bottom:20px">
-      <div class="kpi"><div class="kpi-label">SKUs totales</div><div class="kpi-value">${total}</div><div class="kpi-sub">${bimbo.length} Grupo Bimbo</div></div>
+      <div class="kpi"><div class="kpi-label">SKUs totales</div><div class="kpi-value">${total}</div><div class="kpi-sub">${bimbo.length} Sarubbi</div></div>
       <div class="kpi azul"><div class="kpi-label">Marcas relevadas</div><div class="kpi-value">${brandStats.length}</div></div>
       <div class="kpi verde"><div class="kpi-label">Ofertas vigentes</div><div class="kpi-value">${offers.length}</div><div class="kpi-sub">${Math.round(offers.length / total * 100)}% del catálogo</div></div>
       <div class="kpi amarillo"><div class="kpi-label">Productos comparables</div><div class="kpi-value">${clustersWithSpread.length}</div><div class="kpi-sub">presentes en 2+ supers</div></div>
@@ -939,7 +922,7 @@ function renderExecutive() {
           ${superStats.map((s) => `
             <div class="super-bar">
               <div class="super-bar-header">
-                <span><span class="pill ${s.super}">${SUPER_LABEL[s.super]}</span> ${s.count} SKUs Bimbo · ${s.offers} ofertas</span>
+                <span><span class="pill ${s.super}">${SUPER_LABEL[s.super]}</span> ${s.count} SKUs · ${s.offers} ofertas</span>
                 <span style="font-variant-numeric:tabular-nums">prom ${fmtPrice(s.avg)}</span>
               </div>
               <div class="super-bar-track">
@@ -1059,7 +1042,7 @@ function openProductModal(key) {
     <div style="font-size:13px;color:var(--texto-muted);margin-bottom:14px">
       <span style="text-transform:capitalize;font-weight:600">${escape(item.brand)}</span> ·
       <span class="pill ${item.super}">${SUPER_LABEL[item.super]}</span> ·
-      <span style="color:var(--rojo);font-weight:700">Grupo Bimbo</span>
+      <span style="color:var(--rojo);font-weight:700">Sarubbi</span>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">

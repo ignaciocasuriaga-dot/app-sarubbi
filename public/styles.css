@@ -1,9 +1,9 @@
-/* Tema visual inspirado en panadería: rojo, azul oscuro, crema, blanco */
+/* Tema visual Sarubbi: rojo oscuro, azul oscuro, crema, blanco */
 
 :root {
-  /* Paleta corporativa (colores libres, no marcas) */
-  --rojo: #E1251B;
-  --rojo-dark: #B71C1C;
+  /* Paleta corporativa Sarubbi */
+  --rojo: #C41230;
+  --rojo-dark: #8B0000;
   --azul: #002E6D;
   --azul-dark: #001f4c;
   --azul-light: #1B3D91;
