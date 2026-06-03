@@ -262,9 +262,34 @@ const MATCHERS = BRAND_DEFINITIONS.flatMap((brand) =>
   })),
 ).sort((a, b) => b.length - a.length);
 
+// Palabras que confirman que el producto es un chacinado / fiambre.
+// Si la marca aparece en el texto pero NINGUNA de estas palabras está presente,
+// el producto se descarta (evita traer golosinas, aceites, etc. de marcas homónimas).
+const DELI_CONTEXT = [
+  'jamon', 'jamón', 'panceta', 'pancetta', 'chorizo', 'salami', 'salame', 'salamin', 'salamín',
+  'mortadela', 'mortadelin', 'pancho', 'panchos', 'frankfurter', 'frankfurt', 'viena',
+  'hamburguesa', 'burger', 'empanada', 'fiambre', 'fiambres', 'chacinado', 'chacinados',
+  'longaniza', 'fuet', 'chacarero', 'cantimpalo', 'pate', 'paté',
+  'cocido', 'crudo', 'feta', 'fetas', 'feteado',
+  // palabras de sección en supermercados
+  'fiambreria', 'fiambrería', 'charcuteria', 'charcutería', 'carnes frias', 'carnes frías',
+];
+
+const DELI_CONTEXT_RX = new RegExp(
+  DELI_CONTEXT.map((w) => `\\b${w}\\b`).join('|'),
+  'i',
+);
+
+function hasDéliContext(norm) {
+  return DELI_CONTEXT_RX.test(norm);
+}
+
 export function matchedPortfolio(text) {
   if (!text) return null;
   const norm = stripAccents(text).toLowerCase();
+  if (!MATCHERS.some((m) => m.rx.test(norm))) return null;
+  // Require deli context so we don't pick up golosinas, aceites, etc.
+  if (!hasDéliContext(norm)) return null;
   const match = MATCHERS.find((m) => m.rx.test(norm));
   return match?.brand ?? null;
 }
@@ -282,7 +307,7 @@ function detectCategory(norm) {
 export function enrichProduct(item, text) {
   const norm = stripAccents(String(text ?? item.name ?? '')).toLowerCase();
   const brand = matchedPortfolio(norm);
-  if (!brand) return item;
+  if (!brand) return null;
   const def = BRAND_DEFINITIONS.find((b) => b.name === brand);
   const category = detectCategory(norm);
   return {
