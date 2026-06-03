@@ -1,20 +1,28 @@
 // POST /api/refresh  – triggers the GitHub Actions scrape workflow.
-// GITHUB_TOKEN and GITHUB_REPO can be set as Vercel env vars.
-// If GITHUB_TOKEN is not set, falls back to TRIGGER_TOKEN (a workflow-only token).
-
+// Token priority: request body.token > GITHUB_TOKEN env var > TRIGGER_TOKEN env var
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
-  const token = process.env.GITHUB_TOKEN || process.env.TRIGGER_TOKEN;
-  const repo  = process.env.GITHUB_REPO  || 'ignaciocasuriaga-dot/app-sarubbi';
+  let body = {};
+  try {
+    body = await new Promise((resolve) => {
+      let raw = '';
+      req.on('data', (c) => (raw += c));
+      req.on('end', () => resolve(raw ? JSON.parse(raw) : {}));
+    });
+  } catch (_) {}
+
+  const token = body.token || process.env.GITHUB_TOKEN || process.env.TRIGGER_TOKEN;
+  const repo  = process.env.GITHUB_REPO || 'ignaciocasuriaga-dot/app-sarubbi';
 
   if (!token) {
-    return res.status(500).json({
+    return res.status(401).json({
       ok: false,
-      error: 'Configurá GITHUB_TOKEN en Vercel → Settings → Environment Variables.',
+      error: 'TOKEN_REQUIRED',
+      hint: 'Ingresá tu GitHub token en Configuración.',
     });
   }
 
@@ -37,8 +45,10 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, message: 'Scrape iniciado. Los precios se actualizan en ~5 minutos.' });
     }
 
-    const body = await resp.text();
-    return res.status(resp.status).json({ ok: false, error: `GitHub ${resp.status}`, detail: body });
+    const text = await resp.text();
+    let detail = text;
+    try { detail = JSON.parse(text).message || text; } catch (_) {}
+    return res.status(resp.status).json({ ok: false, error: `GitHub ${resp.status}: ${detail}` });
   } catch (err) {
     return res.status(500).json({ ok: false, error: err.message });
   }

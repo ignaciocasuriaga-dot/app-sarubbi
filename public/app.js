@@ -1126,16 +1126,65 @@ async function pollUntilDone(initialGeneratedAt) {
   throw new Error('Timeout esperando el nuevo scrape (>8 min).');
 }
 
+const GITHUB_TOKEN_KEY = 'sarubbi-gh-token';
+
+function getStoredToken() { return localStorage.getItem(GITHUB_TOKEN_KEY) || ''; }
+function setStoredToken(t) { if (t) localStorage.setItem(GITHUB_TOKEN_KEY, t); else localStorage.removeItem(GITHUB_TOKEN_KEY); }
+
+function showTokenModal(onSave) {
+  const existing = getStoredToken();
+  const modal = $('#modal');
+  $('#modalTitle').textContent = 'Configurar GitHub Token';
+  $('#modalBody').innerHTML = `
+    <p style="margin:0 0 12px;color:#555;font-size:14px">
+      Para actualizar precios manualmente se necesita un <strong>GitHub Personal Access Token</strong>
+      con permiso <code>workflow</code>.<br>
+      El token se guarda solo en este navegador (localStorage).
+    </p>
+    <div style="display:flex;gap:8px;align-items:center">
+      <input id="tokenInput" type="password" placeholder="ghp_…" value="${escape(existing)}"
+        style="flex:1;padding:8px 10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:monospace">
+      <button id="tokenSaveBtn" class="btn-primary" style="white-space:nowrap">Guardar</button>
+    </div>
+    <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+      <a href="https://github.com/settings/tokens/new?scopes=workflow&description=Sarubbi+App" target="_blank"
+        style="font-size:12px;color:#1440C0">Crear token en GitHub →</a>
+      ${existing ? `<button id="tokenClearBtn" style="font-size:12px;color:#c00;background:none;border:none;cursor:pointer">Borrar token guardado</button>` : ''}
+    </div>`;
+  modal.style.display = 'flex';
+  $('#tokenSaveBtn').onclick = () => {
+    const t = $('#tokenInput').value.trim();
+    setStoredToken(t);
+    closeModal();
+    if (onSave && t) onSave(t);
+  };
+  const clearBtn = $('#tokenClearBtn');
+  if (clearBtn) clearBtn.onclick = () => { setStoredToken(''); closeModal(); };
+}
+
 async function refresh() {
+  const token = getStoredToken();
+  if (!token) {
+    showTokenModal((t) => { if (t) refresh(); });
+    return;
+  }
   const btn = $('#refreshBtn');
   btn.disabled = true;
   const originalHTML = btn.innerHTML;
   const initial = state.generatedAt;
   try {
     btn.innerHTML = '<span class="spinner"></span> Disparando…';
-    const resp = await fetch('/api/refresh', { method: 'POST' });
+    const resp = await fetch('/api/refresh', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token }),
+    });
     const data = await resp.json();
-    if (!resp.ok || data.ok === false) throw new Error(data.error || data.detail || `HTTP ${resp.status}`);
+    if (data.error === 'TOKEN_REQUIRED' || resp.status === 401) {
+      showTokenModal((t) => { if (t) refresh(); });
+      return;
+    }
+    if (!resp.ok || data.ok === false) throw new Error(data.error || `HTTP ${resp.status}`);
     toast('Scrape disparado. Esperando resultados (~3-5 min)…');
     btn.innerHTML = '<span class="spinner"></span> Scraping…';
     await pollUntilDone(initial);
@@ -1201,6 +1250,7 @@ function clearPriceList() {
 function initEvents() {
   $$('.tab').forEach((t) => t.addEventListener('click', () => switchTab(t.dataset.tab)));
   $('#refreshBtn').addEventListener('click', refresh);
+  $('#tokenConfigBtn').addEventListener('click', () => showTokenModal());
   $('#catalogQ').addEventListener('input', (e) => { state.catalog.q = e.target.value; renderCatalog(); });
   $$('#tableCatalog th[data-sort]').forEach((th) => th.addEventListener('click', () => {
     const key = th.dataset.sort;
