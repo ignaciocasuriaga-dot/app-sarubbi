@@ -6,16 +6,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
-  let body = {};
-  try {
-    body = await new Promise((resolve) => {
-      let raw = '';
-      req.on('data', (c) => (raw += c));
-      req.on('end', () => resolve(raw ? JSON.parse(raw) : {}));
-    });
-  } catch (_) {}
-
-  const token = body.token || process.env.GITHUB_TOKEN || process.env.TRIGGER_TOKEN;
+  // Vercel pre-parses JSON bodies into req.body
+  const bodyToken = req.body?.token || '';
+  const token = bodyToken || process.env.GITHUB_TOKEN || process.env.TRIGGER_TOKEN;
   const repo  = process.env.GITHUB_REPO || 'ignaciocasuriaga-dot/app-sarubbi';
 
   if (!token) {
