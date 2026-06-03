@@ -28,7 +28,7 @@ async function runOne(name, fn) {
   }
 }
 
-console.log(`Buscando ${SEARCH_TERMS.length} terminos de Grupo Bimbo (${ALL_BRANDS.length} marcas/submarcas)\n`);
+console.log(`Buscando ${SEARCH_TERMS.length} terminos de Sarubbi y competencia (${ALL_BRANDS.length} marcas)\n`);
 const results = await Promise.all(SCRAPERS.map((s) => runOne(s.name, s.fn)));
 const raw = results.flatMap((r) => r.items).filter(Boolean);
 const all = applySuggestedPrices(raw);
@@ -37,8 +37,8 @@ const generatedAt = new Date().toISOString();
 await mkdir('data/output', { recursive: true });
 await mkdir('public/data', { recursive: true });
 const stamp = generatedAt.replace(/[:.]/g, '-');
-const csvPath = `data/output/bimbo_${stamp}.csv`;
-const jsonPath = `data/output/bimbo_${stamp}.json`;
+const csvPath = `data/output/sarubbi_${stamp}.csv`;
+const jsonPath = `data/output/sarubbi_${stamp}.json`;
 
 function csvCell(value) {
   const s = String(value ?? '').replace(/"/g, '""');
