@@ -7,14 +7,33 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - name: Set GITHUB_TOKEN env var in Vercel
+      - name: Set env vars in Vercel via API
         run: |
-          npx vercel env rm GITHUB_TOKEN production --yes --token "${{ secrets.VERCEL_TOKEN }}" 2>/dev/null || true
-          echo "${{ secrets.DISPATCH_TOKEN }}" | npx vercel env add GITHUB_TOKEN production --token "${{ secrets.VERCEL_TOKEN }}" --yes
-          echo "Done - GITHUB_TOKEN set in Vercel production"
+          PROJECT="gondola-sarubbi"
+          TOKEN="${{ secrets.VERCEL_TOKEN }}"
 
-      - name: Set GITHUB_REPO env var in Vercel
-        run: |
-          npx vercel env rm GITHUB_REPO production --yes --token "${{ secrets.VERCEL_TOKEN }}" 2>/dev/null || true
-          echo "ignaciocasuriaga-dot/app-sarubbi" | npx vercel env add GITHUB_REPO production --token "${{ secrets.VERCEL_TOKEN }}" --yes
-          echo "Done - GITHUB_REPO set in Vercel production"
+          # Get team/user info
+          USER=$(curl -s "https://api.vercel.com/v2/user" \
+            -H "Authorization: Bearer $TOKEN" | jq -r '.user.username // .user.name')
+          echo "Vercel user: $USER"
+
+          # Get project ID
+          PROJECT_ID=$(curl -s "https://api.vercel.com/v9/projects/$PROJECT" \
+            -H "Authorization: Bearer $TOKEN" | jq -r '.id')
+          echo "Project ID: $PROJECT_ID"
+
+          # Set GITHUB_TOKEN
+          curl -s -X POST "https://api.vercel.com/v10/projects/$PROJECT/env" \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"key\":\"GITHUB_TOKEN\",\"value\":\"${{ secrets.DISPATCH_TOKEN }}\",\"type\":\"encrypted\",\"target\":[\"production\",\"preview\"]}" \
+            | jq '{key: .key, created: .createdAt}'
+
+          # Set GITHUB_REPO
+          curl -s -X POST "https://api.vercel.com/v10/projects/$PROJECT/env" \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"key":"GITHUB_REPO","value":"ignaciocasuriaga-dot/app-sarubbi","type":"plain","target":["production","preview"]}' \
+            | jq '{key: .key, created: .createdAt}'
+
+          echo "✅ Done"
