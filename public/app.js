@@ -1163,21 +1163,18 @@ function showTokenModal(onSave) {
 }
 
 async function refresh() {
-  const token = getStoredToken();
-  if (!token) {
-    showTokenModal((t) => { if (t) refresh(); });
-    return;
-  }
   const btn = $('#refreshBtn');
   btn.disabled = true;
   const originalHTML = btn.innerHTML;
   const initial = state.generatedAt;
   try {
     btn.innerHTML = '<span class="spinner"></span> Disparando…';
+    const storedToken = getStoredToken();
+    const body = storedToken ? JSON.stringify({ token: storedToken }) : '{}';
     const resp = await fetch('/api/refresh', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token }),
+      body,
     });
     const data = await resp.json();
     if (data.error === 'TOKEN_REQUIRED' || resp.status === 401) {
