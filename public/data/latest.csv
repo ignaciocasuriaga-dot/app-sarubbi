@@ -1,458 +1,353 @@
 producto,marca,grupo,precio,precio_lista,pvp_sugerido,gap_pct,estado_sugerido,producto_sugerido,fuente_sugerido,super,sku,url
-Baby ribs CAMPOSUR al vacío x 500 g,camposur,competencia,293,689,,,,,,disco,374166,https://www.disco.com.uy/product/baby-ribs-camposur-al-vacio-x-500-g/374166
-Baby Ribs CAMPOSUR Envasado al Vacío (Kg),camposur,competencia,729,,,,,,,tiendainglesa,313508,"https://www.tiendainglesa.com.uy/supermercado/baby-ribs-camposur-envasado-al-vacio-kg.producto?313508,,42"
-Bondiola Agridulce Rellena CAMPOSUR Envasado al Vacío Congelado (Kg),camposur,competencia,689,,,,,,,tiendainglesa,243341,"https://www.tiendainglesa.com.uy/supermercado/bondiola-agridulce-rellena-camposur-envasado-al-vacio-congelado-kg.producto?243341,,42"
+Asado CAMPOSUR al vacío x 800 g,camposur,competencia,388,,,,,,,disco,374139,https://www.disco.com.uy/product/asado-camposur-al-vacio-x-800-g/374139
+Asado Del Centro CAMPOSUR al vacío x 1 kg,camposur,competencia,595,,,,,,,disco,374162,https://www.disco.com.uy/product/asado-del-centro-camposur-al-vacio-x-1-kg/374162
+Baby ribs CAMPOSUR al vacío x 500 g,camposur,competencia,345,,,,,,,disco,374166,https://www.disco.com.uy/product/baby-ribs-camposur-al-vacio-x-500-g/374166
+Bola Lomo Cerdo CAMPOSUR al vacío x 500 g,camposur,competencia,215,,,,,,,disco,374145,https://www.disco.com.uy/product/bola-lomo-cerdo-camposur-al-vacio-x-500-g/374145
+Bondiola al Vacío CAMPOSUR x kg,camposur,competencia,305,435,,,,,,disco,374141,https://www.disco.com.uy/product/bondiola-al-vacio-camposur-x-kg/374141
 Bondiola Camposur Rellena Agridulce 1 Kg,camposur,competencia,678,678,,,,,,tata,173199,https://www.tata.com.uy/bondiola-camposur-rellena-agridulce-1-kg-1000592537-173199/p
 Bondiola Camposur Rellena Salada 1 Kg,camposur,competencia,699,699,,,,,,tata,173187,https://www.tata.com.uy/bondiola-camposur-rellena-salada-1-kg-1000592536-173187/p
-Bondiola de Cerdo CAMPOSUR Envasado al Vacío (Kg),camposur,competencia,479,,,,,,,tiendainglesa,54340,"https://www.tiendainglesa.com.uy/supermercado/bondiola-de-cerdo-camposur-envasado-al-vacio-kg.producto?54340,,42"
-Bondiola Rellena Agridulce CAMPOSUR x kg,camposur,competencia,577,679,,,,,,disco,374184,https://www.disco.com.uy/product/bondiola-rellena-agridulce-camposur-x-kg/374184
-Brochette de cerdo Camposur al vacío x 500 g,camposur,competencia,302,709,,,,,,disco,374185,https://www.disco.com.uy/product/brochette-de-cerdo-camposur-al-vacio-x-500-g/374185
-Brochettes de Cerdo Congelado CAMPOSUR (Kg),camposur,competencia,569,,,,,,,tiendainglesa,1035981,"https://www.tiendainglesa.com.uy/supermercado/brochettes-de-cerdo-congelado-camposur-kg.producto?1035981,,42"
-Butifarra al vacio CAMPOSUR x 300 g,camposur,competencia,150,585,,,,,,disco,301033,https://www.disco.com.uy/product/butifarra-al-vacio-camposur-x-300-g/301033
-Chacarero al Vacío CAMPOSUR (Kg),camposur,competencia,790,940,,,,,,tiendainglesa,203562,"https://www.tiendainglesa.com.uy/supermercado/chacarero-al-vacio-camposur-kg.producto?203562,,42"
-Chacarero corto al vacío CAMPOSUR 200g,camposur,competencia,155,909,,,,,,disco,302004,https://www.disco.com.uy/product/chacarero-corto-al-vacio-camposur-200g/302004
-Chacarero finceta CAMPOSUR kg,camposur,competencia,739,869,,,,,,disco,300454,https://www.disco.com.uy/product/chacarero-finceta-camposur-kg/300454
+Bondiola Rellena Agridulce CAMPOSUR x kg,camposur,competencia,679,679,,,,,,disco,374184,https://www.disco.com.uy/product/bondiola-rellena-agridulce-camposur-x-kg/374184
+Brochette de cerdo Camposur al vacío x 500 g,camposur,competencia,355,,,,,,,disco,374185,https://www.disco.com.uy/product/brochette-de-cerdo-camposur-al-vacio-x-500-g/374185
+Butifarra al vacio CAMPOSUR x 300 g,camposur,competencia,176,,,,,,,disco,301033,https://www.disco.com.uy/product/butifarra-al-vacio-camposur-x-300-g/301033
+Chacarero corto al vacío CAMPOSUR 200g,camposur,competencia,182,909,,,,,,disco,302004,https://www.disco.com.uy/product/chacarero-corto-al-vacio-camposur-200g/302004
+Chacarero finceta CAMPOSUR kg,camposur,competencia,869,,,,,,,disco,300454,https://www.disco.com.uy/product/chacarero-finceta-camposur-kg/300454
 Chorizo Camposur Caprese Al Vacio 1 Kg,camposur,competencia,589,589,,,,,,tata,173204,https://www.tata.com.uy/chorizo-camposur-caprese-al-vacio-1-kg-1000592439-173204/p
 Chorizo Camposur Con Cheddar Y Panceta Al Vacio 1 Kg,camposur,competencia,559,559,,,,,,tata,173207,https://www.tata.com.uy/chorizo-camposur-con-cheddar-y-panceta-al-vacio-1-kg-1000591827-173207/p
 Chorizo Camposur Español Al Vacio 1 Kg,camposur,competencia,649,649,,,,,,tata,173192,https://www.tata.com.uy/chorizo-camposur-espanol-al-vacio-1-kg-1000592538-173192/p
-Chorizo Cantimpalo CAMPOSUR (Kg),camposur,competencia,590,,,,,,,tiendainglesa,382118,"https://www.tiendainglesa.com.uy/supermercado/chorizo-cantimpalo-camposur-kg.producto?382118,,42"
-Chorizo Cantimpalo Camposur x 300 g,camposur,competencia,150,590,,,,,,disco,374152,https://www.disco.com.uy/product/chorizo-cantimpalo-camposur-x-300-g/374152
-Chorizo de cordero CAMPOSUR x 250 g,camposur,competencia,162,759,,,,,,disco,301774,https://www.disco.com.uy/product/chorizo-de-cordero-camposur-x-250-g/301774
-Chorizo Extra CAMPOSUR al Vacío x 3 Unidades,camposur,competencia,605,,,,,,,tiendainglesa,1018531,"https://www.tiendainglesa.com.uy/supermercado/chorizo-extra-camposur-al-vacio-x-3-unidades.producto?1018531,,42"
-Chorizo Extra con Queso Cheddar y Morrón CAMPOSUR (Kg),camposur,competencia,640,,,,,,,tiendainglesa,371511,"https://www.tiendainglesa.com.uy/supermercado/chorizo-extra-con-queso-cheddar-y-morron-camposur-kg.producto?371511,,42"
-Chorizo kosher Camposur x 400 g,camposur,competencia,350,1029,,,,,,disco,374151,https://www.disco.com.uy/product/chorizo-kosher-camposur-x-400-g/374151
-Chorizo Morrón y Queso CAMPOSUR al vacío x 300 g,camposur,competencia,167,655,,,,,,disco,374176,https://www.disco.com.uy/product/chorizo-morron-y-queso-camposur-al-vacio-x-300-g/374176
-Chorizo Morrón y Queso CAMPOSUR x 120 g,camposur,competencia,65,635,,,,,,disco,374180,https://www.disco.com.uy/product/chorizo-morron-y-queso-camposur-x-120-g/374180
-Chorizo Parrillero CAMPOSUR (Kg),camposur,competencia,370,460,,,,,,tiendainglesa,371510,"https://www.tiendainglesa.com.uy/supermercado/chorizo-parrillero-camposur-kg.producto?371510,,42"
+Chorizo Cantimpalo Camposur x 300 g,camposur,competencia,177,590,,,,,,disco,374152,https://www.disco.com.uy/product/chorizo-cantimpalo-camposur-x-300-g/374152
+Chorizo de cordero CAMPOSUR x 250 g,camposur,competencia,190,759,,,,,,disco,301774,https://www.disco.com.uy/product/chorizo-de-cordero-camposur-x-250-g/301774
+Chorizo extra x 3 CAMPOSUR,camposur,competencia,211,,,,,,,disco,374156,https://www.disco.com.uy/product/chorizo-extra-x-3-camposur/374156
+Chorizo kosher Camposur x 400 g,camposur,competencia,412,1029,,,,,,disco,374151,https://www.disco.com.uy/product/chorizo-kosher-camposur-x-400-g/374151
+Chorizo Morrón y Queso CAMPOSUR al vacío x 300 g,camposur,competencia,197,655,,,,,,disco,374176,https://www.disco.com.uy/product/chorizo-morron-y-queso-camposur-al-vacio-x-300-g/374176
+Chorizo Morrón y Queso CAMPOSUR x 120 g,camposur,competencia,77,635,,,,,,disco,374180,https://www.disco.com.uy/product/chorizo-morron-y-queso-camposur-x-120-g/374180
 Chorizo Parrillero Camposur Al Vacío 300 g,camposur,competencia,149.7,499,,,,,,tata,173183,https://www.tata.com.uy/chorizo-parrillero-camposur-al-vacio-300-g-1000592570-173183/p
-Chorizo Parrillero CAMPOSUR x 120 g,camposur,competencia,39,379,,,,,,disco,374157,https://www.disco.com.uy/product/chorizo-parrillero-camposur-x-120-g/374157
-Chorizo Queso y Aceituna CAMPOSUR al vacío x 300 g,camposur,competencia,167,655,,,,,,disco,374177,https://www.disco.com.uy/product/chorizo-queso-y-aceituna-camposur-al-vacio-x-300-g/374177
-Chorizos con Cheddar y Morrón CAMPOSUR Envasados al Vacío x 3 Unidades,camposur,competencia,660,,,,,,,tiendainglesa,311508,"https://www.tiendainglesa.com.uy/supermercado/chorizos-con-cheddar-y-morron-camposur-envasados-al-vacio-x-3-unidades.producto?311508,,42"
-Frankfurters Cortos CAMPOSUR 2 x 8 Unidades,camposur,competencia,269,,,,,,,tiendainglesa,413644,"https://www.tiendainglesa.com.uy/supermercado/frankfurters-cortos-camposur-2-x-8-unidades.producto?413644,,42"
+Chorizo Parrillero CAMPOSUR x 120 g,camposur,competencia,46,379,,,,,,disco,374157,https://www.disco.com.uy/product/chorizo-parrillero-camposur-x-120-g/374157
+Chorizo Queso y Aceituna CAMPOSUR al vacío x 300 g,camposur,competencia,197,655,,,,,,disco,374177,https://www.disco.com.uy/product/chorizo-queso-y-aceituna-camposur-al-vacio-x-300-g/374177
 Hamburguesa Camposur Cheddar 2Un,camposur,competencia,94.9,94.9,,,,,,eldorado,19766,https://www.eldorado.com.uy/hamburguesa-camposur-cheddar-2un/p
 Hamburguesa Camposur Parrillera 2un,camposur,competencia,53.9,77,,,,,,eldorado,7233,https://www.eldorado.com.uy/hamburguesa-camposur-parrillera-2un/p
+Hamburguesa Extra x 12 CAMPOSUR 1 kg,camposur,competencia,604,,,,,,,disco,260282,https://www.disco.com.uy/product/hamburguesa-extra-x-12-camposur-1-kg/260282
 Hamburguesa Parrillera Camposur 900 g 12 U,camposur,competencia,402,402,,,,,,tata,3964,https://www.tata.com.uy/hamburguesa-parrillera-camposur-900g-12-u-1000059136-3964/p
+Hamburguesas CAMPOSUR 12 un. Kosher 900 g,camposur,competencia,619,,,,,,,disco,234594,https://www.disco.com.uy/product/hamburguesas-camposur-12-un-kosher-900-g/234594
 Hamburguesas Camposur Cheddar Caja X 8 U,camposur,competencia,363,363,,,,,,tata,152438,https://www.tata.com.uy/hamburguesas-camposur-cheddar-caja-x-8-u-152438/p
-Hamburguesas CAMPOSUR Extra (24 un.),camposur,competencia,671,959,,,,,,tiendainglesa,420422,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-camposur-extra-24-un..producto?420422,,42"
-"Hamburguesas CAMPOSUR Extra 20+4 1,8 kg",camposur,competencia,836,983,,,,,,disco,231061,https://www.disco.com.uy/product/hamburguesas-camposur-extra-20-4-1-8-kg/231061
+"Hamburguesas CAMPOSUR Extra 20+4 1,8 kg",camposur,competencia,983,,,,,,,disco,231061,https://www.disco.com.uy/product/hamburguesas-camposur-extra-20-4-1-8-kg/231061
 Hamburguesas Camposur Extra 2Un,camposur,competencia,65,84.9,,,,,,eldorado,1240,https://www.eldorado.com.uy/hamburguesas-camposur-extra-2un/p
-Hamburguesas CAMPOSUR Extra Grande Premium (6 un.) 684 g,camposur,competencia,246,352,,,,,,tiendainglesa,1566233,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-camposur-extra-grande-premium-6-un.-684-g.producto?1566233,,42"
-Hamburguesas CAMPOSUR Extra Seleccionadas (12 un.) 1 Kg,camposur,competencia,368,525,,,,,,tiendainglesa,371284,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-camposur-extra-seleccionadas-12-un.-1-kg.producto?371284,,42"
-Hamburguesas CAMPOSUR Kosher (12 un.) 900 g,camposur,competencia,421,602,,,,,,tiendainglesa,1590100,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-camposur-kosher-12-un.-900-g.producto?1590100,,42"
-Hamburguesas CAMPOSUR Light sin Sal (9 un.),camposur,competencia,399,,,,,,,tiendainglesa,1602759,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-camposur-light-sin-sal-9-un..producto?1602759,,42"
 Hamburguesas Camposur Parillera 12Un,camposur,competencia,467,467,,,,,,eldorado,1197,https://www.eldorado.com.uy/hamburguesas-camposur-parillera-12un/p
-Hamburguesas CAMPOSUR Parrilleras (12 un.) 900 g,camposur,competencia,321,458,,,,,,tiendainglesa,384629,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-camposur-parrilleras-12-un.-900-g.producto?384629,,42"
-Hamburguesas Chori Burger CAMPOSUR (8 un.) 668 g,camposur,competencia,309,,,,,,,tiendainglesa,1599960,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-chori-burger-camposur-8-un.-668-g.producto?1599960,,42"
 Hamburguesas Extra Camposur 20+4 U,camposur,competencia,802,802,,,,,,tata,126500,https://www.tata.com.uy/hamburguesas-extra-camposur-20-4-u-126500/p
-Hamburguesas extra grandes CAMPOSUR 6 Un. 684 g,camposur,competencia,308,362,,,,,,disco,241316,https://www.disco.com.uy/product/hamburguesas-extra-grandes-camposur-6-un-684-g/241316
-Hamburguesas Extra Light CAMPOSUR sin Sal x 8 un. cj. 600 g,camposur,competencia,337,396,,,,,,disco,235078,https://www.disco.com.uy/product/hamburguesas-extra-light-camposur-sin-sal-x-8-un-cj-600-g/235078
+Hamburguesas extra grandes CAMPOSUR 6 Un. 684 g,camposur,competencia,362,,,,,,,disco,241316,https://www.disco.com.uy/product/hamburguesas-extra-grandes-camposur-6-un-684-g/241316
+Hamburguesas Extra Light CAMPOSUR sin Sal x 8 un. cj. 600 g,camposur,competencia,396,,,,,,,disco,235078,https://www.disco.com.uy/product/hamburguesas-extra-light-camposur-sin-sal-x-8-un-cj-600-g/235078
+Hamburguesas light sin sal CAMPOSUR 12 un. 900 g,camposur,competencia,536,,,,,,,disco,234590,https://www.disco.com.uy/product/hamburguesas-light-sin-sal-camposur-12-un-900-g/234590
 Hamburguesas parrilleras CAMPOSUR 12 un. 900 g,camposur,competencia,255,319,,,,,,disco,234581,https://www.disco.com.uy/product/hamburguesas-parrilleras-camposur-12-un-900-g/234581
-Jamón Cocido CAMPOSUR (Kg),camposur,competencia,640,,,,,,,tiendainglesa,102661,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-camposur-kg.producto?102661,,42"
-Jamón Cocido CAMPOSUR x 50g,camposur,competencia,31,710,,,,,,disco,300954,https://www.disco.com.uy/product/jamon-cocido-camposur-x-50g/300954
-Jamón Cocido Extra CAMPOSUR Gran Reserva (Kg),camposur,competencia,1040,,,,,,,tiendainglesa,1018530,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-extra-camposur-gran-reserva-kg.producto?1018530,,42"
-Jamón Cocido Extra de Campo CAMPOSUR x 50 g,camposur,competencia,42,980,,,,,,disco,300947,https://www.disco.com.uy/product/jamon-cocido-extra-de-campo-camposur-x-50-g/300947
-Jamón Crudo Speck CAMPOSUR (Kg),camposur,competencia,1600,,,,,,,tiendainglesa,377741,"https://www.tiendainglesa.com.uy/supermercado/jamon-crudo-speck-camposur-kg.producto?377741,,42"
-Jamón de Campo CAMPOSUR (Kg),camposur,competencia,970,,,,,,,tiendainglesa,305690,"https://www.tiendainglesa.com.uy/supermercado/jamon-de-campo-camposur-kg.producto?305690,,42"
+Higado de cerdo a la tela CAMPOSUR al vacío x 500 g,camposur,competencia,218,,,,,,,disco,374170,https://www.disco.com.uy/product/higado-de-cerdo-a-la-tela-camposur-al-vacio-x-500-g/374170
+Jamón Cocido CAMPOSUR x 50g,camposur,competencia,36,710,,,,,,disco,300954,https://www.disco.com.uy/product/jamon-cocido-camposur-x-50g/300954
+Jamón Cocido Extra de Campo CAMPOSUR x 50 g,camposur,competencia,49,980,,,,,,disco,300947,https://www.disco.com.uy/product/jamon-cocido-extra-de-campo-camposur-x-50-g/300947
 Jamón Extra Camposur 1 Kg,camposur,competencia,870,870,,,,,,tata,7901,https://www.tata.com.uy/jamon-extra-camposur-1-kg-7901/p
-Jamón Speck CAMPOSUR 100 g,camposur,competencia,130,1530,,,,,,disco,302509,https://www.disco.com.uy/product/jamon-speck-camposur-100-g/302509
-Kassler envasado al vacío CAMPOSUR x 400 g,camposur,competencia,270,795,,,,,,disco,300344,https://www.disco.com.uy/product/kassler-envasado-al-vacio-camposur-x-400-g/300344
-Longaniza al Vacío CAMPOSUR (Kg),camposur,competencia,790,940,,,,,,tiendainglesa,1011490,"https://www.tiendainglesa.com.uy/supermercado/longaniza-al-vacio-camposur-kg.producto?1011490,,42"
-Longaniza corta al vacío CAMPOSUR 200g,camposur,competencia,155,909,,,,,,disco,302005,https://www.disco.com.uy/product/longaniza-corta-al-vacio-camposur-200g/302005
-Longaniza finceta CAMPOSUR kg,camposur,competencia,739,869,,,,,,disco,300466,https://www.disco.com.uy/product/longaniza-finceta-camposur-kg/300466
+Jamón Speck CAMPOSUR 100 g,camposur,competencia,153,1530,,,,,,disco,302509,https://www.disco.com.uy/product/jamon-speck-camposur-100-g/302509
+Kassler envasado al vacío CAMPOSUR x 400 g,camposur,competencia,318,,,,,,,disco,300344,https://www.disco.com.uy/product/kassler-envasado-al-vacio-camposur-x-400-g/300344
+Longaniza corta al vacío CAMPOSUR 200g,camposur,competencia,182,909,,,,,,disco,302005,https://www.disco.com.uy/product/longaniza-corta-al-vacio-camposur-200g/302005
+Longaniza finceta CAMPOSUR kg,camposur,competencia,869,,,,,,,disco,300466,https://www.disco.com.uy/product/longaniza-finceta-camposur-kg/300466
+Longaniza finzeta Camposur x 300 g,camposur,competencia,150,,,,,,,disco,301876,https://www.disco.com.uy/product/longaniza-finzeta-camposur-x-300-g/301876
 Matambrito Camposur Al Vacio 1 Kg,camposur,competencia,819,819,,,,,,tata,173202,https://www.tata.com.uy/matambrito-camposur-al-vacio-1-kg-1000591814-173202/p
-Matambrito de Cerdo al Vacío CAMPOSUR (Kg),camposur,competencia,999,,,,,,,tiendainglesa,54342,"https://www.tiendainglesa.com.uy/supermercado/matambrito-de-cerdo-al-vacio-camposur-kg.producto?54342,,42"
-Morcilla Dulce CAMPOSUR x 180 g,camposur,competencia,55,359,,,,,,disco,374164,https://www.disco.com.uy/product/morcilla-dulce-camposur-x-180-g/374164
-Morcilla Dulce Nuez y Maní Camposur al vacío x 300 g,camposur,competencia,130,509,,,,,,disco,374181,https://www.disco.com.uy/product/morcilla-dulce-nuez-y-mani-camposur-al-vacio-x-300-g/374181
+Milanesas Cerdo al vacío CAMPOSUR x 700 g,camposur,competencia,301,,,,,,,disco,374149,https://www.disco.com.uy/product/milanesas-cerdo-al-vacio-camposur-x-700-g/374149
+Morcilla Dulce CAMPOSUR x 180 g,camposur,competencia,65,359,,,,,,disco,374164,https://www.disco.com.uy/product/morcilla-dulce-camposur-x-180-g/374164
+Morcilla Dulce Nuez y Maní Camposur al vacío x 300 g,camposur,competencia,153,,,,,,,disco,374181,https://www.disco.com.uy/product/morcilla-dulce-nuez-y-mani-camposur-al-vacio-x-300-g/374181
 Morcilla mini dulce CAMPOSUR,camposur,competencia,30,,,,,,,disco,374194,https://www.disco.com.uy/product/morcilla-mini-dulce-camposur/374194
 Morcilla mini salada CAMPOSUR,camposur,competencia,30,,,,,,,disco,374193,https://www.disco.com.uy/product/morcilla-mini-salada-camposur/374193
 Morcilla Salada Camposur Al Vacio 1 Kg,camposur,competencia,569,569,,,,,,tata,173184,https://www.tata.com.uy/morcilla-salada-camposur-al-vacio-1-kg-1000591822-173184/p
-Morcilla Salada CAMPOSUR x 180 g,camposur,competencia,55,359,,,,,,disco,374165,https://www.disco.com.uy/product/morcilla-salada-camposur-x-180-g/374165
-Morcilla Salada Queso y Aceitunas CAMPOSUR al vacío x 300 g,camposur,competencia,130,509,,,,,,disco,374182,https://www.disco.com.uy/product/morcilla-salada-queso-y-aceitunas-camposur-al-vacio-x-300-g/374182
-"Morcillas Dulces con Nueces, Pasas y Maní CAMPOSUR Envasadas al Vacío....",camposur,competencia,510,,,,,,,tiendainglesa,326455,"https://www.tiendainglesa.com.uy/supermercado/morcillas-dulces-con-nueces-pasas-y-mani-camposur-envasadas-al-vacio-x-2-unidades.producto?326455,,42"
-Morcillas Saladas CAMPOSUR (Kg),camposur,competencia,420,,,,,,,tiendainglesa,102665,"https://www.tiendainglesa.com.uy/supermercado/morcillas-saladas-camposur-kg.producto?102665,,42"
-Morcillas Saladas con Queso y Aceitunas CAMPOSUR Envasadas al Vacío (K...,camposur,competencia,510,,,,,,,tiendainglesa,98309,"https://www.tiendainglesa.com.uy/supermercado/morcillas-saladas-con-queso-y-aceitunas-camposur-envasadas-al-vacio-kg.producto?98309,,42"
-Pack Frankfurters CAMPOSUR 8 un. 800g,camposur,competencia,178,209,,,,,,disco,301869,https://www.disco.com.uy/product/pack-frankfurters-camposur-8-un-800g/301869
-Pack Panceta Ahumada + 3 Chorizos Colorados CAMPOSUR,camposur,competencia,430,,,,,,,tiendainglesa,1095666,"https://www.tiendainglesa.com.uy/supermercado/pack-panceta-ahumada-mas-3-chorizos-colorados-camposur.producto?1095666,,42"
-Paleta de cerdo con hueso CAMPOSUR,camposur,competencia,85,199,,,,,,disco,374109,https://www.disco.com.uy/product/paleta-de-cerdo-con-hueso-camposur/374109
-Pamplona de cerdo agridulce CAMPOSUR al vacío x 500 g,camposur,competencia,276,649,,,,,,disco,374155,https://www.disco.com.uy/product/pamplona-de-cerdo-agridulce-camposur-al-vacio-x-500-g/374155
-Pamplona de Cerdo Agridulce Congelado CAMPOSUR Envasado al Vacío (Kg),camposur,competencia,779,,,,,,,tiendainglesa,246349,"https://www.tiendainglesa.com.uy/supermercado/pamplona-de-cerdo-agridulce-congelado-camposur-envasado-al-vacio-kg.producto?246349,,42"
-Pamplona de cerdo salada CAMPOSUR x 500 g,camposur,competencia,276,649,,,,,,disco,374112,https://www.disco.com.uy/product/pamplona-de-cerdo-salada-camposur-x-500-g/374112
-Pamplona de Cerdo Salada Congelado CAMPOSUR Envasado al Vacío (Kg),camposur,competencia,819,,,,,,,tiendainglesa,246350,"https://www.tiendainglesa.com.uy/supermercado/pamplona-de-cerdo-salada-congelado-camposur-envasado-al-vacio-kg.producto?246350,,42"
-Panceta Ahumada CAMPOSUR (Kg),camposur,competencia,720,,,,,,,tiendainglesa,382117,"https://www.tiendainglesa.com.uy/supermercado/panceta-ahumada-camposur-kg.producto?382117,,42"
-Panceta ahumada trozos al vacío CAMPOSUR 100g,camposur,competencia,722,850,,,,,,disco,302023,https://www.disco.com.uy/product/panceta-ahumada-trozos-al-vacio-camposur-100g/302023
-Panchos kosher cortos 8 un. Camposur x 500 g,camposur,competencia,355,835,,,,,,disco,301862,https://www.disco.com.uy/product/panchos-kosher-cortos-8-un-camposur-x-500-g/301862
-Pastrami CAMPOSUR,camposur,competencia,960,1130,,,,,,disco,301975,https://www.disco.com.uy/product/pastrami-camposur/301975
-Pechito Parrillero de Cerdo CAMPOSUR al Vacío (Kg),camposur,competencia,539,,,,,,,tiendainglesa,54345,"https://www.tiendainglesa.com.uy/supermercado/pechito-parrillero-de-cerdo-camposur-al-vacio-kg.producto?54345,,42"
+Morcilla Salada CAMPOSUR x 180 g,camposur,competencia,65,359,,,,,,disco,374165,https://www.disco.com.uy/product/morcilla-salada-camposur-x-180-g/374165
+Morcilla Salada Queso y Aceitunas CAMPOSUR al vacío x 300 g,camposur,competencia,153,,,,,,,disco,374182,https://www.disco.com.uy/product/morcilla-salada-queso-y-aceitunas-camposur-al-vacio-x-300-g/374182
+Pack Frankfurters CAMPOSUR 8 un. 800g,camposur,competencia,209,,,,,,,disco,301869,https://www.disco.com.uy/product/pack-frankfurters-camposur-8-un-800g/301869
+Paleta de cerdo con hueso CAMPOSUR,camposur,competencia,100,199,,,,,,disco,374109,https://www.disco.com.uy/product/paleta-de-cerdo-con-hueso-camposur/374109
+Pamplona de cerdo agridulce CAMPOSUR al vacío x 500 g,camposur,competencia,325,,,,,,,disco,374155,https://www.disco.com.uy/product/pamplona-de-cerdo-agridulce-camposur-al-vacio-x-500-g/374155
+Pamplona de cerdo salada CAMPOSUR x 500 g,camposur,competencia,325,,,,,,,disco,374112,https://www.disco.com.uy/product/pamplona-de-cerdo-salada-camposur-x-500-g/374112
+Panceta ahumada trozos al vacío CAMPOSUR 100g,camposur,competencia,850,850,,,,,,disco,302023,https://www.disco.com.uy/product/panceta-ahumada-trozos-al-vacio-camposur-100g/302023
+Panceta tipo americana CAMPOSUR x 50 g,camposur,competencia,31,620,,,,,,disco,300126,https://www.disco.com.uy/product/panceta-tipo-americana-camposur-x-50-g/300126
+Panchos kosher cortos 8 un. Camposur x 500 g,camposur,competencia,418,835,,,,,,disco,301862,https://www.disco.com.uy/product/panchos-kosher-cortos-8-un-camposur-x-500-g/301862
+Pastrami CAMPOSUR,camposur,competencia,1130,,,,,,,disco,301975,https://www.disco.com.uy/product/pastrami-camposur/301975
+Peceto Cerdo al vacío CAMPOSUR x 500 g,camposur,competencia,270,,,,,,,disco,374148,https://www.disco.com.uy/product/peceto-cerdo-al-vacio-camposur-x-500-g/374148
+Pechito Parrillero CAMPOSUR al vacío x 500 g,camposur,competencia,243,,,,,,,disco,374140,https://www.disco.com.uy/product/pechito-parrillero-camposur-al-vacio-x-500-g/374140
+Picaña Cerdo CAMPOSUR al vacío x 1 kg,camposur,competencia,470,,,,,,,disco,374144,https://www.disco.com.uy/product/picana-cerdo-camposur-al-vacio-x-1-kg/374144
+Promo panchos light reducidos en sal x 2 un. CAMPOSUR 800 g,camposur,competencia,335,,,,,,,disco,300245,https://www.disco.com.uy/product/promo-panchos-light-reducidos-en-sal-x-2-un-camposur-800-g/300245
 Queso Camposur De Cerdo Kg,camposur,competencia,419,419,,,,,,eldorado,27766,https://www.eldorado.com.uy/queso-camposur-de-cerdo-kg/p
-Salame corto al vacío CAMPOSUR 200g,camposur,competencia,155,909,,,,,,disco,302003,https://www.disco.com.uy/product/salame-corto-al-vacio-camposur-200g/302003
-Salame finceta CAMPOSUR kg,camposur,competencia,739,869,,,,,,disco,300321,https://www.disco.com.uy/product/salame-finceta-camposur-kg/300321
-Salame Milán CAMPOSUR (Kg),camposur,competencia,800,,,,,,,tiendainglesa,100878,"https://www.tiendainglesa.com.uy/supermercado/salame-milan-camposur-kg.producto?100878,,42"
-Salamín al Vacío CAMPOSUR (Kg),camposur,competencia,790,940,,,,,,tiendainglesa,1011488,"https://www.tiendainglesa.com.uy/supermercado/salamin-al-vacio-camposur-kg.producto?1011488,,42"
-Salamín con Queso CAMPOSUR,camposur,competencia,790,990,,,,,,tiendainglesa,1095974,"https://www.tiendainglesa.com.uy/supermercado/salamin-con-queso-camposur.producto?1095974,,42"
+Riñón de cerdo a la tela CAMPOSUR al vacío x 500 g,camposur,competencia,295,,,,,,,disco,374173,https://www.disco.com.uy/product/rinon-de-cerdo-a-la-tela-camposur-al-vacio-x-500-g/374173
+Salame corto al vacío CAMPOSUR 200g,camposur,competencia,182,909,,,,,,disco,302003,https://www.disco.com.uy/product/salame-corto-al-vacio-camposur-200g/302003
+Salame finceta CAMPOSUR kg,camposur,competencia,869,,,,,,,disco,300321,https://www.disco.com.uy/product/salame-finceta-camposur-kg/300321
 Salchicha Parrillera Camposur Con Queso Al Vacio 1 Kg,camposur,competencia,669,669,,,,,,tata,173196,https://www.tata.com.uy/salchicha-parrillera-camposur-con-queso-al-vacio-1-kg-1000591821-173196/p
-Sopressata al Vacío CAMPOSUR,camposur,competencia,950,,,,,,,tiendainglesa,1095986,"https://www.tiendainglesa.com.uy/supermercado/sopressata-al-vacio-camposur.producto?1095986,,42"
-Sorpresata CAMPOSUR 100 g,camposur,competencia,744,875,,,,,,disco,301990,https://www.disco.com.uy/product/sorpresata-camposur-100-g/301990
-Bondiola CATTIVELLI (Kg),cattivelli,competencia,1160,,,,,,,tiendainglesa,69228,"https://www.tiendainglesa.com.uy/supermercado/bondiola-cattivelli-kg.producto?69228,,42"
+Salchicha parrillera con queso CAMPOSUR al vacío x 300 g,camposur,competencia,225,,,,,,,disco,374179,https://www.disco.com.uy/product/salchicha-parrillera-con-queso-camposur-al-vacio-x-300-g/374179
+Salchicha parrillera kosher al vacío CAMPOSUR,camposur,competencia,540,1079,,,,,,disco,374189,https://www.disco.com.uy/product/salchicha-parrillera-kosher-al-vacio-camposur/374189
+Secreto de cerdo Camposur al vacío un. x 500 g,camposur,competencia,290,,,,,,,disco,374104,https://www.disco.com.uy/product/secreto-de-cerdo-camposur-al-vacio-un-x-500-g/374104
+Sorpresata CAMPOSUR 100 g,camposur,competencia,875,,,,,,,disco,301990,https://www.disco.com.uy/product/sorpresata-camposur-100-g/301990
 Bondiola Cattivelli 100 G,cattivelli,competencia,125,1250,,,,,,tata,164768,https://www.tata.com.uy/bondiola-cattivelli-100-g-164768/p
 Bondiola Cattivelli Feteada Al Vacio Pack 200Grs,cattivelli,competencia,316,316,,,,,,eldorado,2979,https://www.eldorado.com.uy/bondiola-cattivelli-feteada-al-vacio-pack-200grs/p
-Bondiola CATTIVELLI kg,cattivelli,competencia,37,850,,,,,,disco,360120,https://www.disco.com.uy/product/bondiola-cattivelli-kg/360120
+Bondiola CATTIVELLI kg,cattivelli,competencia,43,850,,,,,,disco,360120,https://www.disco.com.uy/product/bondiola-cattivelli-kg/360120
 Bondiola Cattivelli Kg,cattivelli,competencia,945.2,1112,,,,,,eldorado,17618,https://www.eldorado.com.uy/bondiola-cattivelli-kg/p
-Bondiola Envasado al Vacío CATTIVELLI 200 gr,cattivelli,competencia,350,,,,,,,tiendainglesa,319055,"https://www.tiendainglesa.com.uy/supermercado/bondiola-envasado-al-vacio-cattivelli-200-gr.producto?319055,,42"
 Bondiola Feteada Al Vacío Cattivelli 200 G,cattivelli,competencia,335,335,,,,,,tata,14478,https://www.tata.com.uy/bondiola-feteada-al-vacio-cattivelli-200-g-1000170083-14478/p
-Cantimpalo con Cheddar CATTIVELLI Envasados al Vacío x 3 Unidades,cattivelli,competencia,1010,,,,,,,tiendainglesa,420619,"https://www.tiendainglesa.com.uy/supermercado/cantimpalo-con-cheddar-cattivelli-envasados-al-vacio-x-3-unidades.producto?420619,,42"
-Capocuelo CATTIVELLI 100 g,cattivelli,competencia,756,890,,,,,,disco,360122,https://www.disco.com.uy/product/capocuelo-cattivelli-100-g/360122
-Chacarero CATTIVELLI al vacío x 250 g,cattivelli,competencia,215,1010,,,,,,disco,366548,https://www.disco.com.uy/product/chacarero-cattivelli-al-vacio-x-250-g/366548
-Chacarero CATTIVELLI x 150 g,cattivelli,competencia,122,959,,,,,,disco,350892,https://www.disco.com.uy/product/chacarero-cattivelli-x-150-g/350892
+Capocuelo CATTIVELLI 100 g,cattivelli,competencia,890,,,,,,,disco,360122,https://www.disco.com.uy/product/capocuelo-cattivelli-100-g/360122
+Chacarero CATTIVELLI al vacío x 250 g,cattivelli,competencia,253,1010,,,,,,disco,366548,https://www.disco.com.uy/product/chacarero-cattivelli-al-vacio-x-250-g/366548
+Chacarero CATTIVELLI x 150 g,cattivelli,competencia,144,959,,,,,,disco,350892,https://www.disco.com.uy/product/chacarero-cattivelli-x-150-g/350892
 Chorizo Cantimpalo Cattivelli 1 Kg,cattivelli,competencia,499,499,,,,,,tata,173565,https://www.tata.com.uy/chorizo-cantimpalo-cattivelli-1-kg-1000582138-173565/p
-Chorizo Cantimpalos Frescos CATTIVELLI (Kg),cattivelli,competencia,650,770,,,,,,tiendainglesa,3397,"https://www.tiendainglesa.com.uy/supermercado/chorizo-cantimpalos-frescos-cattivelli-kg.producto?3397,,42"
 Chorizo Cattivelli Extra Al Vacío 3 U 350 G,cattivelli,competencia,223.65,639,,,,,,tata,3862,https://www.tata.com.uy/chorizo-cattivelli-extra-al-vacio-3-u-350-g-1000056882-3862/p
 Chorizo Cattivelli Extra Kg,cattivelli,competencia,604,604,,,,,,eldorado,11873,https://www.eldorado.com.uy/chorizo-cattivelli-extra-kg/p
 Chorizo Cattivelli Extras Al Vacio Kg,cattivelli,competencia,684,684,,,,,,eldorado,8474,https://www.eldorado.com.uy/chorizo-cattivelli-extras-al-vacio-kg/p
-Chorizo Cheddar CATTIVELLI x 3 Unidades,cattivelli,competencia,940,,,,,,,tiendainglesa,420617,"https://www.tiendainglesa.com.uy/supermercado/chorizo-cheddar-cattivelli-x-3-unidades.producto?420617,,42"
-Chorizo Español Cantimpalo CATTIVELLI x 400 g,cattivelli,competencia,238,699,,,,,,disco,331220,https://www.disco.com.uy/product/chorizo-espanol-cantimpalo-cattivelli-x-400-g/331220
+Chorizo Español Cantimpalo CATTIVELLI x 400 g,cattivelli,competencia,280,699,,,,,,disco,331220,https://www.disco.com.uy/product/chorizo-espanol-cantimpalo-cattivelli-x-400-g/331220
 Chorizo Extra Cattivelli 1 Kg,cattivelli,competencia,689,689,,,,,,tata,173564,https://www.tata.com.uy/chorizo-extra-cattivelli-1-kg-1000582139-173564/p
-Chorizo Extra CATTIVELLI al vacío x 400 g,cattivelli,competencia,238,699,,,,,,disco,331217,https://www.disco.com.uy/product/chorizo-extra-cattivelli-al-vacio-x-400-g/331217
-Chorizo Extra CATTIVELLI con Aceitunas y Queso Envasado al Vacío x 3 U...,cattivelli,competencia,860,,,,,,,tiendainglesa,1012074,"https://www.tiendainglesa.com.uy/supermercado/chorizo-extra-cattivelli-con-aceitunas-y-queso-envasado-al-vacio-x-3-unidades.producto?1012074,,42"
-Chorizo Extra CATTIVELLI con Morrón y Queso Envasado al Vacío x 3 Uni...,cattivelli,competencia,860,,,,,,,tiendainglesa,1012073,"https://www.tiendainglesa.com.uy/supermercado/chorizo-extra-cattivelli-con-morron-y-queso-envasado-al-vacio-x-3-unidades.producto?1012073,,42"
-Chorizo extra CATTIVELLI con queso y aceitunas,cattivelli,competencia,201,790,,,,,,disco,331255,https://www.disco.com.uy/product/chorizo-extra-cattivelli-con-queso-y-aceitunas/331255
-Chorizo Extra CATTIVELLI x 120 g,cattivelli,competencia,61,599,,,,,,disco,331218,https://www.disco.com.uy/product/chorizo-extra-cattivelli-x-120-g/331218
-"Chorizo Extra CATTIVELLI, queso y morrón al vacío x 200 g aprox.",cattivelli,competencia,134,790,,,,,,disco,331254,https://www.disco.com.uy/product/chorizo-extra-cattivelli-queso-y-morron-al-vacio-x-200-g-aprox/331254
-Chorizo extra con cheddar al vacío x3 CATTIVELLI,cattivelli,competencia,672,790,,,,,,disco,331201,https://www.disco.com.uy/product/chorizo-extra-con-cheddar-al-vacio-x3-cattivelli/331201
+Chorizo Extra CATTIVELLI al vacío x 400 g,cattivelli,competencia,280,699,,,,,,disco,331217,https://www.disco.com.uy/product/chorizo-extra-cattivelli-al-vacio-x-400-g/331217
+Chorizo extra CATTIVELLI con queso y aceitunas,cattivelli,competencia,237,790,,,,,,disco,331255,https://www.disco.com.uy/product/chorizo-extra-cattivelli-con-queso-y-aceitunas/331255
+Chorizo Extra CATTIVELLI x 120 g,cattivelli,competencia,72,599,,,,,,disco,331218,https://www.disco.com.uy/product/chorizo-extra-cattivelli-x-120-g/331218
+"Chorizo Extra CATTIVELLI, queso y morrón al vacío x 200 g aprox.",cattivelli,competencia,158,790,,,,,,disco,331254,https://www.disco.com.uy/product/chorizo-extra-cattivelli-queso-y-morron-al-vacio-x-200-g-aprox/331254
+Chorizo extra con cheddar al vacío x3 CATTIVELLI,cattivelli,competencia,790,,,,,,,disco,331201,https://www.disco.com.uy/product/chorizo-extra-con-cheddar-al-vacio-x3-cattivelli/331201
+Chorizo Extra Espeto al vacío CATTIVELLI x 300 g,cattivelli,competencia,228,759,,,,,,disco,331259,https://www.disco.com.uy/product/chorizo-extra-espeto-al-vacio-cattivelli-x-300-g/331259
 Chorizo Extra Espeto Cattivelli Al Vac 250 G,cattivelli,competencia,182.25,729,,,,,,tata,3868,https://www.tata.com.uy/chorizo-extra-espeto-cattivelli-al-vac-250-g-3868/p
-Chorizo Parrillero Cattivelli 1 Kg,cattivelli,competencia,539,539,,,,,,tata,173566,https://www.tata.com.uy/chorizo-parrillero-cattivelli-1-kg-1000582140-173566/p
-Chorizo parrillero CATTIVELLI A/V x 5,cattivelli,competencia,458,539,,,,,,disco,331240,https://www.disco.com.uy/product/chorizo-parrillero-cattivelli-a-v-x-5/331240
+Chorizo Parrillero Cattivelli 1 Kg,cattivelli,competencia,509,509,,,,,,tata,173566,https://www.tata.com.uy/chorizo-parrillero-cattivelli-1-kg-1000582140-173566/p
+Chorizo parrillero CATTIVELLI A/V x 5,cattivelli,competencia,539,,,,,,,disco,331240,https://www.disco.com.uy/product/chorizo-parrillero-cattivelli-a-v-x-5/331240
 Chorizo Parrillero Cattivelli Al Vacio X 5 U,cattivelli,competencia,359,359,,,,,,tata,152095,https://www.tata.com.uy/chorizo-parrillero-cattivelli-al-vacio-x-5-u-152095/p
-Chorizo Parrillero CATTIVELLI al Vacío x 5 Unidades,cattivelli,competencia,370,,,,,,,tiendainglesa,77157,"https://www.tiendainglesa.com.uy/supermercado/chorizo-parrillero-cattivelli-al-vacio-x-5-unidades.producto?77157,,42"
-Chorizo Ruso Corte CATTIVELLI x 50 g,cattivelli,competencia,21,490,,,,,,disco,331341,https://www.disco.com.uy/product/chorizo-ruso-corte-cattivelli-x-50-g/331341
+Chorizo Ruso Corte CATTIVELLI x 50 g,cattivelli,competencia,25,490,,,,,,disco,331341,https://www.disco.com.uy/product/chorizo-ruso-corte-cattivelli-x-50-g/331341
 Chorizos Cantimpalos Cattivelli Al Vacío 3 U,cattivelli,competencia,262.44,729,,,,,,tata,22950,https://www.tata.com.uy/chorizos-cantimpalos-cattivelli-al-vacio-3-u-1000328239-22950/p
 Chorizos Cattivelli Extra Al Vacio Aceitunas Y Queso 3 U,cattivelli,competencia,251.26,739,,,,,,tata,125023,https://www.tata.com.uy/chorizos-cattivelli-extra-al-vacio-aceitunas-y-queso-3-u-125023/p
 Chorizos Cattivelli Extra Al Vacio Morron Y Queso 3 U,cattivelli,competencia,243.87,739,,,,,,tata,125024,https://www.tata.com.uy/chorizos-cattivelli-extra-al-vacio-morron-y-queso-3-u-125024/p
-Chorizos Espeto Fresco en Gancho CATTIVELLI,cattivelli,competencia,870,,,,,,,tiendainglesa,3579,"https://www.tiendainglesa.com.uy/supermercado/chorizos-espeto-fresco-en-gancho-cattivelli.producto?3579,,42"
-Chorizos Extra CATTIVELLI (Kg),cattivelli,competencia,750,,,,,,,tiendainglesa,23550,"https://www.tiendainglesa.com.uy/supermercado/chorizos-extra-cattivelli-kg.producto?23550,,42"
-Chorizos Extras CATTIVELLI Envasados al Vacío x 3 Unidades,cattivelli,competencia,810,,,,,,,tiendainglesa,5172,"https://www.tiendainglesa.com.uy/supermercado/chorizos-extras-cattivelli-envasados-al-vacio-x-3-unidades.producto?5172,,42"
-Frankfurters CATTIVELLI Light 350 gr,cattivelli,competencia,330,,,,,,,tiendainglesa,1105,"https://www.tiendainglesa.com.uy/supermercado/frankfurters-cattivelli-light-350-gr.producto?1105,,42"
-Frankfurters Cortos CATTIVELLI Envasados al Vacío x 8 Unidades,cattivelli,competencia,210,,,,,,,tiendainglesa,4090,"https://www.tiendainglesa.com.uy/supermercado/frankfurters-cortos-cattivelli-envasados-al-vacio-x-8-unidades.producto?4090,,42"
-Franquesitos CATTIVELLI vacío 340 g,cattivelli,competencia,195,229,,,,,,disco,331625,https://www.disco.com.uy/product/franquesitos-cattivelli-vacio-340-g/331625
-Franquesitos Cortos CATTIVELLI Envasado al Vacío x 8 Unidades,cattivelli,competencia,270,,,,,,,tiendainglesa,245,"https://www.tiendainglesa.com.uy/supermercado/franquesitos-cortos-cattivelli-envasado-al-vacio-x-8-unidades.producto?245,,42"
-Hungaras CATTIVELLI (Kg),cattivelli,competencia,860,,,,,,,tiendainglesa,334170,"https://www.tiendainglesa.com.uy/supermercado/hungaras-cattivelli-kg.producto?334170,,42"
-Húngaras CATTIVELLI al vacío x 250 g,cattivelli,competencia,156,729,,,,,,disco,331921,https://www.disco.com.uy/product/hungaras-cattivelli-al-vacio-x-250-g/331921
+Franquesitos CATTIVELLI vacío 340 g,cattivelli,competencia,229,,,,,,,disco,331625,https://www.disco.com.uy/product/franquesitos-cattivelli-vacio-340-g/331625
+Húngaras CATTIVELLI al vacío x 250 g,cattivelli,competencia,183,729,,,,,,disco,331921,https://www.disco.com.uy/product/hungaras-cattivelli-al-vacio-x-250-g/331921
 Jamon Cattivelli Cocido Extra Kg Cuadrille,cattivelli,competencia,1262,1262,,,,,,eldorado,1634,https://www.eldorado.com.uy/jamon-cattivelli-cocido-extra-kg-cuadrille/p
 Jamon Cattivelli Cocido Feteado 200Gr Al Vacio,cattivelli,competencia,256,256,,,,,,eldorado,5248,https://www.eldorado.com.uy/jamon-cattivelli-cocido-feteado-200gr-al-vacio/p
 Jamon Cattivelli Cocido Kg,cattivelli,competencia,748,748,,,,,,eldorado,1560,https://www.eldorado.com.uy/jamon-cattivelli-cocido-kg/p
-Jamon Cattivelli Cocido S/Sal Kg,cattivelli,competencia,969,969,,,,,,eldorado,1637,https://www.eldorado.com.uy/jamon-cattivelli-cocido-s-sal-kg/p
+Jamon Cattivelli Cocido S/Sal Kg,cattivelli,competencia,549,969,,,,,,eldorado,1637,https://www.eldorado.com.uy/jamon-cattivelli-cocido-s-sal-kg/p
 Jamon Cattivelli Kg Cocido Magro,cattivelli,competencia,901,901,,,,,,eldorado,9867,https://www.eldorado.com.uy/jamon-cattivelli-kg-cocido-magro/p
-Jamón cocido (Rojo) atmósfera controlada CATTIVELLI x 250 g,cattivelli,competencia,166,780,,,,,,disco,300718,https://www.disco.com.uy/product/jamon-cocido-rojo-atmosfera-controlada-cattivelli-x-250-g/300718
-Jamón Cocido CATTIVELLI (Kg),cattivelli,competencia,820,,,,,,,tiendainglesa,2382,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-cattivelli-kg.producto?2382,,42"
-Jamón Cocido CATTIVELLI sin Sal (Kg),cattivelli,competencia,1000,,,,,,,tiendainglesa,2415,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-cattivelli-sin-sal-kg.producto?2415,,42"
+Jamón cocido (Rojo) atmósfera controlada CATTIVELLI x 250 g,cattivelli,competencia,195,780,,,,,,disco,300718,https://www.disco.com.uy/product/jamon-cocido-rojo-atmosfera-controlada-cattivelli-x-250-g/300718
 Jamón Cocido Cuadrille Cattivelli 100 G,cattivelli,competencia,125,1250,,,,,,tata,17389,https://www.tata.com.uy/jamon-cocido-cuadrille-cattivelli-100-g-17389/p
-Jamón Cocido Cuadrille Extra CATTIVELLI (Kg),cattivelli,competencia,890,1110,,,,,,tiendainglesa,1064,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-cuadrille-extra-cattivelli-kg.producto?1064,,42"
-Jamón Cocido Extra Cuadrille CATTIVELLI x 50 g,cattivelli,competencia,45,1060,,,,,,disco,362219,https://www.disco.com.uy/product/jamon-cocido-extra-cuadrille-cattivelli-x-50-g/362219
+Jamón Cocido Extra Cuadrille CATTIVELLI x 50 g,cattivelli,competencia,53,1060,,,,,,disco,362219,https://www.disco.com.uy/product/jamon-cocido-extra-cuadrille-cattivelli-x-50-g/362219
 Jamon Cocido Feteado Al Vacio 200 G,cattivelli,competencia,245,245,,,,,,tata,14616,https://www.tata.com.uy/jamon-cocido-feteado-al-vacio-200-g-14616/p
-Jamón Cocido Magro CATTIVELLI (Kg),cattivelli,competencia,930,,,,,,,tiendainglesa,1069,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-magro-cattivelli-kg.producto?1069,,42"
-Jamón Cocido Magro CATTIVELLI x 50 g,cattivelli,competencia,31,730,,,,,,disco,362123,https://www.disco.com.uy/product/jamon-cocido-magro-cattivelli-x-50-g/362123
+Jamón Cocido Magro CATTIVELLI x 50 g,cattivelli,competencia,37,730,,,,,,disco,362123,https://www.disco.com.uy/product/jamon-cocido-magro-cattivelli-x-50-g/362123
+Jamón cocido rojo CATTIVELLI atmósfera controlada x 150 g,cattivelli,competencia,113,,,,,,,disco,300656,https://www.disco.com.uy/product/jamon-cocido-rojo-cattivelli-atmosfera-controlada-x-150-g/300656
 Jamon Cuadrille Cattivelli Feteado Al Vacio 200 G,cattivelli,competencia,330,330,,,,,,tata,147492,https://www.tata.com.uy/jamon-cuadrille-cattivelli-feteado-al-vacio-200-g-147492/p
 Jamón Magro Cattivelli 200 g,cattivelli,competencia,245,245,,,,,,tata,164759,https://www.tata.com.uy/jamon-magro-cattivelli-200-g-1000517152-164759/p
-Jamón sin sal CATTIVELLI x 50 g,cattivelli,competencia,39,920,,,,,,disco,362220,https://www.disco.com.uy/product/jamon-sin-sal-cattivelli-x-50-g/362220
-Leonesa Leonesín Familiar CATTIVELLI x 300 g aprox,cattivelli,competencia,23,540,,,,,,disco,362821,https://www.disco.com.uy/product/leonesa-leonesin-familiar-cattivelli-x-300-g-aprox/362821
-Lomito Canadiense CATTIVELLI a/c kg,cattivelli,competencia,41,960,,,,,,disco,300596,https://www.disco.com.uy/product/lomito-canadiense-cattivelli-a-c-kg/300596
-Lomito Cocido Ahumado Envasado al Vacío CATTIVELLI 200 gr,cattivelli,competencia,340,,,,,,,tiendainglesa,317783,"https://www.tiendainglesa.com.uy/supermercado/lomito-cocido-ahumado-envasado-al-vacio-cattivelli-200-gr.producto?317783,,42"
-Lomo Canadiense CATTIVELLI (Kg),cattivelli,competencia,1140,,,,,,,tiendainglesa,296152,"https://www.tiendainglesa.com.uy/supermercado/lomo-canadiense-cattivelli-kg.producto?296152,,42"
+Jamón sin sal CATTIVELLI x 50 g,cattivelli,competencia,46,920,,,,,,disco,362220,https://www.disco.com.uy/product/jamon-sin-sal-cattivelli-x-50-g/362220
+Leonesa Leonesín Familiar CATTIVELLI x 300 g aprox,cattivelli,competencia,27,540,,,,,,disco,362821,https://www.disco.com.uy/product/leonesa-leonesin-familiar-cattivelli-x-300-g-aprox/362821
+Lomito Canadiense CATTIVELLI a/c kg,cattivelli,competencia,48,960,,,,,,disco,300596,https://www.disco.com.uy/product/lomito-canadiense-cattivelli-a-c-kg/300596
 Longaniza Ahumada Cattivelli 250 G,cattivelli,competencia,315,1260,,,,,,tata,118937,https://www.tata.com.uy/longaniza-ahumada-cattivelli-250-g-118937/p
-Longaniza Ahumada CATTIVELLI vacío x 300 g,cattivelli,competencia,258,1010,,,,,,disco,353320,https://www.disco.com.uy/product/longaniza-ahumada-cattivelli-vacio-x-300-g/353320
-Longaniza CATTIVELLI Ahumada al Vacío (Kg),cattivelli,competencia,1100,,,,,,,tiendainglesa,644,"https://www.tiendainglesa.com.uy/supermercado/longaniza-cattivelli-ahumada-al-vacio-kg.producto?644,,42"
+Longaniza Ahumada CATTIVELLI vacío x 300 g,cattivelli,competencia,303,1010,,,,,,disco,353320,https://www.disco.com.uy/product/longaniza-ahumada-cattivelli-vacio-x-300-g/353320
 Longaniza Cattivelli Ahumado Trozo,cattivelli,competencia,1167,1167,,,,,,eldorado,6724,https://www.eldorado.com.uy/longaniza-cattivelli-ahumado-trozo/p
-Longaniza CATTIVELLI x 300 g,cattivelli,competencia,245,959,,,,,,disco,353376,https://www.disco.com.uy/product/longaniza-cattivelli-x-300-g/353376
-Longaniza Pipa CATTIVELLI (Kg),cattivelli,competencia,1120,,,,,,,tiendainglesa,5220,"https://www.tiendainglesa.com.uy/supermercado/longaniza-pipa-cattivelli-kg.producto?5220,,42"
+Longaniza CATTIVELLI x 300 g,cattivelli,competencia,288,959,,,,,,disco,353376,https://www.disco.com.uy/product/longaniza-cattivelli-x-300-g/353376
 Morcilla Cattivelli Dulce Kg 2un Rellena Frutas Y Mani,cattivelli,competencia,508,508,,,,,,eldorado,46017,https://www.eldorado.com.uy/morcilla-cattivelli-dulce-kg-2un-rellena-frutas-y-mani/p
 Morcilla Cattivelli Salada Kg 2un Rellena Queso Y Aceit,cattivelli,competencia,508,508,,,,,,eldorado,46018,https://www.eldorado.com.uy/morcilla-cattivelli-salada-kg-2un-rellena-queso-y-aceit/p
 Morcilla Cattivelli Saladas Kg Al Vacio,cattivelli,competencia,514,514,,,,,,eldorado,721,https://www.eldorado.com.uy/morcilla-cattivelli-saladas-kg-al-vacio/p
-Morcilla Salada CATTIVELLI al vacío x 300 g,cattivelli,competencia,125,489,,,,,,disco,333923,https://www.disco.com.uy/product/morcilla-salada-cattivelli-al-vacio-x-300-g/333923
-Morcillas CATTIVELLI al Vacío Dulces con Frutas y Maní x 2 Unidades,cattivelli,competencia,190,,,,,,,tiendainglesa,77158,"https://www.tiendainglesa.com.uy/supermercado/morcillas-cattivelli-al-vacio-dulces-con-frutas-y-mani-x-2-unidades.producto?77158,,42"
-Morcillas Dulce CATTIVELLI al vacío x 300 g,cattivelli,competencia,125,489,,,,,,disco,333922,https://www.disco.com.uy/product/morcillas-dulce-cattivelli-al-vacio-x-300-g/333922
-Morcillas Dulces CATTIVELLI (Kg),cattivelli,competencia,540,,,,,,,tiendainglesa,2635,"https://www.tiendainglesa.com.uy/supermercado/morcillas-dulces-cattivelli-kg.producto?2635,,42"
+Morcilla Salada CATTIVELLI al vacío x 300 g,cattivelli,competencia,147,,,,,,,disco,333923,https://www.disco.com.uy/product/morcilla-salada-cattivelli-al-vacio-x-300-g/333923
+Morcillas Dulce CATTIVELLI al vacío x 300 g,cattivelli,competencia,147,,,,,,,disco,333922,https://www.disco.com.uy/product/morcillas-dulce-cattivelli-al-vacio-x-300-g/333922
 Morcillas Dulces Cattivelli Con Frutas Y Mani Al Vacio 2 U,cattivelli,competencia,189,189,,,,,,tata,164701,https://www.tata.com.uy/morcillas-dulces-cattivelli-con-frutas-y-mani-al-vacio-2-u-164701/p
-Morcillas Saladas CATTIVELLI (Kg),cattivelli,competencia,540,,,,,,,tiendainglesa,2636,"https://www.tiendainglesa.com.uy/supermercado/morcillas-saladas-cattivelli-kg.producto?2636,,42"
 Morcillas Saladas Cattivelli Con Queso Y Aceitunas Al Vacio 2 U,cattivelli,competencia,129,129,,,,,,tata,157008,https://www.tata.com.uy/morcillas-saladas-cattivelli-con-queso-y-aceitunas-al-vacio-2-u-157008/p
-Morcillas saladas CATTIVELLI x 130 g,cattivelli,competencia,51,455,,,,,,disco,333979,https://www.disco.com.uy/product/morcillas-saladas-cattivelli-x-130-g/333979
-Morcillón CATTIVELLI x 50 g,cattivelli,competencia,16,380,,,,,,disco,334320,https://www.disco.com.uy/product/morcillon-cattivelli-x-50-g/334320
+Morcillas saladas CATTIVELLI x 130 g,cattivelli,competencia,60,455,,,,,,disco,333979,https://www.disco.com.uy/product/morcillas-saladas-cattivelli-x-130-g/333979
+Morcillón CATTIVELLI x 50 g,cattivelli,competencia,19,380,,,,,,disco,334320,https://www.disco.com.uy/product/morcillon-cattivelli-x-50-g/334320
 Morcillon Cattivelli,cattivelli,competencia,450,450,,,,,,tata,164721,https://www.tata.com.uy/morcillon-cattivelli-164721/p
-Mortadela Bocha CATTIVELLI x 50 g,cattivelli,competencia,25,580,,,,,,disco,364520,https://www.disco.com.uy/product/mortadela-bocha-cattivelli-x-50-g/364520
+Mortadela Bocha CATTIVELLI x 50 g,cattivelli,competencia,29,580,,,,,,disco,364520,https://www.disco.com.uy/product/mortadela-bocha-cattivelli-x-50-g/364520
 Mortadela Cattivelli Bocha Kg .,cattivelli,competencia,299,655,,,,,,eldorado,1635,https://www.eldorado.com.uy/mortadela-cattivelli-bocha-kg/p
-Mortadelin CATTIVELLI (Kg),cattivelli,competencia,580,,,,,,,tiendainglesa,5873,"https://www.tiendainglesa.com.uy/supermercado/mortadelin-cattivelli-kg.producto?5873,,42"
+Mortadela Mortadelín CATTIVELLI x 500 g,cattivelli,competencia,265,530,,,,,,disco,360220,https://www.disco.com.uy/product/mortadela-mortadelin-cattivelli-x-500-g/360220
 Mortadelin Cattivelli 350 G,cattivelli,competencia,206.5,590,,,,,,tata,82071,https://www.tata.com.uy/mortadelin-cattivelli-350-g-82071/p
-Panceta Ahumada al Vacío CATTIVELLI 200 gr,cattivelli,competencia,340,,,,,,,tiendainglesa,100954,"https://www.tiendainglesa.com.uy/supermercado/panceta-ahumada-al-vacio-cattivelli-200-gr.producto?100954,,42"
 Panceta Ahumada Cattivelli 1 Kg,cattivelli,competencia,1030,1030,,,,,,tata,164769,https://www.tata.com.uy/panceta-ahumada-cattivelli-1-kg-164769/p
-Panceta Cattivelli Ahumada Feteado 200Gr Al Vacio,cattivelli,competencia,315,315,,,,,,eldorado,10378,https://www.eldorado.com.uy/panceta-cattivelli-ahumada-feteado-200gr-al-vacio/p
+Panceta Cattivelli Ahumada Feteado 200Gr Al Vacio,cattivelli,competencia,175,315,,,,,,eldorado,10378,https://www.eldorado.com.uy/panceta-cattivelli-ahumada-feteado-200gr-al-vacio/p
 Pancho Cattivelli 8 Und + 4Un De Regalo,cattivelli,competencia,320,320,,,,,,eldorado,222,https://www.eldorado.com.uy/pancho-cattivelli-8-und-4un-de-regalo/p
 Pancho Cattivelli Omega 3 Light,cattivelli,competencia,245.5,245.5,,,,,,eldorado,8102,https://www.eldorado.com.uy/pancho-cattivelli-omega-3-light/p
 Panchos Cattivelli Corto Paquete X8,cattivelli,competencia,192.9,192.9,,,,,,eldorado,9539,https://www.eldorado.com.uy/panchos-cattivelli-corto-paquete-x8/p
 Panchos Cattivelli Franquesitos Paquete 360Gr,cattivelli,competencia,241,241,,,,,,eldorado,6723,https://www.eldorado.com.uy/panchos-cattivelli-franquesitos-paquete-360gr/p
-Paté de Campaña CATTIVELLI Envasado al Vacío (Kg),cattivelli,competencia,790,,,,,,,tiendainglesa,2637,"https://www.tiendainglesa.com.uy/supermercado/pate-de-campana-cattivelli-envasado-al-vacio-kg.producto?2637,,42"
+Panchos cortos CATTIVELLI 8 un. 340 g,cattivelli,competencia,189,,,,,,,disco,331512,https://www.disco.com.uy/product/panchos-cortos-cattivelli-8-un-340-g/331512
 Paté de campaña CATTIVELLI x 100 g,cattivelli,competencia,72,720,,,,,,disco,300098,https://www.disco.com.uy/product/pate-de-campana-cattivelli-x-100-g/300098
-Paté de Hígado CATTIVELLI (Kg),cattivelli,competencia,570,,,,,,,tiendainglesa,5550,"https://www.tiendainglesa.com.uy/supermercado/pate-de-higado-cattivelli-kg.producto?5550,,42"
 Paté De Jamón Cattivelli 150 G,cattivelli,competencia,82.5,550,,,,,,tata,42028,https://www.tata.com.uy/pate-de-jamon-cattivelli-150-g-42028/p
 Paté Higado Cattivelli 150 G,cattivelli,competencia,82.5,550,,,,,,tata,53023,https://www.tata.com.uy/pate-higado-cattivelli-150-g-53023/p
-Paté Hígado CATTIVELLI al vacío x 150 g,cattivelli,competencia,66,520,,,,,,disco,365320,https://www.disco.com.uy/product/pate-higado-cattivelli-al-vacio-x-150-g/365320
-Paté Jamón CATTIVELLI al vacío x 150 g,cattivelli,competencia,66,520,,,,,,disco,365323,https://www.disco.com.uy/product/pate-jamon-cattivelli-al-vacio-x-150-g/365323
+Paté Hígado CATTIVELLI al vacío x 150 g,cattivelli,competencia,78,520,,,,,,disco,365320,https://www.disco.com.uy/product/pate-higado-cattivelli-al-vacio-x-150-g/365320
+Paté Jamón CATTIVELLI al vacío x 150 g,cattivelli,competencia,78,520,,,,,,disco,365323,https://www.disco.com.uy/product/pate-jamon-cattivelli-al-vacio-x-150-g/365323
 Paté Lengua Cattivelli 150 G,cattivelli,competencia,82.5,550,,,,,,tata,53024,https://www.tata.com.uy/pate-lengua-cattivelli-150-g-53024/p
-Pepperoni CATTIVELLI (Kg),cattivelli,competencia,1250,,,,,,,tiendainglesa,3819,"https://www.tiendainglesa.com.uy/supermercado/pepperoni-cattivelli-kg.producto?3819,,42"
-Pepperoni CATTIVELLI x 600 g,cattivelli,competencia,500,980,,,,,,disco,335150,https://www.disco.com.uy/product/pepperoni-cattivelli-x-600-g/335150
+Pepperoni CATTIVELLI x 600 g,cattivelli,competencia,588,980,,,,,,disco,335150,https://www.disco.com.uy/product/pepperoni-cattivelli-x-600-g/335150
 PopurrÃ­ Salame Y Longaniza Feteado Al Vacio 200 G,cattivelli,competencia,288,288,,,,,,tata,14617,https://www.tata.com.uy/popurri-salame-y-longaniza-feteado-al-vacio-200-g-14617/p
-Popurri Salame y Longaniza CATTIVELLI 200 gr,cattivelli,competencia,320,,,,,,,tiendainglesa,100953,"https://www.tiendainglesa.com.uy/supermercado/popurri-salame-y-longaniza-cattivelli-200-gr.producto?100953,,42"
-Popurrí salame y longaniza CATTIVELLI fetas al vacío 200 g,cattivelli,competencia,246,289,,,,,,disco,362223,https://www.disco.com.uy/product/popurri-salame-y-longaniza-cattivelli-fetas-al-vacio-200-g/362223
+Popurrí salame y longaniza CATTIVELLI fetas al vacío 200 g,cattivelli,competencia,289,,,,,,,disco,362223,https://www.disco.com.uy/product/popurri-salame-y-longaniza-cattivelli-fetas-al-vacio-200-g/362223
 Queso Cattivelli De Cerdo Kg .,cattivelli,competencia,507,507,,,,,,eldorado,1562,https://www.eldorado.com.uy/queso-cattivelli-de-cerdo-kg/p
-Queso cerdo CATTIVELLI 50 g,cattivelli,competencia,18,420,,,,,,disco,366020,https://www.disco.com.uy/product/queso-cerdo-cattivelli-50-g/366020
+Queso cerdo CATTIVELLI 50 g,cattivelli,competencia,21,420,,,,,,disco,366020,https://www.disco.com.uy/product/queso-cerdo-cattivelli-50-g/366020
 Queso De Cerdo Cattivelli 150 Gr,cattivelli,competencia,67.5,450,,,,,,tata,164723,https://www.tata.com.uy/queso-de-cerdo-cattivelli-150-gr-164723/p
 Ruso Cattivelli 1 G,cattivelli,competencia,570,570,,,,,,tata,42027,https://www.tata.com.uy/ruso-cattivelli-1-g-42027/p
 Salame Ahumado Cattivelli Al Vacio 230 G,cattivelli,competencia,289.8,1260,,,,,,tata,118939,https://www.tata.com.uy/salame-ahumado-cattivelli-al-vacio-230-g-118939/p
-Salame ahumado CATTIVELLI vacío x 230 g,cattivelli,competencia,198,1010,,,,,,disco,366525,https://www.disco.com.uy/product/salame-ahumado-cattivelli-vacio-x-230-g/366525
-Salame CATTIVELLI Parapique (Kg),cattivelli,competencia,1100,,,,,,,tiendainglesa,96414,"https://www.tiendainglesa.com.uy/supermercado/salame-cattivelli-parapique-kg.producto?96414,,42"
+Salame ahumado CATTIVELLI vacío x 230 g,cattivelli,competencia,233,1010,,,,,,disco,366525,https://www.disco.com.uy/product/salame-ahumado-cattivelli-vacio-x-230-g/366525
 Salame Cattivelli Parapique Al Vacio Pack Kg,cattivelli,competencia,1066,1066,,,,,,eldorado,10626,https://www.eldorado.com.uy/salame-cattivelli-parapique-al-vacio-pack-kg/p
 Salame Cattivelli Snack Un,cattivelli,competencia,56.9,56.9,,,,,,eldorado,1559,https://www.eldorado.com.uy/salame-cattivelli-snack-un/p
 Salame Cattivelli Tipo Italiano Al Vacio Pack Kg,cattivelli,competencia,1067,1067,,,,,,eldorado,2980,https://www.eldorado.com.uy/salame-cattivelli-tipo-italiano-al-vacio-pack-kg/p
-Salame Chacarero CATTIVELLI (Kg),cattivelli,competencia,1180,,,,,,,tiendainglesa,26767,"https://www.tiendainglesa.com.uy/supermercado/salame-chacarero-cattivelli-kg.producto?26767,,42"
 Salame De Milan Cattivelli Envasado Al VacÃ­o 200 G,cattivelli,competencia,319,319,,,,,,tata,14618,https://www.tata.com.uy/salame-de-milan-cattivelli-envasado-al-vacio-200-g-14618/p
-Salame de Milan CATTIVELLI Export (Kg),cattivelli,competencia,1100,,,,,,,tiendainglesa,1909,"https://www.tiendainglesa.com.uy/supermercado/salame-de-milan-cattivelli-export-kg.producto?1909,,42"
-Salame de Milan Envasado al Vacío CATTIVELLI 200 gr,cattivelli,competencia,320,,,,,,,tiendainglesa,317782,"https://www.tiendainglesa.com.uy/supermercado/salame-de-milan-envasado-al-vacio-cattivelli-200-gr.producto?317782,,42"
-Salame Milan CATTIVELLI (Kg),cattivelli,competencia,1080,,,,,,,tiendainglesa,23608,"https://www.tiendainglesa.com.uy/supermercado/salame-milan-cattivelli-kg.producto?23608,,42"
-Salame Milán CATTIVELLI x 50 g,cattivelli,competencia,42,990,,,,,,disco,366520,https://www.disco.com.uy/product/salame-milan-cattivelli-x-50-g/366520
-Salame Milán export CATTIVELLI al vacío x 250 g,cattivelli,competencia,215,1010,,,,,,disco,366524,https://www.disco.com.uy/product/salame-milan-export-cattivelli-al-vacio-x-250-g/366524
+Salame Milán CATTIVELLI x 50 g,cattivelli,competencia,50,990,,,,,,disco,366520,https://www.disco.com.uy/product/salame-milan-cattivelli-x-50-g/366520
+Salame Milán export CATTIVELLI al vacío x 250 g,cattivelli,competencia,253,1010,,,,,,disco,366524,https://www.disco.com.uy/product/salame-milan-export-cattivelli-al-vacio-x-250-g/366524
 Salame Parapique Cattivelli Al Vacio 250 Gr,cattivelli,competencia,250,289,,,,,,tata,164760,https://www.tata.com.uy/salame-parapique-cattivelli-al-vacio-250-gr-164760/p
-Salame Parapique CATTIVELLI x 250 g,cattivelli,competencia,215,1010,,,,,,disco,300891,https://www.disco.com.uy/product/salame-parapique-cattivelli-x-250-g/300891
+Salame Parapique CATTIVELLI x 250 g,cattivelli,competencia,253,1010,,,,,,disco,300891,https://www.disco.com.uy/product/salame-parapique-cattivelli-x-250-g/300891
 Salame Tipo Italiano Cattivelli Al Vacio,cattivelli,competencia,250,289,,,,,,tata,161808,https://www.tata.com.uy/salame-tipo-italiano-cattivelli-al-vacio-161808/p
-Salame tipo italiano CATTIVELLI x 250 g,cattivelli,competencia,215,1010,,,,,,disco,360183,https://www.disco.com.uy/product/salame-tipo-italiano-cattivelli-x-250-g/360183
-Salami snack CATTIVELLI 35 g,cattivelli,competencia,42,49,,,,,,disco,366999,https://www.disco.com.uy/product/salami-snack-cattivelli-35-g/366999
-Salami Snack CATTIVELLI Envasado al Vacío 35 gr,cattivelli,competencia,50,,,,,,,tiendainglesa,5435,"https://www.tiendainglesa.com.uy/supermercado/salami-snack-cattivelli-envasado-al-vacio-35-gr.producto?5435,,42"
+Salame tipo italiano CATTIVELLI x 250 g,cattivelli,competencia,253,1010,,,,,,disco,360183,https://www.disco.com.uy/product/salame-tipo-italiano-cattivelli-x-250-g/360183
+Salami snack CATTIVELLI 35 g,cattivelli,competencia,49,,,,,,,disco,366999,https://www.disco.com.uy/product/salami-snack-cattivelli-35-g/366999
 Salamin Snack Cattivelli 1 U,cattivelli,competencia,65,65,,,,,,tata,50750,https://www.tata.com.uy/salamin-snack-cattivelli-1-u-50750/p
 Salamito Cattivelli Pipa Kg 2Un,cattivelli,competencia,1079,1079,,,,,,eldorado,9569,https://www.eldorado.com.uy/salamito-cattivelli-pipa-kg-2un/p
-Salamito CATTIVELLI x 300 g,cattivelli,competencia,245,959,,,,,,disco,335154,https://www.disco.com.uy/product/salamito-cattivelli-x-300-g/335154
-Salamitos CATTIVELLI (Kg),cattivelli,competencia,1120,,,,,,,tiendainglesa,4049,"https://www.tiendainglesa.com.uy/supermercado/salamitos-cattivelli-kg.producto?4049,,42"
-Salchicha Parrillera CATTIVELLI Envasado al Vacío (Kg),cattivelli,competencia,900,,,,,,,tiendainglesa,16336,"https://www.tiendainglesa.com.uy/supermercado/salchicha-parrillera-cattivelli-envasado-al-vacio-kg.producto?16336,,42"
+Salamito CATTIVELLI x 300 g,cattivelli,competencia,288,959,,,,,,disco,335154,https://www.disco.com.uy/product/salamito-cattivelli-x-300-g/335154
+Salchicha parrillera CATTIVELLI al vacío x 300 g,cattivelli,competencia,248,,,,,,,disco,336922,https://www.disco.com.uy/product/salchicha-parrillera-cattivelli-al-vacio-x-300-g/336922
 Bondiola Centenario Feteado 200Gr,centenario,competencia,319,319,,,,,,eldorado,3784,https://www.eldorado.com.uy/bondiola-centenario-feteado-200gr/p
 Bondiola Centenario Kg,centenario,competencia,979,979,,,,,,eldorado,35696,https://www.eldorado.com.uy/bondiola-centenario-kg/p
 Bondiola CENTENARIO x kg,centenario,competencia,61,1210,,,,,,disco,360123,https://www.disco.com.uy/product/bondiola-centenario-x-kg/360123
-Bondiola en Fetas Vacio CENTENARIO 200 gr,centenario,competencia,431,,,,,,,tiendainglesa,410248,"https://www.tiendainglesa.com.uy/supermercado/bondiola-en-fetas-vacio-centenario-200-gr.producto?410248,,42"
-Butifarra CENTENARIO x 2 Unidades,centenario,competencia,290,,,,,,,tiendainglesa,394746,"https://www.tiendainglesa.com.uy/supermercado/butifarra-centenario-x-2-unidades.producto?394746,,42"
-Cabernet Sauvignon Reserva CENTENARIO Tinto,centenario,competencia,552,650,,,,,,disco,560426,https://www.disco.com.uy/product/cabernet-sauvignon-reserva-centenario-tinto/560426
-Carré de cerdo al natural CENTENARIO en fetas 200 g,centenario,competencia,204,240,,,,,,disco,300450,https://www.disco.com.uy/product/carre-de-cerdo-al-natural-centenario-en-fetas-200-g/300450
+Cabernet Sauvignon Reserva CENTENARIO Tinto,centenario,competencia,650,,,,,,,disco,560426,https://www.disco.com.uy/product/cabernet-sauvignon-reserva-centenario-tinto/560426
+Carré de cerdo al natural CENTENARIO en fetas 200 g,centenario,competencia,240,,,,,,,disco,300450,https://www.disco.com.uy/product/carre-de-cerdo-al-natural-centenario-en-fetas-200-g/300450
 Chorizo Centenario Cheddar Bacon 3Un,centenario,competencia,787,787,,,,,,eldorado,18603,https://www.eldorado.com.uy/chorizo-centenario-cheddar-bacon-3un/p
 Chorizo Centenario Extra 3 Un Al Vacio,centenario,competencia,789,789,,,,,,eldorado,16993,https://www.eldorado.com.uy/chorizo-centenario-extra-3-un-al-vacio/p
 Chorizo Centenario Extra Speto A/V Kg,centenario,competencia,755,755,,,,,,eldorado,50466,https://www.eldorado.com.uy/chorizo-centenario-extra-speto-a-v-kg/p
-Chorizo CENTENARIO Extra XL al Vacío x 2 Unidades,centenario,competencia,238,340,,,,,,tiendainglesa,1017086,"https://www.tiendainglesa.com.uy/supermercado/chorizo-centenario-extra-xl-al-vacio-x-2-unidades.producto?1017086,,42"
 Chorizo Cheddar Bacon 3 U,centenario,competencia,279,279,,,,,,tata,136896,https://www.tata.com.uy/chorizo-cheddar-bacon-3-u-2-136896/p
-Chorizo Cheddar Bacon al Vacío CENTENARIO x 3 Unidades,centenario,competencia,223,319,,,,,,tiendainglesa,417422,"https://www.tiendainglesa.com.uy/supermercado/chorizo-cheddar-bacon-al-vacio-centenario-x-3-unidades.producto?417422,,42"
-Chorizo Espeto al Vacío x 6 CENTENARIO,centenario,competencia,212,249,,,,,,disco,333845,https://www.disco.com.uy/product/chorizo-espeto-al-vacio-x-6-centenario/333845
+Chorizo Espeto al Vacío x 6 CENTENARIO,centenario,competencia,249,,,,,,,disco,333845,https://www.disco.com.uy/product/chorizo-espeto-al-vacio-x-6-centenario/333845
 Chorizo Extra Ahumado Centenario 3 U,centenario,competencia,279,279,,,,,,tata,136895,https://www.tata.com.uy/chorizo-extra-ahumado-centenario-3-u-136895/p
 Chorizo Extra Centenario 1 Kg,centenario,competencia,639,639,,,,,,tata,173681,https://www.tata.com.uy/chorizo-extra-centenario-1-kg-1000581363-173681/p
 Chorizo Extra Centenario 3 U,centenario,competencia,279,279,,,,,,tata,136892,https://www.tata.com.uy/chorizo-extra-centenario-3-u-136892/p
-Chorizo Extra CENTENARIO a/v x 3 un.,centenario,competencia,212,249,,,,,,disco,333837,https://www.disco.com.uy/product/chorizo-extra-centenario-a-v-x-3-un/333837
-Chorizo Extra CENTENARIO x 120 g,centenario,competencia,76,749,,,,,,disco,301218,https://www.disco.com.uy/product/chorizo-extra-centenario-x-120-g/301218
-Chorizo Extra CENTENARIO xl a/v x 2,centenario,competencia,212,249,,,,,,disco,333844,https://www.disco.com.uy/product/chorizo-extra-centenario-xl-a-v-x-2/333844
-Chorizo Extra Espeto CENTENARIO 6 Unidades,centenario,competencia,217,310,,,,,,tiendainglesa,1002414,"https://www.tiendainglesa.com.uy/supermercado/chorizo-extra-espeto-centenario-6-unidades.producto?1002414,,42"
-Chorizo extra sin sal a/ v x 2 CENTENARIO,centenario,competencia,178,209,,,,,,disco,333846,https://www.disco.com.uy/product/chorizo-extra-sin-sal-a-v-x-2-centenario/333846
+Chorizo Extra CENTENARIO a/v x 3 un.,centenario,competencia,249,,,,,,,disco,333837,https://www.disco.com.uy/product/chorizo-extra-centenario-a-v-x-3-un/333837
+Chorizo Extra CENTENARIO x 120 g,centenario,competencia,90,749,,,,,,disco,301218,https://www.disco.com.uy/product/chorizo-extra-centenario-x-120-g/301218
+Chorizo Extra CENTENARIO xl a/v x 2,centenario,competencia,249,,,,,,,disco,333844,https://www.disco.com.uy/product/chorizo-extra-centenario-xl-a-v-x-2/333844
+Chorizo extra sin sal a/ v x 2 CENTENARIO,centenario,competencia,209,,,,,,,disco,333846,https://www.disco.com.uy/product/chorizo-extra-sin-sal-a-v-x-2-centenario/333846
 Chorizo Puro Cerdo Centenario Al VacÃ­o 10 U 1.2 Kg,centenario,competencia,549,549,,,,,,tata,3864,https://www.tata.com.uy/chorizo-puro-cerdo-centenario-al-vacio-10-u-1-2-kg-1000056879-3864/p
 Chorizo Puro De Cerdo Centenario 3 U,centenario,competencia,219,219,,,,,,tata,136894,https://www.tata.com.uy/chorizo-puro-de-cerdo-centenario-3-u-136894/p
 Chorizos Centenario Extra Xl Al Vacio x 2U,centenario,competencia,278,299,,,,,,tata,154805,https://www.tata.com.uy/chorizos-centenario-extra-xl-al-vacio-x-2u-154805/p
-Chorizos Extra CENTENARIO (Kg),centenario,competencia,630,780,,,,,,tiendainglesa,3010,"https://www.tiendainglesa.com.uy/supermercado/chorizos-extra-centenario-kg.producto?3010,,42"
-Chorizos Extra CENTENARIO x 3 Unidades,centenario,competencia,223,319,,,,,,tiendainglesa,412770,"https://www.tiendainglesa.com.uy/supermercado/chorizos-extra-centenario-x-3-unidades.producto?412770,,42"
-Chorizos Mix Degustación CENTENARIO,centenario,competencia,413,590,,,,,,tiendainglesa,420400,"https://www.tiendainglesa.com.uy/supermercado/chorizos-mix-degustacion-centenario.producto?420400,,42"
 Fiambre De Cerdo Etiqueta Roja Centenario 1 Kg,centenario,competencia,390,390,,,,,,tata,164729,https://www.tata.com.uy/fiambre-de-cerdo-etiqueta-roja-centenario-1-kg-164729/p
-Finceta CENTENARIO (Kg),centenario,competencia,860,,,,,,,tiendainglesa,102919,"https://www.tiendainglesa.com.uy/supermercado/finceta-centenario-kg.producto?102919,,42"
-Franfruter Extra CENTENARIO x 24 Unidades,centenario,competencia,660,,,,,,,tiendainglesa,371779,"https://www.tiendainglesa.com.uy/supermercado/franfruter-extra-centenario-x-24-unidades.producto?371779,,42"
 Frankfurter Centenario Extra 8 Unidades,centenario,competencia,289.9,289.9,,,,,,eldorado,7213,https://www.eldorado.com.uy/frankfurter-centenario-extra-8-unidades/p
-Frankfurters CENTENARIO x 8 Unidades,centenario,competencia,239,,,,,,,tiendainglesa,1018621,"https://www.tiendainglesa.com.uy/supermercado/frankfurters-centenario-x-8-unidades.producto?1018621,,42"
-Frankfurters Livianitos Envasados al Vacío CENTENARIO x 4 Unidades,centenario,competencia,130,,,,,,,tiendainglesa,290,"https://www.tiendainglesa.com.uy/supermercado/frankfurters-livianitos-envasados-al-vacio-centenario-x-4-unidades.producto?290,,42"
-Hamburguesa Extra CENTENARIO (2 un.),centenario,competencia,105,,,,,,,tiendainglesa,1022410,"https://www.tiendainglesa.com.uy/supermercado/hamburguesa-extra-centenario-2-un..producto?1022410,,42"
 Hamburguesas Extra 100% Vacuna Congelada Centenario 167 g,centenario,competencia,79,95,,,,,,tata,171396,https://www.tata.com.uy/hamburguesas-extra-100--vacuna-congelada-centenario-167-gr-1000570025-171396/p
-Hummus Ajo y Limón DE LA PLANTA 175 g,centenario,competencia,183,215,,,,,,disco,379671,https://www.disco.com.uy/product/hummus-ajo-y-limon-de-la-planta-175-g/379671
+Hummus Ajo y Limón DE LA PLANTA 175 g,centenario,competencia,215,,,,,,,disco,379671,https://www.disco.com.uy/product/hummus-ajo-y-limon-de-la-planta-175-g/379671
 Hummus Clasico Centenario De La Planta 175 Gr,centenario,competencia,219,219,,,,,,tata,162376,https://www.tata.com.uy/hummus-clasico-centenario-de-la-planta-175-gr-162376/p
-Hummus Clásico DE LA PLANTA 175 g,centenario,competencia,183,215,,,,,,disco,379670,https://www.disco.com.uy/product/hummus-clasico-de-la-planta-175-g/379670
-Hummus Pimentón Ahumado DE LA PLANTA 175 g,centenario,competencia,183,215,,,,,,disco,379672,https://www.disco.com.uy/product/hummus-pimenton-ahumado-de-la-planta-175-g/379672
-Húngaro bastón CENTENARIO 500g,centenario,competencia,441,519,,,,,,disco,302102,https://www.disco.com.uy/product/hungaro-baston-centenario-500g/302102
-Húngaro Salame CENTENARIO Envasado al Vacío 220 g,centenario,competencia,230,,,,,,,tiendainglesa,345138,"https://www.tiendainglesa.com.uy/supermercado/hungaro-salame-centenario-envasado-al-vacio-220-g.producto?345138,,42"
+Hummus Clásico DE LA PLANTA 175 g,centenario,competencia,215,,,,,,,disco,379670,https://www.disco.com.uy/product/hummus-clasico-de-la-planta-175-g/379670
+Hummus Pimentón Ahumado DE LA PLANTA 175 g,centenario,competencia,215,,,,,,,disco,379672,https://www.disco.com.uy/product/hummus-pimenton-ahumado-de-la-planta-175-g/379672
+Húngaro bastón CENTENARIO 500g,centenario,competencia,519,,,,,,,disco,302102,https://www.disco.com.uy/product/hungaro-baston-centenario-500g/302102
 Jamon Centenario Cocido Extra Etiqueta Negra 200Gr,centenario,competencia,159,159,,,,,,eldorado,7215,https://www.eldorado.com.uy/jamon-centenario-cocido-extra-etiqueta-negra-200gr/p
 Jamon Centenario De Cerdo E/Negra Kg,centenario,competencia,737,737,,,,,,eldorado,2618,https://www.eldorado.com.uy/jamon-centenario-de-cerdo-e-negra-kg/p
 Jamon Centenario Dorado A/V Kg,centenario,competencia,572.05,673,,,,,,eldorado,50397,https://www.eldorado.com.uy/jamon-centenario-dorado-a-v-kg/p
 Jamon Centenario Dorado Fetas A/V 200gr,centenario,competencia,183,183,,,,,,eldorado,50398,https://www.eldorado.com.uy/jamon-centenario-dorado-fetas-a-v-200gr/p
-Jamón CENTENARIO Etiqueta Negra Envasado al Vacío 200 gr,centenario,competencia,235,,,,,,,tiendainglesa,410251,"https://www.tiendainglesa.com.uy/supermercado/jamon-centenario-etiqueta-negra-envasado-al-vacio-200-gr.producto?410251,,42"
-Jamón CENTENARIO Magro Etiqueta Dorada (Kg),centenario,competencia,504,720,,,,,,tiendainglesa,329882,"https://www.tiendainglesa.com.uy/supermercado/jamon-centenario-magro-etiqueta-dorada-kg.producto?329882,,42"
-Jamón cocido al natural CENTENARIO en Fetas 200 g,centenario,competencia,204,240,,,,,,disco,300434,https://www.disco.com.uy/product/jamon-cocido-al-natural-centenario-en-fetas-200-g/300434
-Jamón Cocido CENTENARIO Etiqueta Negra (Kg),centenario,competencia,650,,,,,,,tiendainglesa,129,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-centenario-etiqueta-negra-kg.producto?129,,42"
-Jamón Cocido Etiqueta Azul CENTENARIO (Kg),centenario,competencia,854,1220,,,,,,tiendainglesa,4115,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-etiqueta-azul-centenario-kg.producto?4115,,42"
+Jamón cocido al natural CENTENARIO en Fetas 200 g,centenario,competencia,240,,,,,,,disco,300434,https://www.disco.com.uy/product/jamon-cocido-al-natural-centenario-en-fetas-200-g/300434
 Jamón Cocido Extra Centenario Etiqueta Azul 100 G,centenario,competencia,121,1210,,,,,,tata,7899,https://www.tata.com.uy/jamon-cocido-extra-centenario-etiqueta-azul-100-g-7899/p
-Jamón cocido extra Etiqueta Azul CENTENARIO atmósfera controlada x 250 g,centenario,competencia,246,1160,,,,,,disco,300702,https://www.disco.com.uy/product/jamon-cocido-extra-etiqueta-azul-centenario-atmosfera-controlada-x-250-g/300702
-Jamón Cocido Extra Etiqueta Azul CENTENARIO feteado,centenario,competencia,253,1190,,,,,,disco,300296,https://www.disco.com.uy/product/jamon-cocido-extra-etiqueta-azul-centenario-feteado/300296
-Jamón Cocido Extra Etiqueta Azul CENTENARIO x 50 g,centenario,competencia,49,1160,,,,,,disco,362212,https://www.disco.com.uy/product/jamon-cocido-extra-etiqueta-azul-centenario-x-50-g/362212
+Jamón cocido extra Etiqueta Azul CENTENARIO atmósfera controlada x 250 g,centenario,competencia,290,1160,,,,,,disco,300702,https://www.disco.com.uy/product/jamon-cocido-extra-etiqueta-azul-centenario-atmosfera-controlada-x-250-g/300702
+Jamón Cocido Extra Etiqueta Azul CENTENARIO feteado,centenario,competencia,298,1190,,,,,,disco,300296,https://www.disco.com.uy/product/jamon-cocido-extra-etiqueta-azul-centenario-feteado/300296
+Jamón Cocido Extra Etiqueta Azul CENTENARIO x 50 g,centenario,competencia,58,1160,,,,,,disco,362212,https://www.disco.com.uy/product/jamon-cocido-extra-etiqueta-azul-centenario-x-50-g/362212
 Jamón Cocido Magro Centenario Et.Dora 100 G,centenario,competencia,74,740,,,,,,tata,7857,https://www.tata.com.uy/jamon-cocido-magro-centenario-et-dora-100-g-7857/p
-Jamón cocido magro CENTENARIO fet. (mldo).,centenario,competencia,645,759,,,,,,disco,300215,https://www.disco.com.uy/product/jamon-cocido-magro-centenario-fet-mldo/300215
-Jamón cocido magro CENTENARIO feteado a/c,centenario,competencia,156,729,,,,,,disco,300214,https://www.disco.com.uy/product/jamon-cocido-magro-centenario-feteado-a-c/300214
-Jamón cocido magro Etiqueta Dorada CENTENARIO x 50 g,centenario,competencia,30,690,,,,,,disco,300276,https://www.disco.com.uy/product/jamon-cocido-magro-etiqueta-dorada-centenario-x-50-g/300276
-Jamón Crudo CENTENARIO (Kg),centenario,competencia,1730,,,,,,,tiendainglesa,1018223,"https://www.tiendainglesa.com.uy/supermercado/jamon-crudo-centenario-kg.producto?1018223,,42"
-Jamón Crudo Serrano CENTENARIO Feteado Atm. Controlada x kg,centenario,competencia,1352,1590,,,,,,disco,301558,https://www.disco.com.uy/product/jamon-crudo-serrano-centenario-feteado-atm-controlada-x-kg/301558
-Jamón Crudo Serrano CENTENARIO x kg,centenario,competencia,68,1590,,,,,,disco,301524,https://www.disco.com.uy/product/jamon-crudo-serrano-centenario-x-kg/301524
+Jamón cocido magro CENTENARIO fet. (mldo).,centenario,competencia,759,,,,,,,disco,300215,https://www.disco.com.uy/product/jamon-cocido-magro-centenario-fet-mldo/300215
+Jamón cocido magro CENTENARIO feteado a/c,centenario,competencia,183,,,,,,,disco,300214,https://www.disco.com.uy/product/jamon-cocido-magro-centenario-feteado-a-c/300214
+Jamón cocido magro Etiqueta Dorada CENTENARIO x 50 g,centenario,competencia,35,690,,,,,,disco,300276,https://www.disco.com.uy/product/jamon-cocido-magro-etiqueta-dorada-centenario-x-50-g/300276
+Jamón Crudo Serrano CENTENARIO Feteado Atm. Controlada x kg,centenario,competencia,1590,,,,,,,disco,301558,https://www.disco.com.uy/product/jamon-crudo-serrano-centenario-feteado-atm-controlada-x-kg/301558
+Jamón Crudo Serrano CENTENARIO x kg,centenario,competencia,80,1590,,,,,,disco,301524,https://www.disco.com.uy/product/jamon-crudo-serrano-centenario-x-kg/301524
 Jamón Extra Etiqueta Negra Centenario 200 G,centenario,competencia,225,225,,,,,,tata,19502,https://www.tata.com.uy/jamon-extra-etiqueta-negra-centenario-200-g-19502/p
 Jamón Magro Al Vacío Centenario,centenario,competencia,129.93,710,,,,,,tata,13258,https://www.tata.com.uy/jamon-magro-al-vacio-centenario-13258/p
 Leonesa Fantasia Centenario 100 G,centenario,competencia,59,590,,,,,,tata,50748,https://www.tata.com.uy/leonesa-fantasia-centenario-100-g-50748/p
-Leonesa Fantasía Frigorifico CENTENARIO x 50 g,centenario,competencia,26,600,,,,,,disco,362815,https://www.disco.com.uy/product/leonesa-fantasia-frigorifico-centenario-x-50-g/362815
+Leonesa Fantasía Frigorifico CENTENARIO x 50 g,centenario,competencia,30,600,,,,,,disco,362815,https://www.disco.com.uy/product/leonesa-fantasia-frigorifico-centenario-x-50-g/362815
 Leonesa Premium Centenario 100 G,centenario,competencia,55,550,,,,,,tata,50749,https://www.tata.com.uy/leonesa-premium-centenario-100-g-2-50749/p
 Lomito Canadiense Centenario 100 G,centenario,competencia,98,980,,,,,,tata,7903,https://www.tata.com.uy/lomito-canadiense-centenario-100-g-7903/p
-Lomito Canadiense CENTENARIO x 50 g,centenario,competencia,33,780,,,,,,disco,362930,https://www.disco.com.uy/product/lomito-canadiense-centenario-x-50-g/362930
-Lomito Serrano CENTENARIO x kg,centenario,competencia,113,1330,,,,,,disco,300673,https://www.disco.com.uy/product/lomito-serrano-centenario-x-kg/300673
+Lomito Canadiense CENTENARIO x 50 g,centenario,competencia,39,780,,,,,,disco,362930,https://www.disco.com.uy/product/lomito-canadiense-centenario-x-50-g/362930
+Lomito Serrano CENTENARIO x kg,centenario,competencia,133,1330,,,,,,disco,300673,https://www.disco.com.uy/product/lomito-serrano-centenario-x-kg/300673
 Lomito Serrano En Fetas Centenario 200 G,centenario,competencia,380,380,,,,,,tata,22509,https://www.tata.com.uy/lomito-serrano-en-fetas-centenario-200-g-22509/p
-Lomito Serrano Feteado CENTENARIO 200 gr,centenario,competencia,431,,,,,,,tiendainglesa,410249,"https://www.tiendainglesa.com.uy/supermercado/lomito-serrano-feteado-centenario-200-gr.producto?410249,,42"
 Lomo Canadiense Al Vacío Centenario 200 G,centenario,competencia,269,269,,,,,,tata,16422,https://www.tata.com.uy/lomo-canadiense-al-vacio-centenario-200-g-16422/p
-Lomo Canadiense CENTENARIO Vacio 200 gr,centenario,competencia,339,,,,,,,tiendainglesa,410253,"https://www.tiendainglesa.com.uy/supermercado/lomo-canadiense-centenario-vacio-200-gr.producto?410253,,42"
 Longaniza Ahumada Centenario 180 G,centenario,competencia,299,299,,,,,,tata,119929,https://www.tata.com.uy/longaniza-ahumada-centenario-180-g-119929/p
-Longaniza Ahumada CENTENARIO A/V 230 g,centenario,competencia,254,299,,,,,,disco,302104,https://www.disco.com.uy/product/longaniza-ahumada-centenario-a-v-230-g/302104
+Longaniza Ahumada CENTENARIO A/V 230 g,centenario,competencia,299,,,,,,,disco,302104,https://www.disco.com.uy/product/longaniza-ahumada-centenario-a-v-230-g/302104
 Longaniza Al Vacío Centenario 230 gr,centenario,competencia,299,299,,,,,,tata,16419,https://www.tata.com.uy/longaniza-al-vacio-centenario-230-gr-16419/p
-Malbec Reserva CENTENARIO Tinto,centenario,competencia,459,540,,,,,,disco,562305,https://www.disco.com.uy/product/malbec-reserva-centenario-tinto/562305
-Morcillas CENTENARIO al Vacío Dulces x 2 Unidades,centenario,competencia,250,,,,,,,tiendainglesa,345137,"https://www.tiendainglesa.com.uy/supermercado/morcillas-centenario-al-vacio-dulces-x-2-unidades.producto?345137,,42"
+Malbec Reserva CENTENARIO Tinto,centenario,competencia,540,,,,,,,disco,562305,https://www.disco.com.uy/product/malbec-reserva-centenario-tinto/562305
 Mortadela Centenario Arizona Bocha Kg,centenario,competencia,215,215,,,,,,eldorado,47708,https://www.eldorado.com.uy/mortadela-centenario-arizona-bocha-kg/p
 Mortadela Centenario Bocha Kg,centenario,competencia,497,497,,,,,,eldorado,1867,https://www.eldorado.com.uy/mortadela-centenario-bocha-kg/p
-Mortadela con Morrón CENTENARIO (Kg),centenario,competencia,730,,,,,,,tiendainglesa,30279,"https://www.tiendainglesa.com.uy/supermercado/mortadela-con-morron-centenario-kg.producto?30279,,42"
-Pack Frankfurter Extra CENTENARIO x 8 Unidades + 4 Unidades Extra,centenario,competencia,300,,,,,,,tiendainglesa,102421,"https://www.tiendainglesa.com.uy/supermercado/pack-frankfurter-extra-centenario-x-8-unidades-mas-4-unidades-extra.producto?102421,,42"
-Pack frankfurters livianitos CENTENARIO 8+4,centenario,competencia,212,249,,,,,,disco,300500,https://www.disco.com.uy/product/pack-frankfurters-livianitos-centenario-8-4/300500
-Pack Olla 2 Chorizos Ahumados CENTENARIO + 1 Trozo de Panceta,centenario,competencia,399,,,,,,,tiendainglesa,386059,"https://www.tiendainglesa.com.uy/supermercado/pack-olla-2-chorizos-ahumados-centenario-mas-1-trozo-de-panceta.producto?386059,,42"
+Pack frankfurters livianitos CENTENARIO 8+4,centenario,competencia,249,,,,,,,disco,300500,https://www.disco.com.uy/product/pack-frankfurters-livianitos-centenario-8-4/300500
 Pack Parrilla 3 Chorizos Puro Cerdo + 2 Morcillas Saladas Centenario,centenario,competencia,339,339,,,,,,tata,172042,https://www.tata.com.uy/pack-parrilla-3-chorizos-puro-cerdo---2-morcillas-saladas-centenario-1000582125-172042/p
 Pack Paté Jamón + Lengua Centenario,centenario,competencia,189,189,,,,,,tata,3896,https://www.tata.com.uy/pack-pate-jamon---lengua-centenario-3896/p
-Pack Paté Jamón + Lengua CENTENARIO,centenario,competencia,200,,,,,,,tiendainglesa,329890,"https://www.tiendainglesa.com.uy/supermercado/pack-pate-jamon-mas-lengua-centenario.producto?329890,,42"
-Pack pate jamón y lengua CENTENARIO 320 g,centenario,competencia,157,185,,,,,,disco,300348,https://www.disco.com.uy/product/pack-pate-jamon-y-lengua-centenario-320-g/300348
-Pack x 3 Hummus De La Planta CENTENARIO,centenario,competencia,573,674,,,,,,disco,379701,https://www.disco.com.uy/product/pack-x-3-hummus-de-la-planta-centenario/379701
+Pack pate jamón y lengua CENTENARIO 320 g,centenario,competencia,185,,,,,,,disco,300348,https://www.disco.com.uy/product/pack-pate-jamon-y-lengua-centenario-320-g/300348
+Pack x 3 Hummus De La Planta CENTENARIO,centenario,competencia,674,,,,,,,disco,379701,https://www.disco.com.uy/product/pack-x-3-hummus-de-la-planta-centenario/379701
 Panceta Ahumada Centenario Bacon 100 G,centenario,competencia,76,760,,,,,,tata,7886,https://www.tata.com.uy/panceta-ahumada-centenario-bacon-100-g-7886/p
-Panceta ahumada en trozo al vacio CENTENARIO kg,centenario,competencia,134,789,,,,,,disco,300407,https://www.disco.com.uy/product/panceta-ahumada-en-trozo-al-vacio-centenario-kg/300407
+Panceta ahumada en trozo al vacio CENTENARIO kg,centenario,competencia,158,789,,,,,,disco,300407,https://www.disco.com.uy/product/panceta-ahumada-en-trozo-al-vacio-centenario-kg/300407
 Panceta Centenario Ahumada Bacon Kg,centenario,competencia,715,715,,,,,,eldorado,10569,https://www.eldorado.com.uy/panceta-centenario-ahumada-bacon-kg/p
 Panceta Centenario Vacío 200 g,centenario,competencia,249,249,,,,,,tata,16423,https://www.tata.com.uy/panceta-centenario-vacio-200-g-1000180142-16423/p
-Panceta CENTENARIO Vacio 200 gr,centenario,competencia,308,,,,,,,tiendainglesa,410254,"https://www.tiendainglesa.com.uy/supermercado/panceta-centenario-vacio-200-gr.producto?410254,,42"
-Panceta Especial CENTENARIO,centenario,competencia,980,,,,,,,tiendainglesa,399623,"https://www.tiendainglesa.com.uy/supermercado/panceta-especial-centenario.producto?399623,,42"
-Panceta tipo bacon CENTENARIO x Kg,centenario,competencia,31,740,,,,,,disco,301457,https://www.disco.com.uy/product/panceta-tipo-bacon-centenario-x-kg/301457
-Panchos Livianitos Centenario 4 un.,centenario,competencia,101,119,,,,,,disco,301731,https://www.disco.com.uy/product/panchos-livianitos-centenario-4-un/301731
+Panceta tipo bacon CENTENARIO x Kg,centenario,competencia,37,740,,,,,,disco,301457,https://www.disco.com.uy/product/panceta-tipo-bacon-centenario-x-kg/301457
+Panchos Livianitos Centenario 4 un.,centenario,competencia,119,,,,,,,disco,301731,https://www.disco.com.uy/product/panchos-livianitos-centenario-4-un/301731
 Pate Centenario Jamon Un + Uno Lengua,centenario,competencia,169.9,169.9,,,,,,eldorado,7948,https://www.eldorado.com.uy/pate-centenario-jamon-un-uno-lengua/p
 Pechuga De Pollo Ahumada Centenario,centenario,competencia,810,810,,,,,,tata,152428,https://www.tata.com.uy/pechuga-de-pollo-ahumada-centenario-1000417280-152428/p
-Pechuga de pollo al natural CENTENARIO en fetas 200 g,centenario,competencia,204,240,,,,,,disco,300971,https://www.disco.com.uy/product/pechuga-de-pollo-al-natural-centenario-en-fetas-200-g/300971
-Pernil de Cerdo al Natural CENTENARIO 200 gr,centenario,competencia,260,,,,,,,tiendainglesa,419040,"https://www.tiendainglesa.com.uy/supermercado/pernil-de-cerdo-al-natural-centenario-200-gr.producto?419040,,42"
+Pechuga de pollo al natural CENTENARIO en fetas 200 g,centenario,competencia,240,,,,,,,disco,300971,https://www.disco.com.uy/product/pechuga-de-pollo-al-natural-centenario-en-fetas-200-g/300971
 Picadito Hungaro S/P Centenario 100 G,centenario,competencia,135,135,,,,,,tata,16426,https://www.tata.com.uy/picadito-hungaro-s-p-centenario-100-g-16426/p
 Picadito Longaniza Sin Piel Centenario 100 G,centenario,competencia,135,135,,,,,,tata,16425,https://www.tata.com.uy/picadito-longaniza-sin-piel-centenario-100-g-16425/p
-Picaditos de salame sin piel CENTENARIO 100 g,centenario,competencia,118,139,,,,,,disco,300172,https://www.disco.com.uy/product/picaditos-de-salame-sin-piel-centenario-100-g/300172
-Picaditos Húngaro CENTENARIO 100 gr,centenario,competencia,150,,,,,,,tiendainglesa,420105,"https://www.tiendainglesa.com.uy/supermercado/picaditos-hungaro-centenario-100-gr.producto?420105,,42"
-Picaditos húngaro sin piel CENTENARIO 100 g,centenario,competencia,118,139,,,,,,disco,300170,https://www.disco.com.uy/product/picaditos-hungaro-sin-piel-centenario-100-g/300170
-Picaditos longaniza sin piel CENTENARIO 100 g,centenario,competencia,118,139,,,,,,disco,300171,https://www.disco.com.uy/product/picaditos-longaniza-sin-piel-centenario-100-g/300171
+Picaditos de salame sin piel CENTENARIO 100 g,centenario,competencia,139,,,,,,,disco,300172,https://www.disco.com.uy/product/picaditos-de-salame-sin-piel-centenario-100-g/300172
+Picaditos húngaro sin piel CENTENARIO 100 g,centenario,competencia,139,,,,,,,disco,300170,https://www.disco.com.uy/product/picaditos-hungaro-sin-piel-centenario-100-g/300170
+Picaditos longaniza sin piel CENTENARIO 100 g,centenario,competencia,139,,,,,,,disco,300171,https://www.disco.com.uy/product/picaditos-longaniza-sin-piel-centenario-100-g/300171
 Picaditos Salamin Centenario 100 G,centenario,competencia,135,135,,,,,,tata,16424,https://www.tata.com.uy/picaditos-salamin-centenario-100-g-16424/p
 Pipa Al Vacío Centenario 180 G,centenario,competencia,299,299,,,,,,tata,16420,https://www.tata.com.uy/pipa-al-vacio-centenario-180-g-16420/p
-Pipa CENTENARIO al Vacío 220 g,centenario,competencia,250,,,,,,,tiendainglesa,345140,"https://www.tiendainglesa.com.uy/supermercado/pipa-centenario-al-vacio-220-g.producto?345140,,42"
 Promo Frankfurters Centenario 8U + 4U,centenario,competencia,269,269,,,,,,tata,118935,https://www.tata.com.uy/promo-frankfurters-centenario-8u---4u-118935/p
-Promo Pack Frankfurters Extra CENTENARIO 8+4 600 g,centenario,competencia,237,279,,,,,,disco,300293,https://www.disco.com.uy/product/promo-pack-frankfurters-extra-centenario-8-4-600-g/300293
+Promo Pack Frankfurters Extra CENTENARIO 8+4 600 g,centenario,competencia,279,,,,,,,disco,300293,https://www.disco.com.uy/product/promo-pack-frankfurters-extra-centenario-8-4-600-g/300293
 Queso Centenario Barra Danbo Kg,centenario,competencia,498.98,613,,,,,,eldorado,49012,https://www.eldorado.com.uy/queso-centenario-barra-danbo-kg/p
 Queso Centenario Barra Muzzarella Kg,centenario,competencia,607,607,,,,,,eldorado,49010,https://www.eldorado.com.uy/queso-centenario-barra-muzzarella-kg/p
 Queso Centenario Danbo Kg Al Vacio,centenario,competencia,657,657,,,,,,eldorado,50583,https://www.eldorado.com.uy/queso-centenario-danbo-kg-al-vacio/p
 Queso Dambo Centenario 100 g,centenario,competencia,65,650,,,,,,tata,164748,https://www.tata.com.uy/queso-dambo-centenario-100-g-1000506701-164748/p
-Queso Danbo CENTENARIO (Kg),centenario,competencia,640,,,,,,,tiendainglesa,1018618,"https://www.tiendainglesa.com.uy/supermercado/queso-danbo-centenario-kg.producto?1018618,,42"
-Queso Danbo CENTENARIO kg,centenario,competencia,50,590,,,,,,disco,270319,https://www.disco.com.uy/product/queso-danbo-centenario-kg/270319
-Queso Muzzarella CENTENARIO (Kg),centenario,competencia,590,,,,,,,tiendainglesa,78478,"https://www.tiendainglesa.com.uy/supermercado/queso-muzzarella-centenario-kg.producto?78478,,42"
-Queso Muzzarella Centenario Kg,centenario,competencia,620,620,,,,,,tata,164749,https://www.tata.com.uy/queso-muzzarella-centenario-kg-164749/p
-Salame bastón CENTENARIO 500 g,centenario,competencia,441,519,,,,,,disco,302101,https://www.disco.com.uy/product/salame-baston-centenario-500-g/302101
-Salame Chacarero sin Piel CENTENARIO a/v - 200 g,centenario,competencia,195,229,,,,,,disco,301675,https://www.disco.com.uy/product/salame-chacarero-sin-piel-centenario-a-v-200-g/301675
+Queso Danbo CENTENARIO kg,centenario,competencia,59,590,,,,,,disco,270319,https://www.disco.com.uy/product/queso-danbo-centenario-kg/270319
+Queso Muzzarella Centenario Kg,centenario,competencia,550,620,,,,,,tata,164749,https://www.tata.com.uy/queso-muzzarella-centenario-kg-164749/p
+Salame bastón CENTENARIO 500 g,centenario,competencia,519,,,,,,,disco,302101,https://www.disco.com.uy/product/salame-baston-centenario-500-g/302101
+Salame Chacarero sin Piel CENTENARIO a/v - 200 g,centenario,competencia,229,,,,,,,disco,301675,https://www.disco.com.uy/product/salame-chacarero-sin-piel-centenario-a-v-200-g/301675
 Salame Hungaro Centenario Al VacÃ­o 180 G,centenario,competencia,299,299,,,,,,tata,3910,https://www.tata.com.uy/salame-hungaro-centenario-al-vacio-180-g-3910/p
-Salame Milan Centenario 200 G,centenario,competencia,258,258,,,,,,tata,19171,https://www.tata.com.uy/salame-milan-centenario-200-g-19171/p
-Salame Milán Plus CENTENARIO x kg,centenario,competencia,34,800,,,,,,disco,300399,https://www.disco.com.uy/product/salame-milan-plus-centenario-x-kg/300399
-Salame Pipa sin Piel CENTENARIO a/v - 200 g,centenario,competencia,195,229,,,,,,disco,301674,https://www.disco.com.uy/product/salame-pipa-sin-piel-centenario-a-v-200-g/301674
-Salamín Ahumado CENTENARIO 180 g,centenario,competencia,250,,,,,,,tiendainglesa,1004155,"https://www.tiendainglesa.com.uy/supermercado/salamin-ahumado-centenario-180-g.producto?1004155,,42"
-Salamín Ahumado CENTENARIO A/V 230 g,centenario,competencia,254,299,,,,,,disco,302103,https://www.disco.com.uy/product/salamin-ahumado-centenario-a-v-230-g/302103
+Salame Milan Centenario 200 G,centenario,competencia,340,340,,,,,,tata,19171,https://www.tata.com.uy/salame-milan-centenario-200-g-19171/p
+Salame Milán Plus CENTENARIO x kg,centenario,competencia,40,800,,,,,,disco,300399,https://www.disco.com.uy/product/salame-milan-plus-centenario-x-kg/300399
+Salame Pipa sin Piel CENTENARIO a/v - 200 g,centenario,competencia,229,,,,,,,disco,301674,https://www.disco.com.uy/product/salame-pipa-sin-piel-centenario-a-v-200-g/301674
+Salamín Ahumado CENTENARIO A/V 230 g,centenario,competencia,299,,,,,,,disco,302103,https://www.disco.com.uy/product/salamin-ahumado-centenario-a-v-230-g/302103
 Salamin Al Vacío Centenario 250 Gr,centenario,competencia,299,299,,,,,,tata,16421,https://www.tata.com.uy/salamin-al-vacio-centenario-250-gr-16421/p
 Salamin Bastón Al Vacío Sin Piel Centenario 520 Gr,centenario,competencia,526,526,,,,,,tata,11809,https://www.tata.com.uy/salamin-baston-al-vacio-sin-piel-centenario-520-gr-11809/p
-Salamín CENTENARIO al Vacío 220 g,centenario,competencia,230,,,,,,,tiendainglesa,345141,"https://www.tiendainglesa.com.uy/supermercado/salamin-centenario-al-vacio-220-g.producto?345141,,42"
-Salchicha Parrillera Envasado al Vacío CENTENARIO x 1 Unidad,centenario,competencia,930,,,,,,,tiendainglesa,30137,"https://www.tiendainglesa.com.uy/supermercado/salchicha-parrillera-envasado-al-vacio-centenario-x-1-unidad.producto?30137,,42"
-Salsa Barbacoa CENTENARIO 350 g,centenario,competencia,195,229,,,,,,disco,981164,https://www.disco.com.uy/product/salsa-barbacoa-centenario-350-g/981164
-Salsa Barbacoa CENTENARIO 350 g,centenario,competencia,275,,,,,,,tiendainglesa,1022411,"https://www.tiendainglesa.com.uy/supermercado/salsa-barbacoa-centenario-350-g.producto?1022411,,42"
-Salsa Picante Sweet Chili CENTENARIO 360 g,centenario,competencia,203,239,,,,,,disco,981163,https://www.disco.com.uy/product/salsa-picante-sweet-chili-centenario-360-g/981163
+Salsa Barbacoa CENTENARIO 350 g,centenario,competencia,229,,,,,,,disco,981164,https://www.disco.com.uy/product/salsa-barbacoa-centenario-350-g/981164
+Salsa Picante Sweet Chili CENTENARIO 360 g,centenario,competencia,239,,,,,,,disco,981163,https://www.disco.com.uy/product/salsa-picante-sweet-chili-centenario-360-g/981163
 Asado De Cerdo Al Vacío La Constancia 900 Gr,constancia,competencia,390.63,449,,,,,,tata,3844,https://www.tata.com.uy/asado-de-cerdo-al-vacio-la-constancia-900-gr-1000056820-3844/p
-Asado de cerdo LA CONSTANCIA al vacío x 800 g,constancia,competencia,330,485,,,,,,disco,341070,https://www.disco.com.uy/product/asado-de-cerdo-la-constancia-al-vacio-x-800-g/341070
-Asado de Cerdo LA CONSTANCIA Envasado al Vacío (Kg),constancia,competencia,659,,,,,,,tiendainglesa,93762,"https://www.tiendainglesa.com.uy/supermercado/asado-de-cerdo-la-constancia-envasado-al-vacio-kg.producto?93762,,42"
-Bondiola Envasada LA CONSTANCIA Envasado al Vacío (Kg),constancia,competencia,469,,,,,,,tiendainglesa,6191,"https://www.tiendainglesa.com.uy/supermercado/bondiola-envasada-la-constancia-envasado-al-vacio-kg.producto?6191,,42"
-Chacarero al vacío La Constancia x 200 g,constancia,competencia,151,889,,,,,,disco,300093,https://www.disco.com.uy/product/chacarero-al-vacio-la-constancia-x-200-g/300093
+Asado de cerdo LA CONSTANCIA al vacío x 800 g,constancia,competencia,388,,,,,,,disco,341070,https://www.disco.com.uy/product/asado-de-cerdo-la-constancia-al-vacio-x-800-g/341070
+Chacarero al vacío La Constancia x 200 g,constancia,competencia,178,889,,,,,,disco,300093,https://www.disco.com.uy/product/chacarero-al-vacio-la-constancia-x-200-g/300093
 Chorizo Colorado En Rueda La Constancia 1 Kg,constancia,competencia,489,489,,,,,,tata,3875,https://www.tata.com.uy/chorizo-colorado-en-rueda-la-constancia-1-kg-3875/p
 Chorizo Extra La Constancia 3 Ud,constancia,competencia,219,219,,,,,,tata,164707,https://www.tata.com.uy/chorizo-extra-la-constancia-3-ud-164707/p
 Chorizo Extra La Constancia En Rueda 1 Kg,constancia,competencia,449,449,,,,,,tata,172490,https://www.tata.com.uy/chorizo-extra-la-constancia-en-rueda-1-kg-1000581364-172490/p
-Chorizo Extra LA CONSTANCIA x 120g,constancia,competencia,53,515,,,,,,disco,372842,https://www.disco.com.uy/product/chorizo-extra-la-constancia-x-120g/372842
-Chorizo LA CONSTANCIA al vacío x 3 un. kg,constancia,competencia,170,569,,,,,,disco,331291,https://www.disco.com.uy/product/chorizo-la-constancia-al-vacio-x-3-un-kg/331291
+Chorizo Extra LA CONSTANCIA x 120g,constancia,competencia,62,515,,,,,,disco,372842,https://www.disco.com.uy/product/chorizo-extra-la-constancia-x-120g/372842
+Chorizo LA CONSTANCIA al vacío x 3 un. kg,constancia,competencia,200,569,,,,,,disco,331291,https://www.disco.com.uy/product/chorizo-la-constancia-al-vacio-x-3-un-kg/331291
 Chorizo La Constancia Casa Fuerte A/V Kg,constancia,competencia,334,334,,,,,,eldorado,53157,https://www.eldorado.com.uy/chorizo-la-constancia-casa-fuerte-a-v-kg/p
 Chorizo La Constancia En Rueda Colorado Tripa Natural,constancia,competencia,434,434,,,,,,eldorado,13856,https://www.eldorado.com.uy/chorizo-la-constancia-en-rueda-colorado-tripa-natural/p
 Chorizo La Constancia Extra Gancho Tripa Natural,constancia,competencia,509,509,,,,,,eldorado,15557,https://www.eldorado.com.uy/chorizo-la-constancia-extra-gancho-tripa-natural/p
-Chorizos LA CONSTANCIA Envasado al Vacío x 2 Unidades,constancia,competencia,555,,,,,,,tiendainglesa,26733,"https://www.tiendainglesa.com.uy/supermercado/chorizos-la-constancia-envasado-al-vacio-x-2-unidades.producto?26733,,42"
-Colita de cuadril de cerdo LA CONSTANCIA x 800 g,constancia,competencia,330,485,,,,,,disco,334109,https://www.disco.com.uy/product/colita-de-cuadril-de-cerdo-la-constancia-x-800-g/334109
-Costillas de Cerdo Kassler LA CONSTANCIA Envasado al Vacío (Kg),constancia,competencia,830,,,,,,,tiendainglesa,6292,"https://www.tiendainglesa.com.uy/supermercado/costillas-de-cerdo-kassler-la-constancia-envasado-al-vacio-kg.producto?6292,,42"
+Colita de cuadril de cerdo LA CONSTANCIA x 800 g,constancia,competencia,388,,,,,,,disco,334109,https://www.disco.com.uy/product/colita-de-cuadril-de-cerdo-la-constancia-x-800-g/334109
 Jamón Cocido Extra La Constancia 100 G,constancia,competencia,95,950,,,,,,tata,7898,https://www.tata.com.uy/jamon-cocido-extra-la-constancia-100-g-7898/p
-Jamón Cocido extra LA CONSTANCIA x 50 g,constancia,competencia,37,870,,,,,,disco,300292,https://www.disco.com.uy/product/jamon-cocido-extra-la-constancia-x-50-g/300292
-Jamón Cocido LA CONSTANCIA (Kg),constancia,competencia,700,,,,,,,tiendainglesa,5705,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-la-constancia-kg.producto?5705,,42"
-Jamón Cocido La Constancia 100 G,constancia,competencia,59,590,,,,,,tata,7855,https://www.tata.com.uy/jamon-cocido-la-constancia-100-g-7855/p
-Jamón Cocido LA CONSTANCIA x 50 g,constancia,competencia,27,640,,,,,,disco,362206,https://www.disco.com.uy/product/jamon-cocido-la-constancia-x-50-g/362206
+Jamón Cocido extra LA CONSTANCIA x 50 g,constancia,competencia,44,870,,,,,,disco,300292,https://www.disco.com.uy/product/jamon-cocido-extra-la-constancia-x-50-g/300292
+Jamón Cocido La Constancia 100 G,constancia,competencia,52,590,,,,,,tata,7855,https://www.tata.com.uy/jamon-cocido-la-constancia-100-g-7855/p
+Jamón Cocido LA CONSTANCIA x 50 g,constancia,competencia,32,640,,,,,,disco,362206,https://www.disco.com.uy/product/jamon-cocido-la-constancia-x-50-g/362206
 Jamón De Cerdo La Constancia Kg,constancia,competencia,199,199,,,,,,tata,164708,https://www.tata.com.uy/jamon-de-cerdo-la-constancia-kg-1000349385-164708/p
-Jamón Extra Gran LA CONSTANCIA (Kg),constancia,competencia,850,1030,,,,,,tiendainglesa,1018605,"https://www.tiendainglesa.com.uy/supermercado/jamon-extra-gran-la-constancia-kg.producto?1018605,,42"
-Jamón Extra Gran LA CONSTANCIA x kg,constancia,competencia,42,990,,,,,,disco,301708,https://www.disco.com.uy/product/jamon-extra-gran-la-constancia-x-kg/301708
-Jamón Extra LA CONSTANCIA (Kg),constancia,competencia,950,,,,,,,tiendainglesa,5704,"https://www.tiendainglesa.com.uy/supermercado/jamon-extra-la-constancia-kg.producto?5704,,42"
+Jamón Extra Gran LA CONSTANCIA x kg,constancia,competencia,50,990,,,,,,disco,301708,https://www.disco.com.uy/product/jamon-extra-gran-la-constancia-x-kg/301708
 Jamon Extra La Constancia Ahumado Pernil KG,constancia,competencia,589,589,,,,,,eldorado,6995,https://www.eldorado.com.uy/jamon-extra-la-constancia-ahumado-pernil-kg/p
 Jamon La Constancia Cocido Kg,constancia,competencia,691,691,,,,,,eldorado,1202,https://www.eldorado.com.uy/jamon-la-constancia-cocido-kg/p
 Jamon La Constancia Extra Kg,constancia,competencia,790,790,,,,,,eldorado,22087,https://www.eldorado.com.uy/jamon-la-constancia-extra-kg/p
-Jamón LA CONSTANCIA Pernil (Kg),constancia,competencia,950,,,,,,,tiendainglesa,4607,"https://www.tiendainglesa.com.uy/supermercado/jamon-la-constancia-pernil-kg.producto?4607,,42"
 Kassler La Constancia 350 Gr,constancia,competencia,230.65,659,,,,,,tata,3845,https://www.tata.com.uy/kassler-la-constancia-350-gr-3845/p
-Kassler LA CONSTANCIA x 350 g,constancia,competencia,226,759,,,,,,disco,362559,https://www.disco.com.uy/product/kassler-la-constancia-x-350-g/362559
+Kassler LA CONSTANCIA x 350 g,constancia,competencia,266,759,,,,,,disco,362559,https://www.disco.com.uy/product/kassler-la-constancia-x-350-g/362559
 Longaniza La Constancia Para Fetear 100 G,constancia,competencia,87,870,,,,,,tata,7847,https://www.tata.com.uy/longaniza-la-constancia-para-fetear-100-g-7847/p
-Longaniza La Constancia x 250 g,constancia,competencia,151,710,,,,,,disco,301804,https://www.disco.com.uy/product/longaniza-la-constancia-x-250-g/301804
-Longaniza pipa al vacío LA CONSTANCIA x 200 g,constancia,competencia,151,889,,,,,,disco,300092,https://www.disco.com.uy/product/longaniza-pipa-al-vacio-la-constancia-x-200-g/300092
-Longaniza pipa LA CONSTANCIA x 300 g,constancia,competencia,207,809,,,,,,disco,301805,https://www.disco.com.uy/product/longaniza-pipa-la-constancia-x-300-g/301805
+Longaniza La Constancia x 250 g,constancia,competencia,178,710,,,,,,disco,301804,https://www.disco.com.uy/product/longaniza-la-constancia-x-250-g/301804
+Longaniza pipa al vacío LA CONSTANCIA x 200 g,constancia,competencia,178,889,,,,,,disco,300092,https://www.disco.com.uy/product/longaniza-pipa-al-vacio-la-constancia-x-200-g/300092
+Longaniza pipa LA CONSTANCIA x 300 g,constancia,competencia,243,809,,,,,,disco,301805,https://www.disco.com.uy/product/longaniza-pipa-la-constancia-x-300-g/301805
 Matambrito De Cerdo A/V La Constancia 800 G,constancia,competencia,348.18,829,,,,,,tata,3842,https://www.tata.com.uy/matambrito-de-cerdo-a-v-la-constancia-800-g-3842/p
-Matambrito de Cerdo LA CONSTANCIA al vacío x 700 g,constancia,competencia,577,969,,,,,,disco,341560,https://www.disco.com.uy/product/matambrito-de-cerdo-la-constancia-al-vacio-x-700-g/341560
-Matambrito de Cerdo LA CONSTANCIA Envasado al Vacío (Kg),constancia,competencia,999,,,,,,,tiendainglesa,6211,"https://www.tiendainglesa.com.uy/supermercado/matambrito-de-cerdo-la-constancia-envasado-al-vacio-kg.producto?6211,,42"
-Matambrito de Cerdo Premium LA CONSTANCIA,constancia,competencia,999,,,,,,,tiendainglesa,1016100,"https://www.tiendainglesa.com.uy/supermercado/matambrito-de-cerdo-premium-la-constancia.producto?1016100,,42"
+Matambrito de Cerdo LA CONSTANCIA al vacío x 700 g,constancia,competencia,679,,,,,,,disco,341560,https://www.disco.com.uy/product/matambrito-de-cerdo-la-constancia-al-vacio-x-700-g/341560
 Matambrito La Constancia De Cerdo Kg,constancia,competencia,897,897,,,,,,eldorado,13968,https://www.eldorado.com.uy/matambrito-la-constancia-de-cerdo-kg/p
 Morcilla Dulce La Constancia Al Vacio X 2 U,constancia,competencia,139,139,,,,,,tata,152296,https://www.tata.com.uy/morcilla-dulce-la-constancia-al-vacio-x-2-u-152296/p
-Paleta La Constancia Cocida Kg,constancia,competencia,349,406,,,,,,eldorado,26320,https://www.eldorado.com.uy/paleta-la-constancia-cocida-kg/p
-Peceto de cerdo La Constancia un. x 800 g,constancia,competencia,330,485,,,,,,disco,300304,https://www.disco.com.uy/product/peceto-de-cerdo-la-constancia-un-x-800-g/300304
-Pechito de Cerdo LA CONSTANCIA Envasado al Vacío (Kg),constancia,competencia,559,,,,,,,tiendainglesa,93765,"https://www.tiendainglesa.com.uy/supermercado/pechito-de-cerdo-la-constancia-envasado-al-vacio-kg.producto?93765,,42"
-Pechito parrillero cerdo al vacío LA CONSTANCIA x 500 g,constancia,competencia,207,485,,,,,,disco,341565,https://www.disco.com.uy/product/pechito-parrillero-cerdo-al-vacio-la-constancia-x-500-g/341565
-Picaña de cerdo La Constancia al vacío x 1 kg,constancia,competencia,412,485,,,,,,disco,360110,https://www.disco.com.uy/product/picana-de-cerdo-la-constancia-al-vacio-x-1-kg/360110
-Pulpa de bondiola LA CONSTANCIA al vacio x 600 g,constancia,competencia,222,435,,,,,,disco,360185,https://www.disco.com.uy/product/pulpa-de-bondiola-la-constancia-al-vacio-x-600-g/360185
+Paleta La Constancia Cocida Kg,constancia,competencia,406,406,,,,,,eldorado,26320,https://www.eldorado.com.uy/paleta-la-constancia-cocida-kg/p
+Peceto de cerdo La Constancia un. x 800 g,constancia,competencia,388,,,,,,,disco,300304,https://www.disco.com.uy/product/peceto-de-cerdo-la-constancia-un-x-800-g/300304
+Pechito parrillero cerdo al vacío LA CONSTANCIA x 500 g,constancia,competencia,243,,,,,,,disco,341565,https://www.disco.com.uy/product/pechito-parrillero-cerdo-al-vacio-la-constancia-x-500-g/341565
+Picaña de cerdo La Constancia al vacío x 1 kg,constancia,competencia,485,,,,,,,disco,360110,https://www.disco.com.uy/product/picana-de-cerdo-la-constancia-al-vacio-x-1-kg/360110
+Pulpa de bondiola LA CONSTANCIA al vacio x 600 g,constancia,competencia,261,,,,,,,disco,360185,https://www.disco.com.uy/product/pulpa-de-bondiola-la-constancia-al-vacio-x-600-g/360185
 Queso de cerdo LA CONSTANCIA kg,constancia,competencia,75,300,,,,,,disco,301803,https://www.disco.com.uy/product/queso-de-cerdo-la-constancia-kg/301803
-Salame de Milán LA CONSTANCIA (Kg),constancia,competencia,690,840,,,,,,tiendainglesa,5841,"https://www.tiendainglesa.com.uy/supermercado/salame-de-milan-la-constancia-kg.producto?5841,,42"
-Salame finceta cortado al vacío LA CONSTANCIA x 200 g,constancia,competencia,153,899,,,,,,disco,351360,https://www.disco.com.uy/product/salame-finceta-cortado-al-vacio-la-constancia-x-200-g/351360
+Salame finceta cortado al vacío LA CONSTANCIA x 200 g,constancia,competencia,180,899,,,,,,disco,351360,https://www.disco.com.uy/product/salame-finceta-cortado-al-vacio-la-constancia-x-200-g/351360
 Salame La Constancia Milan Seco Tripa Arificial (1610820),constancia,competencia,753,753,,,,,,eldorado,1203,https://www.eldorado.com.uy/salame-la-constancia-milan-seco-tripa-arificial-1610820/p
 Salame Milan La Constancia 100 G,constancia,competencia,87,870,,,,,,tata,7890,https://www.tata.com.uy/salame-milan-la-constancia-100-g-7890/p
-Salame Milán LA CONSTANCIA atmósfera controlada x 250 g,constancia,competencia,181,850,,,,,,disco,300263,https://www.disco.com.uy/product/salame-milan-la-constancia-atmosfera-controlada-x-250-g/300263
-Salame Milán LA CONSTANCIA atmósfera controlada x 250 g,constancia,competencia,170,800,,,,,,disco,300989,https://www.disco.com.uy/product/salame-milan-la-constancia-atmosfera-controlada-x-250-g/300989
-Salame Milán LA CONSTANCIA x 50 g,constancia,competencia,34,800,,,,,,disco,366526,https://www.disco.com.uy/product/salame-milan-la-constancia-x-50-g/366526
-Salamín al vacío LA CONSTANCIA x 150 g,constancia,competencia,114,889,,,,,,disco,300091,https://www.disco.com.uy/product/salamin-al-vacio-la-constancia-x-150-g/300091
+Salame Milán LA CONSTANCIA atmósfera controlada x 250 g,constancia,competencia,213,850,,,,,,disco,300263,https://www.disco.com.uy/product/salame-milan-la-constancia-atmosfera-controlada-x-250-g/300263
+Salame Milán LA CONSTANCIA atmósfera controlada x 250 g,constancia,competencia,200,800,,,,,,disco,300989,https://www.disco.com.uy/product/salame-milan-la-constancia-atmosfera-controlada-x-250-g/300989
+Salame Milán LA CONSTANCIA x 50 g,constancia,competencia,40,800,,,,,,disco,366526,https://www.disco.com.uy/product/salame-milan-la-constancia-x-50-g/366526
+Salamín al vacío LA CONSTANCIA x 150 g,constancia,competencia,134,889,,,,,,disco,300091,https://www.disco.com.uy/product/salamin-al-vacio-la-constancia-x-150-g/300091
 Salamines La Constancia Vacio Kg,constancia,competencia,779,779,,,,,,eldorado,26322,https://www.eldorado.com.uy/salamines-la-constancia-vacio-kg/p
-Salamines LA CONSTANCIA x 250 g,constancia,competencia,178,839,,,,,,disco,301801,https://www.disco.com.uy/product/salamines-la-constancia-x-250-g/301801
+Salamines LA CONSTANCIA x 250 g,constancia,competencia,210,839,,,,,,disco,301801,https://www.disco.com.uy/product/salamines-la-constancia-x-250-g/301801
 Salchicha Con Panceta X Paquete La Constancia,constancia,competencia,259,259,,,,,,tata,164699,https://www.tata.com.uy/salchicha-con-panceta-x-paquete-la-constancia-1000469390-164699/p
 Salchicha Parrillera La Constancia 1 U,constancia,competencia,259,259,,,,,,tata,154563,https://www.tata.com.uy/salchicha-parrillera-la-constancia-1-u-154563/p
-Salchicha parrillera LA CONSTANCIA al vacío x 300 g,constancia,competencia,178,695,,,,,,disco,368596,https://www.disco.com.uy/product/salchicha-parrillera-la-constancia-al-vacio-x-300-g/368596
+Salchicha parrillera LA CONSTANCIA al vacío x 300 g,constancia,competencia,209,,,,,,,disco,368596,https://www.disco.com.uy/product/salchicha-parrillera-la-constancia-al-vacio-x-300-g/368596
 Salchicha Tipo Espanol La Constancia,constancia,competencia,259,259,,,,,,tata,164700,https://www.tata.com.uy/salchicha-tipo-espanol-la-constancia-164700/p
 Secreto de Cerdo A/V LA CONSTANCIA,constancia,competencia,290,579,,,,,,disco,300405,https://www.disco.com.uy/product/secreto-de-cerdo-a-v-la-constancia/300405
 Secreto De Cerdo La Constancia 700 G,constancia,competencia,389.76,569,,,,,,tata,3849,https://www.tata.com.uy/secreto-de-cerdo-la-constancia-700-g-3849/p
 VacÃ­o De Cerdo La Constancia Envasado Al VacÃ­o 700 G,constancia,competencia,429,429,,,,,,tata,3846,https://www.tata.com.uy/vacio-de-cerdo-la-constancia-envasado-al-vacio-700-g-3846/p
 Vacío de Cerdo al Vacio LA CONSTANCIA,constancia,competencia,329,469,,,,,,disco,300042,https://www.disco.com.uy/product/vacio-de-cerdo-al-vacio-la-constancia/300042
-Bondiola OTTONELLO (Kg),ottonello,competencia,1080,,,,,,,tiendainglesa,1486,"https://www.tiendainglesa.com.uy/supermercado/bondiola-ottonello-kg.producto?1486,,42"
 Bondiola Ottonello 100 G,ottonello,competencia,101,1010,,,,,,tata,7905,https://www.tata.com.uy/bondiola-ottonello-100-g-7905/p
-Bondiola OTTONELLO A/C kg,ottonello,competencia,84,990,,,,,,disco,300503,https://www.disco.com.uy/product/bondiola-ottonello-a-c-kg/300503
-Bondiola OTTONELLO atmósfera controlada x 200 g,ottonello,competencia,185,1090,,,,,,disco,300294,https://www.disco.com.uy/product/bondiola-ottonello-atmosfera-controlada-x-200-g/300294
-Bondiola OTTONELLO Feteada Atmósfera Controlada x kg,ottonello,competencia,42,990,,,,,,disco,300887,https://www.disco.com.uy/product/bondiola-ottonello-feteada-atmosfera-controlada-x-kg/300887
+Bondiola OTTONELLO A/C kg,ottonello,competencia,99,990,,,,,,disco,300503,https://www.disco.com.uy/product/bondiola-ottonello-a-c-kg/300503
+Bondiola OTTONELLO atmósfera controlada x 200 g,ottonello,competencia,218,1090,,,,,,disco,300294,https://www.disco.com.uy/product/bondiola-ottonello-atmosfera-controlada-x-200-g/300294
+Bondiola OTTONELLO Feteada Atmósfera Controlada x kg,ottonello,competencia,50,990,,,,,,disco,300887,https://www.disco.com.uy/product/bondiola-ottonello-feteada-atmosfera-controlada-x-kg/300887
 Bondiola Ottonello Kg,ottonello,competencia,1030,1030,,,,,,eldorado,2682,https://www.eldorado.com.uy/bondiola-ottonello-kg/p
-Bondiola OTTONELLO x kg,ottonello,competencia,42,990,,,,,,disco,360199,https://www.disco.com.uy/product/bondiola-ottonello-x-kg/360199
+Bondiola OTTONELLO x kg,ottonello,competencia,50,990,,,,,,disco,360199,https://www.disco.com.uy/product/bondiola-ottonello-x-kg/360199
 Cantimpalo Al Vacío Ottonello 230 gr,ottonello,competencia,159,159,,,,,,tata,31159,https://www.tata.com.uy/cantimpalo-al-vacio-ottonello-230-gr-1000349582-31159/p
-Cantimpalo al vacío OTTONELLO x 200 g,ottonello,competencia,144,849,,,,,,disco,300496,https://www.disco.com.uy/product/cantimpalo-al-vacio-ottonello-x-200-g/300496
-Capocuelo OTTONELLO x 50 g,ottonello,competencia,47,1090,,,,,,disco,335009,https://www.disco.com.uy/product/capocuelo-ottonello-x-50-g/335009
-Chacarero al vacío OTTONELLO x 200 g,ottonello,competencia,144,849,,,,,,disco,300483,https://www.disco.com.uy/product/chacarero-al-vacio-ottonello-x-200-g/300483
+Cantimpalo al vacío OTTONELLO x 200 g,ottonello,competencia,170,849,,,,,,disco,300496,https://www.disco.com.uy/product/cantimpalo-al-vacio-ottonello-x-200-g/300496
+Capocuelo OTTONELLO x 50 g,ottonello,competencia,55,1090,,,,,,disco,335009,https://www.disco.com.uy/product/capocuelo-ottonello-x-50-g/335009
+Chacarero al vacío OTTONELLO x 200 g,ottonello,competencia,170,849,,,,,,disco,300483,https://www.disco.com.uy/product/chacarero-al-vacio-ottonello-x-200-g/300483
 Chacarero Al Vacio Ottonello,ottonello,competencia,254,254,,,,,,tata,79346,https://www.tata.com.uy/chacarero-al-vacio-ottonello-79346/p
-Chorizo Español OTTONELLO al vacío x 300 g,ottonello,competencia,183,715,,,,,,disco,331316,https://www.disco.com.uy/product/chorizo-espanol-ottonello-al-vacio-x-300-g/331316
-Chorizo Español OTTONELLO Envasado al Vacío x 2 Unidades,ottonello,competencia,780,,,,,,,tiendainglesa,33075,"https://www.tiendainglesa.com.uy/supermercado/chorizo-espanol-ottonello-envasado-al-vacio-x-2-unidades.producto?33075,,42"
+Chorizo Español OTTONELLO al vacío x 300 g,ottonello,competencia,215,715,,,,,,disco,331316,https://www.disco.com.uy/product/chorizo-espanol-ottonello-al-vacio-x-300-g/331316
 Chorizo Extra Cheddar Ottonello 380 G,ottonello,competencia,259,259,,,,,,tata,164704,https://www.tata.com.uy/chorizo-extra-cheddar-ottonello-380-g-164704/p
-Chorizo Extra con Cheddar OTTONELLO x 3 un.,ottonello,competencia,195,229,,,,,,disco,337003,https://www.disco.com.uy/product/chorizo-extra-con-cheddar-ottonello-x-3-un/337003
-Chorizo Extra con Queso Ahumado OTTONELLO x 3 un.,ottonello,competencia,195,229,,,,,,disco,337004,https://www.disco.com.uy/product/chorizo-extra-con-queso-ahumado-ottonello-x-3-un/337004
-Chorizo Extra con Queso OTTONELLO x 3 un.,ottonello,competencia,195,229,,,,,,disco,337002,https://www.disco.com.uy/product/chorizo-extra-con-queso-ottonello-x-3-un/337002
-Chorizo Extra OTONELLO Sabor Queso Ahumado,ottonello,competencia,295,,,,,,,tiendainglesa,77729,"https://www.tiendainglesa.com.uy/supermercado/chorizo-extra-otonello-sabor-queso-ahumado.producto?77729,,42"
+Chorizo Extra con Cheddar OTTONELLO x 3 un.,ottonello,competencia,229,,,,,,,disco,337003,https://www.disco.com.uy/product/chorizo-extra-con-cheddar-ottonello-x-3-un/337003
+Chorizo Extra con Queso Ahumado OTTONELLO x 3 un.,ottonello,competencia,229,,,,,,,disco,337004,https://www.disco.com.uy/product/chorizo-extra-con-queso-ahumado-ottonello-x-3-un/337004
+Chorizo Extra con Queso OTTONELLO x 3 un.,ottonello,competencia,229,,,,,,,disco,337002,https://www.disco.com.uy/product/chorizo-extra-con-queso-ottonello-x-3-un/337002
 Chorizo Extra Ottonello 2 U,ottonello,competencia,179,179,,,,,,tata,135996,https://www.tata.com.uy/chorizo-extra-ottonello-2-u-135996/p
-Chorizo extra OTTONELLO al vacío 2 un. x 250 g,ottonello,competencia,129,608,,,,,,disco,331496,https://www.disco.com.uy/product/chorizo-extra-ottonello-al-vacio-2-un-x-250-g/331496
-Chorizo Extra OTTONELLO Sabor Queso Cheddar,ottonello,competencia,260,,,,,,,tiendainglesa,1017434,"https://www.tiendainglesa.com.uy/supermercado/chorizo-extra-ottonello-sabor-queso-cheddar.producto?1017434,,42"
-Chorizo Extra OTTONELLO x 4 Unidades Envasado al Vacío,ottonello,competencia,780,,,,,,,tiendainglesa,1011564,"https://www.tiendainglesa.com.uy/supermercado/chorizo-extra-ottonello-x-4-unidades-envasado-al-vacio.producto?1011564,,42"
+Chorizo extra OTTONELLO al vacío 2 un. x 250 g,ottonello,competencia,152,608,,,,,,disco,331496,https://www.disco.com.uy/product/chorizo-extra-ottonello-al-vacio-2-un-x-250-g/331496
 Chorizo Extra Ottonello,ottonello,competencia,569,569,,,,,,tata,88419,https://www.tata.com.uy/chorizo-extra-ottonello-88419/p
 Chorizo Extra Queso Ahumado Ottonello 380 G,ottonello,competencia,259,259,,,,,,tata,164703,https://www.tata.com.uy/chorizo-extra-queso-ahumado-ottonello-380-g-164703/p
 Chorizo Extra Queso Ottonello 380 G,ottonello,competencia,259,259,,,,,,tata,164702,https://www.tata.com.uy/chorizo-extra-queso-ottonello-380-g-164702/p
@@ -463,90 +358,85 @@ Chorizo Ottonello Extra C/Queso Ahumado X 3un 380gr Un,ottonello,competencia,269
 Chorizo Ottonello Extra C/Queso X 3 Un 380gr Un,ottonello,competencia,269,269,,,,,,eldorado,50460,https://www.eldorado.com.uy/chorizo-ottonello-extra-c-queso-x-3-un-380gr-un/p
 Chorizo Ottonello Extra Envasado 1 Kg,ottonello,competencia,599,599,,,,,,tata,173558,https://www.tata.com.uy/chorizo-otonello-extra-envasado-1-kg-1000592542-173558/p
 Chorizo Ottonello Parillero Al Vacio 3Un Kg,ottonello,competencia,407,407,,,,,,eldorado,9464,https://www.eldorado.com.uy/chorizo-ottonello-parillero-al-vacio-3un-kg/p
-Chorizo Ottonello Parrillero Kg,ottonello,competencia,393,393,,,,,,eldorado,11425,https://www.eldorado.com.uy/chorizo-ottonello-parrillero-kg/p
+Chorizo Ottonello Parrillero Kg,ottonello,competencia,199,393,,,,,,eldorado,11425,https://www.eldorado.com.uy/chorizo-ottonello-parrillero-kg/p
 Chorizo Parrillero Ottonello 3 U,ottonello,competencia,209,209,,,,,,tata,58327,https://www.tata.com.uy/chorizo-parrillero-ottonello-3-u-58327/p
+Chorizo parrillero OTTONELLO x 120 g,ottonello,competencia,48,399,,,,,,disco,337157,https://www.disco.com.uy/product/chorizo-parrillero-ottonello-x-120-g/337157
 Chorizo Parrillero Ottonello X Kg 10 U,ottonello,competencia,399,459,,,,,,tata,164698,https://www.tata.com.uy/chorizo-parrillero-ottonello-x-kg-10-u-1000467867-164698/p
 Chorizos Españoles Ottonello 2 U,ottonello,competencia,149,179,,,,,,tata,135997,https://www.tata.com.uy/chorizos-españoles-ottonello-2-u-135997/p
-Chorizos Parrillero OTTONELLO al Vacío,ottonello,competencia,490,,,,,,,tiendainglesa,49389,"https://www.tiendainglesa.com.uy/supermercado/chorizos-parrillero-ottonello-al-vacio.producto?49389,,42"
-Feteado grueso jamón cocido OTTONELLO x 100 g,ottonello,competencia,42,495,,,,,,disco,300745,https://www.disco.com.uy/product/feteado-grueso-jamon-cocido-ottonello-x-100-g/300745
-Fiambre de Cerdo OTTONELLO (Kg),ottonello,competencia,460,,,,,,,tiendainglesa,59512,"https://www.tiendainglesa.com.uy/supermercado/fiambre-de-cerdo-ottonello-kg.producto?59512,,42"
+Feteado grueso jamón cocido OTTONELLO x 100 g,ottonello,competencia,50,495,,,,,,disco,300745,https://www.disco.com.uy/product/feteado-grueso-jamon-cocido-ottonello-x-100-g/300745
+Feteado grueso salame Milan pic.fino OTTONELLO x 250 g,ottonello,competencia,150,,,,,,,disco,300768,https://www.disco.com.uy/product/feteado-grueso-salame-milan-pic-fino-ottonello-x-250-g/300768
 Fiambre De Cerdo Ottonello 1 Kg,ottonello,competencia,86,430,,,,,,tata,83748,https://www.tata.com.uy/fiambre-de-cerdo-ottonello-1-kg-83748/p
-Fiambre de cerdo OTTONELLO x 100 g,ottonello,competencia,36,420,,,,,,disco,300782,https://www.disco.com.uy/product/fiambre-de-cerdo-ottonello-x-100-g/300782
+Fiambre de cerdo OTTONELLO x 100 g,ottonello,competencia,42,420,,,,,,disco,300782,https://www.disco.com.uy/product/fiambre-de-cerdo-ottonello-x-100-g/300782
 Fiambre Ottonello De Cerdo Sandwichero Kg,ottonello,competencia,343,343,,,,,,eldorado,23563,https://www.eldorado.com.uy/fiambre-ottonello-de-cerdo-sandwichero-kg/p
 Hamburguesa Ottonello Bondiola 2 U,ottonello,competencia,109,109,,,,,,tata,171716,https://www.tata.com.uy/hamburguesa-ottonello-bondiola-2-u-1000581527-171716/p
 Hamburguesa Ottonello Bondiola De Cerdo 220gr,ottonello,competencia,97,97,,,,,,eldorado,57634,https://www.eldorado.com.uy/hamburguesa-ottonello-bondiola-de-cerdo-220gr/p
 Hamburguesa Ottonello Premium Bondiola Con Finas Hierbas 220,ottonello,competencia,99.9,99.9,,,,,,eldorado,57636,https://www.eldorado.com.uy/hamburguesa-ottonello-premium-bondiola-con-finas-hierbas-220/p
-Húngaras OTTONELLO 230 g,ottonello,competencia,157,185,,,,,,disco,301533,https://www.disco.com.uy/product/hungaras-ottonello-230-g/301533
+Húngaras OTTONELLO 230 g,ottonello,competencia,185,,,,,,,disco,301533,https://www.disco.com.uy/product/hungaras-ottonello-230-g/301533
 Hungaras Ottonello X4 Un 220gr,ottonello,competencia,169.9,169.9,,,,,,eldorado,50464,https://www.eldorado.com.uy/hungaras-ottonello-x4-un-220gr/p
 JamÃ³n Cocido Ottonello 100 G,ottonello,competencia,69,690,,,,,,tata,7854,https://www.tata.com.uy/jama³n-cocido-ottonello-100-g-7854/p
 Jamón Cocido Al Vacío Ottonello 200 G,ottonello,competencia,138,690,,,,,,tata,13259,https://www.tata.com.uy/jamon-cocido-al-vacio-ottonello-200-g-13259/p
-Jamón Cocido OTTONELLO (Kg),ottonello,competencia,730,,,,,,,tiendainglesa,1290,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-ottonello-kg.producto?1290,,42"
+Jamón cocido OTTONELLO al vacío atmósfera controlada x 250 g,ottonello,competencia,185,739,,,,,,disco,300953,https://www.disco.com.uy/product/jamon-cocido-ottonello-al-vacio-atmosfera-controlada-x-250-g/300953
+Jamón cocido OTTONELLO atmósfera controlada x 250 g,ottonello,competencia,198,789,,,,,,disco,300295,https://www.disco.com.uy/product/jamon-cocido-ottonello-atmosfera-controlada-x-250-g/300295
 Jamón cocido OTTONELLO x 50 g,ottonello,competencia,30,590,,,,,,disco,362275,https://www.disco.com.uy/product/jamon-cocido-ottonello-x-50-g/362275
-Jamón Cocido Tipo York OTTONELLO (Kg),ottonello,competencia,550,630,,,,,,tiendainglesa,993,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-tipo-york-ottonello-kg.producto?993,,42"
 Jamon Cocido York Ottonello 1Kg,ottonello,competencia,50,500,,,,,,tata,164718,https://www.tata.com.uy/jamon-cocido-york-ottonello-1kg-164718/p
-Jamón Cocido York OTTONELLO Kg,ottonello,competencia,22,520,,,,,,disco,362002,https://www.disco.com.uy/product/jamon-cocido-york-ottonello-kg/362002
-Jamón crudo OTTONELLO x 50 g,ottonello,competencia,81,1890,,,,,,disco,300227,https://www.disco.com.uy/product/jamon-crudo-ottonello-x-50-g/300227
-Jamon Ottonello Cocido Kg,ottonello,competencia,539,633,,,,,,eldorado,6097,https://www.eldorado.com.uy/jamon-ottonello-cocido-kg/p
+Jamón Cocido York OTTONELLO Kg,ottonello,competencia,26,520,,,,,,disco,362002,https://www.disco.com.uy/product/jamon-cocido-york-ottonello-kg/362002
+Jamón crudo OTTONELLO x 50 g,ottonello,competencia,95,1890,,,,,,disco,300227,https://www.disco.com.uy/product/jamon-crudo-ottonello-x-50-g/300227
+Jamon Ottonello Cocido Kg,ottonello,competencia,633,633,,,,,,eldorado,6097,https://www.eldorado.com.uy/jamon-ottonello-cocido-kg/p
 Jamon Ottonello York Cocido Kg,ottonello,competencia,479.6,545,,,,,,eldorado,31695,https://www.eldorado.com.uy/jamon-ottonello-york-cocido-kg/p
 Leonesa De Pollo Ottonello 200 G,ottonello,competencia,90,480,,,,,,tata,7870,https://www.tata.com.uy/leonesa-de-pollo-ottonello-200-g-7870/p
-Leonesa de pollo OTTONELLO x 50 g,ottonello,competencia,21,500,,,,,,disco,300828,https://www.disco.com.uy/product/leonesa-de-pollo-ottonello-x-50-g/300828
-Leonesa de pollo Primavera OTTONELLO x 50 g,ottonello,competencia,22,520,,,,,,disco,300829,https://www.disco.com.uy/product/leonesa-de-pollo-primavera-ottonello-x-50-g/300829
+Leonesa de pollo OTTONELLO x 50 g,ottonello,competencia,25,500,,,,,,disco,300828,https://www.disco.com.uy/product/leonesa-de-pollo-ottonello-x-50-g/300828
+Leonesa de pollo Primavera OTTONELLO x 50 g,ottonello,competencia,26,520,,,,,,disco,300829,https://www.disco.com.uy/product/leonesa-de-pollo-primavera-ottonello-x-50-g/300829
 Leonesa Ottonello Con Morron Kg,ottonello,competencia,577,577,,,,,,eldorado,3522,https://www.eldorado.com.uy/leonesa-ottonello-con-morron-kg/p
 Leonesa Ottonello Pollo Kg,ottonello,competencia,397,397,,,,,,eldorado,9130,https://www.eldorado.com.uy/leonesa-ottonello-pollo-kg/p
 Leonesa Pollo Con Morrón Ottonello 100 G,ottonello,competencia,53,530,,,,,,tata,7867,https://www.tata.com.uy/leonesa-pollo-con-morron-ottonello-100-g-7867/p
-Lomito canadiense OTTONELLO x 100 g,ottonello,competencia,76,900,,,,,,disco,362975,https://www.disco.com.uy/product/lomito-canadiense-ottonello-x-100-g/362975
+Lomito canadiense OTTONELLO x 100 g,ottonello,competencia,90,900,,,,,,disco,362975,https://www.disco.com.uy/product/lomito-canadiense-ottonello-x-100-g/362975
 Lomito Canadiense Ottonello,ottonello,competencia,88,880,,,,,,tata,22233,https://www.tata.com.uy/lomito-canadiense-ottonello-22233/p
-Lomo Ahumado OTTONELLO (Kg),ottonello,competencia,890,,,,,,,tiendainglesa,1016271,"https://www.tiendainglesa.com.uy/supermercado/lomo-ahumado-ottonello-kg.producto?1016271,,42"
+Lomo ahumado OTTONELLO x 100 g,ottonello,competencia,82,820,,,,,,disco,300226,https://www.disco.com.uy/product/lomo-ahumado-ottonello-x-100-g/300226
 Lomo Ottonello Canadiense Kg,ottonello,competencia,875,875,,,,,,eldorado,9866,https://www.eldorado.com.uy/lomo-ottonello-canadiense-kg/p
-Longaniza al vacío OTTONELLO x 200 g,ottonello,competencia,144,849,,,,,,disco,300482,https://www.disco.com.uy/product/longaniza-al-vacio-ottonello-x-200-g/300482
+Longaniza al vacío OTTONELLO x 200 g,ottonello,competencia,170,849,,,,,,disco,300482,https://www.disco.com.uy/product/longaniza-al-vacio-ottonello-x-200-g/300482
 Longaniza Ottonello Al Vacío 200 G,ottonello,competencia,197,197,,,,,,tata,31161,https://www.tata.com.uy/longaniza-ottonello-al-vacio-200-g-31161/p
 Longaniza Ottonello Pipon Kg (1601745).,ottonello,competencia,893,893,,,,,,eldorado,7762,https://www.eldorado.com.uy/longaniza-ottonello-pipon-kg-1601745/p
+Longaniza Pipón al corte OTTONELLO x 300 g,ottonello,competencia,285,950,,,,,,disco,366622,https://www.disco.com.uy/product/longaniza-pipon-al-corte-ottonello-x-300-g/366622
 Longaniza Pipon Ottonello 1 Kg,ottonello,competencia,940,940,,,,,,tata,3893,https://www.tata.com.uy/longaniza-pipon-ottonello-1-kg-3893/p
-Mini Mortadela OTTONELLO con Pistachos,ottonello,competencia,430,,,,,,,tiendainglesa,86556,"https://www.tiendainglesa.com.uy/supermercado/mini-mortadela-ottonello-con-pistachos.producto?86556,,42"
 Mortadela Bocha Especial Ottonello 100 G,ottonello,competencia,58,580,,,,,,tata,7873,https://www.tata.com.uy/mortadela-bocha-especial-ottonello-100-g-7873/p
-Mortadela Bocha Grande OTTONELLO (Kg),ottonello,competencia,620,,,,,,,tiendainglesa,2828,"https://www.tiendainglesa.com.uy/supermercado/mortadela-bocha-grande-ottonello-kg.producto?2828,,42"
 Mortadela Bocha Ottonello Al Vacío,ottonello,competencia,89.9,580,,,,,,tata,13263,https://www.tata.com.uy/mortadela-bocha-ottonello-al-vacio-13263/p
-Mortadela bocha OTTONELLO x 50 g,ottonello,competencia,26,590,,,,,,disco,364550,https://www.disco.com.uy/product/mortadela-bocha-ottonello-x-50-g/364550
-Mortadela con Pistachos OTTONELLO (Kg),ottonello,competencia,950,,,,,,,tiendainglesa,30070,"https://www.tiendainglesa.com.uy/supermercado/mortadela-con-pistachos-ottonello-kg.producto?30070,,42"
+Mortadela bocha OTTONELLO x 50 g,ottonello,competencia,30,590,,,,,,disco,364550,https://www.disco.com.uy/product/mortadela-bocha-ottonello-x-50-g/364550
 Mortadela Criolla Ottonello 200 Gr,ottonello,competencia,84,420,,,,,,tata,164726,https://www.tata.com.uy/mortadela-criolla-ottonello-200-gr-164726/p
 Mortadela Mini Ottonello Con Pistachos 350 g,ottonello,competencia,415,415,,,,,,tata,173496,https://www.tata.com.uy/mortadela-mini-ottonello-con-pistachos-350-g-1000582929-173496/p
 Mortadela Ottonello Bocha Kg,ottonello,competencia,529,529,,,,,,eldorado,2692,https://www.eldorado.com.uy/mortadela-ottonello-bocha-kg/p
 Mortadela Ottonello Criolla Kg,ottonello,competencia,340,405,,,,,,eldorado,2693,https://www.eldorado.com.uy/mortadela-ottonello-criolla-kg/p
-Mortadela premium con pistachos OTTONELLO x 100 g,ottonello,competencia,74,870,,,,,,disco,270802,https://www.disco.com.uy/product/mortadela-premium-con-pistachos-ottonello-x-100-g/270802
-Pack 2 paquetes de panchos OTTONELLO 8 un. 330 g,ottonello,competencia,339,399,,,,,,disco,300595,https://www.disco.com.uy/product/pack-2-paquetes-de-panchos-ottonello-8-un-330-g/300595
-Pack Chorizos Parrilleros OTTONELLO Envasados al Vacío x 3 Unidades,ottonello,competencia,530,,,,,,,tiendainglesa,98555,"https://www.tiendainglesa.com.uy/supermercado/pack-chorizos-parrilleros-ottonello-envasados-al-vacio-x-3-unidades.producto?98555,,42"
+Mortadela premium con pistachos OTTONELLO x 100 g,ottonello,competencia,87,870,,,,,,disco,270802,https://www.disco.com.uy/product/mortadela-premium-con-pistachos-ottonello-x-100-g/270802
+Pack 2 paquetes de panchos OTTONELLO 8 un. 330 g,ottonello,competencia,399,,,,,,,disco,300595,https://www.disco.com.uy/product/pack-2-paquetes-de-panchos-ottonello-8-un-330-g/300595
 Pack De Salames Ottonello,ottonello,competencia,348,360,,,,,,tata,854,https://www.tata.com.uy/pack-de-salames-ottonello-854/p
-"Pack Longaniza, Salame y Chorizo OTTONELLO Caja x 3 Unidades",ottonello,competencia,380,,,,,,,tiendainglesa,98285,"https://www.tiendainglesa.com.uy/supermercado/pack-longaniza-salame-y-chorizo-ottonello-caja-x-3-unidades.producto?98285,,42"
-"Pack OTTONELLO Longaniza, Salamín y Cantimpalo",ottonello,competencia,254,299,,,,,,disco,300878,https://www.disco.com.uy/product/pack-ottonello-longaniza-salamin-y-cantimpalo/300878
-Panceta Ahumada en Cubos OTTONELLO,ottonello,competencia,230,,,,,,,tiendainglesa,1017420,"https://www.tiendainglesa.com.uy/supermercado/panceta-ahumada-en-cubos-ottonello.producto?1017420,,42"
-Panceta Ahumada OTTONELLO (Kg),ottonello,competencia,1030,,,,,,,tiendainglesa,1288,"https://www.tiendainglesa.com.uy/supermercado/panceta-ahumada-ottonello-kg.producto?1288,,42"
+"Pack OTTONELLO Longaniza, Salamín y Cantimpalo",ottonello,competencia,299,,,,,,,disco,300878,https://www.disco.com.uy/product/pack-ottonello-longaniza-salamin-y-cantimpalo/300878
+Panceta Ahumada en Cubos OTTONELLO 200 g,ottonello,competencia,209,,,,,,,disco,301531,https://www.disco.com.uy/product/panceta-ahumada-en-cubos-ottonello-200-g/301531
+Panceta ahumada especial OTTONELLO feteada atmósfera controlada x 200 g,ottonello,competencia,210,1050,,,,,,disco,300704,https://www.disco.com.uy/product/panceta-ahumada-especial-ottonello-feteada-atmosfera-controlada-x-200-g/300704
+Panceta Ahumada La Sureña OTTONELLO kg,ottonello,competencia,39,780,,,,,,disco,300410,https://www.disco.com.uy/product/panceta-ahumada-la-surena-ottonello-kg/300410
 Panceta Ahumada Ottonello 100 G,ottonello,competencia,99,990,,,,,,tata,3894,https://www.tata.com.uy/panceta-ahumada-ottonello-100-g-3894/p
-Panceta Ahumada OTTONELLO x 50 g,ottonello,competencia,42,980,,,,,,disco,365271,https://www.disco.com.uy/product/panceta-ahumada-ottonello-x-50-g/365271
+Panceta ahumada OTTONELLO atmósfera controlada x 200 g,ottonello,competencia,196,980,,,,,,disco,300897,https://www.disco.com.uy/product/panceta-ahumada-ottonello-atmosfera-controlada-x-200-g/300897
+Panceta Ahumada OTTONELLO x 50 g,ottonello,competencia,49,980,,,,,,disco,365271,https://www.disco.com.uy/product/panceta-ahumada-ottonello-x-50-g/365271
+Panceta ahumada trozo OTTONELLO atmósfera controlada x 200 g,ottonello,competencia,196,980,,,,,,disco,300682,https://www.disco.com.uy/product/panceta-ahumada-trozo-ottonello-atmosfera-controlada-x-200-g/300682
 Panceta Ottonello Ahumada Comun Kg,ottonello,competencia,967,967,,,,,,eldorado,3521,https://www.eldorado.com.uy/panceta-ottonello-ahumada-comun-kg/p
-Panchos Cortos OTTONELLO 24 Unidades x 1 Kg,ottonello,competencia,540,,,,,,,tiendainglesa,390843,"https://www.tiendainglesa.com.uy/supermercado/panchos-cortos-ottonello-24-unidades-x-1-kg.producto?390843,,42"
-Panchos OTTONELLO 1 kg,ottonello,competencia,416,490,,,,,,disco,335510,https://www.disco.com.uy/product/panchos-ottonello-1-kg/335510
+Panchos OTTONELLO 1 kg,ottonello,competencia,490,490,,,,,,disco,335510,https://www.disco.com.uy/product/panchos-ottonello-1-kg/335510
 Panchos Ottonello 2 Paquetes 8Un C/Paquete,ottonello,competencia,373,373,,,,,,eldorado,3855,https://www.eldorado.com.uy/panchos-ottonello-2-paquetes-8un-c-paquete/p
 Panchos Ottonello 8 U,ottonello,competencia,222,222,,,,,,tata,3898,https://www.tata.com.uy/panchos-ottonello-8-u-3898/p
 Panchos Ottonello Cortos 15Un,ottonello,competencia,373,373,,,,,,eldorado,20920,https://www.eldorado.com.uy/panchos-ottonello-cortos-15un/p
 Panchos Ottonello Cortos 1Kg,ottonello,competencia,349,412,,,,,,eldorado,21775,https://www.eldorado.com.uy/panchos-ottonello-cortos-1kg/p
-Panchos OTTONELLO cortos 8 un. 330 g,ottonello,competencia,195,229,,,,,,disco,335110,https://www.disco.com.uy/product/panchos-ottonello-cortos-8-un-330-g/335110
+Panchos OTTONELLO cortos 8 un. 330 g,ottonello,competencia,229,,,,,,,disco,335110,https://www.disco.com.uy/product/panchos-ottonello-cortos-8-un-330-g/335110
 Panchos Ottonello Cortos 8Un,ottonello,competencia,227,227,,,,,,eldorado,6096,https://www.eldorado.com.uy/panchos-ottonello-cortos-8un/p
-Panchos OTTONELLO Envasado al Vacío con 8 Unidades,ottonello,competencia,250,,,,,,,tiendainglesa,1319,"https://www.tiendainglesa.com.uy/supermercado/panchos-ottonello-envasado-al-vacio-con-8-unidades.producto?1319,,42"
-Panchos OTTONELLO Pack con 16 Unidades 660 gr,ottonello,competencia,440,,,,,,,tiendainglesa,277889,"https://www.tiendainglesa.com.uy/supermercado/panchos-ottonello-pack-con-16-unidades-660-gr.producto?277889,,42"
-Panchos OTTONELLO,ottonello,competencia,348,409,,,,,,disco,331617,https://www.disco.com.uy/product/panchos-ottonello/331617
+Panchos OTTONELLO,ottonello,competencia,409,,,,,,,disco,331617,https://www.disco.com.uy/product/panchos-ottonello/331617
 Pipa Al Vacío Ottonello 220 Gr,ottonello,competencia,211,211,,,,,,tata,31160,https://www.tata.com.uy/pipa-al-vacio-ottonello-220-gr-31160/p
-Salame ½ Milán OTTONELLO x 50 g,ottonello,competencia,26,620,,,,,,disco,300609,https://www.disco.com.uy/product/salame-milan-ottonello-x-50-g/300609
-Salame Criollo OTTONELLO Picado Fino (Kg),ottonello,competencia,740,,,,,,,tiendainglesa,1187,"https://www.tiendainglesa.com.uy/supermercado/salame-criollo-ottonello-picado-fino-kg.producto?1187,,42"
+Salame ½ Milán OTTONELLO x 50 g,ottonello,competencia,31,620,,,,,,disco,300609,https://www.disco.com.uy/product/salame-milan-ottonello-x-50-g/300609
 Salame Criollo Picado Fino Ottonello Kg,ottonello,competencia,65,650,,,,,,tata,165666,https://www.tata.com.uy/salame-criollo-picado-fino-ottonello-kg-165666/p
-Salame de Milan OTTONELLO Exclusivo (Kg),ottonello,competencia,860,,,,,,,tiendainglesa,107,"https://www.tiendainglesa.com.uy/supermercado/salame-de-milan-ottonello-exclusivo-kg.producto?107,,42"
-Salame finceta Sureña OTTONELLO feteado a/c,ottonello,competencia,139,650,,,,,,disco,301024,https://www.disco.com.uy/product/salame-finceta-surena-ottonello-feteado-a-c/301024
-Salame Flauta Sureña OTTONELLO (Kg),ottonello,competencia,710,,,,,,,tiendainglesa,326392,"https://www.tiendainglesa.com.uy/supermercado/salame-flauta-surena-ottonello-kg.producto?326392,,42"
+Salame Criollo picado grueso OTTONELLO x 50 g,ottonello,competencia,39,770,,,,,,disco,335138,https://www.disco.com.uy/product/salame-criollo-picado-grueso-ottonello-x-50-g/335138
+Salame finceta Sureña OTTONELLO feteado a/c,ottonello,competencia,163,650,,,,,,disco,301024,https://www.disco.com.uy/product/salame-finceta-surena-ottonello-feteado-a-c/301024
 Salame Fuet Ottonello 1 U,ottonello,competencia,228,228,,,,,,tata,147493,https://www.tata.com.uy/salame-fuet-ottonello-1-u-147493/p
 Salame Fuet OTTONELLO x 180 g,ottonello,competencia,207,1150,,,,,,disco,335145,https://www.disco.com.uy/product/salame-fuet-ottonello-x-180-g/335145
-Salame Milán al vacío OTTONELLO x 200 g,ottonello,competencia,144,849,,,,,,disco,300494,https://www.disco.com.uy/product/salame-milan-al-vacio-ottonello-x-200-g/300494
-Salame Milán OTTONELLO x 50 g,ottonello,competencia,36,830,,,,,,disco,366620,https://www.disco.com.uy/product/salame-milan-ottonello-x-50-g/366620
+Salame Milán al vacío OTTONELLO x 200 g,ottonello,competencia,170,849,,,,,,disco,300494,https://www.disco.com.uy/product/salame-milan-al-vacio-ottonello-x-200-g/300494
+Salame Milán OTTONELLO x 50 g,ottonello,competencia,42,830,,,,,,disco,366620,https://www.disco.com.uy/product/salame-milan-ottonello-x-50-g/366620
 Salame Milan Ottonello,ottonello,competencia,87.91,590,,,,,,tata,19508,https://www.tata.com.uy/salame-milan-ottonello-19508/p
-Salame Milán picado fino OTTONELLO atmósfera controlada x 250 g,ottonello,competencia,181,850,,,,,,disco,300235,https://www.disco.com.uy/product/salame-milan-picado-fino-ottonello-atmosfera-controlada-x-250-g/300235
+Salame Milán picado fino OTTONELLO atmósfera controlada x 250 g,ottonello,competencia,213,850,,,,,,disco,300235,https://www.disco.com.uy/product/salame-milan-picado-fino-ottonello-atmosfera-controlada-x-250-g/300235
+Salame Milán picado fino OTTONELLO atmósfera controlada x 250 g,ottonello,competencia,208,830,,,,,,disco,300514,https://www.disco.com.uy/product/salame-milan-picado-fino-ottonello-atmosfera-controlada-x-250-g/300514
 Salame Ottonello Cantimpalo 200 g,ottonello,competencia,174.9,174.9,,,,,,eldorado,12555,https://www.eldorado.com.uy/salame-ottonello-cantimpalo-200-g/p
 Salame Ottonello Criollo Kg .,ottonello,competencia,687,687,,,,,,eldorado,24128,https://www.eldorado.com.uy/salame-ottonello-criollo-kg/p
 Salame Ottonello Criollo Picado Grueso Kg,ottonello,competencia,703,703,,,,,,eldorado,9854,https://www.eldorado.com.uy/salame-ottonello-criollo-picado-grueso-kg/p
@@ -555,19 +445,17 @@ Salame Ottonello Milan Picado Grueso Kg,ottonello,competencia,817,817,,,,,,eldor
 Salame Ottonello Pack 3Un 110Gr,ottonello,competencia,339,339,,,,,,eldorado,846,https://www.eldorado.com.uy/salame-ottonello-pack-3un-110gr/p
 Salame Ottonello Pipa 200 g,ottonello,competencia,173,173,,,,,,eldorado,18664,https://www.eldorado.com.uy/salame-ottonello-pipa-200-g/p
 Salame Ottonello Tandilero 200 g,ottonello,competencia,174.9,174.9,,,,,,eldorado,14830,https://www.eldorado.com.uy/salame-ottonello-tandilero-200-g/p
-Salame Picado Fino Fuet OTTONELLO (Kg),ottonello,competencia,1250,,,,,,,tiendainglesa,995,"https://www.tiendainglesa.com.uy/supermercado/salame-picado-fino-fuet-ottonello-kg.producto?995,,42"
 Salame Picado Fino Milanito Ottonello Al Vacio 220 Gr,ottonello,competencia,199,199,,,,,,tata,119045,https://www.tata.com.uy/salame-picado-fino-milanito-ottonello-al-vacio-220-gr-119045/p
-Salame Picado Fino Riojano OTTONELLO,ottonello,competencia,230,,,,,,,tiendainglesa,8010,"https://www.tiendainglesa.com.uy/supermercado/salame-picado-fino-riojano-ottonello.producto?8010,,42"
 Salame Picado Grueso Criollo Ottonello 200 G,ottonello,competencia,152,760,,,,,,tata,7893,https://www.tata.com.uy/salame-picado-grueso-criollo-ottonello-200-g-1000057455-7893/p
-Salame pipa al vacío OTTONELLO x 200 g,ottonello,competencia,144,849,,,,,,disco,300484,https://www.disco.com.uy/product/salame-pipa-al-vacio-ottonello-x-200-g/300484
-Salame Riojano OTTONELLO 180 g,ottonello,competencia,289,340,,,,,,disco,301532,https://www.disco.com.uy/product/salame-riojano-ottonello-180-g/301532
+Salame pipa al vacío OTTONELLO x 200 g,ottonello,competencia,170,849,,,,,,disco,300484,https://www.disco.com.uy/product/salame-pipa-al-vacio-ottonello-x-200-g/300484
+Salame Riojano OTTONELLO 180 g,ottonello,competencia,340,,,,,,,disco,301532,https://www.disco.com.uy/product/salame-riojano-ottonello-180-g/301532
 Salame tipo Milán La SureÃ±a Grande 100 G,ottonello,competencia,59,590,,,,,,tata,7892,https://www.tata.com.uy/salame-tipo-milan-la-surea±a-grande-100-g-7892/p
-Salamín tandilero al vacío OTTONELLO x 200 g,ottonello,competencia,144,849,,,,,,disco,300495,https://www.disco.com.uy/product/salamin-tandilero-al-vacio-ottonello-x-200-g/300495
-Salamin tandilero OTTONELLO x 250 g,ottonello,competencia,211,990,,,,,,disco,357050,https://www.disco.com.uy/product/salamin-tandilero-ottonello-x-250-g/357050
+Salamín tandilero al vacío OTTONELLO x 200 g,ottonello,competencia,170,849,,,,,,disco,300495,https://www.disco.com.uy/product/salamin-tandilero-al-vacio-ottonello-x-200-g/300495
+Salamin tandilero OTTONELLO x 250 g,ottonello,competencia,248,990,,,,,,disco,357050,https://www.disco.com.uy/product/salamin-tandilero-ottonello-x-250-g/357050
 Tandilero Al Vacío Ottonello 230 Gr,ottonello,competencia,195,195,,,,,,tata,31158,https://www.tata.com.uy/tandilero-al-vacio-ottonello-230-gr-31158/p
 Aderezo Mostaza Schneck Frasco 250 g,schneck,competencia,245,245,,,,,,tata,171663,https://www.tata.com.uy/aderezo-mostaza-schneck-frasco-250-g-1000580575-171663/p
 Aderezo Mostaza Schneck Sachet 100 g,schneck,competencia,55,55,,,,,,tata,171669,https://www.tata.com.uy/aderezo-mostaza-schneck-sachet-100-g-1000580576-171669/p
-Albóndigas SCHNECK 400 g,schneck,competencia,203,239,,,,,,disco,235090,https://www.disco.com.uy/product/albondigas-schneck-400-g/235090
+Albóndigas SCHNECK 400 g,schneck,competencia,239,,,,,,,disco,235090,https://www.disco.com.uy/product/albondigas-schneck-400-g/235090
 Albondigas Schneck 400 Gr,schneck,competencia,299,299,,,,,,tata,170671,https://www.tata.com.uy/albondigas-schneck-400-gr-170671/p
 Bondiola Ahumada Feteada Schneck 200 Gr,schneck,competencia,325,325,,,,,,tata,167715,https://www.tata.com.uy/bondiola-ahumada-feteada-schneck-200-gr-167715/p
 Chori Schneck 2Un,schneck,competencia,71.18,94.9,,,,,,eldorado,1641,https://www.eldorado.com.uy/chori-schneck-2un/p
@@ -576,25 +464,19 @@ Chorizo Cocido Schneck Provolone Y Albahaca Al Vacio 2 U,schneck,competencia,189
 Chorizo Colorado Schneck Al Vacío 220 g 2 U,schneck,competencia,209,209,,,,,,tata,173916,https://www.tata.com.uy/chorizo-colorado-schneck-al-vacio-220-g-2-u-1000584287-173916/p
 Chorizo Extra Al Vacio Schneck 2 Ud,schneck,competencia,199,199,,,,,,tata,170503,https://www.tata.com.uy/chorizo-extra-al-vacio-schneck-2-ud-170503/p
 Chorizo Extra Al Vacio Schneck 7 Ud,schneck,competencia,639,639,,,,,,tata,170504,https://www.tata.com.uy/chorizo-extra-al-vacio-schneck-7-ud-170504/p
-Chorizo extra x 2 a/ v SCHNECK,schneck,competencia,123,145,,,,,,disco,333004,https://www.disco.com.uy/product/chorizo-extra-x-2-a-v-schneck/333004
+Chorizo extra x 2 a/ v SCHNECK,schneck,competencia,145,,,,,,,disco,333004,https://www.disco.com.uy/product/chorizo-extra-x-2-a-v-schneck/333004
 Chorizo Puro Cerdo Schneck Al Vacío 220 g 2 U,schneck,competencia,149,149,,,,,,tata,173915,https://www.tata.com.uy/chorizo-puro-cerdo-schneck-al-vacio-220-g-2-u-1000584256-173915/p
 Chorizo Puro Cerdo Shneck Al Vacío 770 g 7 U,schneck,competencia,479,479,,,,,,tata,173907,https://www.tata.com.uy/chorizo-puro-cerdo-shneck-al-vacio-770-g-7-u-1000584263-173907/p
-Chorizo puro cerdo x 2 un. SCHNECK,schneck,competencia,93,109,,,,,,disco,333390,https://www.disco.com.uy/product/chorizo-puro-cerdo-x-2-un-schneck/333390
+Chorizo puro cerdo x 2 un. SCHNECK,schneck,competencia,109,,,,,,,disco,333390,https://www.disco.com.uy/product/chorizo-puro-cerdo-x-2-un-schneck/333390
 Chorizo Schneck Cocido A/V X2un,schneck,competencia,189.9,189.9,,,,,,eldorado,53482,https://www.eldorado.com.uy/chorizo-schneck-cocido-a-v-x2un/p
-Chorizo SCHNECK Puro Cerdo al Vacío x 2 Unidades,schneck,competencia,170,,,,,,,tiendainglesa,1018666,"https://www.tiendainglesa.com.uy/supermercado/chorizo-schneck-puro-cerdo-al-vacio-x-2-unidades.producto?1018666,,42"
 Chorizo Schneck Puro Cerdo X7un 770gr A/V,schneck,competencia,397,483,,,,,,eldorado,55622,https://www.eldorado.com.uy/chorizo-schneck-puro-cerdo-x7un-770gr-a-v/p
 Frankfurter Schneck Corto X27 Unidades Nylon 1.2kg Un,schneck,competencia,807,807,,,,,,eldorado,54760,https://www.eldorado.com.uy/frankfurter-schneck-corto-x27-unidades-nylon-1-2kg-un/p
 Frankfurter Schneck Largo X27 Unidades Nylon 1.8kg Un,schneck,competencia,1510,1510,,,,,,eldorado,54761,https://www.eldorado.com.uy/frankfurter-schneck-largo-x27-unidades-nylon-1-8kg-un/p
 Frankfurter Schneck Superlargo X20 Unidades Nylon 1.35kg,schneck,competencia,817,817,,,,,,eldorado,54762,https://www.eldorado.com.uy/frankfurter-schneck-superlargo-x20-unidades-nylon-1-35kg/p
-Frankfurters Artesanales SCHNECK x 4 un. 240 g,schneck,competencia,169,199,,,,,,disco,331006,https://www.disco.com.uy/product/frankfurters-artesanales-schneck-x-4-un-240-g/331006
+Frankfurters Artesanales SCHNECK x 4 un. 240 g,schneck,competencia,199,,,,,,,disco,331006,https://www.disco.com.uy/product/frankfurters-artesanales-schneck-x-4-un-240-g/331006
 Frankfurters Cortos Schneck 8 U + Mostaza 25 G,schneck,competencia,340,340,,,,,,tata,852,https://www.tata.com.uy/frankfurters-cortos-schneck-8-u---mostaza-25-g-852/p
-Frankfurters Cortos SCHNECK x 27 un. 1.1 kg,schneck,competencia,774,910,,,,,,disco,331007,https://www.disco.com.uy/product/frankfurters-cortos-schneck-x-27-un-1-1-kg/331007
-Frankfurters Cortos SCHNECK x 27 Unidades,schneck,competencia,990,,,,,,,tiendainglesa,1018632,"https://www.tiendainglesa.com.uy/supermercado/frankfurters-cortos-schneck-x-27-unidades.producto?1018632,,42"
-Frankfurters Cortos Vacío SCHNECK x 8 Unidades,schneck,competencia,305,,,,,,,tiendainglesa,412331,"https://www.tiendainglesa.com.uy/supermercado/frankfurters-cortos-vacio-schneck-x-8-unidades.producto?412331,,42"
 Frankfurters Largos Schneck 8 U + Mostaza 25 G,schneck,competencia,499,499,,,,,,tata,853,https://www.tata.com.uy/frankfurters-largos-schneck-8-u---mostaza-25-g-853/p
-Frankfurters Largos SCHNECK al Vacío x 8 Unidades,schneck,competencia,389,460,,,,,,tiendainglesa,412334,"https://www.tiendainglesa.com.uy/supermercado/frankfurters-largos-schneck-al-vacio-x-8-unidades.producto?412334,,42"
-Frankfurters Largos SCHNECK x 27 un. 1.6 kg,schneck,competencia,1173,1380,,,,,,disco,331008,https://www.disco.com.uy/product/frankfurters-largos-schneck-x-27-un-1-6-kg/331008
-Frankfurters Largos SCHNECK x 27 Unidades,schneck,competencia,1510,,,,,,,tiendainglesa,1018633,"https://www.tiendainglesa.com.uy/supermercado/frankfurters-largos-schneck-x-27-unidades.producto?1018633,,42"
+Frankfurters Largos SCHNECK x 27 un. 1.6 kg,schneck,competencia,1380,,,,,,,disco,331008,https://www.disco.com.uy/product/frankfurters-largos-schneck-x-27-un-1-6-kg/331008
 Hamburguesa Congelada Chori Schneck 2 U 167 G,schneck,competencia,102,102,,,,,,tata,3955,https://www.tata.com.uy/hamburguesa-congelada-chori-schneck-2-u-167-g-3955/p
 Hamburguesa Congelada Schneck 12 U 1 Kg,schneck,competencia,539,599,,,,,,tata,908,https://www.tata.com.uy/hamburguesa-congelada-schneck-12-u-1-kg-908/p
 Hamburguesa Congelada Sin Sal Schneck 2 U,schneck,competencia,112,112,,,,,,tata,3956,https://www.tata.com.uy/hamburguesa-congelada-sin-sal-schneck-2-u-3956/p
@@ -606,34 +488,26 @@ Hamburguesa Schneck Veggie Espinaca Y Puerro 2 Uni 180 g,schneck,competencia,144
 Hamburguesa Schneck Veggie Espinaca Y Puerro X2U 180 G.,schneck,competencia,148,148,,,,,,tata,147540,https://www.tata.com.uy/hamburguesa-schneck-veggie-espinaca-y-puerro-x2u-180-g--147540/p
 Hamburguesa Schneck XI,schneck,competencia,126,126,,,,,,tata,117882,https://www.tata.com.uy/hamburguesa-schneck-xi-117882/p
 Hamburguesa Schneck Xl Flow Pack 2 Uni 220 g,schneck,competencia,125,167,,,,,,eldorado,32436,https://www.eldorado.com.uy/hamburguesa-schneck-xl-flow-pack-2-uni-220-g/p
-Hamburguesa SCHNECK XL x 2 un. 220 g,schneck,competencia,124,146,,,,,,disco,260076,https://www.disco.com.uy/product/hamburguesa-schneck-xl-x-2-un-220-g/260076
+Hamburguesa SCHNECK XL x 2 un. 220 g,schneck,competencia,146,,,,,,,disco,260076,https://www.disco.com.uy/product/hamburguesa-schneck-xl-x-2-un-220-g/260076
 Hamburguesa Veggie Boniato Y Zanahoria Schneck X 2 U,schneck,competencia,148,148,,,,,,tata,147539,https://www.tata.com.uy/hamburguesa-veggie-boniato-y-zanahoria-schneck-x-2-u-147539/p
-Hamburguesa Veggie SCHNECK Boniato Zanahoria 6 un. 540 g,schneck,competencia,444,522,,,,,,disco,242129,https://www.disco.com.uy/product/hamburguesa-veggie-schneck-boniato-zanahoria-6-un-540-g/242129
-Hamburguesa Veggie SCHNECK Espinaca Puerro 6 un. 540 g,schneck,competencia,444,522,,,,,,disco,242128,https://www.disco.com.uy/product/hamburguesa-veggie-schneck-espinaca-puerro-6-un-540-g/242128
+Hamburguesa Veggie SCHNECK Boniato Zanahoria 6 un. 540 g,schneck,competencia,522,,,,,,,disco,242129,https://www.disco.com.uy/product/hamburguesa-veggie-schneck-boniato-zanahoria-6-un-540-g/242129
+Hamburguesa Veggie SCHNECK Espinaca Puerro 6 un. 540 g,schneck,competencia,522,,,,,,,disco,242128,https://www.disco.com.uy/product/hamburguesa-veggie-schneck-espinaca-puerro-6-un-540-g/242128
 Hamburguesa XL Schneck 8 U,schneck,competencia,591,591,,,,,,tata,172803,https://www.tata.com.uy/hamburguesa-xl-schneck-8-u-1000590864-172803/p
-Hamburguesas Chori Burger SCHNECK (2 un.) 167 g,schneck,competencia,92,,,,,,,tiendainglesa,249130,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-chori-burger-schneck-2-un.-167-g.producto?249130,,42"
-Hamburguesas chori SCHNECK 2 un.,schneck,competencia,60,71,,,,,,disco,234157,https://www.disco.com.uy/product/hamburguesas-chori-schneck-2-un/234157
-Hamburguesas Clásicas SCHNECK Carne (12 un.) 1 Kg,schneck,competencia,615,,,,,,,tiendainglesa,6865,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-clasicas-schneck-carne-12-un.-1-kg.producto?6865,,42"
-Hamburguesas Clásicas SCHNECK Carne 100% Vacuna (8 un.),schneck,competencia,415,,,,,,,tiendainglesa,6803,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-clasicas-schneck-carne-100%25-vacuna-8-un..producto?6803,,42"
+Hamburguesas chori SCHNECK 2 un.,schneck,competencia,71,,,,,,,disco,234157,https://www.disco.com.uy/product/hamburguesas-chori-schneck-2-un/234157
 Hamburguesas Congeladas Schneck 8 U 668 G,schneck,competencia,494,494,,,,,,tata,907,https://www.tata.com.uy/hamburguesas-congeladas-schneck-8-u-668-g-907/p
-Hamburguesas SCHNECK 12 un. 1 kg,schneck,competencia,518,609,,,,,,disco,234823,https://www.disco.com.uy/product/hamburguesas-schneck-12-un-1-kg/234823
-Hamburguesas SCHNECK 2 un.,schneck,competencia,89,105,,,,,,disco,234178,https://www.disco.com.uy/product/hamburguesas-schneck-2-un/234178
-Hamburguesas SCHNECK 8 un. 668 g,schneck,competencia,346,407,,,,,,disco,234822,https://www.disco.com.uy/product/hamburguesas-schneck-8-un-668-g/234822
-Hamburguesas SCHNECK Clásica (2 un.) 167 g,schneck,competencia,106,,,,,,,tiendainglesa,272729,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-schneck-clasica-2-un.-167-g.producto?272729,,42"
+Hamburguesas SCHNECK 12 un. 1 kg,schneck,competencia,609,,,,,,,disco,234823,https://www.disco.com.uy/product/hamburguesas-schneck-12-un-1-kg/234823
+Hamburguesas SCHNECK 2 un.,schneck,competencia,105,,,,,,,disco,234178,https://www.disco.com.uy/product/hamburguesas-schneck-2-un/234178
+Hamburguesas SCHNECK 8 un. 668 g,schneck,competencia,407,,,,,,,disco,234822,https://www.disco.com.uy/product/hamburguesas-schneck-8-un-668-g/234822
 Hamburguesas Schneck Clasicas 12Un,schneck,competencia,569,607,,,,,,eldorado,6773,https://www.eldorado.com.uy/hamburguesas-schneck-clasicas-12un/p
 Hamburguesas Schneck clásicas x 8 Uni,schneck,competencia,409,409,,,,,,eldorado,7806,https://www.eldorado.com.uy/hamburguesas-schneck-clasicas-x-8-uni/p
-Hamburguesas SCHNECK sin sal 2 un. 167 g,schneck,competencia,99,117,,,,,,disco,245178,https://www.disco.com.uy/product/hamburguesas-schneck-sin-sal-2-un-167-g/245178
+Hamburguesas SCHNECK sin sal 2 un. 167 g,schneck,competencia,117,,,,,,,disco,245178,https://www.disco.com.uy/product/hamburguesas-schneck-sin-sal-2-un-167-g/245178
 Hamburguesas Schneck Sin Sal 2Un,schneck,competencia,127,127,,,,,,eldorado,4002,https://www.eldorado.com.uy/hamburguesas-schneck-sin-sal-2un/p
-Hamburguesas SCHNECK x 24 2 kg,schneck,competencia,849,999,,,,,,disco,241077,https://www.disco.com.uy/product/hamburguesas-schneck-x-24-2-kg/241077
-Hamburguesas SCHNECK XL Premium x 8 880 g,schneck,competencia,503,592,,,,,,disco,242149,https://www.disco.com.uy/product/hamburguesas-schneck-xl-premium-x-8-880-g/242149
-Hamburguesas Veggie SCHNECK Boniato y Zanahoria (2 un.),schneck,competencia,152,,,,,,,tiendainglesa,1561730,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-veggie-schneck-boniato-y-zanahoria-2-un..producto?1561730,,42"
-Hamburguesas veggie SCHNECK boniato y zanahoria x 2 un 180 g,schneck,competencia,93,109,,,,,,disco,241239,https://www.disco.com.uy/product/hamburguesas-veggie-schneck-boniato-y-zanahoria-x-2-un-180-g/241239
-Hamburguesas Veggie SCHNECK Espinaca y Puerro (2 un.),schneck,competencia,152,,,,,,,tiendainglesa,1561727,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-veggie-schneck-espinaca-y-puerro-2-un..producto?1561727,,42"
-Hamburguesas veggie SCHNECK espinaca y puerro x 2 un 180 g,schneck,competencia,93,109,,,,,,disco,241238,https://www.disco.com.uy/product/hamburguesas-veggie-schneck-espinaca-y-puerro-x-2-un-180-g/241238
-Hamburguesas XL SCHNECK (2 un.) 220 g,schneck,competencia,147,,,,,,,tiendainglesa,395531,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-xl-schneck-2-un.-220-g.producto?395531,,42"
-Hummus Aceituna Schneck 250 g,schneck,competencia,169,199,,,,,,disco,137125,https://www.disco.com.uy/product/hummus-aceituna-schneck-250-g/137125
+Hamburguesas SCHNECK x 24 2 kg,schneck,competencia,999,,,,,,,disco,241077,https://www.disco.com.uy/product/hamburguesas-schneck-x-24-2-kg/241077
+Hamburguesas SCHNECK XL Premium x 8 880 g,schneck,competencia,592,,,,,,,disco,242149,https://www.disco.com.uy/product/hamburguesas-schneck-xl-premium-x-8-880-g/242149
+Hamburguesas veggie SCHNECK boniato y zanahoria x 2 un 180 g,schneck,competencia,109,,,,,,,disco,241239,https://www.disco.com.uy/product/hamburguesas-veggie-schneck-boniato-y-zanahoria-x-2-un-180-g/241239
+Hamburguesas veggie SCHNECK espinaca y puerro x 2 un 180 g,schneck,competencia,109,,,,,,,disco,241238,https://www.disco.com.uy/product/hamburguesas-veggie-schneck-espinaca-y-puerro-x-2-un-180-g/241238
+Hummus Aceituna Schneck 250 g,schneck,competencia,199,,,,,,,disco,137125,https://www.disco.com.uy/product/hummus-aceituna-schneck-250-g/137125
 Hummus Aceitunas Schneck 250 G,schneck,competencia,234,234,,,,,,tata,169470,https://www.tata.com.uy/hummus-aceitunas-schneck-250-g-169470/p
-Hummus remolacha master pote 250 g x un. caja 8 un.,schneck,competencia,169,199,,,,,,disco,137096,https://www.disco.com.uy/product/hummus-remolacha-master-pote-250-g-x-un-caja-8-un/137096
 Hummus Remolacha Schneck 250 G,schneck,competencia,259,259,,,,,,tata,155321,https://www.tata.com.uy/hummus-remolacha-schneck-250-g-155321/p
 Hummus Schneck Clásico Veggie 250 g,schneck,competencia,259,259,,,,,,tata,155322,https://www.tata.com.uy/hummus-schneck-clasico-veggie-250-g-1000461779-155322/p
 Hummus Schneck Veggie Clasico 250grs,schneck,competencia,199,269.9,,,,,,eldorado,47188,https://www.eldorado.com.uy/hummus-schneck-veggie-clasico-250grs/p
@@ -641,79 +515,59 @@ Hummus Schneck Veggie Con Aceitunas 250grs,schneck,competencia,269.9,269.9,,,,,,
 Hummus Schneck Veggie Con Remolacha 250grs,schneck,competencia,127,269.9,,,,,,eldorado,47189,https://www.eldorado.com.uy/hummus-schneck-veggie-con-remolacha-250grs/p
 Hummus Schneck Veggie Con Zanahoria 250grs,schneck,competencia,199,269.9,,,,,,eldorado,47190,https://www.eldorado.com.uy/hummus-schneck-veggie-con-zanahoria-250grs/p
 Hummus Zanahoria Schneck 250 G,schneck,competencia,259,259,,,,,,tata,169471,https://www.tata.com.uy/hummus-zanahoria-schneck-250-g-169471/p
-Húngaras SCHNECK al Vacío x 8 Unidades,schneck,competencia,550,,,,,,,tiendainglesa,1095891,"https://www.tiendainglesa.com.uy/supermercado/hungaras-schneck-al-vacio-x-8-unidades.producto?1095891,,42"
-Jamón Cocido Extra Feteado SCHNECK 200 gr,schneck,competencia,320,,,,,,,tiendainglesa,1016021,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-extra-feteado-schneck-200-gr.producto?1016021,,42"
 Jamón Cocido Extra Schneck 100 G,schneck,competencia,97,970,,,,,,tata,7897,https://www.tata.com.uy/jamon-cocido-extra-schneck-100-g-7897/p
 Jamón cocido extra SCHNECK x 50 g,schneck,competencia,47,940,,,,,,disco,335047,https://www.disco.com.uy/product/jamon-cocido-extra-schneck-x-50-g/335047
-Jamón cocido extra sin sal SCHNECK kg,schneck,competencia,39,910,,,,,,disco,335046,https://www.disco.com.uy/product/jamon-cocido-extra-sin-sal-schneck-kg/335046
+Jamón cocido extra sin sal SCHNECK kg,schneck,competencia,46,910,,,,,,disco,335046,https://www.disco.com.uy/product/jamon-cocido-extra-sin-sal-schneck-kg/335046
 Jamon Cocido Schneck 1 Kg,schneck,competencia,86,860,,,,,,tata,164727,https://www.tata.com.uy/jamon-cocido-schneck-1-kg-164727/p
-Jamón Cocido SCHNECK x 50 g,schneck,competencia,33,770,,,,,,disco,362305,https://www.disco.com.uy/product/jamon-cocido-schneck-x-50-g/362305
-Jamón Extra SCHNECK (Kg),schneck,competencia,790,990,,,,,,tiendainglesa,610,"https://www.tiendainglesa.com.uy/supermercado/jamon-extra-schneck-kg.producto?610,,42"
+Jamón Cocido SCHNECK x 50 g,schneck,competencia,39,770,,,,,,disco,362305,https://www.disco.com.uy/product/jamon-cocido-schneck-x-50-g/362305
 Jamon Extra Schneck Fundacion Feteado 200 G,schneck,competencia,259,259,,,,,,tata,147489,https://www.tata.com.uy/jamon-extra-schneck-fundacion-feteado-200-g-147489/p
-Jamón SCHNECK 1936 Fundación (Kg),schneck,competencia,1330,,,,,,,tiendainglesa,1096036,"https://www.tiendainglesa.com.uy/supermercado/jamon-schneck-1936-fundacion-kg.producto?1096036,,42"
 Jamon Schneck Artesanal Kg Tradicional,schneck,competencia,873,873,,,,,,eldorado,1638,https://www.eldorado.com.uy/jamon-schneck-artesanal-kg-tradicional/p
 Jamon Schneck Cocido Kg,schneck,competencia,599,743,,,,,,eldorado,9698,https://www.eldorado.com.uy/jamon-schneck-cocido-kg/p
 Jamon Schneck Cocido Sin Sal Extra Kg,schneck,competencia,599,815,,,,,,eldorado,53483,https://www.eldorado.com.uy/jamon-schneck-cocido-sin-sal-extra-kg/p
-Lengua Cocida SCHNECK al Vacío x 1 Unidad,schneck,competencia,1660,,,,,,,tiendainglesa,801,"https://www.tiendainglesa.com.uy/supermercado/lengua-cocida-schneck-al-vacio-x-1-unidad.producto?801,,42"
 Leonesa Mechada Schneck 100 G,schneck,competencia,85,850,,,,,,tata,7866,https://www.tata.com.uy/leonesa-mechada-schneck-100-g-7866/p
-Leonesa mechada SCHNECK x 50 g,schneck,competencia,32,750,,,,,,disco,361730,https://www.disco.com.uy/product/leonesa-mechada-schneck-x-50-g/361730
-Leonesa Mechada SCHNECK(Kg),schneck,competencia,820,,,,,,,tiendainglesa,23582,"https://www.tiendainglesa.com.uy/supermercado/leonesa-mechada-schneck-kg.producto?23582,,42"
+Leonesa mechada SCHNECK x 50 g,schneck,competencia,38,750,,,,,,disco,361730,https://www.disco.com.uy/product/leonesa-mechada-schneck-x-50-g/361730
 Leonesa Mini Schneck 1 Ud,schneck,competencia,310,310,,,,,,tata,164741,https://www.tata.com.uy/leonesa-mini-schneck-1-ud-164741/p
 Leonesa Schneck 100 G,schneck,competencia,78,780,,,,,,tata,7864,https://www.tata.com.uy/leonesa-schneck-100-g-7864/p
 Leonesa Schneck C/Jamon Kg Mechada,schneck,competencia,600,733,,,,,,eldorado,8796,https://www.eldorado.com.uy/leonesa-schneck-c-jamon-kg-mechada/p
-Leonesa SCHNECK feteada atmósfera controlada x 250 g,schneck,competencia,156,730,,,,,,disco,309125,https://www.disco.com.uy/product/leonesa-schneck-feteada-atmosfera-controlada-x-250-g/309125
+Leonesa SCHNECK feteada atmósfera controlada x 250 g,schneck,competencia,183,730,,,,,,disco,309125,https://www.disco.com.uy/product/leonesa-schneck-feteada-atmosfera-controlada-x-250-g/309125
 Leonesa Schneck Kg .,schneck,competencia,625,625,,,,,,eldorado,1640,https://www.eldorado.com.uy/leonesa-schneck-kg/p
 "Leonesa Schneck Mini A/V 0,450gr",schneck,competencia,273,273,,,,,,eldorado,50563,https://www.eldorado.com.uy/leonesa-schneck-mini-a-v-0-450gr/p
 Leonesa Schneck Primavera Kg .,schneck,competencia,533,533,,,,,,eldorado,2130,https://www.eldorado.com.uy/leonesa-schneck-primavera-kg/p
-Leonesa SCHNECK x 50 g,schneck,competencia,31,730,,,,,,disco,362890,https://www.disco.com.uy/product/leonesa-schneck-x-50-g/362890
-Leonesa Tripon SCHNECK (Kg),schneck,competencia,770,,,,,,,tiendainglesa,40,"https://www.tiendainglesa.com.uy/supermercado/leonesa-tripon-schneck-kg.producto?40,,42"
+Leonesa SCHNECK x 50 g,schneck,competencia,37,730,,,,,,disco,362890,https://www.disco.com.uy/product/leonesa-schneck-x-50-g/362890
 Lionesa Feteada Schneck 200 Gr,schneck,competencia,210,210,,,,,,tata,167711,https://www.tata.com.uy/lionesa-feteada-schneck-200-gr-167711/p
-Lionesa Mini SCHNECK un.,schneck,competencia,178,209,,,,,,disco,362433,https://www.disco.com.uy/product/lionesa-mini-schneck-un/362433
-Lionesa Schneck Feteada 200g Un,schneck,competencia,179.9,179.9,,,,,,eldorado,53504,https://www.eldorado.com.uy/lionesa-schneck-feteada-200g-un/p
+Lionesa Mini SCHNECK un.,schneck,competencia,209,,,,,,,disco,362433,https://www.disco.com.uy/product/lionesa-mini-schneck-un/362433
+Lionesa Schneck Feteada 200g Un,schneck,competencia,115,179.9,,,,,,eldorado,53504,https://www.eldorado.com.uy/lionesa-schneck-feteada-200g-un/p
 Lomito Canadiense Feteado Schneck 200 Gr,schneck,competencia,279,279,,,,,,tata,167716,https://www.tata.com.uy/lomito-canadiense-feteado-schneck-200-gr-167716/p
-Longaniza Pipa sin Piel Al Vacío SCHNECK un.,schneck,competencia,127,149,,,,,,disco,362431,https://www.disco.com.uy/product/longaniza-pipa-sin-piel-al-vacio-schneck-un/362431
-Longaniza SCHNECK al Vacío (1 un.),schneck,competencia,240,,,,,,,tiendainglesa,1017595,"https://www.tiendainglesa.com.uy/supermercado/longaniza-schneck-al-vacio-1-un..producto?1017595,,42"
+Longaniza Pipa sin Piel Al Vacío SCHNECK un.,schneck,competencia,149,,,,,,,disco,362431,https://www.disco.com.uy/product/longaniza-pipa-sin-piel-al-vacio-schneck-un/362431
 Longaniza Schneck Al Vacío 190 Gr,schneck,competencia,225,225,,,,,,tata,164733,https://www.tata.com.uy/longaniza-schneck-al-vacio-190-gr-164733/p
 "Longaniza Schneck Sin Piel A/V 0,200gr",schneck,competencia,149,203,,,,,,eldorado,50564,https://www.eldorado.com.uy/longaniza-schneck-sin-piel-a-v-0-200gr/p
 Milanesa Cerdo Schneck 700gr,schneck,competencia,433,433,,,,,,eldorado,60038,https://www.eldorado.com.uy/milanesa-cerdo-schneck-700gr/p
 Milanesa De Cerdo Schneck 6 U,schneck,competencia,430,430,,,,,,tata,173465,https://www.tata.com.uy/milanesa-de-cerdo-schneck-6-u-1000592534-173465/p
 Milanesa Vacuna Schneck 6 Ud,schneck,competencia,682,682,,,,,,tata,172156,https://www.tata.com.uy/milanesa-vacuna-schneck-6-ud-1000583336-172156/p
 Milanesa Vacuna Schneck 700gr,schneck,competencia,499,629,,,,,,eldorado,60250,https://www.eldorado.com.uy/milanesa-vacuna-schneck-700gr/p
-Milanesas cerdo SCHNECK 6 un. 800 g,schneck,competencia,276,541,,,,,,disco,258420,https://www.disco.com.uy/product/milanesas-cerdo-schneck-6-un-800-g/258420
-Milanesas de Carne SCHNECK (6 un.),schneck,competencia,819,,,,,,,tiendainglesa,330261,"https://www.tiendainglesa.com.uy/supermercado/milanesas-de-carne-schneck-6-un..producto?330261,,42"
-Milanesas de carne vacuna SCHNECK pq. 700 g,schneck,competencia,424,499,,,,,,disco,242212,https://www.disco.com.uy/product/milanesas-de-carne-vacuna-schneck-pq-700-g/242212
-Milanesas de Cerdo SCHNECK (6 un.),schneck,competencia,629,,,,,,,tiendainglesa,330262,"https://www.tiendainglesa.com.uy/supermercado/milanesas-de-cerdo-schneck-6-un..producto?330262,,42"
-Milanesas de Cerdo SCHNECK 700 g,schneck,competencia,366,431,,,,,,disco,242102,https://www.disco.com.uy/product/milanesas-de-cerdo-schneck-700-g/242102
+Milanesas cerdo SCHNECK 6 un. 800 g,schneck,competencia,325,541,,,,,,disco,258420,https://www.disco.com.uy/product/milanesas-cerdo-schneck-6-un-800-g/258420
 Milanesas De Cerdo Schneck 738 G,schneck,competencia,404.42,548,,,,,,tata,17110,https://www.tata.com.uy/milanesas-de-cerdo-schneck-738-g-17110/p
 Milanguesa Schneck 2 Ud,schneck,competencia,159,159,,,,,,tata,171453,https://www.tata.com.uy/milanguesa-schneck-2-ud-1000577739-171453/p
-Milanguesas SCHNECK x 2 un. 240 g,schneck,competencia,126,148,,,,,,disco,235067,https://www.disco.com.uy/product/milanguesas-schneck-x-2-un-240-g/235067
-Mini Lionesa SCHNECK x Unidad,schneck,competencia,290,,,,,,,tiendainglesa,1017585,"https://www.tiendainglesa.com.uy/supermercado/mini-lionesa-schneck-x-unidad.producto?1017585,,42"
-Mini Mortadela SCHNECK x Unidad,schneck,competencia,240,,,,,,,tiendainglesa,1017586,"https://www.tiendainglesa.com.uy/supermercado/mini-mortadela-schneck-x-unidad.producto?1017586,,42"
+Milanguesas SCHNECK x 2 un. 240 g,schneck,competencia,148,,,,,,,disco,235067,https://www.disco.com.uy/product/milanguesas-schneck-x-2-un-240-g/235067
 Morcilla Dulce Schneck Al Vacio 2 U,schneck,competencia,649,649,,,,,,tata,173492,https://www.tata.com.uy/morcilla-dulce-schneck-al-vacio-2-u-1000591622-173492/p
 Morcilla Salada Schneck Al Vacio 2 U,schneck,competencia,649,649,,,,,,tata,173487,https://www.tata.com.uy/morcilla-salada-schneck-al-vacio-2-u-1000591695-173487/p
 Mortadela Mini Schneck 1 Ud,schneck,competencia,199,239,,,,,,tata,164742,https://www.tata.com.uy/mortadela-mini-schneck-1-ud-164742/p
-Mortadela Mini SCHNECK un.,schneck,competencia,152,179,,,,,,disco,362434,https://www.disco.com.uy/product/mortadela-mini-schneck-un/362434
+Mortadela Mini SCHNECK un.,schneck,competencia,179,,,,,,,disco,362434,https://www.disco.com.uy/product/mortadela-mini-schneck-un/362434
 Mortadela Schneck Feteada 200 g,schneck,competencia,169,169,,,,,,tata,173522,https://www.tata.com.uy/mortadela-schneck-feteada-200-g-1000590848-173522/p
 Mostaza Schneck Doy Pack 250gr,schneck,competencia,199,259.9,,,,,,eldorado,53855,https://www.eldorado.com.uy/mostaza-schneck-doy-pack-250gr/p
 Mostaza Schneck Sachet 100gr,schneck,competencia,57,57,,,,,,eldorado,53854,https://www.eldorado.com.uy/mostaza-schneck-sachet-100gr/p
-Nuggets de carne vacuna SCHNECK 1 kg,schneck,competencia,424,499,,,,,,disco,241096,https://www.disco.com.uy/product/nuggets-de-carne-vacuna-schneck-1-kg/241096
+Nuggets de carne vacuna SCHNECK 1 kg,schneck,competencia,499,,,,,,,disco,241096,https://www.disco.com.uy/product/nuggets-de-carne-vacuna-schneck-1-kg/241096
 Nuggets De Carne Vacuna Schneck 1 Kg,schneck,competencia,674,674,,,,,,tata,152170,https://www.tata.com.uy/nuggets-de-carne-vacuna-schneck-1-kg-152170/p
-Panceta Ahumada Feteada SCHNECK 150 gr,schneck,competencia,210,,,,,,,tiendainglesa,1012420,"https://www.tiendainglesa.com.uy/supermercado/panceta-ahumada-feteada-schneck-150-gr.producto?1012420,,42"
 Panceta Ahumada Feteada Schneck Al Vacio 150 G,schneck,competencia,199,199,,,,,,tata,147488,https://www.tata.com.uy/panceta-ahumada-feteada-schneck-al-vacio-150-g-147488/p
 Panceta Schneck Ahumada Kg,schneck,competencia,853,853,,,,,,eldorado,1644,https://www.eldorado.com.uy/panceta-schneck-ahumada-kg/p
-Panchos cortos SCHNECK 8 un. 330 g,schneck,competencia,254,299,,,,,,disco,331615,https://www.disco.com.uy/product/panchos-cortos-schneck-8-un-330-g/331615
-Panchos cortos SCHNECK al vacío x 1.2 kg,schneck,competencia,829,846,,,,,,disco,331661,https://www.disco.com.uy/product/panchos-cortos-schneck-al-vacio-x-1-2-kg/331661
-Panchos largos SCHNECK 8 un.,schneck,competencia,305,359,,,,,,disco,331626,https://www.disco.com.uy/product/panchos-largos-schneck-8-un/331626
-"Panchos largos Schneck envasado al vacío x 1,7 kg",schneck,competencia,733.55,1248,,,,,,disco,335032,https://www.disco.com.uy/product/panchos-largos-schneck-envasado-al-vacio-x-1-7-kg/335032
+Panchos largos SCHNECK 8 un.,schneck,competencia,359,,,,,,,disco,331626,https://www.disco.com.uy/product/panchos-largos-schneck-8-un/331626
+"Panchos largos Schneck envasado al vacío x 1,7 kg",schneck,competencia,863,1468,,,,,,disco,335032,https://www.disco.com.uy/product/panchos-largos-schneck-envasado-al-vacio-x-1-7-kg/335032
 Panchos Schneck 1/4Kg Al Vacio,schneck,competencia,269.9,269.9,,,,,,eldorado,6776,https://www.eldorado.com.uy/panchos-schneck-1-4kg-al-vacio/p
 Panchos Schneck Largos Al Vacio 1/2Kg,schneck,competencia,330,399,,,,,,eldorado,1642,https://www.eldorado.com.uy/panchos-schneck-largos-al-vacio-1-2kg/p
-Paté de Campo SCHNECK x un.,schneck,competencia,144,169,,,,,,disco,362438,https://www.disco.com.uy/product/pate-de-campo-schneck-x-un/362438
-Paté de Campo SCHNECK,schneck,competencia,180,,,,,,,tiendainglesa,1017677,"https://www.tiendainglesa.com.uy/supermercado/pate-de-campo-schneck.producto?1017677,,42"
-Paté de Hígado al Vacío SCHNECK (Unidad),schneck,competencia,180,,,,,,,tiendainglesa,1017589,"https://www.tiendainglesa.com.uy/supermercado/pate-de-higado-al-vacio-schneck-unidad.producto?1017589,,42"
-Paté de Hígado SCHNECK un.,schneck,competencia,144,169,,,,,,disco,362436,https://www.disco.com.uy/product/pate-de-higado-schneck-un/362436
-Paté de Jamón SCHNECK un.,schneck,competencia,144,169,,,,,,disco,362437,https://www.disco.com.uy/product/pate-de-jamon-schneck-un/362437
-Paté de Lengua SCHNECK un.,schneck,competencia,110,129,,,,,,disco,362435,https://www.disco.com.uy/product/pate-de-lengua-schneck-un/362435
-Paté de Lengua SCHNECK x Unidad,schneck,competencia,180,,,,,,,tiendainglesa,1017588,"https://www.tiendainglesa.com.uy/supermercado/pate-de-lengua-schneck-x-unidad.producto?1017588,,42"
+Paté de Campo SCHNECK x un.,schneck,competencia,169,,,,,,,disco,362438,https://www.disco.com.uy/product/pate-de-campo-schneck-x-un/362438
+Paté de Hígado SCHNECK un.,schneck,competencia,169,,,,,,,disco,362436,https://www.disco.com.uy/product/pate-de-higado-schneck-un/362436
+Paté de Jamón SCHNECK un.,schneck,competencia,169,,,,,,,disco,362437,https://www.disco.com.uy/product/pate-de-jamon-schneck-un/362437
+Paté de Lengua SCHNECK un.,schneck,competencia,129,,,,,,,disco,362435,https://www.disco.com.uy/product/pate-de-lengua-schneck-un/362435
 Pate Higado Schneck 1 Ud,schneck,competencia,169,169,,,,,,tata,164745,https://www.tata.com.uy/pate-higado-schneck-1-ud-164745/p
 Pate Jamon Schneck 1 Ud,schneck,competencia,187,187,,,,,,tata,164744,https://www.tata.com.uy/pate-jamon-schneck-1-ud-164744/p
 Pate Jamón Schneck 200 G,schneck,competencia,10000,50000,,,,,,tata,7910,https://www.tata.com.uy/pate-jamon-schneck-200-g-7910/p
@@ -723,143 +577,99 @@ Pate Lengua Schneck 1 Ud,schneck,competencia,167,167,,,,,,tata,164743,https://ww
 "Pate Schneck De Jamon A/V 0,210gr",schneck,competencia,187,187,,,,,,eldorado,50554,https://www.eldorado.com.uy/pate-schneck-de-jamon-a-v-0-210gr/p
 "Pate Schneck De Lengua A/V 0,210grs",schneck,competencia,167,167,,,,,,eldorado,50558,https://www.eldorado.com.uy/pate-schneck-de-lengua-a-v-0-210grs/p
 Pildoritas Schneck Al Vacio Kg.,schneck,competencia,823,823,,,,,,eldorado,20,https://www.eldorado.com.uy/pildoritas-schneck-al-vacio-kg/p
-Pildoritas SCHNECK al vacío x 1 kg,schneck,competencia,568.65,669,,,,,,disco,335430,https://www.disco.com.uy/product/pildoritas-schneck-al-vacio-x-1-kg/335430
-Pildoritas SCHNECK Envasadas al Vacío 550 gr,schneck,competencia,450,,,,,,,tiendainglesa,1095885,"https://www.tiendainglesa.com.uy/supermercado/pildoritas-schneck-envasadas-al-vacio-550-gr.producto?1095885,,42"
+Pildoritas SCHNECK al vacío x 1 kg,schneck,competencia,669,669,,,,,,disco,335430,https://www.disco.com.uy/product/pildoritas-schneck-al-vacio-x-1-kg/335430
 Pipa Schneck Al Vacio,schneck,competencia,225,225,,,,,,tata,164734,https://www.tata.com.uy/pipa-schneck-al-vacio-164734/p
 "Pipa Schneck Sin Piel A/V 0,200gr",schneck,competencia,149,197,,,,,,eldorado,50562,https://www.eldorado.com.uy/pipa-schneck-sin-piel-a-v-0-200gr/p
-Pipa sin Piel Al Vacío SCHNECK un.,schneck,competencia,127,149,,,,,,disco,362432,https://www.disco.com.uy/product/pipa-sin-piel-al-vacio-schneck-un/362432
+Pipa sin Piel Al Vacío SCHNECK un.,schneck,competencia,149,,,,,,,disco,362432,https://www.disco.com.uy/product/pipa-sin-piel-al-vacio-schneck-un/362432
 Salame Feteado Schneck 200 G,schneck,competencia,275,275,,,,,,tata,147490,https://www.tata.com.uy/salame-feteado-schneck-200-g-147490/p
-Salame Feteado SCHNECK 200 gr,schneck,competencia,290,,,,,,,tiendainglesa,1012421,"https://www.tiendainglesa.com.uy/supermercado/salame-feteado-schneck-200-gr.producto?1012421,,42"
 Salame Milan Schneck La Guillermina Feteado 200 g,schneck,competencia,155,155,,,,,,tata,173524,https://www.tata.com.uy/salame-milan-schneck-la-guillermina-feteado-200-g-1000590001-173524/p
-Salame Milan SCHNECK,schneck,competencia,950,,,,,,,tiendainglesa,1096041,"https://www.tiendainglesa.com.uy/supermercado/salame-milan-schneck.producto?1096041,,42"
-Salame Pipa SCHNECK al Vacío sin Piel x Unidad,schneck,competencia,220,,,,,,,tiendainglesa,1017594,"https://www.tiendainglesa.com.uy/supermercado/salame-pipa-schneck-al-vacio-sin-piel-x-unidad.producto?1017594,,42"
 Salamin Schneck Al Vacio 190 Gr,schneck,competencia,225,225,,,,,,tata,164732,https://www.tata.com.uy/salamin-schneck-al-vacio-190-gr-164732/p
-Salamín SCHNECK al Vacío sin Piel x Unidad,schneck,competencia,220,,,,,,,tiendainglesa,1017593,"https://www.tiendainglesa.com.uy/supermercado/salamin-schneck-al-vacio-sin-piel-x-unidad.producto?1017593,,42"
 "Salamin Schneck Sin Piel A/V 0,200gr",schneck,competencia,197,197,,,,,,eldorado,50552,https://www.eldorado.com.uy/salamin-schneck-sin-piel-a-v-0-200gr/p
-Salamín sin Piel Al Vacío SCHNECK un.,schneck,competencia,127,149,,,,,,disco,362430,https://www.disco.com.uy/product/salamin-sin-piel-al-vacio-schneck-un/362430
 Salchicha Schneck Alemanes Paquete 4un,schneck,competencia,303,303,,,,,,eldorado,49599,https://www.eldorado.com.uy/salchicha-schneck-alemanes-paquete-4un/p
 Salchicha Schneck Hungaras Paquete 8un,schneck,competencia,415,415,,,,,,eldorado,49600,https://www.eldorado.com.uy/salchicha-schneck-hungaras-paquete-8un/p
-Salchichas Alemanes SCHNECK x 4 Un - 380 g,schneck,competencia,280,330,,,,,,disco,331001,https://www.disco.com.uy/product/salchichas-alemanes-schneck-x-4-un-380-g/331001
-Salchichas Húngaras SCHNECK X 8 Un - 480 g,schneck,competencia,293,345,,,,,,disco,331002,https://www.disco.com.uy/product/salchichas-hungaras-schneck-x-8-un-480-g/331002
-Bondiola en Fetas SARUBBI 200 gr,sarubbi,sarubbi,203,290,,,,,,tiendainglesa,1097702,"https://www.tiendainglesa.com.uy/supermercado/bondiola-en-fetas-sarubbi-200-gr.producto?1097702,,42"
-Bondiola rellena Sarubbi x kg,sarubbi,sarubbi,500.65,589,,,,,,disco,346526,https://www.disco.com.uy/product/bondiola-rellena-sarubbi-x-kg/346526
-Chorizo Parrillero SARUBBI (Kg),sarubbi,sarubbi,290,389,,,,,,tiendainglesa,1011241,"https://www.tiendainglesa.com.uy/supermercado/chorizo-parrillero-sarubbi-kg.producto?1011241,,42"
+Salchichas Alemanes SCHNECK x 4 Un - 380 g,schneck,competencia,330,,,,,,,disco,331001,https://www.disco.com.uy/product/salchichas-alemanes-schneck-x-4-un-380-g/331001
+Salchichas Húngaras SCHNECK X 8 Un - 480 g,schneck,competencia,345,,,,,,,disco,331002,https://www.disco.com.uy/product/salchichas-hungaras-schneck-x-8-un-480-g/331002
+Bondiola rellena Sarubbi x kg,sarubbi,sarubbi,589,589,,,,,,disco,346526,https://www.disco.com.uy/product/bondiola-rellena-sarubbi-x-kg/346526
 Chorizo Parrillero Sarubbi,sarubbi,sarubbi,479,479,,,,,,tata,164696,https://www.tata.com.uy/chorizo-parrillero-sarubbi-164696/p
-Chorizo Premium SARUBBI al vacío x 350 g,sarubbi,sarubbi,220,739,,,,,,disco,346494,https://www.disco.com.uy/product/chorizo-premium-sarubbi-al-vacio-x-350-g/346494
-Chorizo Premium SARUBBI al vacío x 7,sarubbi,sarubbi,181,709,,,,,,disco,346529,https://www.disco.com.uy/product/chorizo-premium-sarubbi-al-vacio-x-7/346529
-Chorizo SARUBBI angus al vacio x 4,sarubbi,sarubbi,234,275,,,,,,disco,346102,https://www.disco.com.uy/product/chorizo-sarubbi-angus-al-vacio-x-4/346102
-Chorizo SARUBBI angus al vacio x 7,sarubbi,sarubbi,384,565,,,,,,disco,346103,https://www.disco.com.uy/product/chorizo-sarubbi-angus-al-vacio-x-7/346103
-Chorizos Angus Ibérico SARUBBI Envasado al Vacío (3 un.),sarubbi,sarubbi,581,830,,,,,,tiendainglesa,399330,"https://www.tiendainglesa.com.uy/supermercado/chorizos-angus-iberico-sarubbi-envasado-al-vacio-3-un..producto?399330,,42"
-Chorizos Angus SARUBBI Bacon y Cebolla Envasado al Vacío (3 un.),sarubbi,sarubbi,581,830,,,,,,tiendainglesa,1015710,"https://www.tiendainglesa.com.uy/supermercado/chorizos-angus-sarubbi-bacon-y-cebolla-envasado-al-vacio-3-un..producto?1015710,,42"
-Chorizos Angus SARUBBI Cheddar y Barbacoa Envasado al Vacío (3 un.),sarubbi,sarubbi,581,830,,,,,,tiendainglesa,399320,"https://www.tiendainglesa.com.uy/supermercado/chorizos-angus-sarubbi-cheddar-y-barbacoa-envasado-al-vacio-3-un..producto?399320,,42"
-Chorizos Angus SARUBBI Envasado al Vacío (4 un.),sarubbi,sarubbi,539,770,,,,,,tiendainglesa,399318,"https://www.tiendainglesa.com.uy/supermercado/chorizos-angus-sarubbi-envasado-al-vacio-4-un..producto?399318,,42"
-Chorizos Angus SARUBBI Envasado al Vacío (7 un.),sarubbi,sarubbi,539,770,,,,,,tiendainglesa,399317,"https://www.tiendainglesa.com.uy/supermercado/chorizos-angus-sarubbi-envasado-al-vacio-7-un..producto?399317,,42"
-Chorizos Angus SARUBBI Queso Envasado al Vacío (3 un.),sarubbi,sarubbi,581,830,,,,,,tiendainglesa,399321,"https://www.tiendainglesa.com.uy/supermercado/chorizos-angus-sarubbi-queso-envasado-al-vacio-3-un..producto?399321,,42"
-Chorizos Parrilleros SARUBBI A/V x 12,sarubbi,sarubbi,415,530,,,,,,disco,333743,https://www.disco.com.uy/product/chorizos-parrilleros-sarubbi-a-v-x-12/333743
+Chorizo Premium SARUBBI al vacío x 350 g,sarubbi,sarubbi,259,,,,,,,disco,346494,https://www.disco.com.uy/product/chorizo-premium-sarubbi-al-vacio-x-350-g/346494
+Chorizo Premium SARUBBI al vacío x 7,sarubbi,sarubbi,213,709,,,,,,disco,346529,https://www.disco.com.uy/product/chorizo-premium-sarubbi-al-vacio-x-7/346529
+Chorizo SARUBBI angus al vacio x 4,sarubbi,sarubbi,275,,,,,,,disco,346102,https://www.disco.com.uy/product/chorizo-sarubbi-angus-al-vacio-x-4/346102
+Chorizo SARUBBI angus al vacio x 7,sarubbi,sarubbi,452,565,,,,,,disco,346103,https://www.disco.com.uy/product/chorizo-sarubbi-angus-al-vacio-x-7/346103
+Chorizos Parrilleros SARUBBI A/V x 12,sarubbi,sarubbi,623,,,,,,,disco,333743,https://www.disco.com.uy/product/chorizos-parrilleros-sarubbi-a-v-x-12/333743
 Chorizos Sarubbi Vacio Parillero Kg Gancho 1.5,sarubbi,sarubbi,447,447,,,,,,eldorado,21757,https://www.eldorado.com.uy/chorizos-sarubbi-vacio-parillero-kg-gancho-1-5/p
-Combo 2 Paquetes de Frankfruters SARUBBI (8 un.) + Tupper Nacional de....,sarubbi,sarubbi,295,,,,,,,tiendainglesa,77549,"https://www.tiendainglesa.com.uy/supermercado/combo-2-paquetes-de-frankfruters-sarubbi-8-un.-mas-tupper-nacional-de-regalo.producto?77549,,42"
 Empanada Carne Y Panceta Sarubbi 350 G,sarubbi,sarubbi,427,427,,,,,,tata,147528,https://www.tata.com.uy/empanada-carne-y-panceta-sarubbi-350-g-147528/p
 Empanada Jamon Y Queso Sarubbi 350 G,sarubbi,sarubbi,427,427,,,,,,tata,147527,https://www.tata.com.uy/empanada-jamon-y-queso-sarubbi-350-g-147527/p
 Empanada Lomito Y Cheddar Sarubbi 350 G,sarubbi,sarubbi,427,427,,,,,,tata,147526,https://www.tata.com.uy/empanada-lomito-y-cheddar-sarubbi-350-g-147526/p
-Empanadas carne y panceta SARUBBI x 5 350 g,sarubbi,sarubbi,372,438,,,,,,disco,241658,https://www.disco.com.uy/product/empanadas-carne-y-panceta-sarubbi-x-5-350-g/241658
-Empanadas lomito cheddar SARUBBI x 5 350 g,sarubbi,sarubbi,372,438,,,,,,disco,241659,https://www.disco.com.uy/product/empanadas-lomito-cheddar-sarubbi-x-5-350-g/241659
-Empanadas SARUBBI Jamón y Queso (5 un.) 350 g,sarubbi,sarubbi,263,375,,,,,,tiendainglesa,1559958,"https://www.tiendainglesa.com.uy/supermercado/empanadas-sarubbi-jamon-y-queso-5-un.-350-g.producto?1559958,,42"
-Empanadas SARUBBI Lomito y Cheddar (5 un.) 350 g,sarubbi,sarubbi,263,375,,,,,,tiendainglesa,1559960,"https://www.tiendainglesa.com.uy/supermercado/empanadas-sarubbi-lomito-y-cheddar-5-un.-350-g.producto?1559960,,42"
-Feteado grueso jamón cocido SARUBBI x 400 g,sarubbi,sarubbi,194,570,,,,,,disco,300750,https://www.disco.com.uy/product/feteado-grueso-jamon-cocido-sarubbi-x-400-g/300750
-Fiambre De Cerdo Et. Roja Sarubbi 100 G,sarubbi,sarubbi,35,350,,,,,,tata,7851,https://www.tata.com.uy/fiambre-de-cerdo-et--roja-sarubbi-100-g-7851/p
+Empanadas carne y panceta SARUBBI x 5 350 g,sarubbi,sarubbi,438,,,,,,,disco,241658,https://www.disco.com.uy/product/empanadas-carne-y-panceta-sarubbi-x-5-350-g/241658
+Empanadas lomito cheddar SARUBBI x 5 350 g,sarubbi,sarubbi,438,,,,,,,disco,241659,https://www.disco.com.uy/product/empanadas-lomito-cheddar-sarubbi-x-5-350-g/241659
+Feteado grueso jamón cocido SARUBBI x 400 g,sarubbi,sarubbi,228,570,,,,,,disco,300750,https://www.disco.com.uy/product/feteado-grueso-jamon-cocido-sarubbi-x-400-g/300750
+Fiambre De Cerdo Et. Roja Sarubbi 100 G,sarubbi,sarubbi,29,330,,,,,,tata,7851,https://www.tata.com.uy/fiambre-de-cerdo-et--roja-sarubbi-100-g-7851/p
 Fiambre Sarubbi De Cerdo L/Roja Kg,sarubbi,sarubbi,395,395,,,,,,eldorado,2025,https://www.eldorado.com.uy/fiambre-sarubbi-de-cerdo-l-roja-kg/p
 Fiambre Sarubbi Linea Azul De Cerdo Kg,sarubbi,sarubbi,515,515,,,,,,eldorado,7107,https://www.eldorado.com.uy/fiambre-sarubbi-linea-azul-de-cerdo-kg/p
 Frankfurter Angus Sarubbi Cheddar Y Barbacoa 8 U,sarubbi,sarubbi,279,279,,,,,,tata,21579,https://www.tata.com.uy/frankfurter-angus-sarubbi-cheddar-y-barbacoa-8-u-21579/p
 Frankfurter Rausa Sarubbi 8 Ud,sarubbi,sarubbi,110,110,,,,,,tata,170677,https://www.tata.com.uy/frankfurter-rausa-sarubbi-8-ud-170677/p
-Frankfurter Sarubbi 15 U,sarubbi,sarubbi,312,312,,,,,,tata,14135,https://www.tata.com.uy/frankfurter-sarubbi-15-u-14135/p
+Frankfurter Sarubbi 15 U,sarubbi,sarubbi,399,399,,,,,,tata,14135,https://www.tata.com.uy/frankfurter-sarubbi-15-u-14135/p
 Frankfurters Sarubbi 4 U,sarubbi,sarubbi,70,70,,,,,,tata,7918,https://www.tata.com.uy/frankfurters-sarubbi-4-u-7918/p
 Frankfurters Sarubbi Medianos 15Und,sarubbi,sarubbi,319,319,,,,,,eldorado,9315,https://www.eldorado.com.uy/frankfurters-sarubbi-medianos-15und/p
-Frankfurters SARUBBI x 15 Unidades,sarubbi,sarubbi,440,,,,,,,tiendainglesa,412274,"https://www.tiendainglesa.com.uy/supermercado/frankfurters-sarubbi-x-15-unidades.producto?412274,,42"
-Hamburguesa SARUBBI 190 g x 2 un.,sarubbi,sarubbi,89,105,,,,,,disco,241909,https://www.disco.com.uy/product/hamburguesa-sarubbi-190-g-x-2-un/241909
+Hamburguesa SARUBBI 190 g x 2 un.,sarubbi,sarubbi,105,,,,,,,disco,241909,https://www.disco.com.uy/product/hamburguesa-sarubbi-190-g-x-2-un/241909
 Hamburguesa Sarubbi Flowpack 2Und,sarubbi,sarubbi,80.25,107,,,,,,eldorado,2890,https://www.eldorado.com.uy/hamburguesa-sarubbi-flowpack-2und/p
 Hamburguesa Sarubbi Gigante 4Und,sarubbi,sarubbi,559,559,,,,,,eldorado,2888,https://www.eldorado.com.uy/hamburguesa-sarubbi-gigante-4und/p
-Hamburguesas gigantes SARUBBI x 4 un. 792 g,sarubbi,sarubbi,469,552,,,,,,disco,234237,https://www.disco.com.uy/product/hamburguesas-gigantes-sarubbi-x-4-un-792-g/234237
+Hamburguesas gigantes SARUBBI x 4 un. 792 g,sarubbi,sarubbi,552,,,,,,,disco,234237,https://www.disco.com.uy/product/hamburguesas-gigantes-sarubbi-x-4-un-792-g/234237
 Hamburguesas Sarubbi 2 U,sarubbi,sarubbi,113,113,,,,,,tata,15062,https://www.tata.com.uy/hamburguesas-sarubbi-2-u-15062/p
-Hamburguesas SARUBBI de Carne (2 un.) 190 g,sarubbi,sarubbi,76,109,,,,,,tiendainglesa,414882,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-sarubbi-de-carne-2-un.-190-g.producto?414882,,42"
-Hamburguesas SARUBBI Gigante Extra Carne (4 un.) 792 g,sarubbi,sarubbi,414,591,,,,,,tiendainglesa,414852,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-sarubbi-gigante-extra-carne-4-un.-792-g.producto?414852,,42"
 Hamburguesas Sarubbi Gigante Extra Carne 4 U,sarubbi,sarubbi,553,553,,,,,,tata,15064,https://www.tata.com.uy/hamburguesas-sarubbi-gigante-extra-carne-4-u-15064/p
-Hamburguesas SARUBBI Premium (12 un.) 1.14 Kg,sarubbi,sarubbi,545,778,,,,,,tiendainglesa,1504268,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-sarubbi-premium-12-un.-1.14-kg.producto?1504268,,42"
-Hamburguesas SARUBBI Premium (6 un.) 570 g,sarubbi,sarubbi,291,415,,,,,,tiendainglesa,414881,"https://www.tiendainglesa.com.uy/supermercado/hamburguesas-sarubbi-premium-6-un.-570-g.producto?414881,,42"
-Hamburguesas SARUBBI x 12 un. 1.140 g,sarubbi,sarubbi,618,727,,,,,,disco,234239,https://www.disco.com.uy/product/hamburguesas-sarubbi-x-12-un-1-140-g/234239
-Hamburguesas SARUBBI x 6 un. 570 g,sarubbi,sarubbi,330,388,,,,,,disco,234238,https://www.disco.com.uy/product/hamburguesas-sarubbi-x-6-un-570-g/234238
+Hamburguesas SARUBBI x 12 un. 1.140 g,sarubbi,sarubbi,727,,,,,,,disco,234239,https://www.disco.com.uy/product/hamburguesas-sarubbi-x-12-un-1-140-g/234239
+Hamburguesas SARUBBI x 6 un. 570 g,sarubbi,sarubbi,388,,,,,,,disco,234238,https://www.disco.com.uy/product/hamburguesas-sarubbi-x-6-un-570-g/234238
 Jamón Cocido Ahumado Delizia 100 G,sarubbi,sarubbi,72,720,,,,,,tata,164717,https://www.tata.com.uy/jamon-cocido-ahumado-delizia-100-g-164717/p
 Jamón Cocido Delizia Sarubbi 200 G,sarubbi,sarubbi,90,560,,,,,,tata,13236,https://www.tata.com.uy/jamon-cocido-delizia-sarubbi-200-g-13236/p
-Jamón Cocido Delizia SARUBBI x kg,sarubbi,sarubbi,26,620,,,,,,disco,300529,https://www.disco.com.uy/product/jamon-cocido-delizia-sarubbi-x-kg/300529
+Jamón Cocido Delizia SARUBBI x kg,sarubbi,sarubbi,31,620,,,,,,disco,300529,https://www.disco.com.uy/product/jamon-cocido-delizia-sarubbi-x-kg/300529
 Jamón Cocido Donn Fetas Sarubbi 200 Gr,sarubbi,sarubbi,198,198,,,,,,tata,846,https://www.tata.com.uy/jamon-cocido-donn-fetas-sarubbi-200-gr-846/p
-Jamón Cocido Donna Light Fetas SARUBBI 200 gr,sarubbi,sarubbi,161,230,,,,,,tiendainglesa,341494,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-donna-light-fetas-sarubbi-200-gr.producto?341494,,42"
 Jamón Cocido Donna Light Sarubbi 100 G,sarubbi,sarubbi,93,930,,,,,,tata,7861,https://www.tata.com.uy/jamon-cocido-donna-light-sarubbi-100-g-7861/p
-Jamón Cocido Donna Light SARUBBI x kg,sarubbi,sarubbi,40,930,,,,,,disco,300345,https://www.disco.com.uy/product/jamon-cocido-donna-light-sarubbi-x-kg/300345
-Jamón cocido Extra SARUBBI feteado atmósfera controlada x 250 g,sarubbi,sarubbi,245,1150,,,,,,disco,300833,https://www.disco.com.uy/product/jamon-cocido-extra-sarubbi-feteado-atmosfera-controlada-x-250-g/300833
-Jamón Cocido SARUBBI (Kg),sarubbi,sarubbi,660,790,,,,,,tiendainglesa,380924,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-sarubbi-kg.producto?380924,,42"
-Jamón Cocido SARUBBI 200 gr,sarubbi,sarubbi,154,220,,,,,,tiendainglesa,336728,"https://www.tiendainglesa.com.uy/supermercado/jamon-cocido-sarubbi-200-gr.producto?336728,,42"
-Jamón cocido SARUBBI a/c x 250 g,sarubbi,sarubbi,174,819,,,,,,disco,300612,https://www.disco.com.uy/product/jamon-cocido-sarubbi-a-c-x-250-g/300612
-Jamón cocido SARUBBI feteado atmósfera controlada x 250 g,sarubbi,sarubbi,174,819,,,,,,disco,300697,https://www.disco.com.uy/product/jamon-cocido-sarubbi-feteado-atmosfera-controlada-x-250-g/300697
-Jamón cocido SARUBBI feteado atmósfera controlada x 250 g,sarubbi,sarubbi,185,869,,,,,,disco,300298,https://www.disco.com.uy/product/jamon-cocido-sarubbi-feteado-atmosfera-controlada-x-250-g/300298
-Jamón cocido SARUBBI x 50 g,sarubbi,sarubbi,33,780,,,,,,disco,362249,https://www.disco.com.uy/product/jamon-cocido-sarubbi-x-50-g/362249
-Jamón Delizia SARUBBI (Kg),sarubbi,sarubbi,590,,,,,,,tiendainglesa,1086206,"https://www.tiendainglesa.com.uy/supermercado/jamon-delizia-sarubbi-kg.producto?1086206,,42"
-Jamón Gran Verona SARUBBI (Kg),sarubbi,sarubbi,1070,,,,,,,tiendainglesa,324969,"https://www.tiendainglesa.com.uy/supermercado/jamon-gran-verona-sarubbi-kg.producto?324969,,42"
+Jamón Cocido Donna Light SARUBBI x kg,sarubbi,sarubbi,47,930,,,,,,disco,300345,https://www.disco.com.uy/product/jamon-cocido-donna-light-sarubbi-x-kg/300345
+Jamón cocido Extra SARUBBI feteado atmósfera controlada x 250 g,sarubbi,sarubbi,288,1150,,,,,,disco,300833,https://www.disco.com.uy/product/jamon-cocido-extra-sarubbi-feteado-atmosfera-controlada-x-250-g/300833
+Jamón cocido SARUBBI a/c x 250 g,sarubbi,sarubbi,205,819,,,,,,disco,300612,https://www.disco.com.uy/product/jamon-cocido-sarubbi-a-c-x-250-g/300612
+Jamón cocido SARUBBI feteado atmósfera controlada x 250 g,sarubbi,sarubbi,205,819,,,,,,disco,300697,https://www.disco.com.uy/product/jamon-cocido-sarubbi-feteado-atmosfera-controlada-x-250-g/300697
+Jamón cocido SARUBBI feteado atmósfera controlada x 250 g,sarubbi,sarubbi,218,869,,,,,,disco,300298,https://www.disco.com.uy/product/jamon-cocido-sarubbi-feteado-atmosfera-controlada-x-250-g/300298
+Jamón cocido SARUBBI x 50 g,sarubbi,sarubbi,39,780,,,,,,disco,362249,https://www.disco.com.uy/product/jamon-cocido-sarubbi-x-50-g/362249
 Jamon Sarubbi Cocido Delizia Kg,sarubbi,sarubbi,559,559,,,,,,eldorado,28291,https://www.eldorado.com.uy/jamon-sarubbi-cocido-delizia-kg/p
-Jamón Veronna en Fetas SARUBBI 200 gr,sarubbi,sarubbi,161,230,,,,,,tiendainglesa,1097697,"https://www.tiendainglesa.com.uy/supermercado/jamon-veronna-en-fetas-sarubbi-200-gr.producto?1097697,,42"
-Leonesa SARUBBI 200 gr,sarubbi,sarubbi,119,170,,,,,,tiendainglesa,336725,"https://www.tiendainglesa.com.uy/supermercado/leonesa-sarubbi-200-gr.producto?336725,,42"
-Lomito SARUBBI canadiense Donna Light x 50 g,sarubbi,sarubbi,44,1040,,,,,,disco,300347,https://www.disco.com.uy/product/lomito-sarubbi-canadiense-donna-light-x-50-g/300347
+Lomito SARUBBI canadiense Donna Light x 50 g,sarubbi,sarubbi,52,1040,,,,,,disco,300347,https://www.disco.com.uy/product/lomito-sarubbi-canadiense-donna-light-x-50-g/300347
 Lomo Ahumado Redondo Sarubbi 100 G,sarubbi,sarubbi,59,590,,,,,,tata,8610,https://www.tata.com.uy/lomo-ahumado-redondo-sarubbi-100-g-8610/p
-Lomo Ahumado SARUBBI 200 gr,sarubbi,sarubbi,196,280,,,,,,tiendainglesa,336720,"https://www.tiendainglesa.com.uy/supermercado/lomo-ahumado-sarubbi-200-gr.producto?336720,,42"
 Lomo Ahumado SARUBBI x 50 g,sarubbi,sarubbi,49,970,,,,,,disco,362950,https://www.disco.com.uy/product/lomo-ahumado-sarubbi-x-50-g/362950
-Lomo Canadiense Donna Light SARUBBI (Kg),sarubbi,sarubbi,1130,,,,,,,tiendainglesa,99643,"https://www.tiendainglesa.com.uy/supermercado/lomo-canadiense-donna-light-sarubbi-kg.producto?99643,,42"
-Lomo Canadiense en Fetas Donna Light SARUBBI 200 gr,sarubbi,sarubbi,189,270,,,,,,tiendainglesa,341496,"https://www.tiendainglesa.com.uy/supermercado/lomo-canadiense-en-fetas-donna-light-sarubbi-200-gr.producto?341496,,42"
-Lomo Canadiense SARUBBI (Kg),sarubbi,sarubbi,1040,,,,,,,tiendainglesa,648,"https://www.tiendainglesa.com.uy/supermercado/lomo-canadiense-sarubbi-kg.producto?648,,42"
-Lomo Canadiense SARUBBI 200 gr,sarubbi,sarubbi,182,260,,,,,,tiendainglesa,336721,"https://www.tiendainglesa.com.uy/supermercado/lomo-canadiense-sarubbi-200-gr.producto?336721,,42"
 Lomo Sarubbi Ahumado Kg 3066,sarubbi,sarubbi,559,559,,,,,,eldorado,4957,https://www.eldorado.com.uy/lomo-sarubbi-ahumado-kg-3066/p
-Longaniza toscana SARUBBI x 300 g,sarubbi,sarubbi,316,1240,,,,,,disco,300765,https://www.disco.com.uy/product/longaniza-toscana-sarubbi-x-300-g/300765
-Mix Chorizos SARUBBI Angus y Cheddar y Barbacoa (4 un.),sarubbi,sarubbi,553,790,,,,,,tiendainglesa,1015711,"https://www.tiendainglesa.com.uy/supermercado/mix-chorizos-sarubbi-angus-y-cheddar-y-barbacoa-4-un..producto?1015711,,42"
-Morcilla Salada Premium SARUBBI al vacío x 300 g,sarubbi,sarubbi,148,579,,,,,,disco,346501,https://www.disco.com.uy/product/morcilla-salada-premium-sarubbi-al-vacio-x-300-g/346501
-Mortadela bologna fetas SARUBBI 200 g,sarubbi,sarubbi,137,161,,,,,,disco,300250,https://www.disco.com.uy/product/mortadela-bologna-fetas-sarubbi-200-g/300250
-Mortadela Bologna SARUBBI 200 gr,sarubbi,sarubbi,126,180,,,,,,tiendainglesa,336722,"https://www.tiendainglesa.com.uy/supermercado/mortadela-bologna-sarubbi-200-gr.producto?336722,,42"
+Longaniza toscana SARUBBI x 300 g,sarubbi,sarubbi,372,1240,,,,,,disco,300765,https://www.disco.com.uy/product/longaniza-toscana-sarubbi-x-300-g/300765
+Morcilla Dulce Premium al vacío x 300 g,sarubbi,sarubbi,174,,,,,,,disco,346500,https://www.disco.com.uy/product/morcilla-dulce-premium-al-vacio-x-300-g/346500
+Morcilla Salada Premium SARUBBI al vacío x 300 g,sarubbi,sarubbi,174,,,,,,,disco,346501,https://www.disco.com.uy/product/morcilla-salada-premium-sarubbi-al-vacio-x-300-g/346501
+Mortadela bologna fetas SARUBBI 200 g,sarubbi,sarubbi,161,,,,,,,disco,300250,https://www.disco.com.uy/product/mortadela-bologna-fetas-sarubbi-200-g/300250
 Mortadela Roja Sarubbi 300 G,sarubbi,sarubbi,108,360,,,,,,tata,7875,https://www.tata.com.uy/mortadela-roja-sarubbi-300-g-7875/p
 Mortadela Sarubbi Kg,sarubbi,sarubbi,413,413,,,,,,eldorado,8068,https://www.eldorado.com.uy/mortadela-sarubbi-kg/p
-Mortadela suprema bologna SARUBBI x 50 g,sarubbi,sarubbi,22,520,,,,,,disco,300759,https://www.disco.com.uy/product/mortadela-suprema-bologna-sarubbi-x-50-g/300759
+Mortadela suprema bologna SARUBBI x 50 g,sarubbi,sarubbi,26,520,,,,,,disco,300759,https://www.disco.com.uy/product/mortadela-suprema-bologna-sarubbi-x-50-g/300759
 Mortadelin Sarubbi 300 G,sarubbi,sarubbi,219,730,,,,,,tata,115629,https://www.tata.com.uy/mortadelin-sarubbi-300-g-115629/p
 Pack Chorizos Angus Sarubbi 6 U,sarubbi,sarubbi,519,519,,,,,,tata,135481,https://www.tata.com.uy/pack-chorizos-angus-sarubbi-6-u-135481/p
 Pack Mix X2 Chorizo Angus Angus Cheddar Y Bbq Sarubbi,sarubbi,sarubbi,339,339,,,,,,tata,164695,https://www.tata.com.uy/pack-mix-x2-chorizo-angus-angus-cheddar-y-bbq-sarubbi-164695/p
 Pack Mortadelin + Pate Sarubbi 500 Gr,sarubbi,sarubbi,370,370,,,,,,tata,7938,https://www.tata.com.uy/pack-mortadelin-pate-sarubbi-500-gr-7938/p
-Panceta Ahumada SARUBBI (Kg),sarubbi,sarubbi,1110,,,,,,,tiendainglesa,4618,"https://www.tiendainglesa.com.uy/supermercado/panceta-ahumada-sarubbi-kg.producto?4618,,42"
-Panceta Ahumada SARUBBI 200 gr,sarubbi,sarubbi,224,320,,,,,,tiendainglesa,336723,"https://www.tiendainglesa.com.uy/supermercado/panceta-ahumada-sarubbi-200-gr.producto?336723,,42"
-Panceta ahumada SARUBBI,sarubbi,sarubbi,87,1020,,,,,,disco,300688,https://www.disco.com.uy/product/panceta-ahumada-sarubbi/300688
-Panceta Americana SARUBBI (Kg),sarubbi,sarubbi,820,,,,,,,tiendainglesa,1088359,"https://www.tiendainglesa.com.uy/supermercado/panceta-americana-sarubbi-kg.producto?1088359,,42"
+Panceta ahumada SARUBBI,sarubbi,sarubbi,102,1020,,,,,,disco,300688,https://www.disco.com.uy/product/panceta-ahumada-sarubbi/300688
 Panceta Americana Sarubbi 100 G,sarubbi,sarubbi,80,800,,,,,,tata,7883,https://www.tata.com.uy/panceta-americana-sarubbi-100-g-7883/p
-Panceta Sarubbi Americana Kg,sarubbi,sarubbi,769,899,,,,,,eldorado,8069,https://www.eldorado.com.uy/panceta-sarubbi-americana-kg/p
+Panceta Sarubbi Americana Kg,sarubbi,sarubbi,899,899,,,,,,eldorado,8069,https://www.eldorado.com.uy/panceta-sarubbi-americana-kg/p
 Panceta Sarubbi Fetas 200Gr,sarubbi,sarubbi,323,323,,,,,,eldorado,7472,https://www.eldorado.com.uy/panceta-sarubbi-fetas-200gr/p
-Panchos Angus SARUBBI x 8,sarubbi,sarubbi,212,249,,,,,,disco,331423,https://www.disco.com.uy/product/panchos-angus-sarubbi-x-8/331423
-Panchos cheddar y bbq Angus SARUBBI x 8,sarubbi,sarubbi,234,275,,,,,,disco,331430,https://www.disco.com.uy/product/panchos-cheddar-y-bbq-angus-sarubbi-x-8/331430
-Panchos SARUBBI 8 un. 2x1,sarubbi,sarubbi,310,365,,,,,,disco,300821,https://www.disco.com.uy/product/panchos-sarubbi-8-un-2x1/300821
+Panchos Angus con queso SARUBBI x 8,sarubbi,sarubbi,275,,,,,,,disco,331431,https://www.disco.com.uy/product/panchos-angus-con-queso-sarubbi-x-8/331431
+Panchos Angus SARUBBI x 8,sarubbi,sarubbi,249,,,,,,,disco,331423,https://www.disco.com.uy/product/panchos-angus-sarubbi-x-8/331423
+Panchos cheddar y bbq Angus SARUBBI x 8,sarubbi,sarubbi,275,,,,,,,disco,331430,https://www.disco.com.uy/product/panchos-cheddar-y-bbq-angus-sarubbi-x-8/331430
+Panchos SARUBBI 8 un. 2x1,sarubbi,sarubbi,365,,,,,,,disco,300821,https://www.disco.com.uy/product/panchos-sarubbi-8-un-2x1/300821
 Panchos Sarubbi 8+8Und Pack,sarubbi,sarubbi,379,379,,,,,,eldorado,7474,https://www.eldorado.com.uy/panchos-sarubbi-8-8und-pack/p
-Panchos SARUBBI al vacío,sarubbi,sarubbi,484,570,,,,,,disco,331612,https://www.disco.com.uy/product/panchos-sarubbi-al-vacio/331612
-Panchos sueltos SARUBBI x 50 g,sarubbi,sarubbi,25,570,,,,,,disco,331628,https://www.disco.com.uy/product/panchos-sueltos-sarubbi-x-50-g/331628
-Picada SARUBBI 450 gr,sarubbi,sarubbi,430,,,,,,,tiendainglesa,1012081,"https://www.tiendainglesa.com.uy/supermercado/picada-sarubbi-450-gr.producto?1012081,,42"
+Panchos SARUBBI al vacío,sarubbi,sarubbi,570,,,,,,,disco,331612,https://www.disco.com.uy/product/panchos-sarubbi-al-vacio/331612
+Panchos sueltos SARUBBI x 50 g,sarubbi,sarubbi,29,570,,,,,,disco,331628,https://www.disco.com.uy/product/panchos-sueltos-sarubbi-x-50-g/331628
 Pizza Jamon Y Queso Sarubbi 413 G,sarubbi,sarubbi,365,459,,,,,,tata,147519,https://www.tata.com.uy/pizza-jamon-y-queso-sarubbi-413-g-147519/p
 Pizza Muzzarella Y Pizza Panceta Sarubbi Rodelu.,sarubbi,sarubbi,499,499,,,,,,tata,165703,https://www.tata.com.uy/pizza-muzzarella-y-pizza-panceta-sarubbi-rodelu-165703/p
-Pizza napolitana panceta SARUBBI 450 g,sarubbi,sarubbi,475,559,,,,,,disco,241292,https://www.disco.com.uy/product/pizza-napolitana-panceta-sarubbi-450-g/241292
+Pizza napolitana panceta SARUBBI 450 g,sarubbi,sarubbi,559,,,,,,,disco,241292,https://www.disco.com.uy/product/pizza-napolitana-panceta-sarubbi-450-g/241292
 Pizza Queso Y Panceta Sarubbi,sarubbi,sarubbi,435,548,,,,,,tata,147521,https://www.tata.com.uy/pizza-queso-y-panceta-sarubbi-147521/p
-Salame de Milano SARUBBI (Kg),sarubbi,sarubbi,1050,,,,,,,tiendainglesa,324970,"https://www.tiendainglesa.com.uy/supermercado/salame-de-milano-sarubbi-kg.producto?324970,,42"
-Salame Familiar Delizia Sarubbi Al Vacio,sarubbi,sarubbi,180,180,,,,,,tata,164720,https://www.tata.com.uy/salame-familiar-delizia-sarubbi-al-vacio-164720/p
-Salame Finceta SARUBBI (Kg),sarubbi,sarubbi,690,850,,,,,,tiendainglesa,320654,"https://www.tiendainglesa.com.uy/supermercado/salame-finceta-sarubbi-kg.producto?320654,,42"
-Salame Finceta SARUBBI Envasado al Vacío 250 g,sarubbi,sarubbi,189,,,,,,,tiendainglesa,1015839,"https://www.tiendainglesa.com.uy/supermercado/salame-finceta-sarubbi-envasado-al-vacio-250-g.producto?1015839,,42"
-Salame finceta SARUBBI sin piel pq. 250g,sarubbi,sarubbi,217,255,,,,,,disco,366636,https://www.disco.com.uy/product/salame-finceta-sarubbi-sin-piel-pq-250g/366636
-Salame finceta SARUBBI sin piel pq. 480g,sarubbi,sarubbi,399,469,,,,,,disco,366637,https://www.disco.com.uy/product/salame-finceta-sarubbi-sin-piel-pq-480g/366637
-Salame Finceta sin Piel SARUBBI,sarubbi,sarubbi,410,,,,,,,tiendainglesa,1093016,"https://www.tiendainglesa.com.uy/supermercado/salame-finceta-sin-piel-sarubbi.producto?1093016,,42"
-Salame finzeta SARUBBI x 600 g,sarubbi,sarubbi,441,865,,,,,,disco,301581,https://www.disco.com.uy/product/salame-finzeta-sarubbi-x-600-g/301581
+Salame Familiar Delizia Sarubbi Al Vacio,sarubbi,sarubbi,235,235,,,,,,tata,164720,https://www.tata.com.uy/salame-familiar-delizia-sarubbi-al-vacio-164720/p
+Salame finceta SARUBBI sin piel pq. 250g,sarubbi,sarubbi,189,,,,,,,disco,366636,https://www.disco.com.uy/product/salame-finceta-sarubbi-sin-piel-pq-250g/366636
+Salame finceta SARUBBI sin piel pq. 480g,sarubbi,sarubbi,469,,,,,,,disco,366637,https://www.disco.com.uy/product/salame-finceta-sarubbi-sin-piel-pq-480g/366637
+Salame finzeta SARUBBI x 600 g,sarubbi,sarubbi,519,865,,,,,,disco,301581,https://www.disco.com.uy/product/salame-finzeta-sarubbi-x-600-g/301581
 Salame Milan Sarubbi 100 G,sarubbi,sarubbi,85,850,,,,,,tata,7889,https://www.tata.com.uy/salame-milan-sarubbi-100-g-7889/p
-Salame Milán SARUBBI x 50 g,sarubbi,sarubbi,30,690,,,,,,disco,366610,https://www.disco.com.uy/product/salame-milan-sarubbi-x-50-g/366610
-Salame Milano en Fetas SARUBBI 200 gr,sarubbi,sarubbi,196,280,,,,,,tiendainglesa,1097700,"https://www.tiendainglesa.com.uy/supermercado/salame-milano-en-fetas-sarubbi-200-gr.producto?1097700,,42"
-Salame Milano SARUBBI x 50 g,sarubbi,sarubbi,45,1060,,,,,,disco,300754,https://www.disco.com.uy/product/salame-milano-sarubbi-x-50-g/300754
+Salame Milán SARUBBI x 50 g,sarubbi,sarubbi,35,690,,,,,,disco,366610,https://www.disco.com.uy/product/salame-milan-sarubbi-x-50-g/366610
+Salame Milano SARUBBI x 50 g,sarubbi,sarubbi,53,1060,,,,,,disco,300754,https://www.disco.com.uy/product/salame-milano-sarubbi-x-50-g/300754
 Salame Sarubbi Delizia Familiar 245gr,sarubbi,sarubbi,165,179.9,,,,,,eldorado,45902,https://www.eldorado.com.uy/salame-sarubbi-delizia-familiar-245gr/p
 Salame Sarubbi Finzeta Kg 3076,sarubbi,sarubbi,889,889,,,,,,eldorado,4955,https://www.eldorado.com.uy/salame-sarubbi-finzeta-kg-3076/p
 Salame Sarubbi Milan Delizia Kg,sarubbi,sarubbi,705,705,,,,,,eldorado,28293,https://www.eldorado.com.uy/salame-sarubbi-milan-delizia-kg/p
-Salchicha premium SARUBBI al vacío x 300 g,sarubbi,sarubbi,244,955,,,,,,disco,346502,https://www.disco.com.uy/product/salchicha-premium-sarubbi-al-vacio-x-300-g/346502
-Salchichas Frankfurter Angus de Cheddar y Barbacoa SARUBBI x 8,sarubbi,sarubbi,300,,,,,,,tiendainglesa,1093865,"https://www.tiendainglesa.com.uy/supermercado/salchichas-frankfurter-angus-de-cheddar-y-barbacoa-sarubbi-x-8.producto?1093865,,42"
-Tocino SARUBBI x 200 g,sarubbi,sarubbi,129,760,,,,,,disco,342570,https://www.disco.com.uy/product/tocino-sarubbi-x-200-g/342570
+Salchicha premium SARUBBI al vacío x 300 g,sarubbi,sarubbi,287,,,,,,,disco,346502,https://www.disco.com.uy/product/salchicha-premium-sarubbi-al-vacio-x-300-g/346502
+Tocino SARUBBI x 200 g,sarubbi,sarubbi,152,760,,,,,,disco,342570,https://www.disco.com.uy/product/tocino-sarubbi-x-200-g/342570
