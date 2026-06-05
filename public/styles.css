@@ -1188,16 +1188,18 @@ main { padding: 22px 24px 34px; }
 .chip:hover { border-color: var(--blue); color: var(--ink); }
 .chip.active { background: var(--blue); border-color: var(--blue); color: #fff; }
 .chip.owner-chip,
-.chip.store-chip {
+.chip.store-chip,
+.chip.brand-chip {
   min-height: 34px;
   padding: 4px 12px;
 }
 .chip.owner-chip.active,
-.chip.store-chip.logo-chip.active {
+.chip.store-chip.logo-chip.active,
+.chip.brand-chip.logo-chip.active {
   background: #fff;
-  border-color: #63b647;
+  border-color: var(--chip-logo-color, #63b647);
   color: var(--ink);
-  box-shadow: inset 0 0 0 1px rgba(99, 182, 71, .35);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--chip-logo-color, #63b647) 32%, transparent);
 }
 .chip.store-chip.filled-logo-chip,
 .chip.store-chip.filled-logo-chip.active {
@@ -1218,6 +1220,22 @@ main { padding: 22px 24px 34px; }
 .store-chip .chip-logo {
   width: 72px;
   height: 25px;
+}
+.brand-chip .chip-logo {
+  width: 22px;
+  height: 22px;
+}
+.brand-chip .chip-text {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.brand-chip.logo-chip {
+  gap: 0;
+  color: var(--chip-logo-color, var(--muted));
 }
 .store-chip:not(.logo-chip) .chip-text {
   position: static;
@@ -1365,6 +1383,16 @@ td.brand-cell { color: inherit; }
   max-width: 138px;
   height: 34px;
 }
+.brand-logo.compact-logo.image-only {
+  min-width: 82px;
+  max-width: 96px;
+  height: 30px;
+  padding: 2px 8px;
+}
+.brand-logo.compact-logo.image-only img {
+  max-width: 78px;
+  height: 22px;
+}
 .store-sub { margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 700; line-height: 1.2; }
 td a, .compare-cell-price a { color: var(--blue); text-decoration: none; font-weight: 700; }
 td a:hover, .compare-cell-price a:hover { text-decoration: underline; }
@@ -1386,6 +1414,10 @@ td a:hover, .compare-cell-price a:hover { text-decoration: underline; }
   background: #fff;
   object-fit: contain;
   padding: 2px;
+}
+.product-thumb[src*="/assets/sarubbi/site/imgs/productos/"] {
+  background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+  border-color: rgba(0, 103, 177, .16);
 }
 .modal-title {
   display: flex;
@@ -1427,6 +1459,16 @@ td a:hover, .compare-cell-price a:hover { text-decoration: underline; }
   width: 62px;
   height: 24px;
   object-fit: contain;
+}
+.owner.owner-logo.compact-logo {
+  height: 24px;
+  min-width: 68px;
+  padding: 2px 7px;
+  border-color: rgba(0, 103, 177, .22);
+}
+.owner.owner-logo.compact-logo img {
+  width: 54px;
+  height: 18px;
 }
 .owner.owner-logo .owner-text {
   position: absolute;

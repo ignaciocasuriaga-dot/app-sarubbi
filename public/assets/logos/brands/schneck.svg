@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Schneck">
+  <circle cx="32" cy="32" r="28" fill="#e6f4ef"/>
+  <path d="M18 43c4 3 9 5 14 5 9 0 16-4 16-11 0-6-5-9-14-10l-7-1c-4-1-6-2-6-5 0-3 4-5 9-5 5 0 10 2 14 5" fill="none" stroke="#0f766e" stroke-width="6" stroke-linecap="round"/>
+  <path d="M19 22c3-4 8-6 14-6" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+</svg>

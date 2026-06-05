@@ -1,0 +1,5591 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-05T02:53:09.084Z",
+  "sourceSite": "https://sarubbi.com.uy/",
+  "pages": [
+    {
+      "key": "home",
+      "label": "Inicio",
+      "url": "https://sarubbi.com.uy/"
+    },
+    {
+      "key": "productos",
+      "label": "Productos",
+      "url": "https://sarubbi.com.uy/productos"
+    },
+    {
+      "key": "empresa",
+      "label": "Empresa",
+      "url": "https://sarubbi.com.uy/empresa"
+    },
+    {
+      "key": "plantas",
+      "label": "Planta industrial",
+      "url": "https://sarubbi.com.uy/plantas"
+    },
+    {
+      "key": "contacto",
+      "label": "Contacto",
+      "url": "https://sarubbi.com.uy/contacto"
+    }
+  ],
+  "themes": [
+    {
+      "key": "marca",
+      "label": "Marca institucional",
+      "use": "Badges, header secundario, acentos de confianza."
+    },
+    {
+      "key": "producto",
+      "label": "Producto",
+      "use": "Miniaturas de catalogo, modales y agrupaciones por categoria."
+    },
+    {
+      "key": "campana-producto",
+      "label": "Campanas y lanzamientos",
+      "use": "Inicio personalizado, destacados y storytelling comercial."
+    },
+    {
+      "key": "planta-industrial",
+      "label": "Planta industrial",
+      "use": "Secciones de respaldo, escala productiva y confianza operacional."
+    },
+    {
+      "key": "sellos-calidad",
+      "label": "Sellos y calidad",
+      "use": "Microcredenciales visuales: Acelu, informacion nutricional y claims."
+    },
+    {
+      "key": "hero",
+      "label": "Hero y fondos",
+      "use": "Fondos de portada o bandas visuales de alto impacto."
+    },
+    {
+      "key": "contacto",
+      "label": "Contacto y territorio",
+      "use": "Cierre institucional y ubicacion."
+    },
+    {
+      "key": "ui",
+      "label": "UI heredada",
+      "use": "Iconos y ornamentos disponibles si se replica lenguaje visual del sitio."
+    }
+  ],
+  "summary": {
+    "assetCount": 168,
+    "failedCount": 5,
+    "productImageCount": 99,
+    "themeCounts": {
+      "identidad": 6,
+      "contacto": 5,
+      "sellos-calidad": 2,
+      "ui": 9,
+      "marca": 7,
+      "planta-industrial": 7,
+      "hero": 3,
+      "campana-producto": 30,
+      "producto": 99
+    },
+    "totalBytes": 33661473
+  },
+  "assets": [
+    {
+      "id": "css-fonts-hagin-caps-medium",
+      "title": "Hagin Caps Medium",
+      "kind": "image",
+      "theme": "identidad",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "css",
+        "fonts",
+        "hagin",
+        "caps",
+        "medium",
+        "svg"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/css/fonts/Hagin%20Caps%20Medium.svg",
+      "localPath": "public/assets/sarubbi/site/css/fonts/Hagin Caps Medium.svg",
+      "webPath": "/assets/sarubbi/site/css/fonts/Hagin Caps Medium.svg",
+      "bytes": 62741,
+      "contentType": "image/svg+xml",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "css-fonts-italianno-regular-otf",
+      "title": "Italianno Regular OTF",
+      "kind": "image",
+      "theme": "identidad",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "css",
+        "fonts",
+        "italianno",
+        "regular",
+        "otf",
+        "svg"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/css/fonts/Italianno-Regular-OTF.svg",
+      "localPath": "public/assets/sarubbi/site/css/fonts/Italianno-Regular-OTF.svg",
+      "webPath": "/assets/sarubbi/site/css/fonts/Italianno-Regular-OTF.svg",
+      "bytes": 80336,
+      "contentType": "image/svg+xml",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "css-fonts-lg",
+      "title": "lg",
+      "kind": "image",
+      "theme": "identidad",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "css",
+        "fonts",
+        "svg"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/css/fonts/lg.svg?n1z373#lg",
+      "localPath": "public/assets/sarubbi/site/css/fonts/lg.svg",
+      "webPath": "/assets/sarubbi/site/css/fonts/lg.svg",
+      "bytes": 4094,
+      "contentType": "image/svg+xml",
+      "pages": [
+        "css:lightgallery.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "css-fonts-proximanova-bold",
+      "title": "ProximaNova Bold",
+      "kind": "image",
+      "theme": "identidad",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "css",
+        "fonts",
+        "proximanova",
+        "bold",
+        "svg"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/css/fonts/ProximaNova-Bold.svg",
+      "localPath": "public/assets/sarubbi/site/css/fonts/ProximaNova-Bold.svg",
+      "webPath": "/assets/sarubbi/site/css/fonts/ProximaNova-Bold.svg",
+      "bytes": 65006,
+      "contentType": "image/svg+xml",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-90-contacto",
+      "title": "90 contacto",
+      "kind": "image",
+      "theme": "contacto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "contacto"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/90_contacto.png",
+      "localPath": "public/assets/sarubbi/site/imgs/90_contacto.png",
+      "webPath": "/assets/sarubbi/site/imgs/90_contacto.png",
+      "bytes": 68495,
+      "contentType": "image/png",
+      "pages": [
+        "contacto"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-acelu-logo",
+      "title": "acelu logo",
+      "kind": "image",
+      "theme": "sellos-calidad",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "acelu",
+        "logo"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/acelu_logo.png",
+      "localPath": "public/assets/sarubbi/site/imgs/acelu_logo.png",
+      "webPath": "/assets/sarubbi/site/imgs/acelu_logo.png",
+      "bytes": 2881,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-ajaxloader",
+      "title": "ajaxloader",
+      "kind": "image",
+      "theme": "ui",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "ajaxloader",
+        "gif"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/ajaxloader.gif",
+      "localPath": "public/assets/sarubbi/site/imgs/ajaxloader.gif",
+      "webPath": "/assets/sarubbi/site/imgs/ajaxloader.gif",
+      "bytes": 8275,
+      "contentType": "image/gif",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-blue-pattern",
+      "title": "blue pattern",
+      "kind": "image",
+      "theme": "marca",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "blue",
+        "pattern"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/blue-pattern.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/blue-pattern.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/blue-pattern.jpg",
+      "bytes": 1150,
+      "contentType": "image/jpeg",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-breakpoint-contacto",
+      "title": "breakpoint contacto",
+      "kind": "image",
+      "theme": "contacto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "breakpoint",
+        "contacto"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/breakpoint_contacto.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/breakpoint_contacto.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/breakpoint_contacto.jpg",
+      "bytes": 152533,
+      "contentType": "image/jpeg",
+      "pages": [
+        "contacto"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-bullets",
+      "title": "bullets",
+      "kind": "image",
+      "theme": "identidad",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "bullets"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/bullets.png",
+      "localPath": "public/assets/sarubbi/site/imgs/bullets.png",
+      "webPath": "/assets/sarubbi/site/imgs/bullets.png",
+      "bytes": 477,
+      "contentType": "image/png",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-bx-loader",
+      "title": "bx loader",
+      "kind": "image",
+      "theme": "ui",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "loader",
+        "gif"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/bx_loader.gif",
+      "localPath": "public/assets/sarubbi/site/imgs/bx_loader.gif",
+      "webPath": "/assets/sarubbi/site/imgs/bx_loader.gif",
+      "bytes": 8275,
+      "contentType": "image/gif",
+      "pages": [
+        "css:jquery.bxslider.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-calidad-italiana",
+      "title": "calidad italiana",
+      "kind": "image",
+      "theme": "marca",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "calidad",
+        "italiana"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/calidad_italiana.png",
+      "localPath": "public/assets/sarubbi/site/imgs/calidad_italiana.png",
+      "webPath": "/assets/sarubbi/site/imgs/calidad_italiana.png",
+      "bytes": 12502,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-close-btn-search",
+      "title": "close btn search",
+      "kind": "image",
+      "theme": "ui",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "close",
+        "btn",
+        "search"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/close_btn_search.png",
+      "localPath": "public/assets/sarubbi/site/imgs/close_btn_search.png",
+      "webPath": "/assets/sarubbi/site/imgs/close_btn_search.png",
+      "bytes": 1101,
+      "contentType": "image/png",
+      "pages": [
+        "home",
+        "plantas"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-contact-mundimap",
+      "title": "contact mundimap",
+      "kind": "image",
+      "theme": "contacto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "contact",
+        "mundimap"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/contact_mundimap.png",
+      "localPath": "public/assets/sarubbi/site/imgs/contact_mundimap.png",
+      "webPath": "/assets/sarubbi/site/imgs/contact_mundimap.png",
+      "bytes": 10214,
+      "contentType": "image/png",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-contacto-home-pic",
+      "title": "contacto home pic",
+      "kind": "image",
+      "theme": "contacto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "contacto",
+        "home",
+        "pic"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/contacto-home-pic.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/contacto-home-pic.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/contacto-home-pic.jpg",
+      "bytes": 107016,
+      "contentType": "image/jpeg",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-flechita-icon",
+      "title": "flechita icon",
+      "kind": "image",
+      "theme": "ui",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "flechita",
+        "icon"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/flechita-icon.png",
+      "localPath": "public/assets/sarubbi/site/imgs/flechita-icon.png",
+      "webPath": "/assets/sarubbi/site/imgs/flechita-icon.png",
+      "bytes": 243,
+      "contentType": "image/png",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-gallery-1",
+      "title": "1",
+      "kind": "image",
+      "theme": "planta-industrial",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "gallery"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/gallery/1.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/gallery/1.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/gallery/1.jpg",
+      "bytes": 117417,
+      "contentType": "image/jpeg",
+      "pages": [
+        "plantas"
+      ],
+      "sourceTypes": [
+        "inline-style"
+      ]
+    },
+    {
+      "id": "imgs-gallery-2",
+      "title": "2",
+      "kind": "image",
+      "theme": "planta-industrial",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "gallery"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/gallery/2.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/gallery/2.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/gallery/2.jpg",
+      "bytes": 264550,
+      "contentType": "image/jpeg",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-gallery-3",
+      "title": "3",
+      "kind": "image",
+      "theme": "planta-industrial",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "gallery"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/gallery/3.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/gallery/3.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/gallery/3.jpg",
+      "bytes": 25350,
+      "contentType": "image/jpeg",
+      "pages": [
+        "plantas"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-gallery-4",
+      "title": "4",
+      "kind": "image",
+      "theme": "planta-industrial",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "gallery"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/gallery/4.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/gallery/4.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/gallery/4.jpg",
+      "bytes": 61773,
+      "contentType": "image/jpeg",
+      "pages": [
+        "plantas"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-gallery-video-planta",
+      "title": "video planta",
+      "kind": "image",
+      "theme": "planta-industrial",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "gallery",
+        "video",
+        "planta"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/gallery/video_planta.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/gallery/video_planta.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/gallery/video_planta.jpg",
+      "bytes": 108637,
+      "contentType": "image/jpeg",
+      "pages": [
+        "plantas"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-header-bkgr",
+      "title": "header bkgr",
+      "kind": "image",
+      "theme": "marca",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "header",
+        "bkgr"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/header_bkgr.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/header_bkgr.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/header_bkgr.jpg",
+      "bytes": 1101,
+      "contentType": "image/jpeg",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-heros-contacto",
+      "title": "contacto",
+      "kind": "image",
+      "theme": "contacto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "heros",
+        "contacto"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/heros/contacto.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/heros/contacto.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/heros/contacto.jpg",
+      "bytes": 173506,
+      "contentType": "image/jpeg",
+      "pages": [
+        "contacto"
+      ],
+      "sourceTypes": [
+        "inline-style"
+      ]
+    },
+    {
+      "id": "imgs-heros-empresa",
+      "title": "empresa",
+      "kind": "image",
+      "theme": "hero",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "heros",
+        "empresa"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/heros/empresa.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/heros/empresa.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/heros/empresa.jpg",
+      "bytes": 45351,
+      "contentType": "image/jpeg",
+      "pages": [
+        "empresa"
+      ],
+      "sourceTypes": [
+        "inline-style"
+      ]
+    },
+    {
+      "id": "imgs-heros-planta",
+      "title": "planta",
+      "kind": "image",
+      "theme": "planta-industrial",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "heros",
+        "planta"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/heros/planta.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/heros/planta.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/heros/planta.jpg",
+      "bytes": 105892,
+      "contentType": "image/jpeg",
+      "pages": [
+        "plantas"
+      ],
+      "sourceTypes": [
+        "inline-style"
+      ]
+    },
+    {
+      "id": "imgs-heros-productos",
+      "title": "productos",
+      "kind": "image",
+      "theme": "hero",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "heros"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/heros/productos.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/heros/productos.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/heros/productos.jpg",
+      "bytes": 133882,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "inline-style"
+      ]
+    },
+    {
+      "id": "imgs-home-slider-arrows",
+      "title": "home slider arrows",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "slider",
+        "arrows"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home_slider_arrows.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home_slider_arrows.png",
+      "webPath": "/assets/sarubbi/site/imgs/home_slider_arrows.png",
+      "bytes": 457,
+      "contentType": "image/png",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-acelu",
+      "title": "acelu",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "acelu",
+        "svg"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/acelu.svg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/acelu.svg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/acelu.svg",
+      "bytes": 6508,
+      "contentType": "image/svg+xml",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-campana-slide",
+      "title": "campana slide",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "campana"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/campana-slide.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/campana-slide.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/campana-slide.jpg",
+      "bytes": 270511,
+      "contentType": "image/jpeg",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-chorizos-angus",
+      "title": "chorizos angus",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "chorizos",
+        "angus",
+        "svg"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/chorizos_angus.svg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/chorizos_angus.svg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/chorizos_angus.svg",
+      "bytes": 42801,
+      "contentType": "image/svg+xml",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-chorizos-angus-acelu",
+      "title": "chorizos angus acelu",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "chorizos",
+        "angus",
+        "acelu",
+        "svg"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/chorizos-angus-acelu.svg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/chorizos-angus-acelu.svg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/chorizos-angus-acelu.svg",
+      "bytes": 8488,
+      "contentType": "image/svg+xml",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-chorizos-angus-gustos",
+      "title": "chorizos angus gustos",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "chorizos",
+        "angus",
+        "gustos"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/chorizos-angus-gustos.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/chorizos-angus-gustos.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/chorizos-angus-gustos.png",
+      "bytes": 3986,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-chorizos-angus-lanzamiento",
+      "title": "chorizos angus lanzamiento",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "chorizos",
+        "angus",
+        "lanzamiento"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/chorizos-angus-lanzamiento.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/chorizos-angus-lanzamiento.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/chorizos-angus-lanzamiento.png",
+      "bytes": 10341,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-donna-logo",
+      "title": "donna logo",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "donna",
+        "logo"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/donna-logo.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/donna-logo.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/donna-logo.png",
+      "bytes": 37318,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-donna-slide",
+      "title": "donna slide",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "donna"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/donna-slide.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/donna-slide.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/donna-slide.jpg",
+      "bytes": 243836,
+      "contentType": "image/jpeg",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-empanadas",
+      "title": "empanadas",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "empanadas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/empanadas.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/empanadas.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/empanadas.jpg",
+      "bytes": 275044,
+      "contentType": "image/jpeg",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-hamburguesas",
+      "title": "hamburguesas",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "hamburguesas",
+        "svg"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/hamburguesas.svg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/hamburguesas.svg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/hamburguesas.svg",
+      "bytes": 73063,
+      "contentType": "image/svg+xml",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-lanzamiento-frank",
+      "title": "lanzamiento frank",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "lanzamiento",
+        "frank"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/lanzamiento_frank.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/lanzamiento_frank.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/lanzamiento_frank.png",
+      "bytes": 3697,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-logos-hamburguesas",
+      "title": "logos hamburguesas",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "logos",
+        "hamburguesas",
+        "svg"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/logos-hamburguesas.svg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/logos-hamburguesas.svg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/logos-hamburguesas.svg",
+      "bytes": 6417,
+      "contentType": "image/svg+xml",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-logos",
+      "title": "logos",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "logos",
+        "svg"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/logos.svg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/logos.svg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/logos.svg",
+      "bytes": 19247,
+      "contentType": "image/svg+xml",
+      "pages": [
+        "home",
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-opera-logo",
+      "title": "opera logo",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "opera",
+        "logo"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/opera_logo.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/opera_logo.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/opera_logo.png",
+      "bytes": 34465,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-opera-fiambres",
+      "title": "opera fiambres",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "opera",
+        "fiambres"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/opera-fiambres.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/opera-fiambres.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/opera-fiambres.jpg",
+      "bytes": 205241,
+      "contentType": "image/jpeg",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-pizzas",
+      "title": "pizzas",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "pizzas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/pizzas.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/pizzas.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/pizzas.jpg",
+      "bytes": 262424,
+      "contentType": "image/jpeg",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-recetas-italianas",
+      "title": "recetas italianas",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "recetas",
+        "italianas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/recetas-italianas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/recetas-italianas.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/recetas-italianas.png",
+      "bytes": 10750,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-romanos-logo",
+      "title": "romanos logo",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "romanos",
+        "logo"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/romanos_logo.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/romanos_logo.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/romanos_logo.png",
+      "bytes": 24856,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-sarubbi-2026-portadas-web-1400x628",
+      "title": "Sarubbi 2026 Portadas Web 1400x628",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "2026",
+        "portadas",
+        "web",
+        "1400x628"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/Sarubbi_2026_Portadas_Web_1400x628.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/Sarubbi_2026_Portadas_Web_1400x628.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/Sarubbi_2026_Portadas_Web_1400x628.png",
+      "bytes": 300073,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-sarubbi-chorizos-angus-nuevos",
+      "title": "sarubbi chorizos angus nuevos",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "chorizos",
+        "angus",
+        "nuevos"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/sarubbi-chorizos-angus-nuevos.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/sarubbi-chorizos-angus-nuevos.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/sarubbi-chorizos-angus-nuevos.png",
+      "bytes": 1022119,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-sarubbi-chorizos-angus",
+      "title": "sarubbi chorizos angus",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "chorizos",
+        "angus"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/sarubbi-chorizos-angus.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/sarubbi-chorizos-angus.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/sarubbi-chorizos-angus.png",
+      "bytes": 939559,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-sarubbi-frankfurters-angus-desc",
+      "title": "sarubbi frankfurters angus desc",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "frankfurters",
+        "angus",
+        "desc"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/sarubbi-frankfurters-angus-desc.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/sarubbi-frankfurters-angus-desc.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/sarubbi-frankfurters-angus-desc.png",
+      "bytes": 12641,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-sarubbi-frankfurters-angus-sello",
+      "title": "sarubbi frankfurters angus sello",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "frankfurters",
+        "angus",
+        "sello"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/sarubbi-frankfurters-angus-sello.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/sarubbi-frankfurters-angus-sello.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/sarubbi-frankfurters-angus-sello.png",
+      "bytes": 41031,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-sarubbi-frankfurters-angus",
+      "title": "sarubbi frankfurters angus",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "frankfurters",
+        "angus"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/sarubbi-frankfurters-angus.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/sarubbi-frankfurters-angus.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/sarubbi-frankfurters-angus.png",
+      "bytes": 703046,
+      "contentType": "image/png",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-sarubbi-hamburguesas-min",
+      "title": "sarubbi hamburguesas min",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "hamburguesas",
+        "min"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/sarubbi-hamburguesas-min.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/sarubbi-hamburguesas-min.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/sarubbi-hamburguesas-min.jpg",
+      "bytes": 233817,
+      "contentType": "image/jpeg",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-sarubbi-romanos",
+      "title": "sarubbi romanos",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "romanos"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/sarubbi-romanos.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/sarubbi-romanos.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/sarubbi-romanos.jpg",
+      "bytes": 244925,
+      "contentType": "image/jpeg",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-sarubbi-sabor-mas-buscado",
+      "title": "sarubbi sabor mas buscado",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "sabor",
+        "mas",
+        "buscado"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/sarubbi-sabor-mas-buscado.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/sarubbi-sabor-mas-buscado.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/sarubbi-sabor-mas-buscado.jpg",
+      "bytes": 319985,
+      "contentType": "image/jpeg",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-sellos-pizza",
+      "title": "sellos pizza",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "sellos",
+        "pizza"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/sellos-pizza.png",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/sellos-pizza.png",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/sellos-pizza.png",
+      "bytes": 56312,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-home-product-slide-slider-vegani-web-1400x619px-01",
+      "title": "Slider Vegani Web 1400x619px 01",
+      "kind": "image",
+      "theme": "campana-producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "home",
+        "product",
+        "slide",
+        "slider",
+        "vegani",
+        "web",
+        "1400x619px"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/home-product-slide/Slider_Vegani_Web_1400x619px-01.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/home-product-slide/Slider_Vegani_Web_1400x619px-01.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/home-product-slide/Slider_Vegani_Web_1400x619px-01.jpg",
+      "bytes": 707551,
+      "contentType": "image/jpeg",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-icon-play",
+      "title": "icon play",
+      "kind": "image",
+      "theme": "ui",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "icon",
+        "play"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/icon_play.png",
+      "localPath": "public/assets/sarubbi/site/imgs/icon_play.png",
+      "webPath": "/assets/sarubbi/site/imgs/icon_play.png",
+      "bytes": 790,
+      "contentType": "image/png",
+      "pages": [
+        "home",
+        "plantas"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-info-nutricional",
+      "title": "info nutricional",
+      "kind": "image",
+      "theme": "sellos-calidad",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "info",
+        "nutricional"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/info-nutricional.png",
+      "localPath": "public/assets/sarubbi/site/imgs/info-nutricional.png",
+      "webPath": "/assets/sarubbi/site/imgs/info-nutricional.png",
+      "bytes": 1006,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-internal-titles-bkgr",
+      "title": "internal titles bkgr",
+      "kind": "image",
+      "theme": "marca",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "internal",
+        "titles",
+        "bkgr"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/internal_titles_bkgr.png",
+      "localPath": "public/assets/sarubbi/site/imgs/internal_titles_bkgr.png",
+      "webPath": "/assets/sarubbi/site/imgs/internal_titles_bkgr.png",
+      "bytes": 945,
+      "contentType": "image/png",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-nuevo-producto",
+      "title": "nuevo producto",
+      "kind": "image",
+      "theme": "ui",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "nuevo",
+        "producto"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/nuevo-producto.png",
+      "localPath": "public/assets/sarubbi/site/imgs/nuevo-producto.png",
+      "webPath": "/assets/sarubbi/site/imgs/nuevo-producto.png",
+      "bytes": 1141,
+      "contentType": "image/png",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-planta-home-pic",
+      "title": "planta home pic",
+      "kind": "image",
+      "theme": "planta-industrial",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "planta",
+        "home",
+        "pic"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/planta-home-pic.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/planta-home-pic.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/planta-home-pic.jpg",
+      "bytes": 28811,
+      "contentType": "image/jpeg",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-productos-bife-ancho",
+      "title": "bife ancho sin tapa",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "carnes",
+      "productTitles": [
+        "bife ancho sin tapa"
+      ],
+      "keywords": [
+        "bife",
+        "ancho",
+        "sin",
+        "tapa"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/bife-ancho.jpeg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/bife-ancho.jpeg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/bife-ancho.jpeg",
+      "bytes": 20813,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-bife-angosto",
+      "title": "bife angosto",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "carnes",
+      "productTitles": [
+        "bife angosto"
+      ],
+      "keywords": [
+        "bife",
+        "angosto"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/bife-angosto.jpeg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/bife-angosto.jpeg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/bife-angosto.jpeg",
+      "bytes": 18072,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-bola-de-lomo",
+      "title": "bola de lomo",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "bola de lomo"
+      ],
+      "keywords": [
+        "bola",
+        "lomo"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/bola-de-lomo.jpeg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/bola-de-lomo.jpeg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/bola-de-lomo.jpeg",
+      "bytes": 22681,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-bondiola-italiana-fetas",
+      "title": "bondiola",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "bondiola"
+      ],
+      "keywords": [
+        "bondiola",
+        "italiana",
+        "fetas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/bondiola-italiana-fetas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/bondiola-italiana-fetas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/bondiola-italiana-fetas.png",
+      "bytes": 49356,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-bondiola",
+      "title": "bondiola",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "bondiola"
+      ],
+      "keywords": [
+        "bondiola"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/bondiola.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/bondiola.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/bondiola.png",
+      "bytes": 65637,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-choripron",
+      "title": "choripron",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "chorizos",
+      "productTitles": [
+        "choripron"
+      ],
+      "keywords": [
+        "choripron"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/choripron.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/choripron.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/choripron.png",
+      "bytes": 48607,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizo-especial-sarubbi",
+      "title": "chorizo especial sarubbi",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "chorizos",
+      "productTitles": [
+        "chorizo especial sarubbi"
+      ],
+      "keywords": [
+        "chorizo",
+        "especial"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizo_especial_sarubbi.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizo_especial_sarubbi.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizo_especial_sarubbi.png",
+      "bytes": 45159,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizo-ruso",
+      "title": "chorizo ruso",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "chorizos",
+      "productTitles": [
+        "chorizo ruso"
+      ],
+      "keywords": [
+        "chorizo",
+        "ruso"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizo_ruso.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizo_ruso.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizo_ruso.png",
+      "bytes": 31213,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-al-vacio",
+      "title": "chorizos al vacio",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "chorizos",
+      "productTitles": [
+        "chorizos al vacio"
+      ],
+      "keywords": [
+        "chorizos",
+        "vacio"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_al_vacio.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_al_vacio.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_al_vacio.png",
+      "bytes": 39673,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-angus-cheddar-and-bbq",
+      "title": "chorizos angus cheddar and bbq",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "chorizos",
+        "angus",
+        "cheddar",
+        "and",
+        "bbq"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_angus_cheddar_and_bbq.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_angus_cheddar_and_bbq.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_angus_cheddar_and_bbq.png",
+      "bytes": 38662,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-angus-gancho",
+      "title": "chorizos angus gancho",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "chorizos",
+        "angus",
+        "gancho"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_angus_gancho.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_angus_gancho.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_angus_gancho.png",
+      "bytes": 47586,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-angus-iberico",
+      "title": "chorizos angus iberico",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "chorizos",
+        "angus",
+        "iberico"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_angus_iberico.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_angus_iberico.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_angus_iberico.png",
+      "bytes": 37549,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-angus-pic1",
+      "title": "Jamón Gran Parma",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "chorizos",
+      "productTitles": [
+        "Jamón Gran Parma"
+      ],
+      "keywords": [
+        "jamon",
+        "gran",
+        "parma",
+        "chorizos",
+        "angus",
+        "pic1"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_angus_pic1.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_angus_pic1.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_angus_pic1.png",
+      "bytes": 128696,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-angus-pic2",
+      "title": "chorizos angus pic2",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "chorizos",
+        "angus",
+        "pic2"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_angus_pic2.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_angus_pic2.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_angus_pic2.png",
+      "bytes": 562195,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-angus-pic3",
+      "title": "chorizos angus pic3",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "chorizos",
+        "angus",
+        "pic3"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_angus_pic3.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_angus_pic3.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_angus_pic3.png",
+      "bytes": 152126,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-angus-queso",
+      "title": "chorizos angus queso",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "chorizos",
+        "angus",
+        "queso"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_angus_queso.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_angus_queso.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_angus_queso.png",
+      "bytes": 38333,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-angus-rueda",
+      "title": "chorizos angus rueda",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "chorizos",
+        "angus",
+        "rueda"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_angus_rueda.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_angus_rueda.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_angus_rueda.png",
+      "bytes": 41821,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-angus",
+      "title": "chorizos angus",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "chorizos",
+        "angus"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_angus.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_angus.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_angus.png",
+      "bytes": 37783,
+      "contentType": "image/png",
+      "pages": [
+        "home",
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-angusx7",
+      "title": "chorizos angusx7",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "chorizos",
+        "angusx7"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_angusx7.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_angusx7.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_angusx7.png",
+      "bytes": 45662,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos-queso-pimenton",
+      "title": "chorizos queso pimenton",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "chorizos",
+        "queso",
+        "pimenton"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_queso_pimenton.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos_queso_pimenton.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos_queso_pimenton.png",
+      "bytes": 168399,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-chorizos",
+      "title": "chorizos",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "chorizos",
+      "productTitles": [
+        "chorizos"
+      ],
+      "keywords": [
+        "chorizos"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/chorizos.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/chorizos.png",
+      "bytes": 49144,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-corazon-cuadril",
+      "title": "corazón de cuadril",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "carnes",
+      "productTitles": [
+        "corazón de cuadril"
+      ],
+      "keywords": [
+        "corazon",
+        "cuadril"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/corazon-cuadril.jpeg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/corazon-cuadril.jpeg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/corazon-cuadril.jpeg",
+      "bytes": 18253,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-cuadril",
+      "title": "cuadril sin tapa",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "carnes",
+      "productTitles": [
+        "cuadril sin tapa"
+      ],
+      "keywords": [
+        "cuadril",
+        "sin",
+        "tapa"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/cuadril.jpeg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/cuadril.jpeg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/cuadril.jpeg",
+      "bytes": 18933,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-empanadas-carne",
+      "title": "Empanadas de Carne con Panceta 350g",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "empanadas",
+      "productTitles": [
+        "Empanadas de Carne con Panceta 350g"
+      ],
+      "keywords": [
+        "empanadas",
+        "carne",
+        "con",
+        "panceta",
+        "350g"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/empanadas_carne.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/empanadas_carne.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/empanadas_carne.jpg",
+      "bytes": 146301,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-empanadas-jamon",
+      "title": "Empanadas de Jamón y Queso 350g",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "empanadas",
+      "productTitles": [
+        "Empanadas de Jamón y Queso 350g"
+      ],
+      "keywords": [
+        "empanadas",
+        "jamon",
+        "queso",
+        "350g"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/empanadas_jamon.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/empanadas_jamon.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/empanadas_jamon.jpg",
+      "bytes": 143481,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-empanadas-lomito",
+      "title": "Empanadas de Lomito canadiense y Cheddar 350g",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "empanadas",
+      "productTitles": [
+        "Empanadas de Lomito canadiense y Cheddar 350g"
+      ],
+      "keywords": [
+        "empanadas",
+        "lomito",
+        "canadiense",
+        "cheddar",
+        "350g"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/empanadas_lomito.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/empanadas_lomito.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/empanadas_lomito.jpg",
+      "bytes": 158048,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-fiambre-de-cerdo-linea-amarilla",
+      "title": "fiambre de cerdo línea amarilla",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "fiambre de cerdo línea amarilla"
+      ],
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "linea",
+        "amarilla"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre_de_cerdo_linea_amarilla.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_linea_amarilla.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_linea_amarilla.png",
+      "bytes": 38404,
+      "contentType": "image/png",
+      "pages": [
+        "home",
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-fiambre-de-cerdo-linea-azul",
+      "title": "fiambre de cerdo línea azul",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "fiambre de cerdo línea azul"
+      ],
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "linea",
+        "azul"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre_de_cerdo_linea_azul.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_linea_azul.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_linea_azul.png",
+      "bytes": 47490,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-fiambre-de-cerdo-linea-roja",
+      "title": "fiambre de cerdo línea roja",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "fiambre de cerdo línea roja"
+      ],
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "linea",
+        "roja"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre_de_cerdo_linea_roja.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_linea_roja.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_linea_roja.png",
+      "bytes": 40674,
+      "contentType": "image/png",
+      "pages": [
+        "home",
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-fiambre-de-cerdo-rausa",
+      "title": "fiambre de cerdo",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "fiambre de cerdo"
+      ],
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "rausa"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre_de_cerdo_rausa.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_rausa.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_rausa.png",
+      "bytes": 41426,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-fiambre-de-cerdo-sabrosero",
+      "title": "fiambre de cerdo sabrosero",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "fiambre de cerdo sabrosero"
+      ],
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "sabrosero"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre_de_cerdo_sabrosero.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_sabrosero.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_sabrosero.png",
+      "bytes": 37069,
+      "contentType": "image/png",
+      "pages": [
+        "home",
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-fiambre-de-cerdo-fetas",
+      "title": "fiambre de cerdo",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "fiambre de cerdo"
+      ],
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "fetas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre-de-cerdo-fetas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/fiambre-de-cerdo-fetas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/fiambre-de-cerdo-fetas.png",
+      "bytes": 49701,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-finceta-al-vacio",
+      "title": "finceta al vacío",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "salames",
+      "productTitles": [
+        "finceta al vacío"
+      ],
+      "keywords": [
+        "finceta",
+        "vacio"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/finceta-al-vacio.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/finceta-al-vacio.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/finceta-al-vacio.png",
+      "bytes": 45822,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-finceta",
+      "title": "finceta",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "salames",
+      "productTitles": [
+        "finceta"
+      ],
+      "keywords": [
+        "finceta"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/finceta.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/finceta.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/finceta.png",
+      "bytes": 36443,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-frankfurters-angus-cheddar",
+      "title": "frankfurters angus cheddar",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "frankfurters",
+        "angus",
+        "cheddar"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/frankfurters-angus-cheddar.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/frankfurters-angus-cheddar.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/frankfurters-angus-cheddar.png",
+      "bytes": 166534,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-frankfurters-angus-queso",
+      "title": "frankfurters angus queso",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "frankfurters",
+        "angus",
+        "queso"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/frankfurters-angus-queso.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/frankfurters-angus-queso.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/frankfurters-angus-queso.png",
+      "bytes": 163963,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-frankfurters-angus-tradicional",
+      "title": "frankfurters angus tradicional",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "frankfurters",
+        "angus",
+        "tradicional"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/frankfurters-angus-tradicional.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/frankfurters-angus-tradicional.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/frankfurters-angus-tradicional.png",
+      "bytes": 159317,
+      "contentType": "image/png",
+      "pages": [
+        "home",
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-frankfurters",
+      "title": "frankfurters",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "panchos",
+      "productTitles": [
+        "frankfurters"
+      ],
+      "keywords": [
+        "frankfurters"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/frankfurters.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/frankfurters.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/frankfurters.png",
+      "bytes": 31835,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-hamburguesas-12",
+      "title": "hamburguesas premium (12 unidades)",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "hamburguesas",
+      "productTitles": [
+        "hamburguesas premium (12 unidades)"
+      ],
+      "keywords": [
+        "hamburguesas",
+        "premium",
+        "unidades"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/hamburguesas_12.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/hamburguesas_12.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/hamburguesas_12.png",
+      "bytes": 87489,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-hamburguesas-2",
+      "title": "hamburguesas premium (2 unidades)",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "hamburguesas",
+      "productTitles": [
+        "hamburguesas premium (2 unidades)"
+      ],
+      "keywords": [
+        "hamburguesas",
+        "premium",
+        "unidades"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/hamburguesas_2.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/hamburguesas_2.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/hamburguesas_2.png",
+      "bytes": 138125,
+      "contentType": "image/png",
+      "pages": [
+        "home",
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-hamburguesas-24",
+      "title": "hamburguesas premium (24 unidades)",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "hamburguesas",
+      "productTitles": [
+        "hamburguesas premium (24 unidades)"
+      ],
+      "keywords": [
+        "hamburguesas",
+        "premium",
+        "unidades"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/hamburguesas_24.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/hamburguesas_24.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/hamburguesas_24.png",
+      "bytes": 121315,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-hamburguesas-6",
+      "title": "hamburguesas premium (6 unidades)",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "hamburguesas",
+      "productTitles": [
+        "hamburguesas premium (6 unidades)"
+      ],
+      "keywords": [
+        "hamburguesas",
+        "premium",
+        "unidades"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/hamburguesas_6.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/hamburguesas_6.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/hamburguesas_6.png",
+      "bytes": 83604,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-hamburguesas-gigante",
+      "title": "hamburguesas gigante (4 unidades)",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "hamburguesas",
+      "productTitles": [
+        "hamburguesas gigante (4 unidades)"
+      ],
+      "keywords": [
+        "hamburguesas",
+        "gigante",
+        "unidades"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/hamburguesas_gigante.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/hamburguesas_gigante.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/hamburguesas_gigante.png",
+      "bytes": 110228,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-jamon-cocido-rausa",
+      "title": "jamón cocido",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "jamon_cocido",
+      "productTitles": [
+        "jamón cocido"
+      ],
+      "keywords": [
+        "jamon",
+        "cocido",
+        "rausa"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon_cocido_rausa.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/jamon_cocido_rausa.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/jamon_cocido_rausa.png",
+      "bytes": 42995,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-jamon-cocido",
+      "title": "jamón cocido for export",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "jamon_cocido",
+      "productTitles": [
+        "jamón cocido for export"
+      ],
+      "keywords": [
+        "jamon",
+        "cocido",
+        "for",
+        "export"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon_cocido.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/jamon_cocido.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/jamon_cocido.png",
+      "bytes": 39662,
+      "contentType": "image/png",
+      "pages": [
+        "home",
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-jamon-donna-light",
+      "title": "jamon donna light",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "jamon",
+        "donna",
+        "light"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon_donna_light.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/jamon_donna_light.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/jamon_donna_light.jpg",
+      "bytes": 106736,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-jamon-gran-parma",
+      "title": "jamon gran parma",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "jamon",
+        "gran",
+        "parma"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon_gran_parma.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/jamon_gran_parma.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/jamon_gran_parma.jpg",
+      "bytes": 87402,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-jamon-gran-verona",
+      "title": "Jamón Gran Verona",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "jamon_cocido",
+      "productTitles": [
+        "Jamón Gran Verona"
+      ],
+      "keywords": [
+        "jamon",
+        "gran",
+        "verona"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon_gran_verona.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/jamon_gran_verona.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/jamon_gran_verona.jpg",
+      "bytes": 58586,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-jamon-cocido-donna-light-fetas",
+      "title": "jamón cocido donna light",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "jamon_cocido",
+      "productTitles": [
+        "jamón cocido donna light"
+      ],
+      "keywords": [
+        "jamon",
+        "cocido",
+        "donna",
+        "light",
+        "fetas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon-cocido-donna-light-fetas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/jamon-cocido-donna-light-fetas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/jamon-cocido-donna-light-fetas.png",
+      "bytes": 47583,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-jamon-cocido-fetas",
+      "title": "jamón cocido",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "jamon_cocido",
+      "productTitles": [
+        "jamón cocido"
+      ],
+      "keywords": [
+        "jamon",
+        "cocido",
+        "fetas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon-cocido-fetas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/jamon-cocido-fetas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/jamon-cocido-fetas.png",
+      "bytes": 49472,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-jamon-verona-italiana-fetas",
+      "title": "jamon cocido verona",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "jamon_cocido",
+      "productTitles": [
+        "jamon cocido verona"
+      ],
+      "keywords": [
+        "jamon",
+        "cocido",
+        "verona",
+        "italiana",
+        "fetas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon-verona-italiana-fetas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/jamon-verona-italiana-fetas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/jamon-verona-italiana-fetas.png",
+      "bytes": 48819,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-lebon-nuggets-250",
+      "title": "nuggets de pollo lebon",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "congelados",
+      "productTitles": [
+        "nuggets de pollo lebon"
+      ],
+      "keywords": [
+        "nuggets",
+        "pollo",
+        "lebon",
+        "250"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lebon-nuggets-250.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/lebon-nuggets-250.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/lebon-nuggets-250.png",
+      "bytes": 215334,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-lebon-nuggets-900",
+      "title": "nuggets de pollo lebon",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "congelados",
+      "productTitles": [
+        "nuggets de pollo lebon"
+      ],
+      "keywords": [
+        "nuggets",
+        "pollo",
+        "lebon",
+        "900"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lebon-nuggets-900.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/lebon-nuggets-900.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/lebon-nuggets-900.png",
+      "bytes": 110221,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-lebon-steak-25",
+      "title": "steak de pollo lebon",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "congelados",
+      "productTitles": [
+        "steak de pollo lebon"
+      ],
+      "keywords": [
+        "steak",
+        "pollo",
+        "lebon"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lebon-steak-25.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/lebon-steak-25.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/lebon-steak-25.png",
+      "bytes": 240009,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-leonesa-con-jamon",
+      "title": "leonesa con jamón",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "jamon_cocido",
+      "productTitles": [
+        "leonesa con jamón"
+      ],
+      "keywords": [
+        "leonesa",
+        "con",
+        "jamon"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/leonesa_con_jamon.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/leonesa_con_jamon.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/leonesa_con_jamon.png",
+      "bytes": 44052,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-leonesa-donna-light",
+      "title": "Leonesa Light",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "Leonesa Light"
+      ],
+      "keywords": [
+        "leonesa",
+        "light",
+        "donna"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/leonesa_donna_light.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/leonesa_donna_light.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/leonesa_donna_light.jpg",
+      "bytes": 83269,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-leonesa-fetas",
+      "title": "leonesa",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "leonesa"
+      ],
+      "keywords": [
+        "leonesa",
+        "fetas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/leonesa-fetas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/leonesa-fetas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/leonesa-fetas.png",
+      "bytes": 47033,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-leonesa",
+      "title": "leonesa",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "leonesa"
+      ],
+      "keywords": [
+        "leonesa"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/leonesa.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/leonesa.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/leonesa.png",
+      "bytes": 42444,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-lomito-donna-light",
+      "title": "Lomo Canadiense Light",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "Lomo Canadiense Light"
+      ],
+      "keywords": [
+        "lomo",
+        "canadiense",
+        "light",
+        "lomito",
+        "donna"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomito_donna_light.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/lomito_donna_light.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/lomito_donna_light.jpg",
+      "bytes": 114370,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-lomo-ahumado-embuchado",
+      "title": "lomo ahumado embuchado",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "lomo ahumado embuchado"
+      ],
+      "keywords": [
+        "lomo",
+        "ahumado",
+        "embuchado"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo_ahumado_embuchado.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/lomo_ahumado_embuchado.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/lomo_ahumado_embuchado.png",
+      "bytes": 43592,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-lomo-ahumado",
+      "title": "lomo ahumado",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "lomo ahumado"
+      ],
+      "keywords": [
+        "lomo",
+        "ahumado"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo_ahumado.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/lomo_ahumado.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/lomo_ahumado.png",
+      "bytes": 52900,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-lomo-canadiense",
+      "title": "lomo canadiense",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "lomo canadiense"
+      ],
+      "keywords": [
+        "lomo",
+        "canadiense"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo_canadiense.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/lomo_canadiense.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/lomo_canadiense.png",
+      "bytes": 51559,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-lomo-ahumado-fetas",
+      "title": "lomo ahumado fetas",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "lomo ahumado fetas"
+      ],
+      "keywords": [
+        "lomo",
+        "ahumado",
+        "fetas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo-ahumado-fetas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/lomo-ahumado-fetas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/lomo-ahumado-fetas.png",
+      "bytes": 47120,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-lomo-canadiense-donna-light-fetas",
+      "title": "lomo canadiense donna light",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "lomo canadiense donna light"
+      ],
+      "keywords": [
+        "lomo",
+        "canadiense",
+        "donna",
+        "light",
+        "fetas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo-canadiense-donna-light-fetas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/lomo-canadiense-donna-light-fetas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/lomo-canadiense-donna-light-fetas.png",
+      "bytes": 45204,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-lomo-canadiense-fetas",
+      "title": "lomo canadiense",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "lomo canadiense"
+      ],
+      "keywords": [
+        "lomo",
+        "canadiense",
+        "fetas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo-canadiense-fetas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/lomo-canadiense-fetas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/lomo-canadiense-fetas.png",
+      "bytes": 46883,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-lomo",
+      "title": "lomo sin cadena",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "lomo sin cadena"
+      ],
+      "keywords": [
+        "lomo",
+        "sin",
+        "cadena"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo.jpeg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/lomo.jpeg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/lomo.jpeg",
+      "bytes": 13982,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-longaniza-toscana",
+      "title": "Longaniza Toscana",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "salames",
+      "productTitles": [
+        "Longaniza Toscana"
+      ],
+      "keywords": [
+        "longaniza",
+        "toscana"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/longaniza_toscana.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/longaniza_toscana.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/longaniza_toscana.jpg",
+      "bytes": 73181,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-milan-sarubbi",
+      "title": "milán sarubbi",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "otros",
+      "productTitles": [
+        "milán sarubbi"
+      ],
+      "keywords": [
+        "milan"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/milan_sarubbi.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/milan_sarubbi.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/milan_sarubbi.png",
+      "bytes": 46267,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-montaje-chorizos-angus-nuevos-sabores-2023-v1",
+      "title": "Montaje Chorizos Angus Nuevos Sabores 2023 v1",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "montaje",
+        "chorizos",
+        "angus",
+        "nuevos",
+        "sabores",
+        "2023"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/Montaje_Chorizos_Angus_Nuevos_Sabores_2023_v1.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/Montaje_Chorizos_Angus_Nuevos_Sabores_2023_v1.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/Montaje_Chorizos_Angus_Nuevos_Sabores_2023_v1.png",
+      "bytes": 172814,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-montaje-chorizos-angus-nuevos-sabores-2023-v2",
+      "title": "Montaje Chorizos Angus Nuevos Sabores 2023 v2",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "montaje",
+        "chorizos",
+        "angus",
+        "nuevos",
+        "sabores",
+        "2023"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/Montaje_Chorizos_Angus_Nuevos_Sabores_2023_v2.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/Montaje_Chorizos_Angus_Nuevos_Sabores_2023_v2.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/Montaje_Chorizos_Angus_Nuevos_Sabores_2023_v2.png",
+      "bytes": 186264,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-productos-morcilla",
+      "title": "morcilla salada",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "chorizos",
+      "productTitles": [
+        "morcilla salada",
+        "morcilla dulce"
+      ],
+      "keywords": [
+        "morcilla",
+        "salada"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/morcilla.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/morcilla.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/morcilla.png",
+      "bytes": 36651,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-mortadela-suprema-bologna",
+      "title": "Mortadela Suprema Bologna",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "mortadela",
+      "productTitles": [
+        "Mortadela Suprema Bologna"
+      ],
+      "keywords": [
+        "mortadela",
+        "suprema",
+        "bologna"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/mortadela_suprema_bologna.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/mortadela_suprema_bologna.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/mortadela_suprema_bologna.jpg",
+      "bytes": 96364,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-mortadela-bologna-italiana",
+      "title": "mortadela bologna",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "mortadela",
+      "productTitles": [
+        "mortadela bologna"
+      ],
+      "keywords": [
+        "mortadela",
+        "bologna",
+        "italiana"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/mortadela-bologna-italiana.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/mortadela-bologna-italiana.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/mortadela-bologna-italiana.png",
+      "bytes": 48479,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-mortadela",
+      "title": "mortadela",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "mortadela",
+      "productTitles": [
+        "mortadela"
+      ],
+      "keywords": [
+        "mortadela"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/mortadela.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/mortadela.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/mortadela.png",
+      "bytes": 50136,
+      "contentType": "image/png",
+      "pages": [
+        "home",
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-mortadelin",
+      "title": "mortadelin",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "mortadela",
+      "productTitles": [
+        "mortadelin"
+      ],
+      "keywords": [
+        "mortadelin"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/mortadelin.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/mortadelin.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/mortadelin.png",
+      "bytes": 40660,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-mu-vegani-burguer",
+      "title": "Vegani Burger (2 unidades)",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "hamburguesas",
+      "productTitles": [
+        "Vegani Burger (2 unidades)"
+      ],
+      "keywords": [
+        "vegani",
+        "burger",
+        "unidades",
+        "burguer"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/MU_Vegani_Burguer.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/MU_Vegani_Burguer.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/MU_Vegani_Burguer.png",
+      "bytes": 8027557,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-mu-vegani-mila",
+      "title": "Vegani Mila (2 unidades)",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "congelados",
+      "productTitles": [
+        "Vegani Mila (2 unidades)"
+      ],
+      "keywords": [
+        "vegani",
+        "mila",
+        "unidades"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/MU_Vegani_Mila.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/MU_Vegani_Mila.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/MU_Vegani_Mila.png",
+      "bytes": 7961109,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-mu-vegani-nugget",
+      "title": "Vegani Nuggets",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "congelados",
+      "productTitles": [
+        "Vegani Nuggets"
+      ],
+      "keywords": [
+        "vegani",
+        "nuggets",
+        "nugget"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/MU_Vegani_Nugget.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/MU_Vegani_Nugget.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/MU_Vegani_Nugget.png",
+      "bytes": 2247367,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-nalga-adentro",
+      "title": "nalga de adentro sin tapa",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "carnes",
+      "productTitles": [
+        "nalga de adentro sin tapa"
+      ],
+      "keywords": [
+        "nalga",
+        "adentro",
+        "sin",
+        "tapa"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/nalga-adentro.jpeg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/nalga-adentro.jpeg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/nalga-adentro.jpeg",
+      "bytes": 17716,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-nalga",
+      "title": "nalga de adentro",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "carnes",
+      "productTitles": [
+        "nalga de adentro"
+      ],
+      "keywords": [
+        "nalga",
+        "adentro"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/nalga.jpeg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/nalga.jpeg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/nalga.jpeg",
+      "bytes": 25833,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-panceta-ahumada",
+      "title": "panceta ahumada",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "panceta",
+      "productTitles": [
+        "panceta ahumada"
+      ],
+      "keywords": [
+        "panceta",
+        "ahumada"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/panceta_ahumada.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/panceta_ahumada.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/panceta_ahumada.png",
+      "bytes": 49549,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-panceta-americana",
+      "title": "panceta americana",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "panceta",
+      "productTitles": [
+        "panceta americana"
+      ],
+      "keywords": [
+        "panceta",
+        "americana"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/panceta_americana.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/panceta_americana.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/panceta_americana.png",
+      "bytes": 33502,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-panceta-ahumada-fetas",
+      "title": "panceta ahumada",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "panceta",
+      "productTitles": [
+        "panceta ahumada"
+      ],
+      "keywords": [
+        "panceta",
+        "ahumada",
+        "fetas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/panceta-ahumada-fetas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/panceta-ahumada-fetas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/panceta-ahumada-fetas.png",
+      "bytes": 51370,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-pate-de-lengua",
+      "title": "paté de lengua",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "paté de lengua"
+      ],
+      "keywords": [
+        "pate",
+        "lengua"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/pate-de-lengua.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/pate-de-lengua.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/pate-de-lengua.png",
+      "bytes": 57373,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-peceto",
+      "title": "peceto",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "carnes",
+      "productTitles": [
+        "peceto"
+      ],
+      "keywords": [
+        "peceto"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/peceto.jpeg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/peceto.jpeg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/peceto.jpeg",
+      "bytes": 20340,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-pildoritas",
+      "title": "pildoritas",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "panchos",
+      "productTitles": [
+        "pildoritas"
+      ],
+      "keywords": [
+        "pildoritas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/pildoritas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/pildoritas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/pildoritas.png",
+      "bytes": 31891,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-pizzas-napolitana-chori",
+      "title": "Pizza Napolitana Chori cheddar + Queso 413g",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "pizzas",
+      "productTitles": [
+        "Pizza Napolitana Chori cheddar + Queso 413g"
+      ],
+      "keywords": [
+        "pizza",
+        "napolitana",
+        "chori",
+        "cheddar",
+        "queso",
+        "413g",
+        "pizzas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/pizzas_napolitana_chori.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/pizzas_napolitana_chori.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/pizzas_napolitana_chori.jpg",
+      "bytes": 154432,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-pizzas-napolitana-jamon",
+      "title": "Pizza Napolitana Jamón cocido + Queso 413g",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "pizzas",
+      "productTitles": [
+        "Pizza Napolitana Jamón cocido + Queso 413g"
+      ],
+      "keywords": [
+        "pizza",
+        "napolitana",
+        "jamon",
+        "cocido",
+        "queso",
+        "413g",
+        "pizzas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/pizzas_napolitana_jamon.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/pizzas_napolitana_jamon.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/pizzas_napolitana_jamon.jpg",
+      "bytes": 145196,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-pizzas-napolitana-panceta",
+      "title": "Pizza Napolitana Panceta ahumada + Queso 413g",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "pizzas",
+      "productTitles": [
+        "Pizza Napolitana Panceta ahumada + Queso 413g"
+      ],
+      "keywords": [
+        "pizza",
+        "napolitana",
+        "panceta",
+        "ahumada",
+        "queso",
+        "413g",
+        "pizzas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/pizzas_napolitana_panceta.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/pizzas_napolitana_panceta.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/pizzas_napolitana_panceta.jpg",
+      "bytes": 159806,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-queso-de-cerdo",
+      "title": "queso de cerdo",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "fiambres",
+      "productTitles": [
+        "queso de cerdo"
+      ],
+      "keywords": [
+        "queso",
+        "cerdo"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/queso_de_cerdo.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/queso_de_cerdo.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/queso_de_cerdo.png",
+      "bytes": 53527,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-recetas-italianas",
+      "title": "Jamón Cocido Light",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "jamon_cocido",
+      "productTitles": [
+        "Jamón Cocido Light"
+      ],
+      "keywords": [
+        "jamon",
+        "cocido",
+        "light",
+        "recetas",
+        "italianas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/recetas_italianas.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/recetas_italianas.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/recetas_italianas.jpg",
+      "bytes": 33606,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-salame-milan",
+      "title": "salame milán",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "salames",
+      "productTitles": [
+        "salame milán"
+      ],
+      "keywords": [
+        "salame",
+        "milan"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/salame_milan.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/salame_milan.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/salame_milan.png",
+      "bytes": 39582,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-salame-milano",
+      "title": "Salame Milano",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "salames",
+      "productTitles": [
+        "Salame Milano"
+      ],
+      "keywords": [
+        "salame",
+        "milano"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/salame_milano.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/salame_milano.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/productos/salame_milano.jpg",
+      "bytes": 80915,
+      "contentType": "image/jpeg",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-salame-milano-italiana-fetas",
+      "title": "salame milano",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "salames",
+      "productTitles": [
+        "salame milano"
+      ],
+      "keywords": [
+        "salame",
+        "milano",
+        "italiana",
+        "fetas"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/salame-milano-italiana-fetas.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/salame-milano-italiana-fetas.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/salame-milano-italiana-fetas.png",
+      "bytes": 47583,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-salchicha-parrillera",
+      "title": "salchicha parrillera",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "chorizos",
+      "productTitles": [
+        "salchicha parrillera"
+      ],
+      "keywords": [
+        "salchicha",
+        "parrillera"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/salchicha_parrillera.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/salchicha_parrillera.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/salchicha_parrillera.png",
+      "bytes": 38071,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-seara-nuggets-250",
+      "title": "nuggets de pollo seará",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "congelados",
+      "productTitles": [
+        "nuggets de pollo seará"
+      ],
+      "keywords": [
+        "nuggets",
+        "pollo",
+        "seara",
+        "250"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/seara-nuggets-250.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/seara-nuggets-250.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/seara-nuggets-250.png",
+      "bytes": 168997,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-seara-nuggets-900",
+      "title": "nuggets de pollo seará",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "congelados",
+      "productTitles": [
+        "nuggets de pollo seará"
+      ],
+      "keywords": [
+        "nuggets",
+        "pollo",
+        "seara",
+        "900"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/seara-nuggets-900.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/seara-nuggets-900.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/seara-nuggets-900.png",
+      "bytes": 111046,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-secos-sarubbi",
+      "title": "secos sarubbi",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "salames",
+      "productTitles": [
+        "secos sarubbi"
+      ],
+      "keywords": [
+        "secos"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/secos_sarubbi.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/secos_sarubbi.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/secos_sarubbi.png",
+      "bytes": 36121,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-productos-secos",
+      "title": "secos",
+      "kind": "image",
+      "theme": "producto",
+      "productCategory": "salames",
+      "productTitles": [
+        "secos"
+      ],
+      "keywords": [
+        "secos"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/secos.png",
+      "localPath": "public/assets/sarubbi/site/imgs/productos/secos.png",
+      "webPath": "/assets/sarubbi/site/imgs/productos/secos.png",
+      "bytes": 32870,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html",
+        "product-card"
+      ]
+    },
+    {
+      "id": "imgs-products-caret-icon",
+      "title": "products caret icon",
+      "kind": "image",
+      "theme": "ui",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "products",
+        "caret",
+        "icon"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/products-caret-icon.png",
+      "localPath": "public/assets/sarubbi/site/imgs/products-caret-icon.png",
+      "webPath": "/assets/sarubbi/site/imgs/products-caret-icon.png",
+      "bytes": 348,
+      "contentType": "image/png",
+      "pages": [
+        "css:devices.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-rausa-logo",
+      "title": "rausa logo",
+      "kind": "image",
+      "theme": "identidad",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "rausa",
+        "logo"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/rausa_logo.png",
+      "localPath": "public/assets/sarubbi/site/imgs/rausa_logo.png",
+      "webPath": "/assets/sarubbi/site/imgs/rausa_logo.png",
+      "bytes": 14312,
+      "contentType": "image/png",
+      "pages": [
+        "productos"
+      ],
+      "sourceTypes": [
+        "html"
+      ]
+    },
+    {
+      "id": "imgs-sarubbi-logo",
+      "title": "sarubbi logo",
+      "kind": "image",
+      "theme": "marca",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "logo"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/sarubbi-logo.png?v=3",
+      "localPath": "public/assets/sarubbi/site/imgs/sarubbi-logo.png",
+      "webPath": "/assets/sarubbi/site/imgs/sarubbi-logo.png",
+      "bytes": 30750,
+      "contentType": "image/png",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-social",
+      "title": "social",
+      "kind": "image",
+      "theme": "ui",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "social"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/social.png",
+      "localPath": "public/assets/sarubbi/site/imgs/social.png",
+      "webPath": "/assets/sarubbi/site/imgs/social.png",
+      "bytes": 9915,
+      "contentType": "image/png",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-stars",
+      "title": "stars",
+      "kind": "image",
+      "theme": "marca",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "stars"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/stars.png",
+      "localPath": "public/assets/sarubbi/site/imgs/stars.png",
+      "webPath": "/assets/sarubbi/site/imgs/stars.png",
+      "bytes": 746,
+      "contentType": "image/png",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-up-icon",
+      "title": "up icon",
+      "kind": "image",
+      "theme": "ui",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "icon"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/up_icon.png",
+      "localPath": "public/assets/sarubbi/site/imgs/up_icon.png",
+      "webPath": "/assets/sarubbi/site/imgs/up_icon.png",
+      "bytes": 515,
+      "contentType": "image/png",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "imgs-white-pattern",
+      "title": "white pattern",
+      "kind": "image",
+      "theme": "marca",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "white",
+        "pattern"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/imgs/white-pattern.jpg",
+      "localPath": "public/assets/sarubbi/site/imgs/white-pattern.jpg",
+      "webPath": "/assets/sarubbi/site/imgs/white-pattern.jpg",
+      "bytes": 1167,
+      "contentType": "image/jpeg",
+      "pages": [
+        "css:theme.css"
+      ],
+      "sourceTypes": [
+        "css"
+      ]
+    },
+    {
+      "id": "videos-video-caption",
+      "title": "video caption",
+      "kind": "image",
+      "theme": "hero",
+      "productCategory": null,
+      "productTitles": [],
+      "keywords": [
+        "videos",
+        "video",
+        "caption"
+      ],
+      "sourceUrl": "https://sarubbi.com.uy/videos/video_caption.jpg",
+      "localPath": "public/assets/sarubbi/site/videos/video_caption.jpg",
+      "webPath": "/assets/sarubbi/site/videos/video_caption.jpg",
+      "bytes": 198696,
+      "contentType": "image/jpeg",
+      "pages": [
+        "home"
+      ],
+      "sourceTypes": [
+        "html",
+        "inline-style"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "assetId": "imgs-productos-bife-ancho",
+      "titles": [
+        "bife ancho sin tapa"
+      ],
+      "category": "carnes",
+      "keywords": [
+        "bife",
+        "ancho",
+        "sin",
+        "tapa"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/bife-ancho.jpeg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/bife-ancho.jpeg"
+    },
+    {
+      "assetId": "imgs-productos-bife-angosto",
+      "titles": [
+        "bife angosto"
+      ],
+      "category": "carnes",
+      "keywords": [
+        "bife",
+        "angosto"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/bife-angosto.jpeg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/bife-angosto.jpeg"
+    },
+    {
+      "assetId": "imgs-productos-bola-de-lomo",
+      "titles": [
+        "bola de lomo"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "bola",
+        "lomo"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/bola-de-lomo.jpeg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/bola-de-lomo.jpeg"
+    },
+    {
+      "assetId": "imgs-productos-bondiola-italiana-fetas",
+      "titles": [
+        "bondiola"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "bondiola",
+        "italiana",
+        "fetas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/bondiola-italiana-fetas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/bondiola-italiana-fetas.png"
+    },
+    {
+      "assetId": "imgs-productos-bondiola",
+      "titles": [
+        "bondiola"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "bondiola"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/bondiola.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/bondiola.png"
+    },
+    {
+      "assetId": "imgs-productos-choripron",
+      "titles": [
+        "choripron"
+      ],
+      "category": "chorizos",
+      "keywords": [
+        "choripron"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/choripron.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/choripron.png"
+    },
+    {
+      "assetId": "imgs-productos-chorizo-especial-sarubbi",
+      "titles": [
+        "chorizo especial sarubbi"
+      ],
+      "category": "chorizos",
+      "keywords": [
+        "chorizo",
+        "especial"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/chorizo_especial_sarubbi.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizo_especial_sarubbi.png"
+    },
+    {
+      "assetId": "imgs-productos-chorizo-ruso",
+      "titles": [
+        "chorizo ruso"
+      ],
+      "category": "chorizos",
+      "keywords": [
+        "chorizo",
+        "ruso"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/chorizo_ruso.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizo_ruso.png"
+    },
+    {
+      "assetId": "imgs-productos-chorizos-al-vacio",
+      "titles": [
+        "chorizos al vacio"
+      ],
+      "category": "chorizos",
+      "keywords": [
+        "chorizos",
+        "vacio"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/chorizos_al_vacio.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_al_vacio.png"
+    },
+    {
+      "assetId": "imgs-productos-chorizos-angus-pic1",
+      "titles": [
+        "Jamón Gran Parma"
+      ],
+      "category": "chorizos",
+      "keywords": [
+        "jamon",
+        "gran",
+        "parma",
+        "chorizos",
+        "angus",
+        "pic1"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/chorizos_angus_pic1.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos_angus_pic1.png"
+    },
+    {
+      "assetId": "imgs-productos-chorizos",
+      "titles": [
+        "chorizos"
+      ],
+      "category": "chorizos",
+      "keywords": [
+        "chorizos"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/chorizos.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/chorizos.png"
+    },
+    {
+      "assetId": "imgs-productos-corazon-cuadril",
+      "titles": [
+        "corazón de cuadril"
+      ],
+      "category": "carnes",
+      "keywords": [
+        "corazon",
+        "cuadril"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/corazon-cuadril.jpeg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/corazon-cuadril.jpeg"
+    },
+    {
+      "assetId": "imgs-productos-cuadril",
+      "titles": [
+        "cuadril sin tapa"
+      ],
+      "category": "carnes",
+      "keywords": [
+        "cuadril",
+        "sin",
+        "tapa"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/cuadril.jpeg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/cuadril.jpeg"
+    },
+    {
+      "assetId": "imgs-productos-empanadas-carne",
+      "titles": [
+        "Empanadas de Carne con Panceta 350g"
+      ],
+      "category": "empanadas",
+      "keywords": [
+        "empanadas",
+        "carne",
+        "con",
+        "panceta",
+        "350g"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/empanadas_carne.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/empanadas_carne.jpg"
+    },
+    {
+      "assetId": "imgs-productos-empanadas-jamon",
+      "titles": [
+        "Empanadas de Jamón y Queso 350g"
+      ],
+      "category": "empanadas",
+      "keywords": [
+        "empanadas",
+        "jamon",
+        "queso",
+        "350g"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/empanadas_jamon.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/empanadas_jamon.jpg"
+    },
+    {
+      "assetId": "imgs-productos-empanadas-lomito",
+      "titles": [
+        "Empanadas de Lomito canadiense y Cheddar 350g"
+      ],
+      "category": "empanadas",
+      "keywords": [
+        "empanadas",
+        "lomito",
+        "canadiense",
+        "cheddar",
+        "350g"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/empanadas_lomito.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/empanadas_lomito.jpg"
+    },
+    {
+      "assetId": "imgs-productos-fiambre-de-cerdo-linea-amarilla",
+      "titles": [
+        "fiambre de cerdo línea amarilla"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "linea",
+        "amarilla"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_linea_amarilla.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre_de_cerdo_linea_amarilla.png"
+    },
+    {
+      "assetId": "imgs-productos-fiambre-de-cerdo-linea-azul",
+      "titles": [
+        "fiambre de cerdo línea azul"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "linea",
+        "azul"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_linea_azul.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre_de_cerdo_linea_azul.png"
+    },
+    {
+      "assetId": "imgs-productos-fiambre-de-cerdo-linea-roja",
+      "titles": [
+        "fiambre de cerdo línea roja"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "linea",
+        "roja"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_linea_roja.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre_de_cerdo_linea_roja.png"
+    },
+    {
+      "assetId": "imgs-productos-fiambre-de-cerdo-rausa",
+      "titles": [
+        "fiambre de cerdo"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "rausa"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_rausa.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre_de_cerdo_rausa.png"
+    },
+    {
+      "assetId": "imgs-productos-fiambre-de-cerdo-sabrosero",
+      "titles": [
+        "fiambre de cerdo sabrosero"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "sabrosero"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_sabrosero.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre_de_cerdo_sabrosero.png"
+    },
+    {
+      "assetId": "imgs-productos-fiambre-de-cerdo-fetas",
+      "titles": [
+        "fiambre de cerdo"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "fiambre",
+        "cerdo",
+        "fetas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/fiambre-de-cerdo-fetas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/fiambre-de-cerdo-fetas.png"
+    },
+    {
+      "assetId": "imgs-productos-finceta-al-vacio",
+      "titles": [
+        "finceta al vacío"
+      ],
+      "category": "salames",
+      "keywords": [
+        "finceta",
+        "vacio"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/finceta-al-vacio.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/finceta-al-vacio.png"
+    },
+    {
+      "assetId": "imgs-productos-finceta",
+      "titles": [
+        "finceta"
+      ],
+      "category": "salames",
+      "keywords": [
+        "finceta"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/finceta.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/finceta.png"
+    },
+    {
+      "assetId": "imgs-productos-frankfurters",
+      "titles": [
+        "frankfurters"
+      ],
+      "category": "panchos",
+      "keywords": [
+        "frankfurters"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/frankfurters.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/frankfurters.png"
+    },
+    {
+      "assetId": "imgs-productos-hamburguesas-12",
+      "titles": [
+        "hamburguesas premium (12 unidades)"
+      ],
+      "category": "hamburguesas",
+      "keywords": [
+        "hamburguesas",
+        "premium",
+        "unidades"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/hamburguesas_12.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/hamburguesas_12.png"
+    },
+    {
+      "assetId": "imgs-productos-hamburguesas-2",
+      "titles": [
+        "hamburguesas premium (2 unidades)"
+      ],
+      "category": "hamburguesas",
+      "keywords": [
+        "hamburguesas",
+        "premium",
+        "unidades"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/hamburguesas_2.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/hamburguesas_2.png"
+    },
+    {
+      "assetId": "imgs-productos-hamburguesas-24",
+      "titles": [
+        "hamburguesas premium (24 unidades)"
+      ],
+      "category": "hamburguesas",
+      "keywords": [
+        "hamburguesas",
+        "premium",
+        "unidades"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/hamburguesas_24.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/hamburguesas_24.png"
+    },
+    {
+      "assetId": "imgs-productos-hamburguesas-6",
+      "titles": [
+        "hamburguesas premium (6 unidades)"
+      ],
+      "category": "hamburguesas",
+      "keywords": [
+        "hamburguesas",
+        "premium",
+        "unidades"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/hamburguesas_6.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/hamburguesas_6.png"
+    },
+    {
+      "assetId": "imgs-productos-hamburguesas-gigante",
+      "titles": [
+        "hamburguesas gigante (4 unidades)"
+      ],
+      "category": "hamburguesas",
+      "keywords": [
+        "hamburguesas",
+        "gigante",
+        "unidades"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/hamburguesas_gigante.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/hamburguesas_gigante.png"
+    },
+    {
+      "assetId": "imgs-productos-jamon-cocido-rausa",
+      "titles": [
+        "jamón cocido"
+      ],
+      "category": "jamon_cocido",
+      "keywords": [
+        "jamon",
+        "cocido",
+        "rausa"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/jamon_cocido_rausa.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon_cocido_rausa.png"
+    },
+    {
+      "assetId": "imgs-productos-jamon-cocido",
+      "titles": [
+        "jamón cocido for export"
+      ],
+      "category": "jamon_cocido",
+      "keywords": [
+        "jamon",
+        "cocido",
+        "for",
+        "export"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/jamon_cocido.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon_cocido.png"
+    },
+    {
+      "assetId": "imgs-productos-jamon-gran-verona",
+      "titles": [
+        "Jamón Gran Verona"
+      ],
+      "category": "jamon_cocido",
+      "keywords": [
+        "jamon",
+        "gran",
+        "verona"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/jamon_gran_verona.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon_gran_verona.jpg"
+    },
+    {
+      "assetId": "imgs-productos-jamon-cocido-donna-light-fetas",
+      "titles": [
+        "jamón cocido donna light"
+      ],
+      "category": "jamon_cocido",
+      "keywords": [
+        "jamon",
+        "cocido",
+        "donna",
+        "light",
+        "fetas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/jamon-cocido-donna-light-fetas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon-cocido-donna-light-fetas.png"
+    },
+    {
+      "assetId": "imgs-productos-jamon-cocido-fetas",
+      "titles": [
+        "jamón cocido"
+      ],
+      "category": "jamon_cocido",
+      "keywords": [
+        "jamon",
+        "cocido",
+        "fetas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/jamon-cocido-fetas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon-cocido-fetas.png"
+    },
+    {
+      "assetId": "imgs-productos-jamon-verona-italiana-fetas",
+      "titles": [
+        "jamon cocido verona"
+      ],
+      "category": "jamon_cocido",
+      "keywords": [
+        "jamon",
+        "cocido",
+        "verona",
+        "italiana",
+        "fetas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/jamon-verona-italiana-fetas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/jamon-verona-italiana-fetas.png"
+    },
+    {
+      "assetId": "imgs-productos-lebon-nuggets-250",
+      "titles": [
+        "nuggets de pollo lebon"
+      ],
+      "category": "congelados",
+      "keywords": [
+        "nuggets",
+        "pollo",
+        "lebon",
+        "250"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/lebon-nuggets-250.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lebon-nuggets-250.png"
+    },
+    {
+      "assetId": "imgs-productos-lebon-nuggets-900",
+      "titles": [
+        "nuggets de pollo lebon"
+      ],
+      "category": "congelados",
+      "keywords": [
+        "nuggets",
+        "pollo",
+        "lebon",
+        "900"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/lebon-nuggets-900.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lebon-nuggets-900.png"
+    },
+    {
+      "assetId": "imgs-productos-lebon-steak-25",
+      "titles": [
+        "steak de pollo lebon"
+      ],
+      "category": "congelados",
+      "keywords": [
+        "steak",
+        "pollo",
+        "lebon"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/lebon-steak-25.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lebon-steak-25.png"
+    },
+    {
+      "assetId": "imgs-productos-leonesa-con-jamon",
+      "titles": [
+        "leonesa con jamón"
+      ],
+      "category": "jamon_cocido",
+      "keywords": [
+        "leonesa",
+        "con",
+        "jamon"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/leonesa_con_jamon.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/leonesa_con_jamon.png"
+    },
+    {
+      "assetId": "imgs-productos-leonesa-donna-light",
+      "titles": [
+        "Leonesa Light"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "leonesa",
+        "light",
+        "donna"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/leonesa_donna_light.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/leonesa_donna_light.jpg"
+    },
+    {
+      "assetId": "imgs-productos-leonesa-fetas",
+      "titles": [
+        "leonesa"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "leonesa",
+        "fetas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/leonesa-fetas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/leonesa-fetas.png"
+    },
+    {
+      "assetId": "imgs-productos-leonesa",
+      "titles": [
+        "leonesa"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "leonesa"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/leonesa.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/leonesa.png"
+    },
+    {
+      "assetId": "imgs-productos-lomito-donna-light",
+      "titles": [
+        "Lomo Canadiense Light"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "lomo",
+        "canadiense",
+        "light",
+        "lomito",
+        "donna"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/lomito_donna_light.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomito_donna_light.jpg"
+    },
+    {
+      "assetId": "imgs-productos-lomo-ahumado-embuchado",
+      "titles": [
+        "lomo ahumado embuchado"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "lomo",
+        "ahumado",
+        "embuchado"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/lomo_ahumado_embuchado.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo_ahumado_embuchado.png"
+    },
+    {
+      "assetId": "imgs-productos-lomo-ahumado",
+      "titles": [
+        "lomo ahumado"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "lomo",
+        "ahumado"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/lomo_ahumado.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo_ahumado.png"
+    },
+    {
+      "assetId": "imgs-productos-lomo-canadiense",
+      "titles": [
+        "lomo canadiense"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "lomo",
+        "canadiense"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/lomo_canadiense.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo_canadiense.png"
+    },
+    {
+      "assetId": "imgs-productos-lomo-ahumado-fetas",
+      "titles": [
+        "lomo ahumado fetas"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "lomo",
+        "ahumado",
+        "fetas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/lomo-ahumado-fetas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo-ahumado-fetas.png"
+    },
+    {
+      "assetId": "imgs-productos-lomo-canadiense-donna-light-fetas",
+      "titles": [
+        "lomo canadiense donna light"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "lomo",
+        "canadiense",
+        "donna",
+        "light",
+        "fetas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/lomo-canadiense-donna-light-fetas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo-canadiense-donna-light-fetas.png"
+    },
+    {
+      "assetId": "imgs-productos-lomo-canadiense-fetas",
+      "titles": [
+        "lomo canadiense"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "lomo",
+        "canadiense",
+        "fetas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/lomo-canadiense-fetas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo-canadiense-fetas.png"
+    },
+    {
+      "assetId": "imgs-productos-lomo",
+      "titles": [
+        "lomo sin cadena"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "lomo",
+        "sin",
+        "cadena"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/lomo.jpeg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/lomo.jpeg"
+    },
+    {
+      "assetId": "imgs-productos-longaniza-toscana",
+      "titles": [
+        "Longaniza Toscana"
+      ],
+      "category": "salames",
+      "keywords": [
+        "longaniza",
+        "toscana"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/longaniza_toscana.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/longaniza_toscana.jpg"
+    },
+    {
+      "assetId": "imgs-productos-milan-sarubbi",
+      "titles": [
+        "milán sarubbi"
+      ],
+      "category": "otros",
+      "keywords": [
+        "milan"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/milan_sarubbi.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/milan_sarubbi.png"
+    },
+    {
+      "assetId": "imgs-productos-morcilla",
+      "titles": [
+        "morcilla salada",
+        "morcilla dulce"
+      ],
+      "category": "chorizos",
+      "keywords": [
+        "morcilla",
+        "salada"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/morcilla.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/morcilla.png"
+    },
+    {
+      "assetId": "imgs-productos-mortadela-suprema-bologna",
+      "titles": [
+        "Mortadela Suprema Bologna"
+      ],
+      "category": "mortadela",
+      "keywords": [
+        "mortadela",
+        "suprema",
+        "bologna"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/mortadela_suprema_bologna.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/mortadela_suprema_bologna.jpg"
+    },
+    {
+      "assetId": "imgs-productos-mortadela-bologna-italiana",
+      "titles": [
+        "mortadela bologna"
+      ],
+      "category": "mortadela",
+      "keywords": [
+        "mortadela",
+        "bologna",
+        "italiana"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/mortadela-bologna-italiana.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/mortadela-bologna-italiana.png"
+    },
+    {
+      "assetId": "imgs-productos-mortadela",
+      "titles": [
+        "mortadela"
+      ],
+      "category": "mortadela",
+      "keywords": [
+        "mortadela"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/mortadela.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/mortadela.png"
+    },
+    {
+      "assetId": "imgs-productos-mortadelin",
+      "titles": [
+        "mortadelin"
+      ],
+      "category": "mortadela",
+      "keywords": [
+        "mortadelin"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/mortadelin.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/mortadelin.png"
+    },
+    {
+      "assetId": "imgs-productos-mu-vegani-burguer",
+      "titles": [
+        "Vegani Burger (2 unidades)"
+      ],
+      "category": "hamburguesas",
+      "keywords": [
+        "vegani",
+        "burger",
+        "unidades",
+        "burguer"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/MU_Vegani_Burguer.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/MU_Vegani_Burguer.png"
+    },
+    {
+      "assetId": "imgs-productos-mu-vegani-mila",
+      "titles": [
+        "Vegani Mila (2 unidades)"
+      ],
+      "category": "congelados",
+      "keywords": [
+        "vegani",
+        "mila",
+        "unidades"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/MU_Vegani_Mila.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/MU_Vegani_Mila.png"
+    },
+    {
+      "assetId": "imgs-productos-mu-vegani-nugget",
+      "titles": [
+        "Vegani Nuggets"
+      ],
+      "category": "congelados",
+      "keywords": [
+        "vegani",
+        "nuggets",
+        "nugget"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/MU_Vegani_Nugget.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/MU_Vegani_Nugget.png"
+    },
+    {
+      "assetId": "imgs-productos-nalga-adentro",
+      "titles": [
+        "nalga de adentro sin tapa"
+      ],
+      "category": "carnes",
+      "keywords": [
+        "nalga",
+        "adentro",
+        "sin",
+        "tapa"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/nalga-adentro.jpeg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/nalga-adentro.jpeg"
+    },
+    {
+      "assetId": "imgs-productos-nalga",
+      "titles": [
+        "nalga de adentro"
+      ],
+      "category": "carnes",
+      "keywords": [
+        "nalga",
+        "adentro"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/nalga.jpeg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/nalga.jpeg"
+    },
+    {
+      "assetId": "imgs-productos-panceta-ahumada",
+      "titles": [
+        "panceta ahumada"
+      ],
+      "category": "panceta",
+      "keywords": [
+        "panceta",
+        "ahumada"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/panceta_ahumada.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/panceta_ahumada.png"
+    },
+    {
+      "assetId": "imgs-productos-panceta-americana",
+      "titles": [
+        "panceta americana"
+      ],
+      "category": "panceta",
+      "keywords": [
+        "panceta",
+        "americana"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/panceta_americana.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/panceta_americana.png"
+    },
+    {
+      "assetId": "imgs-productos-panceta-ahumada-fetas",
+      "titles": [
+        "panceta ahumada"
+      ],
+      "category": "panceta",
+      "keywords": [
+        "panceta",
+        "ahumada",
+        "fetas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/panceta-ahumada-fetas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/panceta-ahumada-fetas.png"
+    },
+    {
+      "assetId": "imgs-productos-pate-de-lengua",
+      "titles": [
+        "paté de lengua"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "pate",
+        "lengua"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/pate-de-lengua.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/pate-de-lengua.png"
+    },
+    {
+      "assetId": "imgs-productos-peceto",
+      "titles": [
+        "peceto"
+      ],
+      "category": "carnes",
+      "keywords": [
+        "peceto"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/peceto.jpeg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/peceto.jpeg"
+    },
+    {
+      "assetId": "imgs-productos-pildoritas",
+      "titles": [
+        "pildoritas"
+      ],
+      "category": "panchos",
+      "keywords": [
+        "pildoritas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/pildoritas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/pildoritas.png"
+    },
+    {
+      "assetId": "imgs-productos-pizzas-napolitana-chori",
+      "titles": [
+        "Pizza Napolitana Chori cheddar + Queso 413g"
+      ],
+      "category": "pizzas",
+      "keywords": [
+        "pizza",
+        "napolitana",
+        "chori",
+        "cheddar",
+        "queso",
+        "413g",
+        "pizzas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/pizzas_napolitana_chori.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/pizzas_napolitana_chori.jpg"
+    },
+    {
+      "assetId": "imgs-productos-pizzas-napolitana-jamon",
+      "titles": [
+        "Pizza Napolitana Jamón cocido + Queso 413g"
+      ],
+      "category": "pizzas",
+      "keywords": [
+        "pizza",
+        "napolitana",
+        "jamon",
+        "cocido",
+        "queso",
+        "413g",
+        "pizzas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/pizzas_napolitana_jamon.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/pizzas_napolitana_jamon.jpg"
+    },
+    {
+      "assetId": "imgs-productos-pizzas-napolitana-panceta",
+      "titles": [
+        "Pizza Napolitana Panceta ahumada + Queso 413g"
+      ],
+      "category": "pizzas",
+      "keywords": [
+        "pizza",
+        "napolitana",
+        "panceta",
+        "ahumada",
+        "queso",
+        "413g",
+        "pizzas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/pizzas_napolitana_panceta.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/pizzas_napolitana_panceta.jpg"
+    },
+    {
+      "assetId": "imgs-productos-queso-de-cerdo",
+      "titles": [
+        "queso de cerdo"
+      ],
+      "category": "fiambres",
+      "keywords": [
+        "queso",
+        "cerdo"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/queso_de_cerdo.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/queso_de_cerdo.png"
+    },
+    {
+      "assetId": "imgs-productos-recetas-italianas",
+      "titles": [
+        "Jamón Cocido Light"
+      ],
+      "category": "jamon_cocido",
+      "keywords": [
+        "jamon",
+        "cocido",
+        "light",
+        "recetas",
+        "italianas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/recetas_italianas.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/recetas_italianas.jpg"
+    },
+    {
+      "assetId": "imgs-productos-salame-milan",
+      "titles": [
+        "salame milán"
+      ],
+      "category": "salames",
+      "keywords": [
+        "salame",
+        "milan"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/salame_milan.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/salame_milan.png"
+    },
+    {
+      "assetId": "imgs-productos-salame-milano",
+      "titles": [
+        "Salame Milano"
+      ],
+      "category": "salames",
+      "keywords": [
+        "salame",
+        "milano"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/salame_milano.jpg",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/salame_milano.jpg"
+    },
+    {
+      "assetId": "imgs-productos-salame-milano-italiana-fetas",
+      "titles": [
+        "salame milano"
+      ],
+      "category": "salames",
+      "keywords": [
+        "salame",
+        "milano",
+        "italiana",
+        "fetas"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/salame-milano-italiana-fetas.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/salame-milano-italiana-fetas.png"
+    },
+    {
+      "assetId": "imgs-productos-salchicha-parrillera",
+      "titles": [
+        "salchicha parrillera"
+      ],
+      "category": "chorizos",
+      "keywords": [
+        "salchicha",
+        "parrillera"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/salchicha_parrillera.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/salchicha_parrillera.png"
+    },
+    {
+      "assetId": "imgs-productos-seara-nuggets-250",
+      "titles": [
+        "nuggets de pollo seará"
+      ],
+      "category": "congelados",
+      "keywords": [
+        "nuggets",
+        "pollo",
+        "seara",
+        "250"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/seara-nuggets-250.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/seara-nuggets-250.png"
+    },
+    {
+      "assetId": "imgs-productos-seara-nuggets-900",
+      "titles": [
+        "nuggets de pollo seará"
+      ],
+      "category": "congelados",
+      "keywords": [
+        "nuggets",
+        "pollo",
+        "seara",
+        "900"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/seara-nuggets-900.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/seara-nuggets-900.png"
+    },
+    {
+      "assetId": "imgs-productos-secos-sarubbi",
+      "titles": [
+        "secos sarubbi"
+      ],
+      "category": "salames",
+      "keywords": [
+        "secos"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/secos_sarubbi.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/secos_sarubbi.png"
+    },
+    {
+      "assetId": "imgs-productos-secos",
+      "titles": [
+        "secos"
+      ],
+      "category": "salames",
+      "keywords": [
+        "secos"
+      ],
+      "image": "/assets/sarubbi/site/imgs/productos/secos.png",
+      "sourceUrl": "https://sarubbi.com.uy/imgs/productos/secos.png"
+    }
+  ],
+  "failed": [
+    {
+      "url": "https://sarubbi.com.uy/img/video-play.png",
+      "error": "404 https://sarubbi.com.uy/img/video-play.png"
+    },
+    {
+      "url": "https://sarubbi.com.uy/img/vimeo-play.png",
+      "error": "404 https://sarubbi.com.uy/img/vimeo-play.png"
+    },
+    {
+      "url": "https://sarubbi.com.uy/img/youtube-play.png",
+      "error": "404 https://sarubbi.com.uy/img/youtube-play.png"
+    },
+    {
+      "url": "https://sarubbi.com.uy/imgs/controls.png",
+      "error": "404 https://sarubbi.com.uy/imgs/controls.png"
+    },
+    {
+      "url": "https://sarubbi.com.uy/imgs/loading.gif",
+      "error": "404 https://sarubbi.com.uy/imgs/loading.gif"
+    }
+  ]
+}

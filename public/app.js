@@ -89,19 +89,36 @@ const MODE_BENCHMARK_BRAND = {
   carnes_general: 'camposur',
   congelados_general: 'cattivelli',
   otros_general: 'schneck',
-};const OWNER_LOGO = {
-  sarubbi: { text: APP_COPY.targetOwnerLabel, color: '#0b2f93', src: '/assets/sarubbi/sarubbi-brand.jpeg', imageOnly: true },
+};
+const SARUBBI_COMPACT_LOGO = '/assets/sarubbi/site/imgs/sarubbi-logo.png';
+const SARUBBI_CATEGORY_IMAGE = {
+  jamon_cocido: '/assets/sarubbi/site/imgs/productos/jamon_cocido.png',
+  jamon_crudo: '/assets/sarubbi/site/imgs/productos/jamon_gran_verona.jpg',
+  panchos: '/assets/sarubbi/site/imgs/productos/frankfurters.png',
+  salames: '/assets/sarubbi/site/imgs/productos/salame_milan.png',
+  chorizos: '/assets/sarubbi/site/imgs/productos/chorizos.png',
+  mortadela: '/assets/sarubbi/site/imgs/productos/mortadela.png',
+  panceta: '/assets/sarubbi/site/imgs/productos/panceta_ahumada.png',
+  fiambres: '/assets/sarubbi/site/imgs/productos/fiambre_de_cerdo_linea_roja.png',
+  hamburguesas: '/assets/sarubbi/site/imgs/productos/hamburguesas_2.png',
+  empanadas: '/assets/sarubbi/site/imgs/productos/empanadas_jamon.jpg',
+  carnes: '/assets/sarubbi/site/imgs/productos/lomo.jpeg',
+  congelados: '/assets/sarubbi/site/imgs/productos/hamburguesas_2.png',
+  otros: '/assets/sarubbi/site/imgs/productos/jamon_cocido.png',
+};
+const OWNER_LOGO = {
+  sarubbi: { text: APP_COPY.targetOwnerLabel, color: '#0b2f93', src: SARUBBI_COMPACT_LOGO, imageOnly: true, compact: true },
   competencia: { text: APP_COPY.competitorLabel, color: '#b42318' },
 };
 const BRAND_LOGO = {
-  sarubbi: { text: 'Sarubbi', color: '#0b2f93', src: '/assets/sarubbi/sarubbi-brand.jpeg', imageOnly: true, bg: '#0b2f93' },
-  schneck: { text: 'Schneck', color: '#0f766e' },
-  centenario: { text: 'Centenario', color: '#7c2d12' },
-  cattivelli: { text: 'Cattivelli', color: '#b42318' },
-  ottonello: { text: 'Ottonello', color: '#344054' },
-  camposur: { text: 'Camposur', color: '#166534' },
-  constancia: { text: 'La Constancia', color: '#7f1d1d' },
-  picorel: { text: 'Picorel', color: '#9333ea' },
+  sarubbi: { text: 'Sarubbi', color: '#0b2f93', src: SARUBBI_COMPACT_LOGO, imageOnly: true, compact: true },
+  schneck: { text: 'Schneck', color: '#0f766e', src: '/assets/logos/brands/schneck.svg' },
+  centenario: { text: 'Centenario', color: '#7c2d12', src: '/assets/logos/brands/centenario.svg' },
+  cattivelli: { text: 'Cattivelli', color: '#b42318', src: '/assets/logos/brands/cattivelli.svg' },
+  ottonello: { text: 'Ottonello', color: '#344054', src: '/assets/logos/brands/ottonello.svg' },
+  camposur: { text: 'Camposur', color: '#166534', src: '/assets/logos/brands/camposur.svg' },
+  constancia: { text: 'La Constancia', color: '#7f1d1d', src: '/assets/logos/brands/constancia.svg' },
+  picorel: { text: 'Picorel', color: '#9333ea', src: '/assets/logos/brands/picorel.svg' },
 };
 const STORE_LOGO = {
   tata: { text: 'Ta-Ta', color: '#e5002b', src: '/assets/logos/stores/tata.svg', imageOnly: true, bg: '#e5002b' },
@@ -126,6 +143,7 @@ const state = {
   suggested: null,
   history: null,
   evolution: null,
+  visualAssets: null,
   view: 'catalog',
   clusters: [],
   catalog: {
@@ -326,8 +344,9 @@ function logoBadge(meta, label, className = '') {
     : '';
   const imageOnly = img && meta?.imageOnly ? ' image-only' : '';
   const filled = bg ? ' filled-logo' : '';
+  const compact = meta?.compact ? ' compact-logo' : '';
   const style = `--logo-color:${escape(color)}${bg ? `;--logo-bg:${escape(bg)}` : ''}`;
-  return `<span class="logo-badge ${className}${img ? ' with-img' : ''}${imageOnly}${filled}" style="${style}" aria-label="${escape(text)}">${img}<span class="logo-text">${escape(text)}</span></span>`;
+  return `<span class="logo-badge ${className}${compact}${img ? ' with-img' : ''}${imageOnly}${filled}" style="${style}" aria-label="${escape(text)}">${img}<span class="logo-text">${escape(text)}</span></span>`;
 }
 
 function brandLogo(item) {
@@ -345,7 +364,8 @@ function ownerBadge(owner) {
   const meta = OWNER_LOGO[owner];
   const text = meta?.text || labelOwner(owner);
   if (meta?.src) {
-    return `<span class="owner owner-logo ${escape(owner)}" aria-label="${escape(text)}"><img src="${escape(meta.src)}" alt="" loading="lazy" /><span class="owner-text">${escape(text)}</span></span>`;
+    const compact = meta?.compact ? ' compact-logo' : '';
+    return `<span class="owner owner-logo ${escape(owner)}${compact}" aria-label="${escape(text)}"><img src="${escape(meta.src)}" alt="" loading="lazy" /><span class="owner-text">${escape(text)}</span></span>`;
   }
   return `<span class="owner ${escape(owner)}">${escape(text)}</span>`;
 }
@@ -395,11 +415,54 @@ function sourceProductImageFor(item) {
   return '';
 }
 
+function normalizeAssetText(value) {
+  return stripAccents(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function sarubbiProductImageCandidates() {
+  const assets = state.visualAssets?.assets || [];
+  return assets.filter((asset) => asset.theme === 'producto' && asset.webPath?.includes('/imgs/productos/'));
+}
+
+function sarubbiProductImageScore(item, asset, text) {
+  const keywords = Array.isArray(asset.keywords) ? asset.keywords : [];
+  let score = asset.productCategory && asset.productCategory === item.category ? 3 : 0;
+  const specificTerms = new Set(['rausa', 'donna', 'vegani', 'seara', 'lebon', 'embuchado', 'angus', 'cheddar', 'bbq', 'queso', 'americana', 'bologna', 'suprema', 'verona', 'gigante']);
+  for (const keyword of keywords) {
+    const term = normalizeAssetText(keyword);
+    if (term.length > 2 && text.includes(term)) score += term.length >= 6 ? 2 : 1;
+    else if (specificTerms.has(term)) score -= 2;
+  }
+  for (const title of asset.productTitles || []) {
+    const titleText = normalizeAssetText(title);
+    const titleWords = titleText.split(' ').filter((word) => word.length > 2);
+    const hits = titleWords.filter((word) => text.includes(word)).length;
+    if (hits >= 2) score += hits;
+  }
+  return score;
+}
+
+function sarubbiProductImageFor(item) {
+  const text = normalizeAssetText(`${item.name || ''} ${item.suggestedProduct || ''} ${item.category || ''} ${labelCategory(item.category)}`);
+  let best = null;
+  for (const asset of sarubbiProductImageCandidates()) {
+    const score = sarubbiProductImageScore(item, asset, text);
+    if (score > (best?.score || 0)) best = { asset, score };
+  }
+  if (best?.score >= 4) return best.asset.webPath;
+  return SARUBBI_CATEGORY_IMAGE[item.category] || SARUBBI_COMPACT_LOGO;
+}
+
 function productImageFor(item) {
   if (APP_COPY.redactTargetBrands && isTargetOwner(item)) return '';
+  if (isTargetOwner(item)) return sarubbiProductImageFor(item);
   const sourceImage = sourceProductImageFor(item);
   if (sourceImage) return sourceImage;
-  return isTargetOwner(item) ? '/assets/sarubbi/sarubbi-brand.jpeg' : '';
+  return '';
 }
 
 function productThumb(item, className = '') {
@@ -440,6 +503,13 @@ function chipContent(key, value, labels = {}) {
     if (meta?.src) {
       const text = meta.text || labels[value] || labelStore(value);
       return `<span class="chip-content"><img class="chip-logo store-chip-logo" src="${escape(meta.src)}" alt="" loading="lazy" onerror="this.remove();this.closest('.chip')?.classList.remove('logo-chip')" /><span class="chip-text">${escape(text)}</span></span>`;
+    }
+  }
+  if (key === 'brand') {
+    const meta = BRAND_LOGO[value];
+    if (meta?.src) {
+      const text = meta.text || labels[value] || value;
+      return `<span class="chip-content"><img class="chip-logo brand-chip-logo" src="${escape(meta.src)}" alt="" loading="lazy" onerror="this.remove();this.closest('.chip')?.classList.remove('logo-chip')" /><span class="chip-text">${escape(text)}</span></span>`;
     }
   }
   return escape(labels[value] ?? value);
@@ -803,9 +873,10 @@ function skuModeRows() {
 
 async function load() {
   try {
-    const [r, strategy] = await Promise.all([
+    const [r, strategy, visualAssets] = await Promise.all([
       fetch('/data/latest.json', { cache: 'no-store' }),
       loadStrategyConfig(),
+      loadVisualAssets(),
     ]);
     if (!r.ok) throw new Error('No se pudo cargar latest.json');
     const data = await r.json();
@@ -814,6 +885,7 @@ async function load() {
     state.scrapeResults = data.scrapeResults || [];
     state.suggested = data.suggested || null;
     state.strategy = strategy;
+    state.visualAssets = visualAssets;
     state.clusters = clusterProducts(state.items);
     renderAll();
     loadReportAutomation();
@@ -824,6 +896,17 @@ async function load() {
   }
   loadHistory();
   loadEvolution();
+}
+
+async function loadVisualAssets() {
+  try {
+    const r = await fetch('/data/sarubbi-assets.json', { cache: 'no-store' });
+    if (!r.ok) throw new Error('No se pudo cargar sarubbi-assets.json');
+    return await r.json();
+  } catch (e) {
+    console.warn('Sin biblioteca visual Sarubbi:', e.message);
+    return null;
+  }
 }
 
 async function loadStrategyConfig() {
@@ -1293,10 +1376,16 @@ function buildChips(items, key, container, stateSet, labels = {}) {
     const classes = ['chip'];
     if (key === 'group') classes.push('owner-chip');
     if (key === 'super') classes.push('store-chip');
+    if (key === 'brand') classes.push('brand-chip');
     if (key === 'super' && STORE_LOGO[v]?.src) classes.push('logo-chip');
     if (key === 'super' && STORE_LOGO[v]?.bg) classes.push('filled-logo-chip');
+    if (key === 'brand' && BRAND_LOGO[v]?.src) classes.push('logo-chip');
     if (active) classes.push('active');
-    const style = key === 'super' && STORE_LOGO[v]?.bg ? ` style="--chip-logo-bg:${escape(STORE_LOGO[v].bg)}"` : '';
+    const chipLogoMeta = key === 'super' ? STORE_LOGO[v] : key === 'brand' ? BRAND_LOGO[v] : null;
+    const styleVars = [];
+    if (chipLogoMeta?.bg) styleVars.push(`--chip-logo-bg:${escape(chipLogoMeta.bg)}`);
+    if (chipLogoMeta?.color) styleVars.push(`--chip-logo-color:${escape(chipLogoMeta.color)}`);
+    const style = styleVars.length ? ` style="${styleVars.join(';')}"` : '';
     return `<button class="${classes.join(' ')}"${style} data-value="${escape(v)}">${chipContent(key, v, labels)}</button>`;
   }).join('');
   container.querySelectorAll('.chip').forEach((el) => {

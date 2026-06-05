@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Centenario">
+  <circle cx="32" cy="32" r="28" fill="#fff1e8"/>
+  <path d="M45 42c-4 4-9 6-15 6-10 0-18-7-18-16s8-16 18-16c6 0 12 2 15 6" fill="none" stroke="#9a3412" stroke-width="6" stroke-linecap="round"/>
+  <path d="M23 32h24" fill="none" stroke="#9a3412" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+</svg>

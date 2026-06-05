@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Picorel">
+  <circle cx="32" cy="32" r="28" fill="#f4e8ff"/>
+  <path d="M22 48V16h15c8 0 13 4 13 11s-5 12-13 12H22" fill="none" stroke="#9333ea" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="39" cy="27" r="4" fill="#9333ea" opacity=".7"/>
+</svg>
