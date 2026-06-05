@@ -46,18 +46,38 @@ jobs:
         continue-on-error: true
 
       - name: Commit and push public data
+        id: commit_data
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data
           if git diff --staged --quiet; then
             echo "No changes to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "chore: actualizar precios $(date -u +%Y-%m-%dT%H:%M)Z"
           for i in 1 2 3; do
-            git pull --rebase origin main && git push && exit 0
+            if git pull --rebase origin main && git push; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
             echo "Push failed (attempt $i), waiting 5s..."
             sleep 5
           done
           exit 1
+
+      - name: Deploy Vercel production
+        if: steps.commit_data.outputs.changed == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: team_areBh3uJmHqEP9P04uDvdkKa
+          VERCEL_PROJECT_ID: prj_EUbu8RM1OsUpsmXvikc2TyVMS1w4
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "VERCEL_TOKEN secret is missing."
+            exit 1
+          fi
+          mkdir -p .vercel
+          printf '{"orgId":"%s","projectId":"%s"}' "$VERCEL_ORG_ID" "$VERCEL_PROJECT_ID" > .vercel/project.json
+          npx vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN"

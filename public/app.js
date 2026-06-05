@@ -1320,16 +1320,25 @@ function renderRefreshProgress(statusData, elapsedSeconds) {
   const p = statusData?.progress || {};
   const isPdf = p.phase === 'pdf';
   const isDemo = p.phase === 'demo';
-  const title = isPdf ? 'Generando informe' : (isDemo ? 'Actualizando demo' : 'Actualizando precios');
+  const isRemoteWorkflow = p.phase === 'github' || Boolean(statusData?.url);
+  const title = isPdf
+    ? 'Generando informe'
+    : (isDemo ? 'Actualizando demo' : (statusData?.status === 'completed' ? 'Actualizacion remota' : 'Actualizando precios'));
   const store = p.store ? (p.storeLabel || labelStore(p.store)) : 'Fuentes';
-  const place = isPdf ? 'Informe PDF' : (isDemo ? 'Dataset Sarubbi' : `${store}${p.local ? ` / ${p.local}` : ''}`);
+  const place = isPdf
+    ? 'Informe PDF'
+    : (isDemo ? 'Dataset Sarubbi' : (isRemoteWorkflow ? 'GitHub Actions' : `${store}${p.local ? ` / ${p.local}` : ''}`));
   const progress = p.taskIndex && p.taskTotal
     ? `${p.taskIndex}/${p.taskTotal}`
     : (p.termIndex && p.termTotal ? `${p.termIndex}/${p.termTotal}` : '');
   const sources = p.totalStores ? `${p.completedStores || 0}/${p.totalStores} fuentes` : '';
   const found = p.found != null ? `${p.found} SKUs` : '';
-  const term = p.term ? `busqueda: ${p.term}` : (p.message || '');
-  const detail = [term, progress, sources, found, `${elapsedSeconds}s`].filter(Boolean).join('  -  ');
+  const remoteStatus = isRemoteWorkflow && statusData?.status
+    ? (statusData.status === 'queued' ? 'En cola' : statusData.status === 'in_progress' ? 'En ejecucion' : (statusData.conclusion === 'success' ? 'Completado' : statusData.conclusion === 'failure' ? 'Fallo' : 'Finalizado'))
+    : '';
+  const run = isRemoteWorkflow && statusData?.runNumber ? `run #${statusData.runNumber}` : '';
+  const term = p.term ? `busqueda: ${p.term}` : (p.message || remoteStatus);
+  const detail = [term, run, progress, sources, found, `${elapsedSeconds}s`].filter(Boolean).join('  -  ');
   $('#lastUpdate').innerHTML = `
     <b>${escape(title)}</b><br>
     <span class="refresh-live-line"><span class="live-dot"></span>${escape(place)}</span>
