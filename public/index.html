@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sarubbi Retail Watch - Supermercados Uruguay</title>
-<meta name="description" content="Monitor de precios de fiambres Sarubbi y competencia en supermercados uruguayos." />
-<link rel="icon" href="/logo.svg" />
+<title>Sarubbi Retail Watch</title>
+<meta name="description" content="Monitor de precios retail para Sarubbi, chacinados, carnes, congelados y competencia en Uruguay." />
+<link rel="icon" href="/assets/sarubbi/sarubbi-brand.jpeg" />
 <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
@@ -13,7 +13,7 @@
 <header class="app">
   <div class="app-bar">
     <div class="brand">
-      <img id="logoSlot" class="brand-logo-img" src="/logo.svg" alt="Sarubbi" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,.3));cursor:pointer" />
+      <img class="brand-logo-img" src="/assets/sarubbi/sarubbi-brand.jpeg" alt="Sarubbi" />
     </div>
 
     <div class="header-actions">
@@ -22,75 +22,85 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
         Actualizar precios
       </button>
-      <button class="btn" id="tokenConfigBtn" title="Configurar token GitHub" style="padding:6px 10px;opacity:.7">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-      </button>
     </div>
   </div>
 </header>
 
 <nav class="tabs">
   <button class="tab active" data-tab="catalog">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
     <span>Catalogo</span><span class="badge" id="badgeCatalog">0</span>
   </button>
   <button class="tab" data-tab="compare">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
     <span>Comparador</span><span class="badge" id="badgeCompare">0</span>
   </button>
+  <button class="tab" data-tab="mode">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16"></path><path d="M7 16V8"></path><path d="M12 16V5"></path><path d="M17 16v-6"></path></svg>
+    <span>Moda</span><span class="badge" id="badgeMode">0</span>
+  </button>
   <button class="tab" data-tab="offers">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
     <span>Ofertas</span><span class="badge" id="badgeOffers">0</span>
   </button>
-  <button class="tab" data-tab="prices">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"></path><path d="M4 5h16"></path><path d="M4 12h12"></path><path d="M4 19h8"></path></svg>
-    <span>PVP</span><span class="badge" id="badgePrices">0</span>
+  <button class="tab" data-tab="suggested">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5"></path><path d="M4 5h16"></path><path d="M4 12h12"></path><path d="M4 19h8"></path></svg>
+    <span>Referencia</span><span class="badge" id="badgeSuggested">0</span>
   </button>
   <button class="tab" data-tab="positioning">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-    <span>Cobertura</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8M12 8v8"></path></svg>
+    <span>Competencia</span>
+  </button>
+  <button class="tab" data-tab="portfolio">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 18h16"></path><path d="M7 14V7"></path><path d="M12 14V4"></path><path d="M17 14V10"></path></svg>
+    <span>Portafolio</span>
+  </button>
+  <button class="tab" data-tab="strategy">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18"></path><path d="M12 3v18"></path><circle cx="12" cy="12" r="4"></circle></svg>
+    <span>Estrategia</span>
+  </button>
+  <button class="tab" data-tab="evolution">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+    <span>Evolucion</span>
   </button>
   <button class="tab" data-tab="exec">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line></svg>
-    <span>Informe Gerencial</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line></svg>
+    <span>Informe</span>
   </button>
 </nav>
 
 <main>
+  <div class="portfolio-strip" aria-label="Sarubbi y competidores">
+    <img src="/assets/sarubbi/sarubbi-brand.jpeg" alt="Sarubbi" />
+    <img src="/assets/sarubbi/brand-strip.svg" alt="Sarubbi y competidores" />
+  </div>
   <div class="kpis" id="kpis"></div>
 
   <section class="view active" id="view-catalog">
     <div class="panel">
       <h2 class="panel-title">Catalogo completo - <span id="catalogCount">0</span> productos</h2>
       <div class="filters">
-        <input type="text" id="catalogQ" placeholder="Buscar producto..." autocomplete="off" />
+        <input type="text" id="catalogQ" placeholder="Buscar producto, marca o cadena" autocomplete="off" />
       </div>
-      <div class="filters">
-        <div class="chips" id="groupChips"></div>
-      </div>
-      <div class="filters">
-        <div class="chips" id="brandChips"></div>
-      </div>
-      <div class="filters">
-        <div class="chips" id="categoryChips"></div>
-      </div>
-      <div class="filters">
-        <div class="chips" id="superChips"></div>
-      </div>
+      <div class="filters"><div class="chips" id="ownerChips"></div></div>
+      <div class="filters"><div class="chips" id="categoryChips"></div></div>
+      <div class="filters"><div class="chips" id="brandChips"></div></div>
+      <div class="filters"><div class="chips" id="superChips"></div></div>
       <table id="tableCatalog">
         <thead><tr>
           <th data-sort="name">Producto</th>
           <th data-sort="brand">Marca</th>
-          <th data-sort="super">Super</th>
+          <th data-sort="owner">Dueno</th>
+          <th data-sort="category">Categoria</th>
+          <th data-sort="super">Cadena</th>
           <th data-sort="price" class="sorted asc">Precio</th>
-          <th data-sort="suggestedPrice">PVP Sugerido</th>
-          <th data-sort="gapPct">GAP (%)</th>
+          <th data-sort="suggestedDeviationPct">Referencia</th>
           <th>Oferta</th>
         </tr></thead>
         <tbody id="catalogRows"></tbody>
       </table>
       <div class="empty" id="catalogEmpty" style="display:none">Sin resultados para los filtros aplicados.</div>
-      <div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end">
+      <div class="export-actions">
         <a class="btn" href="/data/latest.csv" download>CSV</a>
         <a class="btn" href="/data/latest.json" download>JSON</a>
       </div>
@@ -99,74 +109,96 @@
 
   <section class="view" id="view-compare">
     <div class="panel">
-      <h2 class="panel-title">Comparador de precios - <span id="compareCount">0</span> productos</h2>
-      <p style="margin:0 0 14px;color:var(--texto-muted);font-size:13px">Productos equivalentes en 2+ supers, agrupados por marca, tamano y similitud. Ordenados por mayor diferencia de precio.</p>
+      <h2 class="panel-title">Comparador por cadena - <span id="compareCount">0</span> grupos</h2>
       <div class="filters">
-        <input type="text" id="compareQ" placeholder="Buscar producto..." autocomplete="off" />
+        <input type="text" id="compareQ" placeholder="Buscar producto" autocomplete="off" />
         <select id="compareBrand"></select>
+        <select id="compareCategory"></select>
       </div>
       <div id="compareList"></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-mode">
+    <div class="panel">
+      <h2 class="panel-title">Precio moda por SKU - <span id="modeCount">0</span> SKUs</h2>
+      <div class="filters mode-filters">
+        <input type="text" id="modeQ" placeholder="Buscar SKU, marca o cadena" autocomplete="off" />
+      </div>
+      <div class="mode-summary" id="modeSummary"></div>
+      <table class="compact-table sheet-table mode-table">
+        <thead><tr>
+          <th>SKU</th>
+          <th><span class="th-title">Marca</span><select id="modeBrandFilter" class="th-filter" aria-label="Filtrar moda por marca"></select></th>
+          <th><span class="th-title">Dueno</span><select id="modeOwnerFilter" class="th-filter" aria-label="Filtrar moda por dueno"></select></th>
+          <th><span class="th-title">Rubro</span><select id="modeCategoryFilter" class="th-filter" aria-label="Filtrar moda por rubro"></select></th>
+          <th><span class="th-title">Segmento/presentacion</span><select id="modeSegmentFilter" class="th-filter" aria-label="Filtrar moda por segmento o presentacion"></select></th>
+          <th class="price">Moda</th><th>Indice competitivo</th><th class="price">Rango</th>
+          <th><span class="th-title">Cadenas</span><select id="modeStoreFilter" class="th-filter" aria-label="Filtrar moda por cadena"></select></th>
+        </tr></thead>
+        <tbody id="modeRows"></tbody>
+      </table>
+      <div class="empty" id="modeEmpty" style="display:none">Sin SKUs para los filtros aplicados.</div>
+      <div class="mode-chart-grid" id="modeCharts"></div>
     </div>
   </section>
 
   <section class="view" id="view-offers">
     <div class="panel">
       <h2 class="panel-title">Ofertas vigentes - <span id="offersCount">0</span> productos</h2>
-      <p style="margin:0 0 14px;color:var(--texto-muted);font-size:13px">Productos con descuento detectado (precio actual menor al de lista). Ordenados por mayor % de descuento.</p>
       <div class="filters">
-        <input type="text" id="offersQ" placeholder="Buscar producto en ofertas..." autocomplete="off" />
+        <input type="text" id="offersQ" placeholder="Buscar producto en ofertas" autocomplete="off" />
       </div>
-      <table>
-        <thead><tr><th>Producto</th><th>Marca</th><th>Super</th><th class="price">Lista</th><th class="price">Oferta</th><th class="price">PVP Sugerido</th><th class="price">GAP (%)</th><th class="price">Ahorra</th><th>%</th></tr></thead>
+      <table class="compact-table sheet-table offers-table">
+        <thead><tr>
+          <th>Producto</th>
+          <th><span class="th-title">Marca</span><select id="offersBrandFilter" class="th-filter" aria-label="Filtrar ofertas por marca"></select></th>
+          <th><span class="th-title">Dueno</span><select id="offersOwnerFilter" class="th-filter" aria-label="Filtrar ofertas por dueno"></select></th>
+          <th><span class="th-title">Rubro</span><select id="offersCategoryFilter" class="th-filter" aria-label="Filtrar ofertas por rubro"></select></th>
+          <th><span class="th-title">Cadena</span><select id="offersStoreFilter" class="th-filter" aria-label="Filtrar ofertas por cadena"></select></th>
+          <th class="price">Lista</th><th class="price">Oferta</th><th class="price">Ahorro</th><th>%</th>
+        </tr></thead>
         <tbody id="offersRows"></tbody>
       </table>
       <div class="empty" id="offersEmpty" style="display:none">No hay ofertas activas en este momento.</div>
     </div>
   </section>
 
-  <section class="view" id="view-prices">
+  <section class="view" id="view-suggested">
     <div class="panel">
-      <h2 class="panel-title">Lista PVP - <span id="priceListCount">0</span> lineas</h2>
-      <div class="price-upload-grid">
-        <input type="file" id="priceFile" accept=".csv,.json,.xlsx,.xls" />
-        <select id="priceStore">
-          <option value="">Usar cadena del archivo</option>
-          <option value="tata">Tata</option>
-          <option value="disco">Disco</option>
-          <option value="eldorado">El Dorado</option>
-          <option value="tiendainglesa">Tienda Inglesa</option>
-          <option value="all">Todos</option>
+      <h2 class="panel-title">Control precio referencia - <span id="suggestedCount">0</span> productos</h2>
+      <div class="filters">
+        <input type="text" id="suggestedQ" placeholder="Buscar producto, marca o cadena" autocomplete="off" />
+        <select id="suggestedStatus">
+          <option value="">Todos los estados</option>
+          <option value="above">Sobre referencia</option>
+          <option value="ok">Cumple</option>
+          <option value="below">Bajo referencia</option>
         </select>
-        <button class="btn primary" id="priceImport">Importar</button>
-        <button class="btn" id="priceClear">Limpiar</button>
       </div>
-      <details style="margin:10px 0 4px;font-size:12px;color:var(--texto-muted)">
-        <summary style="cursor:pointer;font-weight:600">Formato del archivo CSV</summary>
-        <div style="margin-top:8px;padding:10px 12px;background:var(--crema);border-radius:8px;line-height:1.7">
-          <b>Formatos aceptados:</b> Excel (.xlsx), CSV (.csv), JSON (.json)<br><br>
-          <b>Excel Sarubbi (listas de precio con pestañas):</b> se detectan automáticamente las columnas
-          "Descripción Producto" y "PVP" en cada pestaña. Seleccioná la cadena en el menú de arriba.<br><br>
-          <b>CSV — columnas aceptadas:</b><br>
-          &bull; <code>producto</code> o <code>nombre</code> — descripcion del producto (requerido)<br>
-          &bull; <code>pvp_sugerido</code>, <code>pvp</code> o <code>precio</code> — precio sugerido (requerido)<br>
-          &bull; <code>super</code> o <code>cadena</code> — Tata, Disco, El Dorado, Tienda Inglesa, todos<br>
-          &bull; <code>marca</code> — marca Sarubbi o competencia (mejora el matching)<br>
-          &bull; <code>sku</code> o <code>barras</code> — para match exacto<br>
-          <br>
-          <b>Nota:</b> el PVP embebido (tus 4 listas de Junio 2026) se carga automáticamente — esta sección es para actualizaciones o listas adicionales.
-        </div>
-      </details>
-      <div class="suggested-summary" id="priceSummary"></div>
-      <table class="mini-table">
-        <thead><tr><th>Producto</th><th>Marca</th><th>Cadena</th><th class="price">PVP</th><th>Match</th></tr></thead>
-        <tbody id="priceRows"></tbody>
+      <div class="suggested-summary" id="suggestedSummary"></div>
+      <table>
+        <thead><tr><th>Producto</th><th>Marca</th><th>Cadena</th><th class="price">Precio</th><th class="price">Referencia</th><th class="price">Desvio</th><th>Estado</th><th>Fuente</th></tr></thead>
+        <tbody id="suggestedRows"></tbody>
       </table>
-      <div class="empty" id="priceEmpty" style="display:none">Sin lista PVP cargada.</div>
+      <div class="empty" id="suggestedEmpty" style="display:none">No hay productos cruzados contra precio sugerido.</div>
     </div>
   </section>
 
   <section class="view" id="view-positioning">
     <div id="positioningContent"></div>
+  </section>
+
+  <section class="view" id="view-portfolio">
+    <div id="portfolioContent"></div>
+  </section>
+
+  <section class="view" id="view-strategy">
+    <div id="strategyContent"></div>
+  </section>
+
+  <section class="view" id="view-evolution">
+    <div id="evolutionContent"></div>
   </section>
 
   <section class="view" id="view-exec">
@@ -181,7 +213,6 @@
   </div>
 </div>
 
-<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 <script src="/app.js"></script>
 </body>
 </html>

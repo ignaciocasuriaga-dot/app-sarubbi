@@ -1,35 +1,464 @@
-// App principal - vistas: Catalogo, Comparador, Ofertas, Cobertura, Informe Gerencial
-
-const SUPER_LABEL = { tata: 'Tata', disco: 'Disco', eldorado: 'El Dorado', tiendainglesa: 'Tienda Inglesa' };
-const SUPERS = ['tata', 'disco', 'eldorado', 'tiendainglesa'];
-const GROUP_LABEL = { sarubbi: 'Sarubbi', competencia: 'Competencia' };
-const PORTFOLIO_BRANDS = ['sarubbi'];
-const PRICE_LIST_KEY = 'sarubbi-pvp-v1';
-const GAP_LABEL = { above: 'Sobre PVP', ok: 'En linea', below: 'Bajo PVP' };
-
+const STORE_LABEL = {
+  tata: 'Ta-Ta',
+  tiendainglesa: 'Tienda Inglesa',
+  disco: 'Disco',
+  devoto: 'Devoto',
+  geant: 'Geant',
+  eldorado: 'El Dorado',
+  frog: 'Frog',
+  tamisur: 'Tamisur',
+  ubesur: 'Ubesur',
+  kinko: 'Kinko',
+  macromercado: 'Macro Mercado',
+  macro: 'Macro Mercado',
+  elvencedor: 'El Vencedor',
+  manual: 'Carga manual',
+};
+const STORE_FILTER_ORDER = [
+  'tata',
+  'tiendainglesa',
+  'disco',
+  'devoto',
+  'geant',
+  'eldorado',
+  'frog',
+  'tamisur',
+  'ubesur',
+  'kinko',
+  'macromercado',
+  'elvencedor',
+];
+const TARGET_OWNER = 'sarubbi';
+const COMPETITOR_OWNER = 'competencia';
+const APP_COPY = {
+  productName: 'Sarubbi Retail Watch',
+  shortName: 'Sarubbi',
+  domain: 'sarubbi.com.uy',
+  targetOwnerLabel: 'Sarubbi',
+  targetOwnerPlural: 'Marcas Sarubbi',
+  targetSkuLabel: 'SKUs Sarubbi',
+  targetShortLabel: 'Sarubbi',
+  competitorLabel: 'Competencia',
+  suggestedLabel: 'Precio referencia',
+  suggestedShortLabel: 'Referencia',
+  strategySourceFallback: 'Estrategia retail Sarubbi',
+  redactTargetBrands: false,
+};
+const TARGET_BRAND_ALIAS = {};
+const OWNER_LABEL = { [TARGET_OWNER]: APP_COPY.targetOwnerLabel, [COMPETITOR_OWNER]: APP_COPY.competitorLabel };
+const CATEGORY_LABEL = {
+  jamon_cocido: 'Jamon cocido',
+  jamon_crudo: 'Jamon crudo',
+  panchos: 'Panchos y frankfurters',
+  salames: 'Salames y salamini',
+  chorizos: 'Chorizos',
+  mortadela: 'Mortadela',
+  panceta: 'Panceta',
+  fiambres: 'Fiambres y feteados',
+  hamburguesas: 'Hamburguesas',
+  empanadas: 'Empanadas',
+  carnes: 'Carnes y cortes',
+  congelados: 'Congelados',
+  otros: 'Otros chacinados',
+};
+const SUGGESTED_LABEL = { above: 'Sobre referencia', ok: 'Cumple', below: 'Bajo referencia' };
+const MODE_TARGET_INDEX = 100;
+const MODE_RUBRO_FILTERS = [
+  { key: 'all', label: 'Todos' },
+  { key: 'fiambres', label: 'Fiambres' },
+  { key: 'panchos', label: 'Panchos' },
+  { key: 'salames', label: 'Salames' },
+  { key: 'chorizos', label: 'Chorizos' },
+  { key: 'congelados', label: 'Congelados' },
+  { key: 'carnes', label: 'Carnes' },
+];
+const PORTFOLIO_CATEGORIES = ['jamon_cocido', 'jamon_crudo', 'panchos', 'salames', 'chorizos', 'mortadela', 'panceta', 'fiambres', 'hamburguesas', 'empanadas', 'carnes', 'congelados'];
+const PORTFOLIO_INDEX_MIN = 45;
+const PORTFOLIO_INDEX_MAX = 180;
+const MODE_BENCHMARK_BRAND = {
+  jamon_cocido_general: 'schneck',
+  jamon_crudo_general: 'schneck',
+  panchos_general: 'schneck',
+  salames_general: 'schneck',
+  chorizos_general: 'schneck',
+  mortadela_general: 'ottonello',
+  panceta_general: 'ottonello',
+  fiambres_general: 'schneck',
+  hamburguesas_general: 'cattivelli',
+  empanadas_general: 'cattivelli',
+  carnes_general: 'camposur',
+  congelados_general: 'cattivelli',
+  otros_general: 'schneck',
+};const OWNER_LOGO = {
+  sarubbi: { text: APP_COPY.targetOwnerLabel, color: '#0b2f93', src: '/assets/sarubbi/sarubbi-brand.jpeg', imageOnly: true },
+  competencia: { text: APP_COPY.competitorLabel, color: '#b42318' },
+};
+const BRAND_LOGO = {
+  sarubbi: { text: 'Sarubbi', color: '#0b2f93', src: '/assets/sarubbi/sarubbi-brand.jpeg', imageOnly: true, bg: '#0b2f93' },
+  schneck: { text: 'Schneck', color: '#0f766e' },
+  centenario: { text: 'Centenario', color: '#7c2d12' },
+  cattivelli: { text: 'Cattivelli', color: '#b42318' },
+  ottonello: { text: 'Ottonello', color: '#344054' },
+  camposur: { text: 'Camposur', color: '#166534' },
+  constancia: { text: 'La Constancia', color: '#7f1d1d' },
+  picorel: { text: 'Picorel', color: '#9333ea' },
+};
+const STORE_LOGO = {
+  tata: { text: 'Ta-Ta', color: '#e5002b', src: '/assets/logos/stores/tata.svg', imageOnly: true, bg: '#e5002b' },
+  tiendainglesa: { text: 'Tienda Inglesa', color: '#19744a', src: '/assets/logos/stores/tiendainglesa.svg', imageOnly: true },
+  disco: { text: 'Disco', color: '#0070d2', src: '/assets/logos/stores/disco.svg', imageOnly: true },
+  devoto: { text: 'Devoto', color: '#f15c22', src: '/assets/logos/stores/devoto.svg', imageOnly: true },
+  geant: { text: 'Geant', color: '#7f2dbb', src: '/assets/logos/stores/geant.svg', imageOnly: true },
+  eldorado: { text: 'El Dorado', color: '#c8102e', src: '/assets/logos/stores/eldorado.svg', imageOnly: true },
+  frog: { text: 'Frog', color: '#45a23f', src: '/assets/logos/stores/frog.png', imageOnly: true },
+  tamisur: { text: 'Tamisur', color: '#195d9c', src: '/assets/logos/stores/tamisur.png', imageOnly: true },
+  ubesur: { text: 'Ubesur', color: '#2563eb', src: '/assets/logos/stores/ubesur.png', imageOnly: true },
+  kinko: { text: 'Kinko', color: '#111827', src: '/assets/logos/stores/kinko.png', imageOnly: true },
+  macromercado: { text: 'Macro Mercado', color: '#0f766e', src: '/assets/logos/stores/macromercado.svg', imageOnly: true },
+  macro: { text: 'Macro Mercado', color: '#0f766e', src: '/assets/logos/stores/macromercado.svg', imageOnly: true },
+  elvencedor: { text: 'El Vencedor', color: '#6b7280' },
+  manual: { text: 'Manual', color: '#475467' },
+};
 const state = {
   items: [],
-  groups: { sarubbi: [], competencia: [] },
-  suggested: null,
-  priceList: [],       // lista cargada manualmente por el usuario
-  builtinPvp: [],      // lista PVP embebida (pvp.json de los Excel del usuario)
-  pvpMeta: null,       // { vigencia, generatedAt }
   generatedAt: null,
+  scrapeResults: [],
+  suggested: null,
+  history: null,
+  evolution: null,
   view: 'catalog',
-  history: null,           // array de snapshots {t, prices}
-  catalog: { q: '', brands: new Set(), supers: new Set(), groups: new Set(), categories: new Set(), sort: { key: 'price', asc: true } },
-  compare: { q: '', brand: '' },
-  offers: { q: '' },
   clusters: [],
+  catalog: {
+    q: '',
+    brands: new Set(),
+    supers: new Set(),
+    owners: new Set(),
+    categories: new Set(),
+    sort: { key: 'price', asc: true },
+  },
+  compare: { q: '', brand: '', category: '', format: '', store: '' },
+  mode: { q: '', brand: '', owner: '', category: '', rubro: 'all', segment: '', store: '' },
+  offers: { q: '', brand: '', owner: '', category: '', store: '' },
+  suggestedFilters: { q: '', status: '' },
+  positioning: { category: '', stores: new Set() },
+  portfolio: {
+    category: PORTFOLIO_CATEGORIES[0] || 'jamon_cocido',
+    segment: '',
+    brand: '',
+    date: '',
+    orientation: 'horizontal',
+    pinZ: 40,
+    pinOrder: {},
+    laneOrder: {},
+    selectedPins: [],
+    selectedStores: [],
+    selectedBuckets: [],
+    selectionQ: '',
+    rawQ: '',
+    rawOwner: '',
+    rawStatus: '',
+    rawBenchmark: '',
+    detailQ: '',
+    detailStatus: '',
+    detailBucket: '',
+  },
+  strategy: null,
+  strategyFilters: { category: '', status: '' },
+  reportAutomation: {
+    status: null,
+    loading: false,
+    sending: false,
+    error: '',
+    actionError: '',
+    message: '',
+  },
 };
 
-// ===== Util =====
-const $  = (s, r = document) => r.querySelector(s);
+const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const escape = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const fmtPrice = (p) => p == null ? '—' : '$ ' + p.toLocaleString('es-UY');
-const fmtPct = (p) => p == null ? '-' : `${p > 0 ? '+' : ''}${Number(p).toFixed(1)}%`;
-const stripAccents = (s) => s.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+const stripAccents = (s) => String(s ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '');
+const fmtPrice = (p) => p == null ? '-' : '$ ' + Number(p).toLocaleString('es-UY');
+const fmtPct = (p) => p == null ? '-' : `${Number(p) > 0 ? '+' : ''}${Number(p).toFixed(1)}%`;
+const labelOwner = (owner) => OWNER_LABEL[owner] || owner || '-';
+const labelCategory = (category) => CATEGORY_LABEL[category] || category || '-';
+const labelStore = (store) => STORE_LABEL[store] || store || '-';
+
+function isTargetOwner(itemOrOwner) {
+  const value = typeof itemOrOwner === 'string'
+    ? itemOrOwner
+    : itemOrOwner?.group || itemOrOwner?.owner || '';
+  return String(value).toLowerCase() === TARGET_OWNER || String(value).toLowerCase().includes('sarubbi');
+}
+
+function targetBrandAlias(item) {
+  const key = String(item?.brand || '').toLowerCase();
+  return TARGET_BRAND_ALIAS[key] || `${APP_COPY.targetShortLabel} ${String(key || 'linea').slice(0, 1).toUpperCase()}`;
+}
+
+function labelBrand(item = {}) {
+  if (APP_COPY.redactTargetBrands && isTargetOwner(item)) return targetBrandAlias(item);
+  return item.brandLabel || item.brand || '-';
+}
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function displayProductName(item = {}) {
+  const original = String(item.name || labelBrand(item) || '-');
+  if (!APP_COPY.redactTargetBrands || !isTargetOwner(item)) return original;
+  let next = original;
+  const replacements = new Map();
+  for (const [brand, alias] of Object.entries(TARGET_BRAND_ALIAS)) {
+    replacements.set(brand, alias);
+    if (BRAND_LOGO[brand]?.text) replacements.set(BRAND_LOGO[brand].text, alias);
+  }
+  if (item.brandLabel) replacements.set(item.brandLabel, labelBrand(item));
+  if (item.brand) replacements.set(item.brand, labelBrand(item));
+  for (const [needle, alias] of replacements) {
+    if (!needle) continue;
+    next = next.replace(new RegExp(escapeRegExp(needle), 'ig'), alias);
+  }
+  return next;
+}
+
+function textMatchesQuery(text, qn) {
+  const terms = stripAccents(qn || '').toLowerCase().trim().split(/\s+/).filter(Boolean);
+  if (!terms.length) return true;
+  const haystack = stripAccents(String(text || '').toLowerCase());
+  return terms.every((term) => haystack.includes(term));
+}
+
+function strategyConfig() {
+  return state.strategy || { defaultTargetRange: [MODE_TARGET_INDEX, MODE_TARGET_INDEX], segments: {} };
+}
+
+function dynamicStrategyRule(segmentKey) {
+  const key = String(segmentKey || '');
+  const category = PORTFOLIO_CATEGORIES.find((cat) => key === `${cat}_general` || key.startsWith(`${cat}_presentacion_`));
+  if (!category) return null;
+  const benchmarkByCategory = {
+    jamon_cocido: 'schneck',
+    jamon_crudo: 'schneck',
+    panchos: 'schneck',
+    salames: 'schneck',
+    chorizos: 'schneck',
+    mortadela: 'ottonello',
+    panceta: 'ottonello',
+    fiambres: 'schneck',
+    hamburguesas: 'cattivelli',
+    empanadas: 'cattivelli',
+    carnes: 'camposur',
+    congelados: 'cattivelli',
+    otros: 'schneck',
+  };
+  return {
+    category,
+    label: `${CATEGORY_LABEL[category] || category} por presentacion`,
+    benchmarkBrand: benchmarkByCategory[category] || 'schneck',
+    sarubbiBrands: ['sarubbi'],
+    competitorBrands: ['schneck', 'centenario', 'cattivelli', 'ottonello', 'camposur', 'constancia', 'picorel'],
+    targetRange: [95, 105],
+    note: 'Rango demo inicial hasta validar estrategia comercial con Sarubbi.',
+  };
+}
+
+function strategyRule(segmentKey) {
+  return strategyConfig().segments?.[segmentKey] || dynamicStrategyRule(segmentKey);
+}
+
+function benchmarkBrandForSegment(segmentKey) {
+  return strategyRule(segmentKey)?.benchmarkBrand || MODE_BENCHMARK_BRAND[segmentKey] || '';
+}
+
+function indexBenchmarkBrandForSegment(segmentKey) {
+  const rule = strategyRule(segmentKey);
+  return rule?.indexBenchmarkBrand || rule?.portfolioBenchmarkBrand || benchmarkBrandForSegment(segmentKey);
+}
+
+function indexBenchmarkSegmentForSegment(segmentKey) {
+  const rule = strategyRule(segmentKey);
+  return rule?.indexBenchmarkSegmentKey || rule?.portfolioBenchmarkSegmentKey || segmentKey;
+}
+
+function strategyTargetRange(segmentKey, brand) {
+  const rule = strategyRule(segmentKey);
+  const range = rule?.brandTargets?.[brand] || rule?.targetRange || strategyConfig().defaultTargetRange || [MODE_TARGET_INDEX, MODE_TARGET_INDEX];
+  const min = Number(range?.[0]);
+  const max = Number(range?.[1] ?? range?.[0]);
+  if (!Number.isFinite(min) || !Number.isFinite(max)) return [MODE_TARGET_INDEX, MODE_TARGET_INDEX];
+  return min <= max ? [min, max] : [max, min];
+}
+
+function strategyTargetMid(segmentKey, brand) {
+  const [min, max] = strategyTargetRange(segmentKey, brand);
+  return (min + max) / 2;
+}
+
+function strategyTargetLabel(range) {
+  if (!range) return '-';
+  const [min, max] = range;
+  return Math.round(min) === Math.round(max) ? `${Math.round(min)}%` : `${Math.round(min)}-${Math.round(max)}%`;
+}
+
+function strategyStatus(index, range) {
+  if (index == null || !Number.isFinite(index)) return { key: 'missing', label: 'Sin base', delta: null };
+  const [min, max] = range;
+  if (index < min) return { key: 'below', label: 'Debajo objetivo', delta: index - min };
+  if (index > max) return { key: 'above', label: 'Sobre objetivo', delta: index - max };
+  return { key: 'ok', label: 'En objetivo', delta: 0 };
+}
+
+function strategyBadge(index, range) {
+  const status = strategyStatus(index, range);
+  if (status.key === 'missing') return '<span class="strategy-status missing">Sin base</span>';
+  return `<span class="strategy-status ${status.key}">${escape(status.label)}</span>`;
+}
+
+function logoBadge(meta, label, className = '') {
+  const text = meta?.text || label || '-';
+  const color = meta?.color || '#64748b';
+  const bg = meta?.bg || '';
+  const imgSrc = meta?.src || (meta?.domain ? `https://www.google.com/s2/favicons?sz=64&domain_url=https://${escape(meta.domain)}` : '');
+  const img = imgSrc
+    ? `<img src="${escape(imgSrc)}" alt="" loading="lazy" onerror="this.remove();this.closest('.logo-badge')?.classList.remove('with-img','image-only')" />`
+    : '';
+  const imageOnly = img && meta?.imageOnly ? ' image-only' : '';
+  const filled = bg ? ' filled-logo' : '';
+  const style = `--logo-color:${escape(color)}${bg ? `;--logo-bg:${escape(bg)}` : ''}`;
+  return `<span class="logo-badge ${className}${img ? ' with-img' : ''}${imageOnly}${filled}" style="${style}" aria-label="${escape(text)}">${img}<span class="logo-text">${escape(text)}</span></span>`;
+}
+
+function brandLogo(item) {
+  if (APP_COPY.redactTargetBrands && isTargetOwner(item)) {
+    return logoBadge({ text: labelBrand(item), color: '#148a55' }, labelBrand(item), 'brand-logo');
+  }
+  return logoBadge(BRAND_LOGO[item.brand], labelBrand(item), 'brand-logo');
+}
+
+function storeLogo(store) {
+  return logoBadge(STORE_LOGO[store], labelStore(store), 'store-logo');
+}
+
+function ownerBadge(owner) {
+  const meta = OWNER_LOGO[owner];
+  const text = meta?.text || labelOwner(owner);
+  if (meta?.src) {
+    return `<span class="owner owner-logo ${escape(owner)}" aria-label="${escape(text)}"><img src="${escape(meta.src)}" alt="" loading="lazy" /><span class="owner-text">${escape(text)}</span></span>`;
+  }
+  return `<span class="owner ${escape(owner)}">${escape(text)}</span>`;
+}
+
+function normalizedProductText(item) {
+  return stripAccents(`${item.name || ''} ${item.brandLabel || ''} ${item.brand || ''}`)
+    .toLowerCase()
+    .replace(/\bs\s*\/\s*azucar\b/g, 'sin azucar')
+    .replace(/\bs\s*\/\s*gas\b/g, 'sin gas')
+    .replace(/\bc\s*\/\s*gas\b/g, 'con gas')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+function hasWord(text, word) {
+  return new RegExp(`(^| )${word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}( |$)`).test(text);
+}
+
+function isSugarFreeProduct(text) {
+  return hasWord(text, 'cero') || hasWord(text, 'zero') || hasWord(text, 'light') || hasWord(text, 'black') ||
+    text.includes('sin azucar') || text.includes('s azucar') || text.includes('s a') || hasWord(text, 'sa');
+}
+
+function productVariant(text) {
+  if (hasWord(text, 'light') || hasWord(text, 'black')) return 'light';
+  if (hasWord(text, 'zero') || hasWord(text, 'cero') || text.includes('sin azucar') ||
+      text.includes('s azucar') || text.includes('s a') || hasWord(text, 'sa')) return 'zero';
+  return 'regular';
+}
+
+function isPackProduct(text) {
+  return hasWord(text, 'pack') || /\b[2-9]\s*x\s*[2-9]\b/.test(text) || /\bx\s*[2-9]\b/.test(text) || text.includes('4x3');
+}
+
+function gasMatches(text, expected) {
+  const conGas = text.includes('con gas') || text.includes('c gas') || text.includes('levemente gasificada') || text.includes('gasificada');
+  const sinGas = text.includes('sin gas') || text.includes('s gas') || hasWord(text, 'sg') || hasWord(text, 'bidon') || hasWord(text, 'sport');
+  if (expected === 'con') return conGas && !sinGas;
+  if (expected === 'sin') return sinGas || (!conGas && text.includes('agua'));
+  return true;
+}
+
+function sourceProductImageFor(item) {
+  const src = String(item.image || '').trim();
+  if (!src) return '';
+  if (/^https:\/\/imagenesipos\.scanntech\.com\/imagenes\//i.test(src)) return src;
+  return '';
+}
+
+function productImageFor(item) {
+  if (APP_COPY.redactTargetBrands && isTargetOwner(item)) return '';
+  const sourceImage = sourceProductImageFor(item);
+  if (sourceImage) return sourceImage;
+  return isTargetOwner(item) ? '/assets/sarubbi/sarubbi-brand.jpeg' : '';
+}
+
+function productThumb(item, className = '') {
+  const src = productImageFor(item);
+  if (!src) return '';
+  const alt = escape(displayProductName(item) || item.brand || APP_COPY.targetSkuLabel);
+  return `<img class="product-thumb ${className}" src="${escape(src)}" alt="${alt}" title="${alt}" loading="lazy" onerror="this.remove()" />`;
+}
+
+function productSourceUrl(item) {
+  if (!item || state.demo || item.demo) return '';
+  return item.url || '';
+}
+
+function productLinkCell(item, subHtml = '', label = displayProductName(item)) {
+  const key = `${item.super}:${item.sku}`;
+  const thumb = productThumb(item);
+  const body = `<a href="#" class="product-link" data-key="${escape(key)}">${escape(label)}</a>${subHtml}`;
+  return thumb
+    ? `<div class="product-title-cell">${thumb}<div class="product-title-body">${body}</div></div>`
+    : body;
+}
+
+function productTextCell(item, subHtml = '', label = displayProductName(item)) {
+  const key = `${item.super}:${item.sku}`;
+  return `<a href="#" class="product-link" data-key="${escape(key)}">${escape(label)}</a>${subHtml}`;
+}
+
+function chipContent(key, value, labels = {}) {
+  if (key === 'group') {
+    const meta = OWNER_LOGO[value];
+    if (meta?.src) {
+      return `<span class="chip-content"><img class="chip-logo" src="${escape(meta.src)}" alt="" loading="lazy" /><span class="chip-text">${escape(meta.text)}</span></span>`;
+    }
+  }
+  if (key === 'super') {
+    const meta = STORE_LOGO[value];
+    if (meta?.src) {
+      const text = meta.text || labels[value] || labelStore(value);
+      return `<span class="chip-content"><img class="chip-logo store-chip-logo" src="${escape(meta.src)}" alt="" loading="lazy" onerror="this.remove();this.closest('.chip')?.classList.remove('logo-chip')" /><span class="chip-text">${escape(text)}</span></span>`;
+    }
+  }
+  return escape(labels[value] ?? value);
+}
+
+function suggestedBadge(item) {
+  if (item.suggestedPrice == null) return `<span class="suggested-empty">Sin ${escape(APP_COPY.suggestedShortLabel)}</span>`;
+  const status = item.suggestedStatus || 'ok';
+  return `<span class="suggested-badge ${escape(status)}">${escape(SUGGESTED_LABEL[status] || status)}</span>`;
+}
+
+function suggestedCell(item) {
+  if (item.suggestedPrice == null) return '<span class="suggested-empty">-</span>';
+  const status = item.suggestedStatus || '';
+  return `<div class="suggested-cell">
+    <span class="suggested-price">${fmtPrice(item.suggestedPrice)}</span>
+    <span class="suggested-dev ${escape(status)}">${fmtPct(item.suggestedDeviationPct)}</span>
+  </div>`;
+}
 
 function toast(msg, kind = '') {
   $$('.toast').forEach((t) => t.remove());
@@ -38,32 +467,230 @@ function toast(msg, kind = '') {
   el.textContent = msg;
   document.body.appendChild(el);
   requestAnimationFrame(() => el.classList.add('show'));
-  setTimeout(() => { el.classList.remove('show'); setTimeout(() => el.remove(), 250); }, 5500);
+  setTimeout(() => { el.classList.remove('show'); setTimeout(() => el.remove(), 250); }, 5200);
 }
 
-// ===== Normalización para clustering =====
+function values(items, key) {
+  return [...new Set(items.map((i) => i[key]).filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b), 'es'));
+}
+
+function selectOptions(items, key, labelFn) {
+  return values(items, key)
+    .map((value) => ({ value, label: labelFn(value, items.find((item) => item[key] === value)) }))
+    .sort((a, b) => String(a.label).localeCompare(String(b.label), 'es'));
+}
+
+function uniqueOptions(rows, valueFn, labelFn) {
+  const found = new Map();
+  for (const row of rows) {
+    const value = valueFn(row);
+    if (value == null || value === '' || found.has(value)) continue;
+    found.set(value, labelFn(value, row));
+  }
+  return [...found.entries()]
+    .map(([value, label]) => ({ value, label }))
+    .sort((a, b) => String(a.label).localeCompare(String(b.label), 'es'));
+}
+
+function validSelectValue(options, selected) {
+  return options.some((option) => option.value === selected) ? selected : '';
+}
+
+function filterSelectHtml(id, allLabel, options, selected) {
+  const value = validSelectValue(options, selected);
+  return `<select id="${escape(id)}" class="th-filter" aria-label="${escape(allLabel)}">
+    <option value="">${escape(allLabel)}</option>
+    ${options.map((option) => `<option value="${escape(option.value)}"${option.value === value ? ' selected' : ''}>${escape(option.label)}</option>`).join('')}
+  </select>`;
+}
+
+function fillSelect(selector, allLabel, options, selected) {
+  const el = $(selector);
+  if (!el) return '';
+  const valid = validSelectValue(options, selected);
+  el.innerHTML = `<option value="">${escape(allLabel)}</option>` +
+    options.map((option) => `<option value="${escape(option.value)}">${escape(option.label)}</option>`).join('');
+  el.value = valid;
+  return valid;
+}
+
+function avg(nums) {
+  const clean = nums.filter((n) => n != null && Number.isFinite(Number(n))).map(Number);
+  return clean.length ? Math.round(clean.reduce((s, n) => s + n, 0) / clean.length) : null;
+}
+
+function weightedAvg(items, valueFn, weightFn = () => 1) {
+  let total = 0;
+  let weight = 0;
+  for (const item of items) {
+    const raw = valueFn(item);
+    if (raw == null || raw === '') continue;
+    const value = Number(raw);
+    const w = Math.max(1, Number(weightFn(item)) || 1);
+    if (!Number.isFinite(value)) continue;
+    total += value * w;
+    weight += w;
+  }
+  return weight ? total / weight : null;
+}
+
+function minItem(items) {
+  return items.filter((i) => i.price != null).sort((a, b) => a.price - b.price)[0] || null;
+}
+
 function extractSize(name) {
-  const rx = /(\d+(?:[.,]\d+)?)\s*(kg|kilos?|gr?\b|gramos|ml|cc|lts?|litros?|un|u\b|unid(?:ades?)?|x\s*\d+)/i;
-  const m = name.match(rx);
+  const m = String(name ?? '').match(/(\d+(?:[.,]\d+)?)\s*(lts?|litros?|l\b|ml|cc|cm3|kg|kilos?|gr?\b|gramos|un|u\b|x\s*\d+)/i);
   if (!m) return null;
   const num = Number(m[1].replace(',', '.'));
   let unit = m[2].toLowerCase().replace(/\s+/g, '');
   let value = num;
   if (/^(g|gr|gramos)$/.test(unit)) unit = 'g';
   else if (/^(kg|kilo|kilos)$/.test(unit)) { unit = 'g'; value = num * 1000; }
-  else if (/^(ml|cc)$/.test(unit)) unit = 'ml';
+  else if (/^(ml|cc|cm3)$/.test(unit)) unit = 'ml';
   else if (/^(l|lt|lts|litro|litros)$/.test(unit)) { unit = 'ml'; value = num * 1000; }
-  else if (/^(un|u|unid|unidad|unidades)$/.test(unit)) unit = 'u';
+  else if (/^(un|u)$/.test(unit)) unit = 'u';
   return { value: Math.round(value), unit };
 }
 
+function sizeLabel(size) {
+  if (!size) return 'Sin formato';
+  if (size.unit === 'ml' && size.value >= 1000) return `${(size.value / 1000).toLocaleString('es-UY')} L`;
+  if (size.unit === 'g' && size.value >= 1000) return `${(size.value / 1000).toLocaleString('es-UY')} kg`;
+  return `${size.value} ${size.unit}`;
+}
+
+const WEIGHT_BUCKETS = [
+  { value: 100, min: 1, max: 150, label: 'hasta 150 g' },
+  { value: 200, min: 151, max: 275, label: '151-275 g' },
+  { value: 350, min: 276, max: 425, label: '276-425 g' },
+  { value: 500, min: 426, max: 650, label: '426-650 g' },
+  { value: 800, min: 651, max: 900, label: '651-900 g' },
+  { value: 1000, min: 901, max: 1250, label: '1 kg aprox.' },
+  { value: 1500, min: 1251, max: 1750, label: '1,25-1,75 kg' },
+  { value: 2000, min: 1751, max: 2500, label: '2 kg aprox.' },
+];
+
+const SEGMENT_LABEL = Object.fromEntries(Object.entries(CATEGORY_LABEL).map(([key, label]) => [`${key}_general`, label]));
+
+function weightBucket(grams) {
+  return WEIGHT_BUCKETS.find((bucket) => grams >= bucket.min && grams <= bucket.max) ||
+    { value: grams, min: grams, max: grams, label: `${grams.toLocaleString('es-UY')} g` };
+}
+
+function comparableProfile(item) {
+  if (!item || item.price == null) return null;
+  const text = stripAccents(item.name || '').toLowerCase().replace(',', '.');
+  let match = text.match(/(\d+(?:\.\d+)?)\s*(kg|kilo|kilos)\b/);
+  if (match) return weightProfile(Number(match[1]) * 1000, item.price);
+  match = text.match(/(\d+(?:\.\d+)?)\s*(g|gr|gramos)\b/);
+  if (match) return weightProfile(Number(match[1]), item.price);
+  match = text.match(/\bx\s*(\d{1,2})\b/) || text.match(/(\d{1,2})\s*(u|un|unid|unidades)\b/);
+  if (match) {
+    const count = Number(match[1]);
+    if (Number.isFinite(count) && count > 0) {
+      return {
+        metric: 'unit',
+        unitMl: count,
+        units: count,
+        totalMl: count,
+        bucket: { value: count, min: count, max: count, label: `${count} un.` },
+        pricePerLiter: Number(item.price) / count,
+        metricLabel: '$/unidad',
+      };
+    }
+  }
+  return {
+    metric: 'item',
+    unitMl: 1,
+    units: 1,
+    totalMl: 1,
+    bucket: { value: 1, min: 1, max: 1, label: 'Unidad' },
+    pricePerLiter: Number(item.price),
+    metricLabel: '$/unidad',
+  };
+}
+
+function weightProfile(rawGrams, price) {
+  const grams = Math.round(Number(rawGrams));
+  if (!Number.isFinite(grams) || grams <= 0) return null;
+  const pricePerKg = Number(price) / (grams / 1000);
+  return {
+    metric: 'kg',
+    unitMl: grams,
+    units: 1,
+    totalMl: grams,
+    bucket: weightBucket(grams),
+    pricePerLiter: pricePerKg,
+    pricePerKg,
+    pricePer100g: pricePerKg / 10,
+    metricLabel: '$/kg',
+  };
+}
+
+function competitiveSegment(item) {
+  const category = item.category || 'otros';
+  const profile = comparableProfile(item);
+  const key = profile?.bucket?.value ? `${category}_presentacion_${profile.metric}_${profile.bucket.value}` : `${category}_general`;
+  const categoryLabel = CATEGORY_LABEL[category] || category;
+  const label = profile?.bucket?.label ? `${categoryLabel} / ${profile.bucket.label}` : categoryLabel;
+  return { key, label };
+}
+
+function liquidProfile(item) {
+  const profile = comparableProfile(item);
+  if (!profile || profile.pricePerLiter == null || !Number.isFinite(Number(profile.pricePerLiter))) return null;
+  return profile;
+}
+
+function metricSuffix(profile = null) {
+  if (profile?.metric === 'kg') return '/kg';
+  if (profile?.metric === 'unit') return '/un.';
+  if (profile?.metric === 'item') return '/unidad';
+  return '/normalizado';
+}
+
+const fmtPerLiter = (p, profile = null) => p == null ? '-' : `$ ${Number(p).toLocaleString('es-UY', { maximumFractionDigits: 1 })}${metricSuffix(profile)}`;
+function entryDetail(entry) {
+  const pack = entry.profile.units > 1 ? `  -  pack x${entry.profile.units}` : '';
+  return `${labelBrand(entry.item)}  -  ${labelStore(entry.item.super)}  -  ${fmtPrice(entry.item.price)}  -  ${fmtPerLiter(entry.profile.pricePerLiter)}${pack}`;
+}
+
+function formatProfile(item) {
+  const profile = liquidProfile(item);
+  if (!profile) return 'Unidad';
+  return profile.units > 1 ? `Pack x${profile.units}` : 'Unidad';
+}
+
+function clusterProfile(item) {
+  const profile = liquidProfile(item);
+  return {
+    unitMl: profile?.unitMl || null,
+    packUnits: profile?.units || 1,
+    formatLabel: profile?.units > 1 ? `Pack x${profile.units}` : 'Unidad',
+  };
+}
+
+function brandRegex() {
+  const words = values(state.items, 'brandLabel')
+    .concat(values(state.items, 'brand'))
+    .filter(Boolean)
+    .sort((a, b) => b.length - a.length)
+    .map((w) => stripAccents(w.toLowerCase()).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  return words.length ? new RegExp(`\\b(${words.join('|')})\\b`, 'gi') : null;
+}
+
 function normalizeName(name) {
-  let n = stripAccents(name.toLowerCase());
-  n = n.replace(/\b(sarubbi|schneck|centenario|cattivelli|ottonello|camposur|constancia)\b/g, ' ');
-  n = n.replace(/\d+(?:[.,]\d+)?\s*(kg|kilos?|gr?|gramos|ml|cc|lts?|litros?|un|u|unid(?:ades?)?|x\s*\d+)\b/g, ' ');
-  n = n.replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
-  const stop = new Set(['de', 'la', 'el', 'con', 'sin', 'y', 'a', 'en', 'para', 'gr', 'g']);
-  return n.split(' ').filter((w) => w && w.length > 1 && !stop.has(w)).join(' ');
+  let n = stripAccents(name).toLowerCase();
+  const rx = brandRegex();
+  if (rx) n = n.replace(rx, ' ');
+  n = n
+    .replace(/\d+(?:[.,]\d+)?\s*(lts?|litros?|l\b|ml|cc|cm3|kg|kilos?|gr?|gramos|un|u|x\s*\d+)\b/g, ' ')
+    .replace(/\b(jamon|cocido|crudo|fiambre|feteado|fetas|pancho|panchos|frankfurter|salchicha|salame|salamin|chorizo|mortadela|panceta|hamburguesa|empanada|carne|corte|pack|unidad|unidades)\b/g, ' ')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const stop = new Set(['de', 'la', 'el', 'los', 'las', 'y', 'a', 'en', 'para', 'por']);
+  return n.split(' ').filter((w) => w.length > 1 && !stop.has(w)).join(' ');
 }
 
 const tokenize = (name) => new Set(normalizeName(name).split(' ').filter(Boolean));
@@ -77,386 +704,290 @@ function jaccard(a, b) {
 
 function clusterProducts(items) {
   const groups = [];
-  const enriched = items.map((it) => ({ item: it, tokens: tokenize(it.name), size: extractSize(it.name) }));
+  const enriched = items.map((item) => ({ item, tokens: tokenize(item.name), size: extractSize(item.name), profile: clusterProfile(item) }));
   for (const cur of enriched) {
-    let bestGroup = null;
+    let best = null;
     let bestScore = 0;
-    for (const g of groups) {
-      if (g.brand !== cur.item.brand) continue;
-      if (cur.size && g.size) {
-        if (cur.size.unit !== g.size.unit) continue;
-        const ratio = Math.min(cur.size.value, g.size.value) / Math.max(cur.size.value, g.size.value);
-        if (ratio < 0.85) continue;
+    for (const group of groups) {
+      if (group.brand !== cur.item.brand) continue;
+      if (group.profile.packUnits !== cur.profile.packUnits) continue;
+      if ((group.profile.unitMl || cur.profile.unitMl) && group.profile.unitMl !== cur.profile.unitMl) continue;
+      if (cur.size && group.size) {
+        if (cur.size.unit !== group.size.unit) continue;
+        const ratio = Math.min(cur.size.value, group.size.value) / Math.max(cur.size.value, group.size.value);
+        if (ratio < 0.88) continue;
       }
-      const score = jaccard(cur.tokens, g.tokens);
-      if (score > bestScore && score >= 0.55) { bestScore = score; bestGroup = g; }
+      const score = jaccard(cur.tokens, group.tokens);
+      if (score >= 0.52 && score > bestScore) {
+        best = group;
+        bestScore = score;
+      }
     }
-    if (bestGroup) {
-      bestGroup.items.push(cur.item);
-      const intersection = new Set();
-      for (const t of cur.tokens) if (bestGroup.tokens.has(t)) intersection.add(t);
-      if (intersection.size >= 2) bestGroup.tokens = intersection;
-    } else {
-      groups.push({ brand: cur.item.brand, group: cur.item.group, size: cur.size, tokens: new Set(cur.tokens), items: [cur.item], label: cur.item.name });
-    }
+    if (best) best.items.push(cur.item);
+    else groups.push({
+      brand: cur.item.brand,
+      brandLabel: labelBrand(cur.item),
+      category: cur.item.category,
+      size: cur.size,
+      profile: cur.profile,
+      tokens: cur.tokens,
+      items: [cur.item],
+      label: cur.item.name,
+    });
   }
-  for (const g of groups) {
-    g.items.sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
-    g.label = g.items.slice().sort((a, b) => a.name.length - b.name.length)[0].name;
+  for (const group of groups) {
+    group.items.sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
+    group.label = group.items.slice().sort((a, b) => a.name.length - b.name.length)[0].name;
   }
   return groups;
 }
 
-// ===== PVP sugerido local =====
-function normalizeStore(value) {
-  const n = stripAccents(String(value ?? '').toLowerCase())
-    .replace(/[^a-z0-9]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-  if (!n) return '';
-  if (['todos', 'todas', 'all', 'global'].includes(n)) return 'all';
-  const map = {
-    tata: 'tata',
-    'ta ta': 'tata',
-    'ta-ta': 'tata',
-    disco: 'disco',
-    eldorado: 'eldorado',
-    'el dorado': 'eldorado',
-    tiendainglesa: 'tiendainglesa',
-    'tienda inglesa': 'tiendainglesa',
-  };
-  return map[n] || '';
-}
-
-function normalizeBrand(value) {
-  const n = stripAccents(String(value ?? '').toLowerCase())
-    .replace(/[^a-z0-9]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-  const map = {
-    sarubbi: 'sarubbi',
-    schneck: 'schneck',
-    centenario: 'centenario',
-    'alimentos centenario': 'centenario',
-    cattivelli: 'cattivelli',
-    cativelli: 'cattivelli',
-    catibelli: 'cattivelli',
-    ottonello: 'ottonello',
-    otonello: 'ottonello',
-    ottonelo: 'ottonello',
-    camposur: 'camposur',
-    'campo sur': 'camposur',
-    constancia: 'constancia',
-    'la constancia': 'constancia',
-  };
-  return map[n] || n || '';
-}
-
-function normalizeLoadedItem(item) {
-  if (!item || !SUPERS.includes(item.super)) return null;
-  return { ...item };
-}
-
-function numberOrNull(value) {
-  if (value == null || value === '') return null;
-  if (typeof value === 'number') return Number.isFinite(value) ? value : null;
-  let s = String(value).trim().replace(/[^\d,.-]/g, '');
-  if (!s) return null;
-  const comma = s.lastIndexOf(',');
-  const dot = s.lastIndexOf('.');
-  if (comma >= 0 && dot >= 0) s = comma > dot ? s.replace(/\./g, '').replace(',', '.') : s.replace(/,/g, '');
-  else if (comma >= 0) s = s.replace(',', '.');
-  const n = Number(s);
-  return Number.isFinite(n) ? n : null;
-}
-
-function csvDelimiter(text) {
-  const firstLine = String(text).split(/\r?\n/, 1)[0] || '';
-  return (firstLine.match(/;/g) || []).length > (firstLine.match(/,/g) || []).length ? ';' : ',';
-}
-
-function parseCsv(text, delimiter = csvDelimiter(text)) {
-  const rows = [];
-  let row = [];
-  let cell = '';
-  let quoted = false;
-  for (let i = 0; i < text.length; i += 1) {
-    const ch = text[i], next = text[i + 1];
-    if (quoted) {
-      if (ch === '"' && next === '"') { cell += '"'; i += 1; }
-      else if (ch === '"') quoted = false;
-      else cell += ch;
-    } else if (ch === '"') quoted = true;
-    else if (ch === delimiter) { row.push(cell); cell = ''; }
-    else if (ch === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
-    else if (ch !== '\r') cell += ch;
+function priceMode(items) {
+  const buckets = new Map();
+  for (const item of items) {
+    if (item.price == null || !Number.isFinite(Number(item.price))) continue;
+    const price = Number(item.price);
+    const key = price.toFixed(2);
+    const bucket = buckets.get(key) || { price, count: 0, items: [] };
+    bucket.count++;
+    bucket.items.push(item);
+    buckets.set(key, bucket);
   }
-  row.push(cell);
-  if (row.some((v) => String(v).trim())) rows.push(row);
-  return rows;
+  const ranked = [...buckets.values()].sort((a, b) => (b.count - a.count) || (a.price - b.price));
+  return ranked[0] || null;
 }
 
-function headerKey(value) {
-  return stripAccents(String(value ?? '').toLowerCase())
-    .replace(/[^a-z0-9]+/g, '_')
-    .replace(/^_+|_+$/g, '');
-}
-
-function rowsFromCsv(text) {
-  const rows = parseCsv(text).filter((row) => row.some((cell) => String(cell).trim()));
-  if (!rows.length) return [];
-  const headers = rows[0].map(headerKey);
-  return rows.slice(1).map((row) => {
-    const record = {};
-    headers.forEach((key, index) => { record[key] = row[index] ?? ''; });
-    return record;
-  });
-}
-
-function pick(row, keys) {
-  for (const key of keys) {
-    const v = row[headerKey(key)];
-    if (v != null && String(v).trim() !== '') return v;
-  }
-  return '';
-}
-
-function rowsFromJson(text) {
-  const parsed = JSON.parse(text);
-  return Array.isArray(parsed) ? parsed : (parsed.rows || parsed.items || []);
-}
-
-// Parsea un Excel de lista de precios Sarubbi (múltiples pestañas).
-// Detecta la fila de encabezados buscando "descripci" y extrae producto+pvp de cada pestaña.
-// Devuelve filas en el mismo formato que rowsFromCsv para que pasen por normalizePriceRows.
-function rowsFromExcel(buffer, storeOverride) {
-  if (typeof XLSX === 'undefined') throw new Error('Librería Excel no cargó. Revisá tu conexión a internet.');
-  const wb = XLSX.read(buffer, { type: 'array' });
-  const allRows = [];
-  for (const sheetName of wb.SheetNames) {
-    const ws = wb.Sheets[sheetName];
-    const raw = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
-    if (!raw.length) continue;
-    // Buscar fila de encabezados (la que tenga 'descripci')
-    let headerIdx = -1;
-    for (let i = 0; i < raw.length; i++) {
-      if (raw[i].some((c) => String(c).toLowerCase().includes('descripci'))) {
-        headerIdx = i;
-        break;
-      }
-    }
-    if (headerIdx < 0) continue;
-    const headers = raw[headerIdx].map(headerKey);
-    for (const row of raw.slice(headerIdx + 1)) {
-      if (!row.some((v) => String(v).trim())) continue;
-      const record = {};
-      headers.forEach((key, i) => { record[key] = row[i] ?? ''; });
-      allRows.push(record);
-    }
-  }
-  return allRows;
-}
-
-function normalizePriceRows(rows, storeOverride = '', source = 'archivo') {
-  const override = normalizeStore(storeOverride);
-  const diagnostics = { noStore: 0, noPrice: 0, noProduct: 0 };
-  const result = rows.map((row, index) => {
-    const rawStore = override || pick(row, ['super', 'cadena', 'supermercado', 'tienda']);
-    const store = normalizeStore(rawStore);
-    // If no store specified at all (no column, no override) → apply to all stores.
-    // If store name provided but unrecognized → reject the row.
-    const stores = store === 'all' ? SUPERS : (store ? [store] : (rawStore ? [] : SUPERS));
-    const product = String(pick(row, ['producto', 'nombre', 'descripcion', 'articulo'])).trim();
-    const brand = normalizeBrand(pick(row, ['marca', 'brand', 'submarca']));
-    const price = numberOrNull(pick(row, ['pvp_sugerido', 'pvpSugerido', 'precio_sugerido', 'precioSugerido', 'suggestedPrice', 'pvs', 'pvp', 'precio']));
-    const sku = String(pick(row, ['sku', 'codigo', 'id_producto', 'id'])).trim();
-    if (!stores.length) { diagnostics.noStore++; return null; }
-    if (price == null) { diagnostics.noPrice++; return null; }
-    if (!product && !sku) { diagnostics.noProduct++; return null; }
-    return { index, stores, sku, brand, product, price, source };
-  }).filter(Boolean);
-  result._diagnostics = diagnostics;
-  return result;
-}
-
-function loadLocalPriceList() {
-  try {
-    state.priceList = JSON.parse(localStorage.getItem(PRICE_LIST_KEY) || '[]');
-  } catch {
-    state.priceList = [];
-  }
-}
-
-function saveLocalPriceList() {
-  localStorage.setItem(PRICE_LIST_KEY, JSON.stringify(state.priceList));
-}
-
-function sizeCompatible(rowSize, itemSize) {
-  if (!rowSize) return true;
-  if (!itemSize || rowSize.unit !== itemSize.unit) return false;
-  const ratio = Math.min(rowSize.value, itemSize.value) / Math.max(rowSize.value, itemSize.value);
-  return ratio >= 0.85;
-}
-
-function scorePriceRow(row, item) {
-  if (!row.stores.includes(item.super)) return null;
-  if (row.sku && String(row.sku) === String(item.sku)) return 999;
-  if (row.brand && row.brand !== item.brand) return null;
-
-  const rowSize = extractSize(row.product || '');
-  const itemSize = extractSize(item.name || '');
-  // Only reject if BOTH have sizes with incompatible units. If one is missing, skip size bonus.
-  const sizesKnown = rowSize && itemSize;
-  if (sizesKnown && rowSize.unit !== itemSize.unit) return null;
-  if (sizesKnown) {
-    const ratio = Math.min(rowSize.value, itemSize.value) / Math.max(rowSize.value, itemSize.value);
-    if (ratio < 0.85) return null;
-  }
-  const sizeBonus = sizesKnown ? 35 : 0;
-
-  const wanted = tokenize(row.product || '');
-  const got = tokenize(item.name || '');
-  if (!wanted.size) return null;
-  let overlap = 0;
-  for (const token of wanted) if (got.has(token)) overlap += 1;
-  const ratio = overlap / wanted.size;
-  if (ratio < (sizeBonus ? 0.2 : 0.45)) return null;
-  return (row.brand ? 30 : 8) + sizeBonus + Math.round(ratio * 35);
-}
-
-// Convierte una fila de pvp.json al formato usado por scorePriceRow
-function pvpRowToLocal(r) {
-  return {
-    stores: [r.super],
-    sku: r.ean || r.sku || '',      // preferir EAN para match exacto
-    skuBimbo: r.sku || '',
-    skuCadena: r.skuCadena || '',
-    brand: normalizeBrand(r.sheet || ''),  // sheet = Panes/Snacks/Galletas → brand fallback
-    product: r.producto || '',
-    price: r.pvp,
-    source: `PVP ${r.super} ${r.sheet || ''}`.trim(),
-  };
-}
-
-// Match contra la lista embebida pvp.json.
-// Prioridad: EAN exacto > SKU interno > SKU cadena > nombre
-function matchBuiltinPvp(item) {
-  if (!state.builtinPvp.length) return null;
-  const itemEan = String(item.ean || item.barcode || '').trim();
-  const itemSku = String(item.sku || '').trim();
-
-  // 1. EAN exacto
-  if (itemEan) {
-    const byEan = state.builtinPvp.find(
-      (r) => r.super === item.super && r.ean && r.ean === itemEan
-    );
-    if (byEan) return byEan;
-  }
-  // 2. SKU interno exacto
-  if (itemSku) {
-    const bySku = state.builtinPvp.find(
-      (r) => r.super === item.super && r.sku && r.sku === itemSku
-    );
-    if (bySku) return bySku;
-    // SKU cadena exacto
-    const bySkuC = state.builtinPvp.find(
-      (r) => r.super === item.super && r.skuCadena && r.skuCadena === itemSku
-    );
-    if (bySkuC) return bySkuC;
-  }
-  // 3. Matching por nombre (mismo algoritmo que scorePriceRow pero sobre builtinPvp)
-  const candidates = state.builtinPvp.filter((r) => r.super === item.super);
-  let best = null;
-  for (const r of candidates) {
-    const score = scorePriceRow(pvpRowToLocal(r), item);
-    if (score == null) continue;
-    if (!best || score > best.score) best = { r, score };
-  }
-  return best && best.score >= 40 ? best.r : null;
-}
-
-function matchLocalSuggested(item) {
-  let best = null;
-  for (const row of state.priceList) {
-    const score = scorePriceRow(row, item);
-    if (score == null) continue;
-    if (!best || score > best.score) best = { row, score };
-  }
-  return best && best.score >= 45 ? best.row : null;
-}
-
-function gapStatus(gap) {
-  if (gap == null) return '';
-  if (gap > 0.5) return 'above';
-  if (gap < -0.5) return 'below';
-  return 'ok';
-}
-
-function suggestedFor(item) {
-  // 1. Lista cargada manualmente por el usuario (máxima prioridad)
-  const local = matchLocalSuggested(item);
-  if (local) return { price: local.price, product: local.product, source: local.source || 'lista local', local: true };
-  // 2. Lista PVP embebida desde los Excel del usuario
-  const builtin = matchBuiltinPvp(item);
-  if (builtin) return { price: builtin.pvp, product: builtin.producto, source: `PVP ${builtin.super}`, local: true };
-  // 3. PVP del backend (archivo suggested del scraper)
-  if (item.suggestedPrice != null) {
-    return { price: item.suggestedPrice, product: item.suggestedProduct, source: item.suggestedSource || 'archivo backend', local: false };
-  }
-  return null;
-}
-
-function gapFor(item) {
-  const suggested = suggestedFor(item);
-  if (!suggested?.price || item.price == null) return null;
-  return Number((((Number(item.price) - suggested.price) / suggested.price) * 100).toFixed(2));
-}
-
-function pvpCell(item) {
-  const suggested = suggestedFor(item);
-  if (!suggested?.price) return '<span class="suggested-empty">-</span>';
-  return `<div class="suggested-cell"><span class="suggested-price">${fmtPrice(suggested.price)}</span>${suggested.local ? '<span class="suggested-ref">local</span>' : ''}</div>`;
-}
-
-function gapCell(item) {
-  const gap = gapFor(item);
-  if (gap == null) return '<span class="suggested-empty">-</span>';
-  const status = gapStatus(gap);
-  return `<span class="gap-badge ${escape(status)}" title="${escape(GAP_LABEL[status] || '')}">${fmtPct(gap)}</span>`;
-}
-
-// ===== Carga =====
-async function loadBuiltinPvp() {
-  try {
-    const r = await fetch('/data/pvp.json', { cache: 'no-store' });
-    if (!r.ok) return;
-    const data = await r.json();
-    state.builtinPvp = data.rows || [];
-    state.pvpMeta = { vigencia: data.vigencia, generatedAt: data.generatedAt };
-  } catch (e) { console.warn('pvp.json no disponible:', e.message); }
+function skuModeRows() {
+  return state.clusters.map((group) => {
+    const priced = group.items.filter((item) => item.price != null && Number.isFinite(Number(item.price)));
+    if (!priced.length) return null;
+    const mode = priceMode(priced);
+    const prices = priced.map((item) => Number(item.price));
+    const first = priced[0];
+    const profile = liquidProfile(first);
+    const segment = competitiveSegment(first);
+    const modeStores = [...new Set(mode.items.map((item) => labelStore(item.super)))].sort((a, b) => a.localeCompare(b, 'es'));
+    const modeStoreKeys = [...new Set(mode.items.map((item) => item.super))].sort((a, b) => labelStore(a).localeCompare(labelStore(b), 'es'));
+    const modePricePerLiter = profile ? mode.price / (profile.totalMl / 1000) : null;
+    return {
+      label: group.label,
+      brand: group.brand,
+      brandLabel: group.brandLabel,
+      group: first.group,
+      category: group.category,
+      segment,
+      bucket: profile?.bucket || null,
+      unitMl: profile?.unitMl || null,
+      packUnits: profile?.units || 1,
+      sizeLabel: profile?.bucket?.label || sizeLabel(group.size),
+      count: priced.length,
+      stores: new Set(priced.map((item) => item.super)).size,
+      min: Math.min(...prices),
+      max: Math.max(...prices),
+      avg: avg(prices),
+      modePrice: mode.price,
+      modePricePerLiter,
+      modeCount: mode.count,
+      modeShare: priced.length ? (mode.count / priced.length) * 100 : 0,
+      modeStores,
+      modeStoreKeys,
+      modeItems: mode.items,
+      sample: first,
+    };
+  }).filter(Boolean).sort((a, b) =>
+    (a.group === b.group ? 0 : a.group === 'sarubbi' ? -1 : 1) ||
+    labelCategory(a.category).localeCompare(labelCategory(b.category), 'es') ||
+    a.brandLabel.localeCompare(b.brandLabel, 'es') ||
+    a.label.localeCompare(b.label, 'es'));
 }
 
 async function load() {
-  const [, latestResult] = await Promise.allSettled([
-    loadBuiltinPvp(),
-    fetch('/data/latest.json', { cache: 'no-store' }),
-  ]);
   try {
-    const r = latestResult.value;
-    if (!r || !r.ok) throw new Error('No se pudo cargar latest.json');
+    const [r, strategy] = await Promise.all([
+      fetch('/data/latest.json', { cache: 'no-store' }),
+      loadStrategyConfig(),
+    ]);
+    if (!r.ok) throw new Error('No se pudo cargar latest.json');
     const data = await r.json();
-    state.items = (data.items || []).map(normalizeLoadedItem).filter(Boolean);
-    state.groups = data.groups || { sarubbi: PORTFOLIO_BRANDS, competencia: [] };
-    state.categoryLabels = data.categoryLabels || {};
-    state.suggested = data.suggested || null;
+    state.items = (data.items || []).filter((i) => i.category && i.group);
     state.generatedAt = data.generatedAt;
+    state.scrapeResults = data.scrapeResults || [];
+    state.suggested = data.suggested || null;
+    state.strategy = strategy;
     state.clusters = clusterProducts(state.items);
     renderAll();
+    loadReportAutomation();
   } catch (e) {
     console.error(e);
-    $('#lastUpdate').innerHTML = '<b>Sin datos.</b><br>Tocá "Actualizar precios" para hacer el primer scrape.';
+    $('#lastUpdate').innerHTML = '<b>Sin datos.</b><br>Ejecuta el primer relevamiento.';
+    renderEmptyShell();
   }
   loadHistory();
+  loadEvolution();
+}
+
+async function loadStrategyConfig() {
+  try {
+    const r = await fetch('/config/portfolio-strategy.json', { cache: 'no-store' });
+    if (!r.ok) throw new Error('No se pudo cargar portfolio-strategy.json');
+    return await r.json();
+  } catch (e) {
+    console.warn('Sin estrategia de marketing:', e.message);
+    return { defaultTargetRange: [MODE_TARGET_INDEX, MODE_TARGET_INDEX], segments: {} };
+  }
+}
+
+function reportAutomationReady(status) {
+  const cfg = status?.configured || {};
+  return Boolean(cfg.resendApiKey && cfg.cronSecret && Array.isArray(cfg.to) && cfg.to.length);
+}
+
+function reportAutomationPending(status) {
+  const cfg = status?.configured || {};
+  const pending = [];
+  if (!cfg.resendApiKey) pending.push('Resend');
+  if (!Array.isArray(cfg.to) || !cfg.to.length) pending.push('destinatarios');
+  if (!cfg.cronSecret) pending.push('secreto cron');
+  if (!cfg.manualSecret) pending.push('secreto manual');
+  return pending;
+}
+
+function reportScheduleText(status) {
+  const schedule = status?.schedule || '0 11 * * *';
+  return schedule === '0 11 * * *' ? 'Diario 11:00 UTC / 08:00 Uruguay' : `Cron ${schedule}`;
+}
+
+function reportAutomationHtml() {
+  const automation = state.reportAutomation;
+  const status = automation.status;
+  const cfg = status?.configured || {};
+  const ready = reportAutomationReady(status);
+  const pending = reportAutomationPending(status);
+  const messageClass = automation.actionError ? 'error' : automation.message ? 'success' : '';
+  const recipients = Array.isArray(cfg.to) && cfg.to.length ? cfg.to.join(', ') : 'Sin destinatarios';
+  const canDryRun = Boolean(cfg.manualSecret);
+  const canSend = Boolean(cfg.manualSecret && cfg.resendApiKey);
+  const busy = automation.loading || automation.sending;
+  const statusText = automation.loading
+    ? 'Cargando'
+    : automation.error
+      ? 'No disponible'
+      : ready
+        ? 'Activo'
+        : 'Pendiente';
+
+  return `
+    <div class="exec-card report-automation-card no-print">
+      <div class="report-automation-head">
+        <div>
+          <h3>Automatizacion de informes</h3>
+          <div class="report-automation-sub">${escape(reportScheduleText(status))}</div>
+        </div>
+        <span class="automation-badge ${ready ? 'ready' : automation.error ? 'error' : 'pending'}">${escape(statusText)}</span>
+      </div>
+
+      <div class="automation-status-grid">
+        <div><span>Proveedor</span><b>${cfg.resendApiKey ? 'Resend' : 'Pendiente'}</b></div>
+        <div><span>Destinatarios</span><b title="${escape(recipients)}">${escape(recipients)}</b></div>
+        <div><span>PDF</span><b>${status?.assets?.latestPdf ? 'Disponible' : 'Pendiente'}</b></div>
+        <div><span>Manual</span><b>${cfg.manualSecret ? 'Habilitado' : 'Pendiente'}</b></div>
+      </div>
+
+      ${pending.length && !automation.error ? `<div class="automation-note">Falta: ${escape(pending.join(', '))}</div>` : ''}
+      ${automation.error ? `<div class="automation-note error">${escape(automation.error)}</div>` : ''}
+
+      <form class="automation-form" id="reportAutomationForm">
+        <input id="reportEmailTo" type="text" placeholder="destino@empresa.com" autocomplete="off" />
+        <input id="reportSecret" type="password" placeholder="secreto de envio" autocomplete="off" />
+        <button type="button" class="btn" id="reportDryRunBtn" ${busy || !canDryRun ? 'disabled' : ''}>Probar</button>
+        <button type="button" class="btn blue" id="reportSendBtn" ${busy || !canSend ? 'disabled' : ''}>Enviar PDF</button>
+        <button type="button" class="btn" id="reportStatusBtn" ${busy ? 'disabled' : ''}>Refrescar</button>
+      </form>
+
+      <div class="automation-result ${messageClass}" id="reportAutomationResult">
+        ${automation.sending ? 'Enviando...' : escape(automation.actionError || automation.message || '')}
+      </div>
+    </div>`;
+}
+
+function renderReportAutomationPanel() {
+  const el = $('#reportAutomationPanel');
+  if (!el) return;
+  el.innerHTML = reportAutomationHtml();
+  bindReportAutomationControls();
+  applyClientCopy(el);
+}
+
+async function loadReportAutomation() {
+  state.reportAutomation.loading = true;
+  state.reportAutomation.error = '';
+  renderReportAutomationPanel();
+  try {
+    const resp = await fetch('/api/report/status', { cache: 'no-store' });
+    const data = await resp.json().catch(() => ({}));
+    if (!resp.ok || data.ok === false) throw new Error(data.error || `HTTP ${resp.status}`);
+    state.reportAutomation.status = data;
+    state.reportAutomation.error = '';
+  } catch (err) {
+    state.reportAutomation.error = 'Estado no disponible';
+  } finally {
+    state.reportAutomation.loading = false;
+    renderReportAutomationPanel();
+  }
+}
+
+function reportRecipientsFromInput(value) {
+  return String(value || '')
+    .split(/[,\n;]+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+async function sendReportFromPanel(dryRun = false) {
+  const secret = $('#reportSecret')?.value?.trim();
+  if (!secret) {
+    state.reportAutomation.message = '';
+    state.reportAutomation.actionError = 'Falta secreto de envio';
+    renderReportAutomationPanel();
+    return;
+  }
+
+  const to = reportRecipientsFromInput($('#reportEmailTo')?.value);
+  state.reportAutomation.sending = true;
+  state.reportAutomation.actionError = '';
+  state.reportAutomation.message = '';
+  renderReportAutomationPanel();
+
+  try {
+    const resp = await fetch('/api/report/send', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${secret}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ dryRun, ...(to.length ? { to } : {}) }),
+    });
+    const data = await resp.json().catch(() => ({}));
+    if (!resp.ok || data.ok === false) throw new Error(data.error || `HTTP ${resp.status}`);
+    state.reportAutomation.message = dryRun
+      ? `Prueba OK: ${data.attachment || 'PDF listo'}`
+      : `Enviado: ${data.to?.join(', ') || 'destinatarios configurados'}`;
+    state.reportAutomation.actionError = '';
+    toast(dryRun ? 'Prueba de informe lista.' : 'Informe enviado.', 'success');
+  } catch (err) {
+    state.reportAutomation.actionError = err.message || 'No se pudo enviar';
+    toast('Error: ' + state.reportAutomation.actionError, 'error');
+  } finally {
+    state.reportAutomation.sending = false;
+    renderReportAutomationPanel();
+  }
+}
+
+function bindReportAutomationControls() {
+  $('#reportAutomationForm')?.addEventListener('submit', (e) => e.preventDefault());
+  $('#reportStatusBtn')?.addEventListener('click', loadReportAutomation);
+  $('#reportDryRunBtn')?.addEventListener('click', () => sendReportFromPanel(true));
+  $('#reportSendBtn')?.addEventListener('click', () => sendReportFromPanel(false));
 }
 
 async function loadHistory() {
@@ -465,7 +996,133 @@ async function loadHistory() {
     if (!r.ok) return;
     const text = await r.text();
     state.history = text.split('\n').filter(Boolean).map((line) => JSON.parse(line));
-  } catch (e) { console.warn('Sin histórico aún:', e.message); }
+  } catch (e) {
+    console.warn('Sin historico:', e.message);
+  }
+}
+
+async function loadEvolution() {
+  state.evolution = 'loading';
+  renderEvolution();
+  try {
+    const [mr, pr, ir, rr, tr] = await Promise.all([
+      fetch('/api/history/movers', { cache: 'no-store' }),
+      fetch('/api/history/pvs', { cache: 'no-store' }),
+      fetch('/api/history/index', { cache: 'no-store' }),
+      fetch('/api/history/runs', { cache: 'no-store' }),
+      fetch('/api/history/market', { cache: 'no-store' }),
+    ]);
+    if (!mr.ok || !pr.ok || !ir.ok || !rr.ok || !tr.ok) throw new Error('API de historial no disponible');
+    const movers = await mr.json();
+    const pvs = await pr.json();
+    const index = await ir.json();
+    const runs = await rr.json();
+    const market = await tr.json();
+    state.evolution = {
+      movers,
+      pvs: pvs.timeline || [],
+      index: index.groups || [],
+      indexAt: index.capturedAt || null,
+      runs: runs.runs || [],
+      market: market.rows || [],
+    };
+  } catch (e) {
+    state.evolution = { error: e.message };
+  }
+  renderPortfolio();
+  renderEvolution();
+}
+
+function renderEvolution() {
+  const el = $('#evolutionContent');
+  if (!el) return;
+  const data = state.evolution;
+  if (data == null || data === 'loading') {
+    el.innerHTML = '<div class="panel"><div class="empty">Cargando historico...</div></div>';
+    return;
+  }
+  if (data.error) {
+    el.innerHTML = '<div class="panel"><div class="empty">El historico se sirve desde la base local.<br><span style="font-size:12px">Corre <code>npm run serve</code> para verlo (y <code>npm run backfill</code> si es la primera vez).</span></div></div>';
+    return;
+  }
+  const fmtD = (t) => (t ? new Date(t).toLocaleString('es-UY', { dateStyle: 'short', timeStyle: 'short' }) : '-');
+  const m = data.movers || { rows: [] };
+  const pvs = data.pvs || [];
+  const runs = data.runs || [];
+  const firstRun = runs[0];
+  const lastRun = runs[runs.length - 1];
+  const indexGroups = data.index || [];
+  const indexOwner = (row) => String(row.owner || '').toLowerCase().includes('sarubbi') ? 'sarubbi' : 'competencia';
+  const indexBrandLine = (row) => `
+    <div class="history-brand-line">
+      ${brandLogo({ brand: row.brand, brandLabel: row.brandLabel, group: indexOwner(row) })}
+      <b>${row.index}</b>
+      <span>${fmtPerLiter(row.ppl)}  -  ${row.n} obs.</span>
+    </div>`;
+
+  const moversRows = m.rows && m.rows.length ? m.rows.map((r) => {
+    const up = r.pct > 0;
+    const rowItem = { ...r, group: indexOwner(r) };
+    return `<tr>
+      <td>${escape(displayProductName(rowItem))}</td>
+      <td class="brand">${brandLogo(rowItem)}</td>
+      <td>${storeLogo(r.super)}</td>
+      <td class="price">${fmtPrice(r.prev)}</td>
+      <td class="price">${fmtPrice(r.cur)}</td>
+      <td class="price" style="color:${up ? '#d71920' : '#148a55'}">${up ? 'UP' : 'DOWN'} ${fmtPct(r.pct)}</td>
+    </tr>`;
+  }).join('') : '<tr><td colspan="6" class="empty">Sin variaciones aun (se necesitan al menos dos relevamientos).</td></tr>';
+
+  const maxPvs = Math.max(1, ...pvs.map((p) => p.above + p.ok + p.below));
+  const w = (n) => `${(n / maxPvs * 100).toFixed(1)}%`;
+  const pvsRows = pvs.length ? pvs.map((p) => `
+    <div class="pvs-row">
+      <div class="pvs-date">${fmtD(p.t)}</div>
+      <div class="pvs-bar">
+        <span class="seg above" style="width:${w(p.above)}" title="Sobre PVS: ${p.above}"></span>
+        <span class="seg ok" style="width:${w(p.ok)}" title="Cumple: ${p.ok}"></span>
+        <span class="seg below" style="width:${w(p.below)}" title="Bajo PVS: ${p.below}"></span>
+      </div>
+      <div class="pvs-counts">${p.above} / ${p.ok} / ${p.below}</div>
+    </div>`).join('') : '<div class="empty">Aun no hay historico de PVS (se acumula con cada relevamiento).</div>';
+
+  const indexRows = indexGroups.length ? indexGroups.map((group) => {
+    const base = group.rows.find((row) => row.isBase) || group.rows[0];
+    const ownRows = group.rows.filter((row) => indexOwner(row) === 'sarubbi').sort((a, b) => Math.abs(a.index - 100) - Math.abs(b.index - 100));
+    const compRows = group.rows.filter((row) => indexOwner(row) !== 'sarubbi').sort((a, b) => Math.abs(a.index - 100) - Math.abs(b.index - 100));
+    return `<tr>
+      <td>${escape(labelCategory(group.category))}</td>
+      <td><b>${escape(group.label)}</b><br><span class="table-sub">Base 100: ${escape(base?.brandLabel || '-')}</span></td>
+      <td><div class="history-brand-stack">${ownRows.length ? ownRows.slice(0, 3).map(indexBrandLine).join('') : '<span class="table-sub">Sin Sarubbi en esta gama</span>'}</div></td>
+      <td><div class="history-brand-stack">${compRows.slice(0, 3).map(indexBrandLine).join('')}</div></td>
+    </tr>`;
+  }).join('') : '<tr><td colspan="4" class="empty">Aun no hay indice competitivo para la ultima corrida.</td></tr>';
+
+  el.innerHTML = `
+    <div class="panel">
+      <h2 class="panel-title">Base historica local</h2>
+      <div class="history-overview">
+        <span><b>${runs.length}</b> relevamientos</span>
+        <span><b>${escape(fmtD(firstRun?.captured_at))}</b> primer dato</span>
+        <span><b>${escape(fmtD(lastRun?.captured_at))}</b> ultimo dato</span>
+        <span><b>${Number(lastRun?.n_items || 0).toLocaleString('es-UY')}</b> SKUs ultima corrida</span>
+      </div>
+    </div>
+    <div class="panel">
+      <h2 class="panel-title">Mayores variaciones de precio</h2>
+      <p style="margin:0 0 12px;font-size:12px;color:#667085">Entre ${escape(fmtD(m.prevAt))} y ${escape(fmtD(m.curAt))}. Calculado por producto (no por promedio), asi que no lo distorsiona el cambio de mezcla.</p>
+      <table><thead><tr><th>Producto</th><th>Marca</th><th>Cadena</th><th class="price">Antes</th><th class="price">Ahora</th><th class="price">Cambio</th></tr></thead><tbody>${moversRows}</tbody></table>
+    </div>
+    <div class="panel" style="margin-top:16px">
+      <h2 class="panel-title">Cumplimiento PVS por relevamiento</h2>
+      <p style="margin:0 0 12px;font-size:12px;color:#667085"><span style="color:#d71920">Sobre</span> / <span style="color:#148a55">Cumple</span> / <span style="color:#0067b1">Bajo</span> PVS en cada corrida.</p>
+      <div class="pvs-timeline">${pvsRows}</div>
+    </div>
+    <div class="panel" style="margin-top:16px">
+      <h2 class="panel-title">Indice competitivo vigente</h2>
+      <p style="margin:0 0 12px;font-size:12px;color:#667085">Ultima corrida: ${escape(fmtD(data.indexAt || lastRun?.captured_at))}. Cada segmento compara marcas dentro de la misma gama; la base queda en 100.</p>
+      <table class="history-index-table"><thead><tr><th>Rubro</th><th>Gama</th><th>Sarubbi</th><th>Competencia cercana</th></tr></thead><tbody>${indexRows}</tbody></table>
+    </div>`;
 }
 
 function renderAll() {
@@ -473,96 +1130,202 @@ function renderAll() {
   renderKPIs();
   renderCatalog();
   renderCompare();
+  renderMode();
   renderOffers();
-  renderPrices();
-  renderPositioning();
+  renderSuggested();
+  renderCompetitive();
+  renderPortfolio();
+  renderStrategy();
+  renderEvolution();
   renderExecutive();
   updateTabBadges();
+  applyClientCopy();
+}
+
+function applyClientCopy(root = document.body) {
+  document.title = APP_COPY.productName;
+  const replacements = [
+    ['Gondola', APP_COPY.shortName],
+    ['Gondola', APP_COPY.shortName],
+    ['gondola.sarubbi.uy', APP_COPY.domain],
+    ['PVS', APP_COPY.suggestedShortLabel],
+    
+    ['POR LITRO', 'NORMALIZADO'],
+    ['Por litro', 'Normalizado'],
+    
+    ['Presentacions', 'Presentaciones'],
+    ['presentacions', 'presentaciones'],
+    ['presentacion', 'presentacion'],
+    ['Presentacion', 'Presentacion'],
+    ['Gama', 'Segmento'],
+    ['gama', 'segmento'],
+  ];
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  for (const node of nodes) {
+    let text = node.nodeValue;
+    for (const [from, to] of replacements) text = text.split(from).join(to);
+    node.nodeValue = text;
+  }
+  $$('[title],[aria-label]').forEach((el) => {
+    for (const attr of ['title', 'aria-label']) {
+      const value = el.getAttribute(attr);
+      if (!value) continue;
+      let next = value;
+      for (const [from, to] of replacements) next = next.split(from).join(to);
+      el.setAttribute(attr, next);
+    }
+  });
+}
+
+function renderEmptyShell() {
+  $('#kpis').innerHTML = '';
+  $('#catalogRows').innerHTML = '';
+  $('#catalogEmpty').style.display = 'block';
+  $('#compareList').innerHTML = '<div class="empty">Sin datos.</div>';
+  $('#modeRows').innerHTML = '';
+  $('#modeEmpty').style.display = 'block';
+  $('#offersRows').innerHTML = '';
+  $('#offersEmpty').style.display = 'block';
+  $('#suggestedRows').innerHTML = '';
+  $('#suggestedSummary').innerHTML = '';
+  $('#suggestedEmpty').style.display = 'block';
+  $('#positioningContent').innerHTML = '<div class="empty">Sin datos.</div>';
+  $('#portfolioContent').innerHTML = '<div class="empty">Sin datos.</div>';
+  $('#strategyContent').innerHTML = '<div class="empty">Sin datos.</div>';
+  $('#execContent').innerHTML = '<div class="empty">Sin datos.</div>';
+  applyClientCopy();
 }
 
 function renderHeader() {
   if (!state.generatedAt) return;
   const d = new Date(state.generatedAt);
-  $('#lastUpdate').innerHTML = `<b>Última actualización</b><br>${d.toLocaleString('es-UY', { dateStyle: 'medium', timeStyle: 'short' })}`;
+  const ok = state.scrapeResults.filter((r) => r.ok).length;
+  const total = state.scrapeResults.length;
+  const title = state.demo ? 'Dataset demo' : 'Ultima actualizacion';
+  const note = state.demo ? 'datos simulados' : `${ok}/${total} fuentes`;
+  $('#lastUpdate').innerHTML = `<b>${escape(title)}</b><br>${d.toLocaleString('es-UY', { dateStyle: 'medium', timeStyle: 'short' })} - ${escape(note)}`;
 }
 
-function renderKPIs() {
-  const sarubbItems = state.items.filter((i) => i.group === 'sarubbi');
-  const competencia = state.items.filter((i) => i.group === 'competencia');
-  const offers = state.items.filter((i) => i.listPrice && i.price && i.listPrice > i.price);
-  const avgSarubbi = sarubbItems.length ? Math.round(sarubbItems.reduce((s, i) => s + (i.price ?? 0), 0) / sarubbItems.length) : 0;
-  const supers = new Set(sarubbItems.map((i) => i.super));
-  const withPvp = state.items.filter((i) => suggestedFor(i)?.price != null);
-  const avgGap = withPvp.length ? withPvp.reduce((sum, i) => sum + (gapFor(i) ?? 0), 0) / withPvp.length : null;
+function elapsedSecondsFromStatus(statusData, fallbackStart) {
+  const started = Date.parse(statusData?.startedAt || '');
+  const from = Number.isFinite(started) ? started : fallbackStart;
+  return Math.max(0, Math.round((Date.now() - from) / 1000));
+}
 
-  $('#kpis').innerHTML = `
-    <div class="kpi">
-      <div class="kpi-label">Productos Sarubbi</div>
-      <div class="kpi-value">${sarubbItems.length}</div>
-      <div class="kpi-sub">prom ${fmtPrice(avgSarubbi)}</div>
-    </div>
-    <div class="kpi azul">
-      <div class="kpi-label">Competencia</div>
-      <div class="kpi-value">${competencia.length}</div>
-      <div class="kpi-sub">${new Set(competencia.map((i) => i.brand)).size} marcas relevadas</div>
-    </div>
-    <div class="kpi amarillo">
-      <div class="kpi-label">Supers con Sarubbi</div>
-      <div class="kpi-value">${supers.size}/4</div>
-      <div class="kpi-sub">${[...supers].map((s) => SUPER_LABEL[s] || s).join(', ') || 'sin datos'}</div>
-    </div>
-    <div class="kpi verde">
-      <div class="kpi-label">Ofertas activas</div>
-      <div class="kpi-value">${offers.length}</div>
-      <div class="kpi-sub">${state.items.length ? Math.round(offers.length / state.items.length * 100) : 0}% del catalogo</div>
-    </div>
-    <div class="kpi azul">
-      <div class="kpi-label">PVP cruzados</div>
-      <div class="kpi-value">${withPvp.length}</div>
-      <div class="kpi-sub">GAP prom ${avgGap == null ? '-' : fmtPct(avgGap)}</div>
-    </div>
+function refreshUnavailableMessage(data = {}) {
+  const raw = String(data.message || data.error || '');
+  if (/GITHUB_TOKEN|GITHUB_REPO|workflow scrape\.yml|GitHub returned 404/i.test(raw)) {
+    return 'Relevamiento remoto no configurado en este despliegue.';
+  }
+  return raw || 'Relevamiento remoto no disponible.';
+}
+
+function isRefreshUnavailable(data) {
+  return data?.status === 'unavailable' || data?.configured === false || data?.skipped === true;
+}
+
+function renderRefreshProgress(statusData, elapsedSeconds) {
+  if (isRefreshUnavailable(statusData)) {
+    $('#lastUpdate').innerHTML = `
+      <b>Ultima actualizacion</b><br>
+      <span class="refresh-live-detail">${escape(refreshUnavailableMessage(statusData))}</span>
+    `;
+    return;
+  }
+  const p = statusData?.progress || {};
+  const isPdf = p.phase === 'pdf';
+  const isDemo = p.phase === 'demo';
+  const title = isPdf ? 'Generando informe' : (isDemo ? 'Actualizando demo' : 'Actualizando precios');
+  const store = p.store ? (p.storeLabel || labelStore(p.store)) : 'Fuentes';
+  const place = isPdf ? 'Informe PDF' : (isDemo ? 'Dataset Sarubbi' : `${store}${p.local ? ` / ${p.local}` : ''}`);
+  const progress = p.taskIndex && p.taskTotal
+    ? `${p.taskIndex}/${p.taskTotal}`
+    : (p.termIndex && p.termTotal ? `${p.termIndex}/${p.termTotal}` : '');
+  const sources = p.totalStores ? `${p.completedStores || 0}/${p.totalStores} fuentes` : '';
+  const found = p.found != null ? `${p.found} SKUs` : '';
+  const term = p.term ? `busqueda: ${p.term}` : (p.message || '');
+  const detail = [term, progress, sources, found, `${elapsedSeconds}s`].filter(Boolean).join('  -  ');
+  $('#lastUpdate').innerHTML = `
+    <b>${escape(title)}</b><br>
+    <span class="refresh-live-line"><span class="live-dot"></span>${escape(place)}</span>
+    <span class="refresh-live-detail">${escape(detail || 'Preparando fuentes')}</span>
   `;
 }
 
-// ===== Catálogo =====
-function buildChips(items, key, container, stateSet, labels = null) {
-  const values = [...new Set(items.map((i) => i[key]))].filter(Boolean).sort();
-  container.innerHTML = values.map((v) => {
-    const label = labels ? (labels[v] ?? v) : v;
+function renderKPIs() {
+  const sarubbi = state.items.filter((i) => i.group === 'sarubbi');
+  const comp = state.items.filter((i) => i.group === 'competencia');
+  const stores = new Set(state.items.map((i) => i.super));
+  const sarubbiAvg = avg(sarubbi.map((i) => i.price));
+  const compAvg = avg(comp.map((i) => i.price));
+  const liquidEntries = state.items.map((item) => {
+    const profile = liquidProfile(item);
+    return profile ? { item, profile } : null;
+  }).filter(Boolean);
+  const sarubbiPpl = avg(liquidEntries.filter((entry) => entry.item.group === 'sarubbi').map((entry) => entry.profile.pricePerLiter));
+  const compPpl = avg(liquidEntries.filter((entry) => entry.item.group === 'competencia').map((entry) => entry.profile.pricePerLiter));
+  const gap = sarubbiPpl != null && compPpl != null && compPpl ? Math.round((sarubbiPpl / compPpl - 1) * 100) : null;
+  const pvs = state.items.filter((i) => i.suggestedPrice != null);
+  const pvsAbove = pvs.filter((i) => i.suggestedStatus === 'above').length;
+  const pvsOk = pvs.filter((i) => i.suggestedStatus === 'ok').length;
+  const pvsBelow = pvs.filter((i) => i.suggestedStatus === 'below').length;
+
+  $('#kpis').innerHTML = `
+    <div class="kpi"><div class="kpi-label">${escape(APP_COPY.targetSkuLabel)}</div><div class="kpi-value">${sarubbi.length}</div><div class="kpi-sub">prom ${fmtPrice(sarubbiAvg)}</div></div>
+    <div class="kpi blue"><div class="kpi-label">SKUs competencia</div><div class="kpi-value">${comp.length}</div><div class="kpi-sub">prom ${fmtPrice(compAvg)}</div></div>
+    <div class="kpi green"><div class="kpi-label">Cadenas con datos</div><div class="kpi-value">${stores.size}</div><div class="kpi-sub">${[...stores].map(labelStore).join(', ') || '-'}</div></div>
+    <div class="kpi amber"><div class="kpi-label">Brecha prom. normalizada</div><div class="kpi-value">${gap == null ? '-' : `${gap > 0 ? '+' : ''}${gap}%`}</div><div class="kpi-sub">${fmtPerLiter(sarubbiPpl)} vs ${fmtPerLiter(compPpl)}</div></div>
+    <div class="kpi pvs"><div class="kpi-label">Control ${escape(APP_COPY.suggestedShortLabel)}</div><div class="kpi-value">${pvs.length}</div><div class="kpi-sub">${pvsAbove} sobre  -  ${pvsOk} ok  -  ${pvsBelow} bajo</div></div>
+  `;
+}
+
+function buildChips(items, key, container, stateSet, labels = {}) {
+  const vals = key === 'super'
+    ? [
+      ...STORE_FILTER_ORDER,
+      ...values(items, key).filter((value) => !STORE_FILTER_ORDER.includes(value)),
+    ]
+    : values(items, key);
+  container.innerHTML = vals.map((v) => {
     const active = stateSet.has(v);
-    return `<span class="chip ${active ? 'active' : ''}" data-${key}="${escape(v)}">${escape(label)}</span>`;
+    const classes = ['chip'];
+    if (key === 'group') classes.push('owner-chip');
+    if (key === 'super') classes.push('store-chip');
+    if (key === 'super' && STORE_LOGO[v]?.src) classes.push('logo-chip');
+    if (key === 'super' && STORE_LOGO[v]?.bg) classes.push('filled-logo-chip');
+    if (active) classes.push('active');
+    const style = key === 'super' && STORE_LOGO[v]?.bg ? ` style="--chip-logo-bg:${escape(STORE_LOGO[v].bg)}"` : '';
+    return `<button class="${classes.join(' ')}"${style} data-value="${escape(v)}">${chipContent(key, v, labels)}</button>`;
   }).join('');
   container.querySelectorAll('.chip').forEach((el) => {
     el.addEventListener('click', () => {
-      const v = el.dataset[key];
+      const v = el.dataset.value;
       if (stateSet.has(v)) stateSet.delete(v); else stateSet.add(v);
-      el.classList.toggle('active');
       renderCatalog();
     });
   });
 }
 
-function filterItems(items, q, brands, supers, groups, categories) {
-  const qn = stripAccents(q.toLowerCase().trim());
+function filterItems(items, cfg) {
+  const qn = stripAccents(cfg.q || '').toLowerCase().trim();
   return items.filter((i) => {
-    if (qn && !stripAccents(i.name.toLowerCase()).includes(qn)) return false;
-    if (brands.size && !brands.has(i.brand)) return false;
-    if (supers.size && !supers.has(i.super)) return false;
-    if (groups.size && !groups.has(i.group)) return false;
-    if (categories && categories.size && !categories.has(i.category)) return false;
+    const haystack = `${displayProductName(i)} ${labelBrand(i)} ${labelStore(i.super)} ${i.branch || ''} ${labelCategory(i.category)} ${i.suggestedProduct || ''} ${i.suggestedStatus || ''}`.toLowerCase();
+    if (qn && !stripAccents(haystack).includes(qn)) return false;
+    if (cfg.brands?.size && !cfg.brands.has(i.brand)) return false;
+    if (cfg.supers?.size && !cfg.supers.has(i.super)) return false;
+    if (cfg.owners?.size && !cfg.owners.has(i.group)) return false;
+    if (cfg.categories?.size && !cfg.categories.has(i.category)) return false;
     return true;
   });
 }
 
 function sortItems(items, sort) {
   const dir = sort.asc ? 1 : -1;
-  const valueFor = (item) => {
-    if (sort.key === 'suggestedPrice') return suggestedFor(item)?.price ?? null;
-    if (sort.key === 'gapPct') return gapFor(item);
-    return item[sort.key];
-  };
   return items.slice().sort((a, b) => {
-    const va = valueFor(a), vb = valueFor(b);
+    const va = sort.key === 'brand' ? labelBrand(a) : sort.key === 'owner' ? labelOwner(a.group) : sort.key === 'category' ? labelCategory(a.category) : a[sort.key];
+    const vb = sort.key === 'brand' ? labelBrand(b) : sort.key === 'owner' ? labelOwner(b.group) : sort.key === 'category' ? labelCategory(b.category) : b[sort.key];
     if (va == null && vb == null) return 0;
     if (va == null) return 1;
     if (vb == null) return -1;
@@ -572,28 +1335,31 @@ function sortItems(items, sort) {
 }
 
 function renderCatalog() {
-  buildChips(state.items, 'group', $('#groupChips'), state.catalog.groups, GROUP_LABEL);
-  buildChips(state.items, 'brand', $('#brandChips'), state.catalog.brands);
-  buildChips(state.items, 'super', $('#superChips'), state.catalog.supers, SUPER_LABEL);
-  buildChips(state.items, 'category', $('#categoryChips'), state.catalog.categories, state.categoryLabels || {});
-  const items = sortItems(filterItems(state.items, state.catalog.q, state.catalog.brands, state.catalog.supers, state.catalog.groups, state.catalog.categories), state.catalog.sort);
+  buildChips(state.items, 'group', $('#ownerChips'), state.catalog.owners, OWNER_LABEL);
+  buildChips(state.items, 'category', $('#categoryChips'), state.catalog.categories, CATEGORY_LABEL);
+  buildChips(state.items, 'brand', $('#brandChips'), state.catalog.brands, Object.fromEntries(state.items.map((i) => [i.brand, labelBrand(i)])));
+  buildChips(state.items, 'super', $('#superChips'), state.catalog.supers, STORE_LABEL);
+
+  const items = sortItems(filterItems(state.items, state.catalog), state.catalog.sort);
   const tbody = $('#catalogRows');
   const empty = $('#catalogEmpty');
-  if (!items.length) { tbody.innerHTML = ''; empty.style.display = 'block'; }
-  else {
+  if (!items.length) {
+    tbody.innerHTML = '';
+    empty.style.display = 'block';
+  } else {
     empty.style.display = 'none';
     tbody.innerHTML = items.map((i) => {
       const isOffer = i.listPrice && i.price && i.listPrice > i.price;
       const discountPct = isOffer ? Math.round((1 - i.price / i.listPrice) * 100) : 0;
-      const key = `${i.super}:${i.sku}`;
       return `<tr>
-        <td><a href="#" class="product-link" data-key="${escape(key)}">${escape(i.name)}</a></td>
-        <td class="brand">${escape(i.brand)}</td>
-        <td><span class="pill ${i.super}">${SUPER_LABEL[i.super] || i.super}</span></td>
-        <td class="price">${fmtPrice(i.price)}${isOffer ? `<br><span class="price list">${fmtPrice(i.listPrice)}</span>` : ''}</td>
-        <td class="price">${pvpCell(i)}</td>
-        <td class="price">${gapCell(i)}</td>
-        <td>${isOffer ? `<span class="discount-badge">−${discountPct}%</span>` : ''}</td>
+        <td>${productLinkCell(i)}</td>
+        <td class="brand brand-cell">${brandLogo(i)}</td>
+        <td>${ownerBadge(i.group)}</td>
+        <td>${escape(labelCategory(i.category))}</td>
+        <td>${storeLogo(i.super)}${i.branchCount > 1 ? `<div class="store-sub">${i.branchCount} locales</div>` : (i.branch ? `<div class="store-sub">${escape(i.branch)}</div>` : '')}</td>
+        <td class="price">${fmtPrice(i.price)}${isOffer ? `<br><span class="price list">${fmtPrice(i.listPrice)}</span>` : ''}${i.priceVaries ? `<br><span class="price-vary" title="Precio comun entre locales; algunos difieren">* ${i.priceBreakdown.length} precios</span>` : ''}</td>
+        <td class="price">${suggestedCell(i)}</td>
+        <td>${isOffer ? `<span class="discount-badge">-${discountPct}%</span>` : ''}</td>
       </tr>`;
     }).join('');
     bindProductLinks(tbody);
@@ -605,91 +1371,500 @@ function renderCatalog() {
   });
 }
 
-// ===== Comparador =====
 function renderCompare() {
-  const filteredClusters = state.clusters.filter((g) => {
-    if (g.items.length < 2) return false;
-    if (state.compare.brand && g.brand !== state.compare.brand) return false;
-    if (state.compare.q) {
-      const qn = stripAccents(state.compare.q.toLowerCase());
-      if (!stripAccents(g.label.toLowerCase()).includes(qn)) return false;
-    }
-    return true;
-  }).sort((a, b) => {
-    const ap = a.items.map((x) => x.price).filter((p) => p != null);
-    const bp = b.items.map((x) => x.price).filter((p) => p != null);
-    const ad = ap.length ? Math.max(...ap) - Math.min(...ap) : 0;
-    const bd = bp.length ? Math.max(...bp) - Math.min(...bp) : 0;
-    return bd - ad;
+  const brands = values(state.items, 'brand').map((brand) => {
+    const sample = state.items.find((i) => i.brand === brand) || { brand };
+    return { brand, label: labelBrand(sample) };
   });
-
-  const brands = [...new Set(state.items.map((i) => i.brand))].sort();
-  if (!$('#compareBrand').options.length) {
+  if (!$('#compareBrand').dataset.ready) {
     $('#compareBrand').innerHTML = '<option value="">Todas las marcas</option>' +
-      brands.map((b) => `<option value="${escape(b)}">${escape(b.replace(/\b\w/g, (c) => c.toUpperCase()))}</option>`).join('');
+      brands.map((b) => `<option value="${escape(b.brand)}">${escape(b.label)}</option>`).join('');
+    $('#compareBrand').dataset.ready = '1';
+  }
+  if (!$('#compareCategory').dataset.ready) {
+    $('#compareCategory').innerHTML = '<option value="">Todas las categorias</option>' +
+      values(state.items, 'category').map((c) => `<option value="${escape(c)}">${escape(labelCategory(c))}</option>`).join('');
+    $('#compareCategory').dataset.ready = '1';
   }
 
-  const html = filteredClusters.map((g) => {
+  const qn = stripAccents(state.compare.q).toLowerCase().trim();
+  const searchable = state.clusters.filter((g) => {
+    if (g.items.length < 2) return false;
+    if (qn && !textMatchesQuery(`${g.label} ${g.brandLabel} ${labelCategory(g.category)} ${g.profile?.formatLabel || ''}`, qn)) return false;
+    return true;
+  });
+  const storeRows = searchable.flatMap((group) => values(group.items, 'super').map((store) => ({ store })));
+  const brandOptions = uniqueOptions(searchable, (g) => g.brand, (_, g) => g.brandLabel);
+  const categoryOptions = uniqueOptions(searchable, (g) => g.category, (value) => labelCategory(value));
+  const formatOptions = uniqueOptions(searchable, (g) => g.profile?.formatLabel || 'Unidad', (value) => value);
+  const storeOptions = uniqueOptions(storeRows, (row) => row.store, (value) => labelStore(value));
+  state.compare.brand = validSelectValue(brandOptions, state.compare.brand);
+  state.compare.category = validSelectValue(categoryOptions, state.compare.category);
+  state.compare.format = validSelectValue(formatOptions, state.compare.format);
+  state.compare.store = validSelectValue(storeOptions, state.compare.store);
+  if ($('#compareBrand')) $('#compareBrand').value = state.compare.brand;
+  if ($('#compareCategory')) $('#compareCategory').value = state.compare.category;
+
+  const filtered = searchable.filter((g) => {
+    if (state.compare.brand && g.brand !== state.compare.brand) return false;
+    if (state.compare.category && g.category !== state.compare.category) return false;
+    if (state.compare.format && (g.profile?.formatLabel || 'Unidad') !== state.compare.format) return false;
+    if (state.compare.store && !g.items.some((item) => item.super === state.compare.store)) return false;
+    return true;
+  }).sort((a, b) => spreadPct(b) - spreadPct(a));
+  const compareHeadHtml = `<thead><tr>
+    <th>Producto</th>
+    <th><span class="th-title">Marca</span>${filterSelectHtml('compareBrandFilter', 'Todas', brandOptions, state.compare.brand)}</th>
+    <th><span class="th-title">Rubro</span>${filterSelectHtml('compareCategoryFilter', 'Todos', categoryOptions, state.compare.category)}</th>
+    <th><span class="th-title">Formato</span>${filterSelectHtml('compareFormatFilter', 'Todos', formatOptions, state.compare.format)}</th>
+    <th class="price">Reg.</th><th>Mejor cadena</th><th class="price">Min.</th><th class="price">Max.</th><th class="price">Brecha</th>
+    <th><span class="th-title">Cadenas</span>${filterSelectHtml('compareStoreFilter', 'Todas', storeOptions, state.compare.store)}</th>
+  </tr></thead>`;
+
+  if (!filtered.length) {
+    $('#compareList').innerHTML = `<table class="compact-table sheet-table compare-table">${compareHeadHtml}<tbody></tbody></table><div class="empty">No hay productos comparables para esos filtros.</div>`;
+    $('#compareCount').textContent = 0;
+    return;
+  }
+
+  const rowsHtml = filtered.map((g) => {
     const prices = g.items.map((x) => x.price).filter((p) => p != null);
     const min = prices.length ? Math.min(...prices) : null;
     const max = prices.length ? Math.max(...prices) : null;
-    const savings = (min != null && max != null && max > min) ? max - min : 0;
-    const savingsPct = savings && max ? Math.round((1 - min / max) * 100) : 0;
-    const cells = SUPERS.map((s) => {
-      const it = g.items.find((x) => x.super === s);
-      if (!it) return `<div class="compare-cell empty"><div class="compare-cell-label">${SUPER_LABEL[s]}</div><div class="compare-cell-price">—</div></div>`;
+    const savings = min != null && max != null && max > min ? max - min : 0;
+    const priced = g.items.filter((item) => item.price != null).sort((a, b) => a.price - b.price);
+    const best = priced[0] || g.items[0];
+    const stores = values(g.items, 'super').map(labelStore);
+    const storeText = stores.slice(0, 5).join(', ') + (stores.length > 5 ? ` +${stores.length - 5}` : '');
+    const gapPct = min != null && max != null && max ? (1 - min / max) * 100 : null;
+    const bestUrl = productSourceUrl(best);
+    const minCell = bestUrl
+      ? `<a href="${escape(bestUrl)}" target="_blank" rel="noopener">${fmtPrice(min)}</a>`
+      : fmtPrice(min);
+    return `<tr>
+      <td>${productTextCell(best, `<span class="table-sub">${g.items.length} registros / ${stores.length} cadenas</span>`, g.label)}</td>
+      <td>${escape(g.brandLabel)}</td>
+      <td>${escape(labelCategory(g.category))}</td>
+      <td>${escape(g.profile?.formatLabel || formatProfile(best))}</td>
+      <td class="price">${g.items.length}</td>
+      <td>${escape(labelStore(best?.super))}</td>
+      <td class="price min">${minCell}</td>
+      <td class="price">${fmtPrice(max)}</td>
+      <td class="price">${savings > 0 ? `${fmtPrice(savings)}${gapPct != null ? `<span class="table-sub">${gapPct.toFixed(0)}%</span>` : ''}` : '-'}</td>
+      <td><span class="sheet-muted">${escape(storeText)}</span></td>
+    </tr>`;
+  }).join('');
+  $('#compareList').innerHTML = `<table class="compact-table sheet-table compare-table">
+    ${compareHeadHtml}
+    <tbody>${rowsHtml}</tbody>
+  </table>`;
+  bindProductLinks($('#compareList'));
+  $('#compareCount').textContent = filtered.length;
+  return;
+
+  $('#compareList').innerHTML = filtered.map((g) => {
+    const prices = g.items.map((x) => x.price).filter((p) => p != null);
+    const min = prices.length ? Math.min(...prices) : null;
+    const max = prices.length ? Math.max(...prices) : null;
+    const savings = min != null && max != null && max > min ? max - min : 0;
+    const stores = values(g.items, 'super');
+    const cells = stores.map((store) => {
+      const it = g.items.filter((x) => x.super === store).sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity))[0];
       const isBest = it.price === min;
-      const diff = it.price != null && min != null && it.price > min ? `+$${(it.price - min).toLocaleString('es-UY')}` : '';
+      const diff = it.price != null && min != null && it.price > min ? `+${fmtPrice(it.price - min)}` : '';
       return `<div class="compare-cell ${isBest ? 'best' : ''}">
-        <div class="compare-cell-label">${SUPER_LABEL[s]}</div>
-        <div class="compare-cell-price">${it.url ? `<a href="${escape(it.url)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${fmtPrice(it.price)}</a>` : fmtPrice(it.price)}</div>
-        ${isBest ? '<div class="compare-cell-diff" style="color:var(--offer);font-weight:700">★ Más barato</div>' : (diff ? `<div class="compare-cell-diff">${diff}</div>` : '')}
+        <div class="compare-cell-label">${storeLogo(store)}</div>
+        <div class="compare-cell-price">${productSourceUrl(it) ? `<a href="${escape(productSourceUrl(it))}" target="_blank" rel="noopener">${fmtPrice(it.price)}</a>` : fmtPrice(it.price)}</div>
+        <div class="compare-cell-diff">${isBest ? 'Menor precio' : diff}</div>
       </div>`;
     }).join('');
     return `<div class="compare-row">
       <div class="compare-prod">
         <div>
           <div class="compare-prod-name">${escape(g.label)}</div>
-          <div class="compare-prod-brand">${escape(g.brand)} · ${g.items.length} supers</div>
+          <div class="compare-prod-brand">${escape(g.brandLabel)}  -  ${escape(labelCategory(g.category))}  -  ${g.items.length} registros</div>
         </div>
-        ${savings > 0 ? `<div style="text-align:right">
-          <div style="font-size:11px;color:var(--texto-muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em">Ahorro máx</div>
-          <div style="font-size:18px;font-weight:800;color:var(--offer)">$ ${savings.toLocaleString('es-UY')}</div>
-          <div style="font-size:11px;color:var(--offer)">−${savingsPct}%</div>
-        </div>` : ''}
+        ${savings > 0 ? `<div class="compare-saving"><span>${fmtPrice(savings)}</span><small>diferencia</small></div>` : ''}
       </div>
       <div class="compare-prices">${cells}</div>
     </div>`;
-  }).join('');
-  $('#compareList').innerHTML = html || '<div class="empty">No hay productos comparables.</div>';
-  $('#compareCount').textContent = filteredClusters.length;
+  }).join('') || '<div class="empty">No hay productos comparables para esos filtros.</div>';
+  $('#compareCount').textContent = filtered.length;
 }
 
-// ===== Ofertas =====
+function spreadPct(group) {
+  const prices = group.items.map((x) => x.price).filter((p) => p != null);
+  if (prices.length < 2) return 0;
+  const min = Math.min(...prices);
+  const max = Math.max(...prices);
+  return max ? (1 - min / max) * 100 : 0;
+}
+
+function modeMatchesRubro(row, rubro = state.mode.rubro) {
+  if (!rubro || rubro === 'all') return true;
+  return row.category === rubro;
+}
+
+function modeSearchMatches(row, qn) {
+  if (!qn) return true;
+  const haystack = `${row.label} ${row.brandLabel} ${labelOwner(row.group)} ${labelCategory(row.category)} ${row.segment.label} ${row.sizeLabel} ${row.modeStores.join(' ')}`.toLowerCase();
+  return stripAccents(haystack).includes(qn);
+}
+
+function modeBaseFilter(row, qn, { ignoreBrand = false, ignoreOwner = false, ignoreRubro = false, ignoreSegment = false, ignoreStore = false } = {}) {
+  if (!ignoreBrand && state.mode.brand && row.brand !== state.mode.brand) return false;
+  if (!ignoreOwner && state.mode.owner && row.group !== state.mode.owner) return false;
+  if (state.mode.category && row.category !== state.mode.category) return false;
+  if (!ignoreRubro && !modeMatchesRubro(row)) return false;
+  if (!ignoreSegment && state.mode.segment && row.segment.key !== state.mode.segment) return false;
+  if (!ignoreStore && state.mode.store && !row.modeStores.includes(state.mode.store)) return false;
+  return modeSearchMatches(row, qn);
+}
+
+function renderModeRubroChips(allRows, qn) {
+  const scoped = allRows.filter((row) => modeBaseFilter(row, qn, { ignoreRubro: true, ignoreSegment: true }));
+  $('#modeRubroChips').innerHTML = MODE_RUBRO_FILTERS.map((filter) => {
+    const count = scoped.filter((row) => modeMatchesRubro(row, filter.key)).length;
+    const active = (state.mode.rubro || 'all') === filter.key ? ' active' : '';
+    return `<button type="button" class="mode-chip${active}" data-rubro="${escape(filter.key)}">${escape(filter.label)} <span>${count}</span></button>`;
+  }).join('');
+}
+
+function modeSegmentOptions(rows) {
+  const groups = new Map();
+  for (const row of rows) {
+    const current = groups.get(row.segment.key) || { key: row.segment.key, label: row.segment.label, category: row.category, count: 0 };
+    current.count++;
+    groups.set(row.segment.key, current);
+  }
+  const categoryOrder = Object.keys(CATEGORY_LABEL);
+  return [...groups.values()].sort((a, b) =>
+    (categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category)) ||
+    ((Number(String(a.key).match(/_presentacion_(\d+)/)?.[1]) || 0) - (Number(String(b.key).match(/_presentacion_(\d+)/)?.[1]) || 0)) ||
+    b.count - a.count ||
+    a.label.localeCompare(b.label, 'es'));
+}
+
+function renderModeSegmentChips(options) {
+  if (state.mode.segment && !options.some((option) => option.key === state.mode.segment)) state.mode.segment = '';
+  const allActive = state.mode.segment ? '' : ' active';
+  $('#modeSegmentChips').innerHTML = `<button type="button" class="mode-chip${allActive}" data-segment="">Todos <span>${options.reduce((sum, option) => sum + option.count, 0)}</span></button>` +
+    options.map((option) => {
+      const active = state.mode.segment === option.key ? ' active' : '';
+      return `<button type="button" class="mode-chip${active}" data-segment="${escape(option.key)}">${escape(option.label)} <span>${option.count}</span></button>`;
+    }).join('');
+}
+
+function modeBenchmark(aggregates, segmentKey) {
+  const preferred = benchmarkBrandForSegment(segmentKey);
+  const benchmark = preferred ? aggregates.find((row) => row.brand === preferred) : null;
+  if (benchmark?.avgPpl) {
+    return { value: benchmark.avgPpl, label: benchmark.label, brand: benchmark.brand, type: 'brand' };
+  }
+  const competitors = aggregates.filter((row) => row.group === 'competencia');
+  const compAvg = weightedAvg(competitors, (row) => row.avgPpl, (row) => row.obs);
+  if (compAvg) return { value: compAvg, label: 'Competencia prom.', brand: '', type: 'average' };
+  return null;
+}
+
+function modeTargetRange(focus, chart) {
+  const sarubbiRows = (chart.rows || []).filter((row) => row.group === 'sarubbi');
+  const mids = sarubbiRows
+    .map((row) => strategyTargetMid(focus.segment?.key || row.rows?.[0]?.segment?.key, row.brand))
+    .filter(Number.isFinite);
+  if (mids.length) {
+    const mid = weightedAvg(mids.map((value) => ({ value })), (row) => row.value);
+    return [mid, mid];
+  }
+  return strategyTargetRange(focus.segment?.key || focus.rows?.[0]?.segment?.key, '');
+}
+
+function modeBrandAggregates(rows) {
+  const groups = new Map();
+  for (const row of rows) {
+    if (row.modePricePerLiter == null || !Number.isFinite(row.modePricePerLiter)) continue;
+    const key = `${row.brand}|${row.group}`;
+    const group = groups.get(key) || {
+      brand: row.brand,
+      label: row.brandLabel,
+      group: row.group,
+      rows: [],
+      obs: 0,
+      sample: row.sample,
+    };
+    group.rows.push(row);
+    group.obs += row.modeCount;
+    groups.set(key, group);
+  }
+  return [...groups.values()].map((group) => ({
+    ...group,
+    skuCount: group.rows.length,
+    avgPpl: weightedAvg(group.rows, (row) => row.modePricePerLiter, (row) => row.modeCount),
+  })).filter((group) => group.avgPpl != null);
+}
+
+function modeFocusRows(baseRows) {
+  const comparable = baseRows.filter((row) => row.modePricePerLiter != null && row.bucket);
+  if (!comparable.length) return { rows: [], segment: null };
+  const groups = new Map();
+  for (const row of comparable) {
+    const group = groups.get(row.segment.key) || { key: row.segment.key, label: row.segment.label, category: row.category, rows: [] };
+    group.rows.push(row);
+    groups.set(row.segment.key, group);
+  }
+  const candidates = [...groups.values()].filter((group) =>
+    group.rows.some((row) => row.group === 'sarubbi') && group.rows.some((row) => row.group === 'competencia'));
+  if (!candidates.length) return { rows: comparable, segment: null };
+  const selected = state.mode.segment ? candidates.find((group) => group.key === state.mode.segment) : null;
+  if (selected) return { rows: selected.rows, segment: selected };
+  const chosen = candidates.sort((a, b) => b.rows.length - a.rows.length)[0];
+  return { rows: chosen.rows, segment: chosen };
+}
+
+function modeBrandIndexData(focus) {
+  const aggregates = modeBrandAggregates(focus.rows);
+  const benchmark = modeBenchmark(aggregates, focus.segment?.key || focus.rows[0]?.segment?.key);
+  if (!benchmark?.value) return { rows: [], benchmark: null, maxIndex: 120, sarubbiIndex: null };
+  const segmentKey = focus.segment?.key || focus.rows[0]?.segment?.key;
+  const rows = aggregates.map((row) => ({
+    ...row,
+    index: row.avgPpl / benchmark.value * 100,
+    isBenchmark: benchmark.brand && row.brand === benchmark.brand,
+    targetRange: strategyTargetRange(segmentKey, row.brand),
+  })).sort((a, b) => (b.index - a.index) || a.label.localeCompare(b.label, 'es')).slice(0, 12);
+  const targets = rows.filter((row) => row.group === 'sarubbi').flatMap((row) => row.targetRange || []);
+  const maxIndex = Math.max(120, MODE_TARGET_INDEX + 20, ...rows.map((row) => row.index), ...targets) + 8;
+  const sarubbiIndex = weightedAvg(rows.filter((row) => row.group === 'sarubbi'), (row) => row.index, (row) => row.obs);
+  return { rows, benchmark, maxIndex, sarubbiIndex: sarubbiIndex };
+}
+
+function modeLineData(focus) {
+  const groups = new Map();
+  for (const row of focus.rows) {
+    if (!row.bucket || row.modePricePerLiter == null || !Number.isFinite(row.modePricePerLiter)) continue;
+    const group = groups.get(row.bucket.value) || { bucket: row.bucket, rows: [] };
+    group.rows.push(row);
+    groups.set(row.bucket.value, group);
+  }
+  return [...groups.values()].sort((a, b) => a.bucket.value - b.bucket.value).map((group) => {
+    const sarubbi = group.rows.filter((row) => row.group === 'sarubbi');
+    if (!sarubbi.length) return null;
+    const aggregates = modeBrandAggregates(group.rows);
+    const benchmark = modeBenchmark(aggregates, focus.segment?.key || group.rows[0]?.segment?.key);
+    if (!benchmark?.value) return null;
+    const sarubbiPpl = weightedAvg(sarubbi, (row) => row.modePricePerLiter, (row) => row.modeCount);
+    return {
+      label: group.bucket.label,
+      value: group.bucket.value,
+      index: sarubbiPpl / benchmark.value * 100,
+      sarubbiPpl,
+      benchmark,
+      count: sarubbi.length,
+    };
+  }).filter(Boolean);
+}
+
+function modeIndexLookup(allRows) {
+  const groups = new Map();
+  for (const row of allRows) {
+    if (!row.bucket || row.modePricePerLiter == null || !Number.isFinite(row.modePricePerLiter)) continue;
+    const key = `${row.category}|${row.segment.key}|${row.bucket.value}`;
+    const group = groups.get(key) || [];
+    group.push(row);
+    groups.set(key, group);
+  }
+  const lookup = new Map();
+  for (const rows of groups.values()) {
+    const aggregates = modeBrandAggregates(rows);
+    const benchmark = modeBenchmark(aggregates, rows[0]?.segment?.key);
+    if (!benchmark?.value) continue;
+    for (const row of rows) {
+      lookup.set(row, {
+        index: row.modePricePerLiter / benchmark.value * 100,
+        benchmarkLabel: benchmark.label,
+      });
+    }
+  }
+  return lookup;
+}
+
+function renderModeSummary(rows, focus, chart, targetRange) {
+  const sarubbi = rows.filter((row) => row.group === 'sarubbi');
+  const comp = rows.filter((row) => row.group === 'competencia');
+  const status = strategyStatus(chart.sarubbiIndex, targetRange);
+  const targetClass = chart.sarubbiIndex == null ? '' : status.key === 'ok' ? ' ok' : status.key === 'above' ? ' above' : ' below';
+  $('#modeSummary').innerHTML = `
+    <div class="mode-summary-card"><span>SKUs filtrados</span><b>${rows.length}</b><small>${sarubbi.length} Sarubbi / ${comp.length} competencia</small></div>
+    <div class="mode-summary-card"><span>Foco grafico</span><b>${escape(focus.segment?.label || 'Sin segmento unico')}</b><small>${focus.rows.length || 0} SKUs con normalizado</small></div>
+    <div class="mode-summary-card"><span>Referencia 100</span><b>${escape(chart.benchmark?.label || 'Sin base')}</b><small>${chart.benchmark ? fmtPerLiter(chart.benchmark.value) : 'Falta competencia equivalente'}</small></div>
+    <div class="mode-summary-card${targetClass}"><span>Objetivo marketing</span><b>${chart.sarubbiIndex == null ? '-' : `${chart.sarubbiIndex.toFixed(0)}%`}</b><small>${chart.sarubbiIndex == null ? `Meta ${strategyTargetLabel(targetRange)}` : `${status.label} / meta ${strategyTargetLabel(targetRange)}`}</small></div>
+  `;
+}
+
+function renderModeBarChart(chart, focus, targetRange) {
+  if (!chart.rows.length) {
+    return '<div class="mode-chart"><h3>Indice por marca</h3><div class="empty compact">No hay competencia equivalente para construir el indice.</div></div>';
+  }
+  const targetIndex = (targetRange[0] + targetRange[1]) / 2;
+  const targetLeft = Math.min(100, targetIndex / chart.maxIndex * 100);
+  const refLeft = Math.min(100, 100 / chart.maxIndex * 100);
+  return `<div class="mode-chart">
+    <div class="mode-chart-head">
+      <div><h3>Indice por marca</h3><p>${escape(focus.segment?.label || 'Segmento filtrado')} / ${escape(chart.benchmark.label)} = 100</p></div>
+      <span class="mode-target-pill">Objetivo ${strategyTargetLabel(targetRange)}</span>
+    </div>
+    <div class="mode-bars">
+      ${chart.rows.map((row) => {
+        const width = Math.max(2, Math.min(100, row.index / chart.maxIndex * 100));
+        const cls = row.group === 'sarubbi' ? 'sarubbi' : row.isBenchmark ? 'benchmark' : 'comp';
+        return `<div class="mode-bar-row">
+          <div class="mode-bar-label"><strong>${escape(row.label)}</strong><span>${row.skuCount} SKUs / ${escape(labelOwner(row.group))}</span></div>
+          <div class="mode-bar-track" style="--target-left:${targetLeft.toFixed(2)}%;--ref-left:${refLeft.toFixed(2)}%">
+            <i class="mode-ref-line"></i><i class="mode-target-line"></i>
+            <div class="mode-bar-fill ${cls}" style="width:${width.toFixed(2)}%"></div>
+          </div>
+          <div class="mode-bar-value ${cls}">${row.index.toFixed(0)}%</div>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+function renderModeLineChart(points, focus, targetRange) {
+  if (!points.length) {
+    return '<div class="mode-chart"><h3>Sarubbi por presentacion</h3><div class="empty compact">Faltan presentacions comparables con Sarubbi y competencia.</div></div>';
+  }
+  const W = 640, H = 220, P = 34;
+  const targetIndex = (targetRange[0] + targetRange[1]) / 2;
+  const maxY = Math.max(120, targetIndex + 20, ...points.map((pt) => pt.index)) + 8;
+  const xFor = (i) => P + (points.length === 1 ? (W - 2 * P) / 2 : i / (points.length - 1) * (W - 2 * P));
+  const yFor = (value) => H - P - (value / maxY) * (H - 2 * P);
+  const path = points.map((pt, i) => `${i ? 'L' : 'M'} ${xFor(i).toFixed(1)} ${yFor(pt.index).toFixed(1)}`).join(' ');
+  const targetY = yFor(targetIndex);
+  return `<div class="mode-chart">
+    <div class="mode-chart-head">
+      <div><h3>Sarubbi por presentacion</h3><p>${escape(focus.segment?.label || 'Segmento filtrado')} contra referencia equivalente</p></div>
+    </div>
+    <svg class="mode-line-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Indice Sarubbi por presentacion">
+      <line x1="${P}" y1="${targetY.toFixed(1)}" x2="${W - P}" y2="${targetY.toFixed(1)}" class="mode-line-target" />
+      <text x="${W - P}" y="${(targetY - 6).toFixed(1)}" text-anchor="end" class="mode-line-label">Obj ${strategyTargetLabel(targetRange)}</text>
+      <path d="${path}" class="mode-line-path" />
+      ${points.map((pt, i) => `<g>
+        <circle cx="${xFor(i).toFixed(1)}" cy="${yFor(pt.index).toFixed(1)}" r="4.5" class="mode-line-dot" />
+        <text x="${xFor(i).toFixed(1)}" y="${(H - 11).toFixed(1)}" text-anchor="middle" class="mode-line-x">${escape(pt.label)}</text>
+        <text x="${xFor(i).toFixed(1)}" y="${(yFor(pt.index) - 9).toFixed(1)}" text-anchor="middle" class="mode-line-value">${pt.index.toFixed(0)}%</text>
+      </g>`).join('')}
+    </svg>
+  </div>`;
+}
+
+function renderModeCharts(focus, chart, targetRange) {
+  const line = modeLineData(focus);
+  $('#modeCharts').innerHTML = renderModeBarChart(chart, focus, targetRange) + renderModeLineChart(line, focus, targetRange);
+}
+
+function renderModeIndexCell(row, meta) {
+  if (!meta) {
+    return `<span class="mode-index-empty">Sin base equivalente</span><span class="table-sub">${fmtPerLiter(row.modePricePerLiter)}</span>`;
+  }
+  const targetRange = strategyTargetRange(row.segment.key, row.brand);
+  const status = strategyStatus(meta.index, targetRange);
+  const target = row.group === 'sarubbi' ? `<span class="mode-target-status ${status.key}">${escape(status.label)}</span>` : '';
+  return `<div class="mode-index-cell">
+    <span class="mode-index-value">${meta.index.toFixed(0)}%</span>
+    ${target}
+    <span class="table-sub">vs ${escape(meta.benchmarkLabel)} 100 / obj ${strategyTargetLabel(targetRange)} / ${fmtPerLiter(row.modePricePerLiter)}</span>
+  </div>`;
+}
+
+function renderModeTableFilters(allRows, qn) {
+  const scoped = allRows.filter((row) => modeSearchMatches(row, qn));
+  const storeRows = scoped.flatMap((row) => row.modeStores.map((store) => ({ store })));
+  state.mode.brand = fillSelect('#modeBrandFilter', 'Todas', uniqueOptions(scoped, (row) => row.brand, (_, row) => row.brandLabel), state.mode.brand);
+  state.mode.owner = fillSelect('#modeOwnerFilter', 'Todos', uniqueOptions(scoped, (row) => row.group, (value) => labelOwner(value)), state.mode.owner);
+  const rubroOptions = MODE_RUBRO_FILTERS
+    .filter((option) => option.key !== 'all')
+    .map((option) => ({ value: option.key, label: option.label }));
+  state.mode.rubro = fillSelect('#modeCategoryFilter', 'Todos', rubroOptions, state.mode.rubro === 'all' ? '' : state.mode.rubro) || 'all';
+  state.mode.store = fillSelect('#modeStoreFilter', 'Todas', uniqueOptions(storeRows, (row) => row.store, (value) => value), state.mode.store);
+  const segmentScoped = scoped.filter((row) => modeBaseFilter(row, qn, { ignoreSegment: true }));
+  state.mode.segment = fillSelect('#modeSegmentFilter', 'Todos', uniqueOptions(segmentScoped, (row) => row.segment.key, (_, row) => row.segment.label), state.mode.segment);
+}
+
+function renderMode() {
+  const qn = stripAccents(state.mode.q || '').toLowerCase().trim();
+  const allRows = skuModeRows();
+  renderModeTableFilters(allRows, qn);
+  const baseRows = allRows.filter((row) => modeBaseFilter(row, qn, { ignoreSegment: true }));
+  const rows = allRows.filter((row) => modeBaseFilter(row, qn));
+  const chartSource = allRows.filter((row) => modeBaseFilter(row, qn, { ignoreOwner: true }));
+  const focus = modeFocusRows(chartSource.length ? chartSource : baseRows);
+  const chart = modeBrandIndexData(focus);
+  const targetRange = modeTargetRange(focus, chart);
+  const indexLookup = modeIndexLookup(allRows);
+  renderModeSummary(rows, focus, chart, targetRange);
+  renderModeCharts(focus, chart, targetRange);
+
+  const tbody = $('#modeRows');
+  const empty = $('#modeEmpty');
+  if (!rows.length) {
+    tbody.innerHTML = '';
+    empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+    tbody.innerHTML = rows.slice(0, 300).map((row) => `<tr>
+      <td>${productTextCell(row.sample, `<span class="table-sub">${row.count} obs. / ${row.stores} cadenas</span>`, row.label)}</td>
+      <td>${escape(row.brandLabel)}</td>
+      <td>${escape(labelOwner(row.group))}</td>
+      <td>${escape(labelCategory(row.category))}</td>
+      <td>${escape(row.segment.label)}<span class="table-sub">${escape(row.sizeLabel)}</span></td>
+      <td class="price"><span class="mode-price-main">${fmtPrice(row.modePrice)}</span><span class="table-sub">${row.modeCount}/${row.count} obs. / ${row.modeShare.toFixed(0)}%</span></td>
+      <td>${renderModeIndexCell(row, indexLookup.get(row))}</td>
+      <td class="price">${fmtPrice(row.min)} - ${fmtPrice(row.max)}</td>
+      <td><span class="sheet-muted">${escape(row.modeStores.slice(0, 5).join(', '))}${row.modeStores.length > 5 ? ' +' + (row.modeStores.length - 5) : ''}</span></td>
+    </tr>`).join('');
+    bindProductLinks(tbody);
+  }
+  $('#modeCount').textContent = rows.length;
+  applyClientCopy($('#view-mode'));
+}
+
 function renderOffers() {
   const offers = state.items
     .filter((i) => i.listPrice && i.price && i.listPrice > i.price)
     .map((i) => ({ ...i, discount: 1 - i.price / i.listPrice, savings: i.listPrice - i.price }))
     .sort((a, b) => b.discount - a.discount);
+  state.offers.brand = fillSelect('#offersBrandFilter', 'Todas', selectOptions(offers, 'brand', (_, item) => labelBrand(item)), state.offers.brand);
+  state.offers.owner = fillSelect('#offersOwnerFilter', 'Todos', selectOptions(offers, 'group', (value) => labelOwner(value)), state.offers.owner);
+  state.offers.category = fillSelect('#offersCategoryFilter', 'Todos', selectOptions(offers, 'category', (value) => labelCategory(value)), state.offers.category);
+  state.offers.store = fillSelect('#offersStoreFilter', 'Todas', selectOptions(offers, 'super', (value) => labelStore(value)), state.offers.store);
   const qn = stripAccents((state.offers.q || '').toLowerCase().trim());
-  const filtered = qn ? offers.filter((o) => stripAccents(o.name.toLowerCase()).includes(qn)) : offers;
+  const filtered = offers.filter((o) => {
+    if (state.offers.brand && o.brand !== state.offers.brand) return false;
+    if (state.offers.owner && o.group !== state.offers.owner) return false;
+    if (state.offers.category && o.category !== state.offers.category) return false;
+    if (state.offers.store && o.super !== state.offers.store) return false;
+    if (qn && !textMatchesQuery(`${o.name} ${labelBrand(o)} ${labelOwner(o.group)} ${labelCategory(o.category)} ${labelStore(o.super)} ${o.branch || ''}`, qn)) return false;
+    return true;
+  });
   const tbody = $('#offersRows');
   const empty = $('#offersEmpty');
-  if (!filtered.length) { tbody.innerHTML = ''; empty.style.display = 'block'; }
-  else {
+  if (!filtered.length) {
+    tbody.innerHTML = '';
+    empty.style.display = 'block';
+  } else {
     empty.style.display = 'none';
     tbody.innerHTML = filtered.map((o) => {
-      const key = `${o.super}:${o.sku}`;
       return `<tr>
-        <td><a href="#" class="product-link" data-key="${escape(key)}">${escape(o.name)}</a></td>
-        <td class="brand">${escape(o.brand)}</td>
-        <td><span class="pill ${o.super}">${SUPER_LABEL[o.super] || o.super}</span></td>
+        <td>${productTextCell(o)}</td>
+        <td>${escape(labelBrand(o))}</td>
+        <td>${escape(labelOwner(o.group))}</td>
+        <td>${escape(labelCategory(o.category))}</td>
+        <td>${escape(labelStore(o.super))}${o.branch ? `<span class="table-sub">${escape(o.branch)}</span>` : ''}</td>
         <td class="price list">${fmtPrice(o.listPrice)}</td>
         <td class="price">${fmtPrice(o.price)}</td>
-        <td class="price">${pvpCell(o)}</td>
-        <td class="price">${gapCell(o)}</td>
-        <td class="price" style="color:var(--offer)">${fmtPrice(o.savings)}</td>
-        <td><span class="discount-badge">−${Math.round(o.discount * 100)}%</span></td>
+        <td class="price">${fmtPrice(o.savings)}</td>
+        <td><span class="discount-badge">-${Math.round(o.discount * 100)}%</span></td>
       </tr>`;
     }).join('');
     bindProductLinks(tbody);
@@ -697,333 +1872,1725 @@ function renderOffers() {
   $('#offersCount').textContent = filtered.length;
 }
 
-function renderPrices() {
-  const localRows = state.priceList || [];
-  const withPvp = state.items.filter((i) => suggestedFor(i)?.price != null);
+function renderSuggested() {
+  const all = state.items.filter((i) => i.suggestedPrice != null);
+  const qn = stripAccents((state.suggestedFilters.q || '').toLowerCase().trim());
+  const filtered = all.filter((item) => {
+    if (state.suggestedFilters.status && item.suggestedStatus !== state.suggestedFilters.status) return false;
+    if (!qn) return true;
+    const haystack = `${item.name} ${labelBrand(item)} ${labelStore(item.super)} ${item.branch || ''} ${item.suggestedProduct || ''} ${item.suggestedSource || ''}`.toLowerCase();
+    return stripAccents(haystack).includes(qn);
+  }).sort((a, b) => Math.abs(b.suggestedDeviationPct ?? 0) - Math.abs(a.suggestedDeviationPct ?? 0));
+
   const stats = {
-    above: withPvp.filter((i) => gapStatus(gapFor(i)) === 'above').length,
-    ok: withPvp.filter((i) => gapStatus(gapFor(i)) === 'ok').length,
-    below: withPvp.filter((i) => gapStatus(gapFor(i)) === 'below').length,
-    local: state.items.filter((i) => matchLocalSuggested(i)).length,
-    builtin: state.items.filter((i) => matchBuiltinPvp(i)).length,
+    above: all.filter((i) => i.suggestedStatus === 'above').length,
+    ok: all.filter((i) => i.suggestedStatus === 'ok').length,
+    below: all.filter((i) => i.suggestedStatus === 'below').length,
   };
-  const vigencia = state.pvpMeta?.vigencia ? ` · ${state.pvpMeta.vigencia}` : '';
-  $('#priceSummary').innerHTML = `
-    <div class="suggested-card above"><div class="suggested-card-label">Sobre PVP</div><div class="suggested-card-value">${stats.above}</div></div>
-    <div class="suggested-card ok"><div class="suggested-card-label">En linea</div><div class="suggested-card-value">${stats.ok}</div></div>
-    <div class="suggested-card below"><div class="suggested-card-label">Bajo PVP</div><div class="suggested-card-value">${stats.below}</div></div>
-    <div class="suggested-card azul"><div class="suggested-card-label">PVP embebido</div><div class="suggested-card-value">${state.builtinPvp.length}</div><div class="suggested-ref">${stats.builtin} matches${vigencia}</div></div>
-    <div class="suggested-card"><div class="suggested-card-label">Lista manual</div><div class="suggested-card-value">${localRows.length}</div><div class="suggested-ref">${stats.local} matches locales</div></div>
+  const source = state.suggested || {};
+  $('#suggestedSummary').innerHTML = `
+    <div class="suggested-card above"><div class="suggested-card-label">Sobre PVS</div><div class="suggested-card-value">${stats.above}</div></div>
+    <div class="suggested-card ok"><div class="suggested-card-label">Cumple</div><div class="suggested-card-value">${stats.ok}</div></div>
+    <div class="suggested-card below"><div class="suggested-card-label">Bajo PVS</div><div class="suggested-card-value">${stats.below}</div></div>
+    <div class="suggested-card"><div class="suggested-card-label">Fuente</div><div class="suggested-card-value small">${escape(source.sourceFile || 'Sin fuente')}</div><div class="suggested-ref">${source.rowsWithSuggested || 0} lineas con PVS</div></div>
   `;
 
-  const tbody = $('#priceRows');
-  const empty = $('#priceEmpty');
-  if (!localRows.length) {
+  const tbody = $('#suggestedRows');
+  const empty = $('#suggestedEmpty');
+  if (!filtered.length) {
     tbody.innerHTML = '';
     empty.style.display = 'block';
   } else {
     empty.style.display = 'none';
-    tbody.innerHTML = localRows.slice(0, 100).map((row) => {
-      const matches = state.items.filter((item) => scorePriceRow(row, item) != null).length;
+    tbody.innerHTML = filtered.map((item) => {
       return `<tr>
-        <td>${escape(row.product || row.sku || '-')}</td>
-        <td class="brand">${escape(row.brand || '-')}</td>
-        <td>${row.stores.map((s) => `<span class="pill ${s}">${SUPER_LABEL[s] || s}</span>`).join(' ')}</td>
-        <td class="price">${fmtPrice(row.price)}</td>
-        <td><span class="suggested-badge ${matches ? 'ok' : 'below'}">${matches}</span></td>
+        <td>${productLinkCell(item)}</td>
+        <td class="brand brand-cell">${brandLogo(item)}</td>
+        <td>${storeLogo(item.super)}${item.branch ? `<div class="store-sub">${escape(item.branch)}</div>` : ''}</td>
+        <td class="price">${fmtPrice(item.price)}</td>
+        <td class="price">${fmtPrice(item.suggestedPrice)}</td>
+        <td class="price suggested-dev ${escape(item.suggestedStatus || '')}">${fmtPct(item.suggestedDeviationPct)}</td>
+        <td>${suggestedBadge(item)}</td>
+        <td>
+          <div>${escape(item.suggestedProduct || '-')}</div>
+          <div class="suggested-ref">${escape(item.suggestedSource || '-')}  -  PVP informe ${fmtPrice(item.suggestedObservedPvp)}</div>
+        </td>
       </tr>`;
     }).join('');
+    bindProductLinks(tbody);
   }
-  $('#priceListCount').textContent = localRows.length;
+  $('#suggestedCount').textContent = filtered.length;
 }
 
-// ===== Cobertura Sarubbi =====
-function renderPositioning() {
-  const bimbo = state.items.filter((i) => i.group === 'sarubbi');
-  const perSuper = SUPERS.map((s) => {
-    const arr = bimbo.filter((i) => i.super === s);
-    const prices = arr.map((i) => i.price).filter((p) => p != null);
-    return {
-      super: s,
-      count: arr.length,
-      avg: prices.length ? Math.round(prices.reduce((sum, x) => sum + x, 0) / prices.length) : null,
-      min: prices.length ? Math.min(...prices) : null,
-      max: prices.length ? Math.max(...prices) : null,
-      offers: arr.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length,
-    };
-  });
+function competitiveRows(sortMode = 'impact') {
+  const rows = [];
+  const entries = state.items.map((item) => {
+    const profile = liquidProfile(item);
+    return profile ? { item, profile, segment: competitiveSegment(item) } : null;
+  }).filter(Boolean);
+  const compByFormat = {};
+  const sarubbiGroups = {};
+  for (const entry of entries) {
+    const formatKey = `${entry.item.category}|${entry.segment.key}|${entry.profile.bucket.value}`;
+    if (entry.item.group === 'competencia') (compByFormat[formatKey] ??= []).push(entry);
+    if (entry.item.group === 'sarubbi') {
+      const sarubbiKey = `${entry.item.category}|${entry.segment.key}|${entry.item.brand}|${entry.profile.bucket.value}`;
+      (sarubbiGroups[sarubbiKey] ??= {
+        category: entry.item.category,
+        brand: entry.item.brand,
+        brandLabel: labelBrand(entry.item),
+        segment: entry.segment,
+        bucket: entry.profile.bucket,
+        sarubbi: [],
+        comp: [],
+      }).sarubbi.push(entry);
+    }
+  }
+  for (const group of Object.values(sarubbiGroups)) {
+    const comp = compByFormat[`${group.category}|${group.segment.key}|${group.bucket.value}`] || [];
+    if (!comp.length) continue;
+    const sarubbiBest = group.sarubbi.slice().sort((a, b) => a.profile.pricePerLiter - b.profile.pricePerLiter)[0];
+    const compBest = comp.slice().sort((a, b) => a.profile.pricePerLiter - b.profile.pricePerLiter)[0];
+    const sarubbiAvgPerLiter = avg(group.sarubbi.map((entry) => entry.profile.pricePerLiter));
+    const compAvgPerLiter = avg(comp.map((entry) => entry.profile.pricePerLiter));
+    const diff = sarubbiAvgPerLiter - compAvgPerLiter;
+    rows.push({
+      ...group,
+      comp,
+      sarubbiBest: sarubbiBest,
+      compBest,
+      sarubbiAvgPerLiter: sarubbiAvgPerLiter,
+      compAvgPerLiter,
+      diff,
+      pct: compAvgPerLiter ? (diff / compAvgPerLiter) * 100 : 0,
+    });
+  }
+  if (sortMode === 'format') {
+    const categoryOrder = Object.keys(CATEGORY_LABEL);
+    return rows.sort((a, b) =>
+      (categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category)) ||
+      a.segment.label.localeCompare(b.segment.label, 'es') ||
+      a.brandLabel.localeCompare(b.brandLabel, 'es') ||
+      (a.bucket.value - b.bucket.value));
+  }
+  return rows.sort((a, b) => Math.abs(b.pct) - Math.abs(a.pct));
+}
 
-  const maxCount = Math.max(...perSuper.map((s) => s.count), 1);
-  const byBrand = Object.entries(bimbo.reduce((acc, item) => {
-    (acc[item.brand] ??= []).push(item);
-    return acc;
-  }, {})).map(([brand, items]) => ({
-    brand,
-    count: items.length,
-    supers: new Set(items.map((i) => i.super)).size,
-    offers: items.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length,
-  })).sort((a, b) => b.count - a.count);
+function competitiveEntries() {
+  return state.items.map((item) => {
+    const profile = liquidProfile(item);
+    return profile ? { item, profile, segment: competitiveSegment(item) } : null;
+  }).filter(Boolean);
+}
+
+function positioningStoreAllowed(item) {
+  return !state.positioning.stores.size || state.positioning.stores.has(item.super);
+}
+
+function positioningCategoryRows(entries) {
+  return values(entries.map((entry) => entry.item), 'category').map((category) => {
+    const scoped = entries.filter((entry) => entry.item.category === category && positioningStoreAllowed(entry.item));
+    const sarubbi = scoped.filter((entry) => entry.item.group === 'sarubbi');
+    const comp = scoped.filter((entry) => entry.item.group === 'competencia');
+    const sarubbiAvg = avg(sarubbi.map((entry) => entry.profile.pricePerLiter));
+    const compAvg = avg(comp.map((entry) => entry.profile.pricePerLiter));
+    const gap = sarubbiAvg != null && compAvg != null && compAvg ? (sarubbiAvg / compAvg - 1) * 100 : null;
+    return { category, sarubbi: sarubbi, comp, sarubbiAvg: sarubbiAvg, compAvg, gap };
+  }).sort((a, b) => labelCategory(a.category).localeCompare(labelCategory(b.category), 'es'));
+}
+
+function sortCompetitiveDetail(a, b) {
+  return a.segment.label.localeCompare(b.segment.label, 'es') ||
+    (a.profile.bucket.value - b.profile.bucket.value) ||
+    (a.item.group === b.item.group ? 0 : a.item.group === 'sarubbi' ? -1 : 1) ||
+    labelBrand(a.item).localeCompare(labelBrand(b.item), 'es') ||
+    (Number(a.item.price ?? Infinity) - Number(b.item.price ?? Infinity)) ||
+    labelStore(a.item.super).localeCompare(labelStore(b.item.super), 'es');
+}
+
+function renderCompetitiveDetailRows(entries) {
+  return entries.sort(sortCompetitiveDetail).map((entry) => {
+    const item = entry.item;
+    const pack = entry.profile.units > 1 ? `pack x${entry.profile.units}` : '';
+    return `<tr>
+      <td>${productLinkCell(item, `<br><span class="table-sub">${escape(entry.segment.label)} / ${escape(entry.profile.bucket.label)}${pack ? ` / ${escape(pack)}` : ''}</span>`)}</td>
+      <td class="brand brand-cell">${brandLogo(item)}<div class="table-sub">${ownerBadge(item.group)}</div></td>
+      <td>${storeLogo(item.super)}${item.branch ? `<div class="store-sub">${escape(item.branch)}</div>` : ''}</td>
+      <td>${escape(labelCategory(item.category))}</td>
+      <td class="price">${fmtPrice(item.price)}${item.listPrice && item.listPrice > item.price ? `<br><span class="price list">${fmtPrice(item.listPrice)}</span>` : ''}</td>
+      <td class="price">${fmtPerLiter(entry.profile.pricePerLiter)}</td>
+    </tr>`;
+  }).join('');
+}
+
+function positioningRowsForSelection(rows, selectedCategory) {
+  return rows.map((row) => {
+    if (row.category !== selectedCategory) return null;
+    const sarubbi = row.sarubbi.filter((entry) => positioningStoreAllowed(entry.item));
+    const comp = row.comp.filter((entry) => positioningStoreAllowed(entry.item));
+    if (!sarubbi.length || !comp.length) return null;
+    const sarubbiBest = sarubbi.slice().sort((a, b) => a.profile.pricePerLiter - b.profile.pricePerLiter)[0];
+    const compBest = comp.slice().sort((a, b) => a.profile.pricePerLiter - b.profile.pricePerLiter)[0];
+    const sarubbiAvgPerLiter = avg(sarubbi.map((entry) => entry.profile.pricePerLiter));
+    const compAvgPerLiter = avg(comp.map((entry) => entry.profile.pricePerLiter));
+    const diff = sarubbiAvgPerLiter - compAvgPerLiter;
+    return {
+      ...row,
+      sarubbi: sarubbi,
+      comp,
+      sarubbiBest: sarubbiBest,
+      compBest,
+      sarubbiAvgPerLiter: sarubbiAvgPerLiter,
+      compAvgPerLiter,
+      diff,
+      pct: compAvgPerLiter ? (diff / compAvgPerLiter) * 100 : 0,
+    };
+  }).filter(Boolean);
+}
+
+function competitiveStrategyCell(row) {
+  const index = row.compAvgPerLiter ? row.sarubbiAvgPerLiter / row.compAvgPerLiter * 100 : null;
+  const range = strategyTargetRange(row.segment.key, row.brand);
+  return `<div class="strategy-cell">
+    <b>${index == null ? '-' : `${index.toFixed(0)}%`}</b>
+    ${strategyBadge(index, range)}
+    <span class="table-sub">obj ${strategyTargetLabel(range)}</span>
+  </div>`;
+}
+
+function legacyCompetitiveRows() {
+  const rows = [];
+  const groups = {};
+  for (const item of state.items) {
+    const size = extractSize(item.name);
+    if (!size || item.price == null) continue;
+    const key = `${item.category}|${size.unit}|${size.value}`;
+    (groups[key] ??= { category: item.category, size, items: [] }).items.push(item);
+  }
+  for (const group of Object.values(groups)) {
+    const sarubbi = group.items.filter((i) => i.group === 'sarubbi');
+    const comp = group.items.filter((i) => i.group === 'competencia');
+    if (!sarubbi.length || !comp.length) continue;
+    const sarubbiMin = minItem(sarubbi);
+    const compMin = minItem(comp);
+    const diff = sarubbiMin.price - compMin.price;
+    rows.push({
+      ...group,
+      sarubbi: sarubbi,
+      comp,
+      sarubbiMin: sarubbiMin,
+      compMin,
+      diff,
+      pct: compMin.price ? (diff / compMin.price) * 100 : 0,
+    });
+  }
+  return rows.sort((a, b) => Math.abs(b.pct) - Math.abs(a.pct));
+}
+
+function renderCompetitiveLegacy() {
+  const rows = legacyCompetitiveRows();
+  const byCategory = values(state.items, 'category').map((category) => {
+    const sarubbi = state.items.filter((i) => i.category === category && i.group === 'sarubbi');
+    const comp = state.items.filter((i) => i.category === category && i.group === 'competencia');
+    return { category, sarubbi: sarubbi, comp, sarubbiAvg: avg(sarubbi.map((i) => i.price)), compAvg: avg(comp.map((i) => i.price)) };
+  });
 
   $('#positioningContent').innerHTML = `
     <div class="exec-grid">
       <div class="exec-card">
-        <h3>Cobertura por super</h3>
-        <div style="display:flex;flex-direction:column;gap:14px">
-          ${perSuper.map((s) => `
-            <div>
-              <div style="font-size:12px;font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between">
-                <span><span class="pill ${s.super}">${SUPER_LABEL[s.super]}</span> ${s.count} SKUs</span>
-                <span style="color:var(--azul)">prom ${fmtPrice(s.avg)}</span>
-              </div>
-              <div style="background:var(--crema);height:9px;border-radius:5px;overflow:hidden">
-                <div style="background:var(--rojo);height:100%;width:${(s.count / maxCount * 100).toFixed(0)}%"></div>
-              </div>
-              <div style="font-size:11px;color:var(--texto-muted);margin-top:4px">Rango ${fmtPrice(s.min)} a ${fmtPrice(s.max)} · ${s.offers} ofertas</div>
-            </div>
-          `).join('')}
+        <h3>Sarubbi vs competencia por categoria</h3>
+        <div class="brand-stats">
+          ${byCategory.map((c) => {
+            const gap = c.sarubbiAvg != null && c.compAvg != null ? Math.round((c.sarubbiAvg / c.compAvg - 1) * 100) : null;
+            return `<div class="brand-stat">
+              <div><div class="brand-stat-name">${escape(labelCategory(c.category))}</div><div class="brand-stat-detail">${c.sarubbi.length} Sarubbi  -  ${c.comp.length} competencia</div></div>
+              <div class="stat-right"><div class="brand-stat-value">${gap == null ? '-' : `${gap > 0 ? '+' : ''}${gap}%`}</div><div class="brand-stat-detail">brecha prom.</div></div>
+            </div>`;
+          }).join('')}
         </div>
       </div>
-
       <div class="exec-card">
-        <h3>Resumen ejecutivo</h3>
-        <p style="font-size:13px;line-height:1.6;margin:0 0 12px;color:var(--texto)">${buildExecutiveSummary(bimbo)}</p>
-        <hr style="border:none;border-top:1px solid var(--border);margin:14px 0">
-        <div style="font-size:12px;line-height:1.7">
-          <div><b>SKUs Sarubbi:</b> ${bimbo.length}</div>
-          <div><b>Supers con presencia:</b> ${new Set(bimbo.map((i) => i.super)).size}/4</div>
-          <div><b>Ofertas activas:</b> ${bimbo.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length}</div>
+        <h3>Fuentes del relevamiento</h3>
+        <div class="source-list">
+          ${state.scrapeResults.map((r) => `<div class="source-row ${r.ok ? 'ok' : 'fail'}"><span>${escape(labelStore(r.name))}</span><b>${r.count}</b></div>`).join('') || '<div class="empty compact">Sin estado.</div>'}
         </div>
       </div>
     </div>
 
     <div class="exec-card">
-      <h3>Cobertura por marca Sarubbi (${byBrand.length})</h3>
+      <h3>Formatos comparables</h3>
       <table>
-        <thead><tr><th>Marca</th><th class="price">SKUs</th><th class="price">Supers</th><th class="price">Ofertas</th></tr></thead>
-        <tbody>${byBrand.map((b) => `
-          <tr>
-            <td class="brand">${escape(b.brand)}</td>
-            <td class="price">${b.count}</td>
-            <td class="price">${b.supers}/4</td>
-            <td class="price">${b.offers}</td>
-          </tr>
-        `).join('')}</tbody>
+        <thead><tr><th>Categoria</th><th>Formato</th><th>Mejor Sarubbi</th><th>Mejor competencia</th><th class="price">Brecha</th></tr></thead>
+        <tbody>${rows.slice(0, 30).map((r) => `<tr>
+          <td>${escape(labelCategory(r.category))}</td>
+          <td>${escape(sizeLabel(r.size))}</td>
+          <td>${escape(labelBrand(r.sarubbiMin))}  -  ${escape(labelStore(r.sarubbiMin.super))}<br><b>${fmtPrice(r.sarubbiMin.price)}</b></td>
+          <td>${escape(labelBrand(r.compMin))}  -  ${escape(labelStore(r.compMin.super))}<br><b>${fmtPrice(r.compMin.price)}</b></td>
+          <td class="price ${r.diff <= 0 ? 'min' : ''}">${r.diff > 0 ? '+' : ''}${fmtPrice(r.diff)}<br><span>${r.pct > 0 ? '+' : ''}${r.pct.toFixed(1)}%</span></td>
+        </tr>`).join('') || '<tr><td colspan="5" class="empty compact">No hay formatos comparables aun.</td></tr>'}</tbody>
       </table>
     </div>
   `;
 }
 
-function buildExecutiveSummary(sarubbi) {
-  if (!sarubbi.length) return 'Aun no hay datos de Sarubbi. Toca "Actualizar precios" para hacer el primer scrape.';
-  const prices = sarubbi.map((i) => i.price).filter((p) => p != null);
-  const avg = prices.length ? Math.round(prices.reduce((s, p) => s + p, 0) / prices.length) : null;
-  const supers = new Set(sarubbi.map((i) => i.super));
-  return `Se relevaron <b>${sarubbi.length}</b> productos de Sarubbi en <b>${supers.size}/4</b> supermercados, con precio promedio de <b>${fmtPrice(avg)}</b>.`;
+function renderCompetitive() {
+  const allComparableRows = competitiveRows('format');
+  const entries = competitiveEntries();
+  const byCategory = positioningCategoryRows(entries);
+  if (!state.positioning.category || !byCategory.some((c) => c.category === state.positioning.category)) {
+    state.positioning.category = byCategory[0]?.category || '';
+  }
+  const selectedCategory = state.positioning.category;
+  const rows = positioningRowsForSelection(allComparableRows, selectedCategory);
+  const selectedEntries = entries
+    .filter((entry) => entry.item.category === selectedCategory && positioningStoreAllowed(entry.item));
+  const allCategoryEntries = entries.filter((entry) => entry.item.category === selectedCategory);
+  const selectedSarubbi = selectedEntries.filter((entry) => entry.item.group === 'sarubbi');
+  const selectedComp = selectedEntries.filter((entry) => entry.item.group === 'competencia');
+  const selectedStores = state.positioning.stores;
+  const storeOrder = state.scrapeResults.map((r) => r.name);
+  const storeOptions = values(entries.map((entry) => entry.item), 'super')
+    .sort((a, b) => {
+      const ai = storeOrder.indexOf(a);
+      const bi = storeOrder.indexOf(b);
+      return (ai < 0 ? 99 : ai) - (bi < 0 ? 99 : bi) || labelStore(a).localeCompare(labelStore(b), 'es');
+    });
+  const selectedStoreLabels = selectedStores.size
+    ? [...selectedStores].map(labelStore).sort((a, b) => a.localeCompare(b, 'es')).join(', ')
+    : 'Todas las cadenas';
+
+  $('#positioningContent').innerHTML = `
+    <div class="exec-grid">
+      <div class="exec-card">
+        <h3>Sarubbi vs competencia normalizado</h3>
+        <div class="brand-stats">
+          ${byCategory.map((c) => `<button type="button" class="brand-stat positioning-category ${c.category === selectedCategory ? 'active' : ''}" data-positioning-category="${escape(c.category)}">
+            <div><div class="brand-stat-name">${escape(labelCategory(c.category))}</div><div class="brand-stat-detail">${c.sarubbi.length} Sarubbi / ${c.comp.length} competencia con presentacion y gama validos</div></div>
+            <div class="stat-right"><div class="brand-stat-value">${c.gap == null ? '-' : `${c.gap > 0 ? '+' : ''}${c.gap.toFixed(1)}%`}</div><div class="brand-stat-detail">${fmtPerLiter(c.sarubbiAvg)} vs ${fmtPerLiter(c.compAvg)}</div></div>
+          </button>`).join('')}
+        </div>
+      </div>
+      <div class="exec-card">
+        <h3>Cadenas</h3>
+        <div class="mode-chip-row positioning-store-chips">
+          <button type="button" class="mode-chip ${selectedStores.size ? '' : 'active'}" data-positioning-store="">Todas <span>${allCategoryEntries.length}</span></button>
+          ${storeOptions.map((store) => {
+            const count = entries.filter((entry) => entry.item.category === selectedCategory && entry.item.super === store).length;
+            const active = selectedStores.has(store) ? ' active' : '';
+            return `<button type="button" class="mode-chip${active}" data-positioning-store="${escape(store)}">${escape(labelStore(store))} <span>${count}</span></button>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="exec-card">
+      <h3>Presentacions ${escape(labelCategory(selectedCategory))} Sarubbi vs competencia equivalente</h3>
+      <p class="table-note">Cada fila respeta el rubro y cadenas elegidas arriba: compara una marca Sarubbi contra productos de competencia de la misma gama y presentacion equivalente.</p>
+      <table>
+        <thead><tr><th>Categoria</th><th>Gama</th><th>Marca Sarubbi</th><th>Presentacion</th><th>Prom. Sarubbi normalizado</th><th>Prom. competencia normalizado</th><th>Estrategia</th><th class="price">Brecha normalizado</th></tr></thead>
+        <tbody>${rows.map((r) => `<tr>
+          <td>${escape(labelCategory(r.category))}</td>
+          <td>${escape(r.segment.label)}</td>
+          <td class="brand brand-cell">${brandLogo(r.sarubbiBest.item)}</td>
+          <td>${escape(r.bucket.label)}<br><span class="table-sub">${r.sarubbi.length} propios / ${r.comp.length} comp.</span></td>
+          <td><b>${fmtPerLiter(r.sarubbiAvgPerLiter)}</b><br><span class="table-sub">mejor: ${escape(entryDetail(r.sarubbiBest))}</span></td>
+          <td><b>${fmtPerLiter(r.compAvgPerLiter)}</b><br><span class="table-sub">mejor: ${escape(entryDetail(r.compBest))}</span></td>
+          <td>${competitiveStrategyCell(r)}</td>
+          <td class="price ${r.diff <= 0 ? 'min' : ''}">${r.diff > 0 ? '+' : r.diff < 0 ? '-' : ''}${fmtPerLiter(Math.abs(r.diff))}<br><span>${r.pct > 0 ? '+' : ''}${r.pct.toFixed(1)}%</span></td>
+        </tr>`).join('') || '<tr><td colspan="8" class="empty compact">No hay presentacions comparables aun.</td></tr>'}</tbody>
+      </table>
+    </div>
+
+    <div class="exec-card">
+      <div class="positioning-detail-head">
+        <div>
+          <h3>Detalle ${escape(labelCategory(selectedCategory))}</h3>
+          <p class="table-note">${selectedEntries.length} SKUs filtrados: ${selectedSarubbi.length} Sarubbi / ${selectedComp.length} competencia. Cadenas: ${escape(selectedStoreLabels)}.</p>
+        </div>
+        <div class="positioning-detail-kpis">
+          <span>${fmtPerLiter(avg(selectedSarubbi.map((entry) => entry.profile.pricePerLiter)))} Sarubbi</span>
+          <span>${fmtPerLiter(avg(selectedComp.map((entry) => entry.profile.pricePerLiter)))} comp.</span>
+        </div>
+      </div>
+      <table class="compact-table positioning-detail-table">
+        <thead><tr><th>Producto</th><th>Marca / dueno</th><th>Cadena</th><th>Categoria</th><th class="price">Precio</th><th class="price">normalizado</th></tr></thead>
+        <tbody>${selectedEntries.length ? renderCompetitiveDetailRows(selectedEntries) : '<tr><td colspan="6" class="empty compact">Sin SKUs para el rubro y cadenas seleccionadas.</td></tr>'}</tbody>
+      </table>
+    </div>
+  `;
+  const root = $('#positioningContent');
+  root.querySelectorAll('[data-positioning-category]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.positioning.category = btn.dataset.positioningCategory;
+      renderCompetitive();
+    });
+  });
+  root.querySelectorAll('[data-positioning-store]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const store = btn.dataset.positioningStore;
+      if (!store) state.positioning.stores.clear();
+      else if (state.positioning.stores.has(store)) state.positioning.stores.delete(store);
+      else state.positioning.stores.add(store);
+      renderCompetitive();
+    });
+  });
+  bindProductLinks(root);
+  applyClientCopy(root);
 }
 
-// ===== Informe Gerencial =====
-function renderExecutive() {
+function portfolioOwner(row) {
+  return String(row.owner || row.group || '').toLowerCase().includes('sarubbi') ? 'sarubbi' : 'competencia';
+}
+
+function portfolioRuleBrands(segmentKey) {
+  const rule = strategyRule(segmentKey);
+  if (!rule) return null;
+  return new Set([...(rule.sarubbiBrands || []), ...(rule.competitorBrands || []), rule.benchmarkBrand, rule.indexBenchmarkBrand].filter(Boolean));
+}
+
+function portfolioMarketingAllowed(row) {
+  const allowed = portfolioRuleBrands(row.segmentKey || row.segment?.key);
+  return !allowed || allowed.has(row.brand);
+}
+
+function portfolioCurrentRows() {
+  const groups = new Map();
+  for (const row of skuModeRows()) {
+    if (!PORTFOLIO_CATEGORIES.includes(row.category)) continue;
+    if (row.modePricePerLiter == null || !Number.isFinite(row.modePricePerLiter)) continue;
+    const key = `${row.category}|${row.segment.key}|${row.brand}|${row.group}`;
+    const group = groups.get(key) || {
+      category: row.category,
+      segmentKey: row.segment.key,
+      segmentLabel: row.segment.label,
+      brand: row.brand,
+      brandLabel: row.brandLabel,
+      owner: row.group,
+      rows: [],
+      obs: 0,
+      sample: row.sample,
+    };
+    group.rows.push(row);
+    group.obs += row.modeCount;
+    groups.set(key, group);
+  }
+  return [...groups.values()].map((group) => ({
+    ...group,
+    skuCount: group.rows.length,
+    n: group.obs,
+    ppl: weightedAvg(group.rows, (row) => row.modePricePerLiter, (row) => row.modeCount),
+    source: 'latest',
+  })).filter((row) => row.ppl != null);
+}
+
+function portfolioNormalizedSegment(row) {
+  const key = row.segmentKey;
+  return { key, label: row.segmentLabel || SEGMENT_LABEL[key] || key };
+}
+
+function portfolioMarketRowsForDate(date) {
+  const market = Array.isArray(state.evolution?.market) ? state.evolution.market : [];
+  if (!market.length || !date) return portfolioCurrentRows();
+  return market
+    .filter((row) => row.t === date && PORTFOLIO_CATEGORIES.includes(row.category))
+    .map((row) => {
+      const segment = portfolioNormalizedSegment(row);
+      return {
+        category: row.category,
+        segmentKey: segment.key,
+        segmentLabel: segment.label,
+        brand: row.brand,
+        brandLabel: row.brandLabel || row.brand,
+        owner: portfolioOwner(row),
+        n: Number(row.n || 0),
+        ppl: Number(row.ppl),
+        source: 'history',
+      };
+    })
+    .filter((row) => Number.isFinite(row.ppl));
+}
+
+function portfolioDates() {
+  const market = Array.isArray(state.evolution?.market) ? state.evolution.market : [];
+  return [...new Set(market.map((row) => row.t).filter(Boolean))].sort();
+}
+
+function portfolioActiveDate() {
+  const dates = portfolioDates();
+  if (!dates.length) return '';
+  if (!state.portfolio.date || !dates.includes(state.portfolio.date)) state.portfolio.date = dates[dates.length - 1];
+  return state.portfolio.date;
+}
+
+function portfolioApplyIndex(rows) {
+  const indexedRows = rows.filter(portfolioMarketingAllowed);
+  const bySegment = new Map();
+  for (const row of indexedRows) {
+    const key = `${row.category}|${row.segmentKey}`;
+    const group = bySegment.get(key) || [];
+    group.push(row);
+    bySegment.set(key, group);
+  }
+  const out = [];
+  for (const segmentRows of bySegment.values()) {
+    const segmentKey = segmentRows[0]?.segmentKey;
+    const category = segmentRows[0]?.category;
+    const benchmarkBrand = indexBenchmarkBrandForSegment(segmentKey);
+    const benchmarkSegment = indexBenchmarkSegmentForSegment(segmentKey);
+    const baseCandidates = indexedRows.filter((row) =>
+      row.category === category &&
+      row.brand === benchmarkBrand &&
+      (!benchmarkSegment || row.segmentKey === benchmarkSegment));
+    const baseRow = baseCandidates.sort((a, b) => (b.n || 0) - (a.n || 0))[0]
+      || indexedRows.filter((row) => row.category === category && row.brand === benchmarkBrand).sort((a, b) => (b.n || 0) - (a.n || 0))[0]
+      || segmentRows.find((row) => row.brand === benchmarkBrand)
+      || segmentRows.filter((row) => portfolioOwner(row) === 'competencia').sort((a, b) => (b.n || 0) - (a.n || 0))[0];
+    const base = baseRow?.ppl;
+    for (const row of segmentRows) {
+      const index = base ? row.ppl / base * 100 : null;
+      const range = strategyTargetRange(segmentKey, row.brand);
+      const status = portfolioOwner(row) === 'sarubbi' ? strategyStatus(index, range) : null;
+      out.push({
+        ...row,
+        benchmarkBrand,
+        benchmarkLabel: baseRow?.brandLabel || benchmarkBrand || 'Competencia',
+        benchmarkPpl: base || null,
+        index,
+        targetRange: range,
+        status,
+      });
+    }
+  }
+  return out;
+}
+
+function portfolioSegmentOptions(rows, category) {
+  const groups = new Map();
+  for (const row of rows.filter((r) => r.category === category)) {
+    const current = groups.get(row.segmentKey) || { key: row.segmentKey, label: row.segmentLabel, count: 0 };
+    current.count += 1;
+    groups.set(row.segmentKey, current);
+  }
+  return [...groups.values()].sort((a, b) => {
+    const av = Number(String(a.key).match(/_presentacion_(\d+)/)?.[1]);
+    const bv = Number(String(b.key).match(/_presentacion_(\d+)/)?.[1]);
+    if (Number.isFinite(av) && Number.isFinite(bv)) return av - bv;
+    return a.label.localeCompare(b.label, 'es');
+  });
+}
+
+function portfolioBrandOptions(rows, category, segmentKey) {
+  const scoped = rows.filter((row) => row.category === category && portfolioOwner(row) === 'sarubbi' && (!segmentKey || row.segmentKey === segmentKey));
+  return scoped
+    .reduce((acc, row) => acc.some((x) => x.brand === row.brand) ? acc : acc.concat({ brand: row.brand, label: row.brandLabel, segmentKey: row.segmentKey }), [])
+    .sort((a, b) => a.label.localeCompare(b.label, 'es'));
+}
+
+function portfolioFilterRows(rows) {
+  const category = state.portfolio.category || PORTFOLIO_CATEGORIES[0] || 'jamon_cocido';
+  let filtered = rows.filter((row) => row.category === category);
+  if (state.portfolio.brand) {
+    const brandSegments = new Set(filtered
+      .filter((row) => row.brand === state.portfolio.brand && portfolioOwner(row) === 'sarubbi' && (!state.portfolio.segment || row.segmentKey === state.portfolio.segment))
+      .map((row) => row.segmentKey));
+    filtered = filtered.filter((row) => {
+      if (!brandSegments.has(row.segmentKey)) return false;
+      const rule = strategyRule(row.segmentKey);
+      const allowed = new Set([state.portfolio.brand, ...(rule?.competitorBrands || []), rule?.benchmarkBrand, rule?.indexBenchmarkBrand].filter(Boolean));
+      return !allowed.size || allowed.has(row.brand);
+    });
+  } else if (state.portfolio.segment) {
+    filtered = filtered.filter((row) => row.segmentKey === state.portfolio.segment);
+  }
+  return filtered;
+}
+
+function portfolioX(index) {
+  if (index == null || !Number.isFinite(index)) return 50;
+  const clamped = Math.max(PORTFOLIO_INDEX_MIN, Math.min(PORTFOLIO_INDEX_MAX, index));
+  return ((clamped - PORTFOLIO_INDEX_MIN) / (PORTFOLIO_INDEX_MAX - PORTFOLIO_INDEX_MIN)) * 100;
+}
+
+function portfolioPointX(index) {
+  const x = portfolioX(index);
+  return Math.max(7, Math.min(93, x));
+}
+
+function portfolioPointY(index) {
+  return Math.max(7, Math.min(93, 100 - portfolioX(index)));
+}
+
+function portfolioSegmentKind(category) {
+  return 'presentacion';
+}
+
+function portfolioAllSegmentsLabel(category) {
+  return 'Todas las presentaciones';
+}
+
+function portfolioSegmentColumnLabel(category) {
+  return 'Presentacion';
+}
+
+function portfolioLaneOrderKey(category) {
+  return category || state.portfolio.category || 'all';
+}
+
+function portfolioLaneOrder(category) {
+  return state.portfolio.laneOrder[portfolioLaneOrderKey(category)] || [];
+}
+
+function savePortfolioPrefs() {
+  try {
+    localStorage.setItem('sarubbiPortfolioPrefs', JSON.stringify({
+      orientation: state.portfolio.orientation,
+      laneOrder: state.portfolio.laneOrder,
+    }));
+  } catch {
+    // Preferimos no romper la vista si el navegador bloquea localStorage.
+  }
+}
+
+function loadPortfolioPrefs() {
+  try {
+    const raw = localStorage.getItem('sarubbiPortfolioPrefs') || localStorage.getItem('gondolaPortfolioPrefs');
+    if (!raw) return;
+    const prefs = JSON.parse(raw);
+    if (prefs?.orientation === 'vertical' || prefs?.orientation === 'horizontal') {
+      state.portfolio.orientation = prefs.orientation;
+    }
+    if (prefs?.laneOrder && typeof prefs.laneOrder === 'object') {
+      state.portfolio.laneOrder = prefs.laneOrder;
+    }
+  } catch {
+    // Preferencias corruptas: se ignoran y la app arranca con el orden natural.
+  }
+}
+
+function sortPortfolioSegments(segments) {
+  const category = segments[0]?.rows?.[0]?.category || state.portfolio.category;
+  const order = portfolioLaneOrder(category);
+  const rank = new Map(order.map((key, index) => [key, index]));
+  return segments.slice().sort((a, b) => {
+    const ar = rank.has(a.key) ? rank.get(a.key) : Number.MAX_SAFE_INTEGER;
+    const br = rank.has(b.key) ? rank.get(b.key) : Number.MAX_SAFE_INTEGER;
+    if (ar !== br) return ar - br;
+    const av = Number(String(a.key).match(/_presentacion_(\d+)/)?.[1]);
+    const bv = Number(String(b.key).match(/_presentacion_(\d+)/)?.[1]);
+    if (Number.isFinite(av) && Number.isFinite(bv)) return av - bv;
+    return a.label.localeCompare(b.label, 'es');
+  });
+}
+
+function portfolioStatusClass(status) {
+  if (!status) return '';
+  if (status.key === 'ok') return ' ok';
+  if (status.key === 'above') return ' above';
+  if (status.key === 'below') return ' below';
+  return '';
+}
+
+function portfolioStatusKey(row) {
+  if (portfolioOwner(row) !== 'sarubbi') return 'competencia';
+  return row.status?.key || 'missing';
+}
+
+function portfolioStatusLabel(key) {
+  return {
+    ok: 'En objetivo',
+    below: 'Debajo objetivo',
+    above: 'Sobre objetivo',
+    missing: 'Sin base',
+    competencia: 'Competencia',
+  }[key] || key || '-';
+}
+
+function portfolioOwnerPill(owner) {
+  const key = portfolioOwner({ owner });
+  return `<span class="portfolio-owner-pill ${escape(key)}">${escape(labelOwner(key))}</span>`;
+}
+
+function portfolioIndexText(index, decimals = 0) {
+  return index == null || !Number.isFinite(index) ? '-' : `${Number(index).toFixed(decimals)}%`;
+}
+
+function portfolioSegmentTargetRange(rows) {
+  const ranges = rows
+    .filter((row) => portfolioOwner(row) === 'sarubbi' && row.targetRange)
+    .map((row) => row.targetRange);
+  if (!ranges.length) return null;
+  return [Math.min(...ranges.map((range) => range[0])), Math.max(...ranges.map((range) => range[1]))];
+}
+
+function portfolioTargetBand(range) {
+  if (!range) return '';
+  const from = portfolioX(range[0]);
+  const to = portfolioX(range[1]);
+  const vFrom = 100 - to;
+  const vTo = 100 - from;
+  return `<i class="portfolio-target-band" style="--from:${from.toFixed(2)}%;--to:${to.toFixed(2)}%;--vfrom:${vFrom.toFixed(2)}%;--vto:${vTo.toFixed(2)}%"><span>Obj. ${escape(strategyTargetLabel(range))}</span></i>`;
+}
+
+function portfolioBrandClass(brand) {
+  const key = stripAccents(brand || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return key ? `brand-${key}` : '';
+}
+
+function portfolioPinKey(row) {
+  return `${row.category}|${row.segmentKey}|${row.brand}|${portfolioOwner(row)}`;
+}
+
+function portfolioPinSelected(key) {
+  return state.portfolio.selectedPins.includes(key);
+}
+
+function portfolioSelectedKeys() {
+  return new Set(state.portfolio.selectedPins);
+}
+
+function portfolioPinZ(key, owner) {
+  return state.portfolio.pinOrder[key] || (owner === 'sarubbi' ? 30 : 20);
+}
+
+function portfolioDisplayRows(rows) {
+  const clean = rows.filter((row) => row.index != null && Number.isFinite(row.index));
+  const picked = new Map();
+  const add = (row) => {
+    if (!row || picked.has(row.brand)) return;
+    picked.set(row.brand, row);
+  };
+  clean
+    .filter((row) => portfolioOwner(row) === 'sarubbi')
+    .sort((a, b) => (b.n || 0) - (a.n || 0))
+    .forEach(add);
+  clean
+    .filter((row) => row.brand === row.benchmarkBrand)
+    .forEach(add);
+  clean
+    .filter((row) => portfolioOwner(row) !== 'sarubbi')
+    .sort((a, b) => (b.n || 0) - (a.n || 0))
+    .forEach(add);
+  const display = [...picked.values()].slice(0, 10);
+  return { display, hidden: Math.max(0, clean.length - display.length) };
+}
+
+function portfolioPoint(row, index) {
+  const owner = portfolioOwner(row);
+  const status = owner === 'sarubbi' ? portfolioStatusClass(row.status) : '';
+  const value = portfolioIndexText(row.index);
+  const pinKey = portfolioPinKey(row);
+  const picked = portfolioPinSelected(pinKey) ? ' picked' : '';
+  return `<span class="portfolio-point ${owner}${status}${picked} ${portfolioBrandClass(row.brand)}" role="button" tabindex="0" data-pin-key="${escape(pinKey)}" style="--x:${portfolioPointX(row.index).toFixed(2)}%;--y:${portfolioPointY(row.index).toFixed(2)}%;--lane:${index % 4};--slot-x:${(14 + (index % 6) * 14).toFixed(2)}%;--z:${portfolioPinZ(pinKey, owner)}" title="${escape(row.brandLabel)} - ${escape(value)}">
+    <span class="portfolio-point-logo">${brandLogo({ brand: row.brand, brandLabel: row.brandLabel, group: owner })}</span><em>${escape(value)}</em>
+  </span>`;
+}
+
+function renderPortfolioMap(rows, title = 'Mapa vigente') {
+  const bySegment = new Map();
+  for (const row of rows) {
+    const group = bySegment.get(row.segmentKey) || { key: row.segmentKey, label: row.segmentLabel, rows: [] };
+    group.rows.push(row);
+    bySegment.set(row.segmentKey, group);
+  }
+  const segments = sortPortfolioSegments([...bySegment.values()]);
+  if (!segments.length) return '<div class="empty compact">Sin marcas con price index para este filtro.</div>';
+  const orientation = state.portfolio.orientation === 'vertical' ? ' vertical' : '';
+  return `<div class="portfolio-map portfolio-index-board${orientation}">
+    <div class="portfolio-map-head">
+      <h3>${escape(title)}</h3>
+      <div class="portfolio-axis-labels"><span>Mas barato</span><span>Base 100</span><span>Mas caro</span></div>
+    </div>
+    <div class="portfolio-scale-ruler" aria-hidden="true">
+      <span style="left:${portfolioX(60).toFixed(2)}%">60</span>
+      <span style="left:${portfolioX(80).toFixed(2)}%">80</span>
+      <span style="left:${portfolioX(100).toFixed(2)}%">100</span>
+      <span style="left:${portfolioX(120).toFixed(2)}%">120</span>
+      <span style="left:${portfolioX(140).toFixed(2)}%">140</span>
+      <span style="left:${portfolioX(160).toFixed(2)}%">160</span>
+    </div>
+    ${segments.map((segment) => {
+      const base = segment.rows.find((row) => row.brand === row.benchmarkBrand);
+      const sarubbiRows = segment.rows.filter((row) => portfolioOwner(row) === 'sarubbi');
+      const compRows = segment.rows.filter((row) => portfolioOwner(row) !== 'sarubbi');
+      const avgIndex = weightedAvg(sarubbiRows, (row) => row.index, (row) => row.n || 1);
+      const targetRange = portfolioSegmentTargetRange(segment.rows);
+      const statuses = sarubbiRows.map((row) => row.status?.key).filter(Boolean);
+      const ok = statuses.filter((s) => s === 'ok').length;
+      const below = statuses.filter((s) => s === 'below').length;
+      const above = statuses.filter((s) => s === 'above').length;
+      const statusKey = ok && ok === statuses.length ? 'ok' : (above ? 'above' : (below ? 'below' : 'missing'));
+      const { display, hidden } = portfolioDisplayRows(segment.rows);
+      return `<div class="portfolio-lane portfolio-index-lane" draggable="true" data-lane-key="${escape(segment.key)}">
+        <div class="portfolio-lane-title">
+          <button type="button" class="portfolio-lane-drag" draggable="true" aria-label="Mover ${escape(segment.label)}">::</button>
+          <b>${escape(segment.label)}</b>
+          <span>Base 100: ${escape(base?.brandLabel || display[0]?.benchmarkLabel || '-')}</span>
+          <small>${sarubbiRows.length} Sarubbi / ${compRows.length} competencia</small>
+        </div>
+        <div class="portfolio-track">
+          ${portfolioTargetBand(targetRange)}
+          <i class="portfolio-grid g60"></i><i class="portfolio-grid g80"></i><i class="portfolio-grid g100"></i><i class="portfolio-grid g120"></i><i class="portfolio-grid g140"></i><i class="portfolio-grid g160"></i>
+          <i class="portfolio-benchmark-line"></i>
+          ${display.map(portfolioPoint).join('')}
+          ${hidden ? `<span class="portfolio-hidden-count">+${hidden} en planilla</span>` : ''}
+        </div>
+        <div class="portfolio-row-metrics ${escape(statusKey)}">
+          <b>${escape(portfolioIndexText(avgIndex))}</b>
+          <span>Sarubbi prom.</span>
+          <small>Obj. ${targetRange ? escape(strategyTargetLabel(targetRange)) : '-'}</small>
+          <em>${ok} ok / ${below} bajo / ${above} sobre</em>
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
+function renderPortfolioMiniTracks(rows, dateLabel) {
+  return `<div class="portfolio-mini-grid">
+    ${PORTFOLIO_CATEGORIES.map((category) => {
+      const categoryRows = rows.filter((row) => row.category === category);
+      const sarubbi = categoryRows.filter((row) => portfolioOwner(row) === 'sarubbi' && row.index != null);
+      const avgIndex = weightedAvg(sarubbi, (row) => row.index, (row) => row.n || 1);
+      const display = categoryRows
+        .filter((row) => row.index != null)
+        .sort((a, b) => (portfolioOwner(a) === portfolioOwner(b) ? 0 : portfolioOwner(a) === 'sarubbi' ? -1 : 1) || Math.abs((b.index || 0) - 100) - Math.abs((a.index || 0) - 100))
+        .slice(0, 6);
+      return `<button type="button" class="portfolio-mini ${state.portfolio.category === category ? 'active' : ''}" data-portfolio-category="${escape(category)}">
+        <div class="portfolio-mini-head"><b>${escape(labelCategory(category))}</b><span>${avgIndex == null ? '-' : `${avgIndex.toFixed(0)}%`} Sarubbi</span></div>
+        <div class="portfolio-mini-track">
+          <i></i>
+          ${display.map((row, i) => `<span class="${portfolioOwner(row)}" style="left:${portfolioPointX(row.index).toFixed(2)}%;top:${8 + (i % 2) * 25}px" title="${escape(row.brandLabel)} ${escape(portfolioIndexText(row.index))}">${brandLogo({ brand: row.brand, brandLabel: row.brandLabel, group: portfolioOwner(row) })}</span>`).join('')}
+        </div>
+      </button>`;
+    }).join('')}
+    <div class="portfolio-date-note">Corte: ${escape(dateLabel || 'vigente')}</div>
+  </div>`;
+}
+
+function portfolioSummary(filteredRows) {
+  const sarubbi = filteredRows.filter((row) => portfolioOwner(row) === 'sarubbi' && row.index != null);
+  const comp = filteredRows.filter((row) => portfolioOwner(row) !== 'sarubbi');
+  const sarubbiBrands = new Set(sarubbi.map((row) => row.brand));
+  const compBrands = new Set(comp.map((row) => row.brand));
+  const avgIndex = weightedAvg(sarubbi, (row) => row.index, (row) => row.n || 1);
+  const statuses = sarubbi.map((row) => row.status?.key).filter(Boolean);
+  const ok = statuses.filter((s) => s === 'ok').length;
+  const above = statuses.filter((s) => s === 'above').length;
+  const below = statuses.filter((s) => s === 'below').length;
+  const benchmark = filteredRows.find((row) => row.brand === row.benchmarkBrand) || filteredRows.find((row) => portfolioOwner(row) !== 'sarubbi');
+  return `<div class="portfolio-summary">
+    <div><span>Indice Sarubbi</span><b>${avgIndex == null ? '-' : `${avgIndex.toFixed(0)}%`}</b><small>${sarubbiBrands.size} marcas / ${sarubbi.length} posiciones Sarubbi; ${compBrands.size} comp.</small></div>
+    <div><span>Referencia 100</span><b>${escape(benchmark?.brandLabel || '-')}</b><small>${benchmark ? fmtPerLiter(benchmark.ppl) : 'Sin benchmark'}</small></div>
+    <div><span>Objetivo</span><b>${ok}/${statuses.length || 0}</b><small>${above} sobre / ${below} debajo</small></div>
+    <div><span>Fuente</span><b>${escape(state.strategy?.source || 'Marketing Sarubbi')}</b><small>Rubro, gama y presentacion equivalentes</small></div>
+  </div>`;
+}
+
+function portfolioStatusOptions(rows) {
+  const order = ['ok', 'below', 'above', 'missing', 'competencia'];
+  const keys = new Set(rows.map(portfolioStatusKey));
+  return order
+    .filter((key) => keys.has(key))
+    .map((key) => ({ value: key, label: portfolioStatusLabel(key) }));
+}
+
+function portfolioRawFilteredRows(rows) {
+  const qn = state.portfolio.rawQ || '';
+  return rows.filter((row) => {
+    const owner = portfolioOwner(row);
+    const statusKey = portfolioStatusKey(row);
+    if (state.portfolio.rawOwner && owner !== state.portfolio.rawOwner) return false;
+    if (state.portfolio.rawStatus && statusKey !== state.portfolio.rawStatus) return false;
+    if (state.portfolio.rawBenchmark && row.benchmarkBrand !== state.portfolio.rawBenchmark) return false;
+    if (qn && !textMatchesQuery(`${labelCategory(row.category)} ${row.segmentLabel} ${row.brandLabel} ${labelOwner(owner)} ${row.benchmarkLabel || ''} ${portfolioIndexText(row.index)} ${fmtPerLiter(row.ppl)}`, qn)) return false;
+    return true;
+  });
+}
+
+function renderPortfolioTable(rows) {
+  const ownerOptions = ['sarubbi', 'competencia']
+    .filter((owner) => rows.some((row) => portfolioOwner(row) === owner))
+    .map((owner) => ({ value: owner, label: labelOwner(owner) }));
+  const statusOptions = portfolioStatusOptions(rows);
+  const benchmarkOptions = uniqueOptions(rows, (row) => row.benchmarkBrand, (_, row) => row.benchmarkLabel || row.benchmarkBrand);
+  state.portfolio.rawOwner = validSelectValue(ownerOptions, state.portfolio.rawOwner);
+  state.portfolio.rawStatus = validSelectValue(statusOptions, state.portfolio.rawStatus);
+  state.portfolio.rawBenchmark = validSelectValue(benchmarkOptions, state.portfolio.rawBenchmark);
+  const filtered = portfolioRawFilteredRows(rows);
+  const sorted = filtered.slice().sort((a, b) =>
+    labelCategory(a.category).localeCompare(labelCategory(b.category), 'es') ||
+    a.segmentLabel.localeCompare(b.segmentLabel, 'es') ||
+    (portfolioOwner(a) === portfolioOwner(b) ? 0 : portfolioOwner(a) === 'sarubbi' ? -1 : 1) ||
+    (b.index || 0) - (a.index || 0));
+  return `<div class="portfolio-sheet-wrap">
+  <table class="compact-table sheet-table portfolio-raw-table">
+    <thead><tr>
+      <th><span class="th-title">Rubro</span></th>
+      <th><span class="th-title">${escape(portfolioSegmentColumnLabel(state.portfolio.category))}</span></th>
+      <th><span class="th-title">Marca</span><input id="portfolioRawQ" class="th-filter" value="${escape(state.portfolio.rawQ)}" placeholder="Filtrar" /></th>
+      <th><span class="th-title">Dueno</span>${filterSelectHtml('portfolioRawOwner', 'Todos', ownerOptions, state.portfolio.rawOwner)}</th>
+      <th class="price"><span class="th-title">normalizado</span></th>
+      <th><span class="th-title">Base 100</span>${filterSelectHtml('portfolioRawBenchmark', 'Todas', benchmarkOptions, state.portfolio.rawBenchmark)}</th>
+      <th class="price"><span class="th-title">Price index</span></th>
+      <th><span class="th-title">Objetivo</span>${filterSelectHtml('portfolioRawStatus', 'Todos', statusOptions, state.portfolio.rawStatus)}</th>
+    </tr></thead>
+    <tbody>${sorted.map((row) => {
+      const owner = portfolioOwner(row);
+      const statusKey = portfolioStatusKey(row);
+      return `<tr>
+        <td>${escape(labelCategory(row.category))}</td>
+        <td><b>${escape(row.segmentLabel)}</b><br><span class="table-sub">${row.n || 0} obs.${row.skuCount ? ` / ${row.skuCount} SKUs` : ''}</span></td>
+        <td><b>${escape(row.brandLabel)}</b><br><span class="table-sub">${escape(row.brand)}</span></td>
+        <td>${portfolioOwnerPill(owner)}</td>
+        <td class="price">${fmtPerLiter(row.ppl)}</td>
+        <td>${escape(row.benchmarkLabel || '-')}</td>
+        <td class="price"><b>${escape(portfolioIndexText(row.index))}</b><div class="portfolio-index-mini"><i style="--x:${portfolioX(row.index).toFixed(2)}%"></i></div></td>
+        <td>${owner === 'sarubbi' ? `${strategyBadge(row.index, row.targetRange)}<span class="table-sub">Meta ${strategyTargetLabel(row.targetRange)}</span>` : `<span class="table-sub">${escape(portfolioStatusLabel(statusKey))}</span>`}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="8" class="empty compact">Sin datos para el filtro.</td></tr>'}</tbody>
+  </table>
+  </div>`;
+}
+
+function portfolioSelectedAggregates(rows) {
+  const selected = portfolioSelectedKeys();
+  if (!selected.size) return [];
+  return rows.filter((row) => selected.has(portfolioPinKey(row)));
+}
+
+function portfolioSelectionStoreOptions(aggregates) {
+  const stores = new Map();
+  for (const agg of aggregates) {
+    for (const row of agg.rows || []) {
+      for (const store of row.modeStoreKeys || []) {
+        stores.set(store, labelStore(store));
+      }
+    }
+  }
+  return [...stores.entries()]
+    .map(([value, label]) => ({ value, label }))
+    .sort((a, b) => a.label.localeCompare(b.label, 'es'));
+}
+
+function portfolioSelectionBucketKey(row) {
+  return String(row.bucket?.value ?? row.sizeLabel ?? row.label);
+}
+
+function portfolioSelectionBucketOptions(aggregates) {
+  const buckets = new Map();
+  for (const agg of aggregates) {
+    for (const row of agg.rows || []) {
+      const value = portfolioSelectionBucketKey(row);
+      const label = row.bucket?.label || row.sizeLabel || value;
+      const sort = Number(row.bucket?.value ?? row.unitMl ?? 0);
+      if (!buckets.has(value)) buckets.set(value, { value, label, sort });
+    }
+  }
+  return [...buckets.values()].sort((a, b) => (a.sort - b.sort) || a.label.localeCompare(b.label, 'es'));
+}
+
+function portfolioSelectionSkuRows(aggregates, { ignoreStores = false, ignoreBuckets = false } = {}) {
+  const storeFilter = new Set(state.portfolio.selectedStores || []);
+  const bucketFilter = new Set(state.portfolio.selectedBuckets || []);
+  const qn = state.portfolio.selectionQ || '';
+  return aggregates.flatMap((agg) => (agg.rows || []).map((row) => {
+    const index = agg.benchmarkPpl ? row.modePricePerLiter / agg.benchmarkPpl * 100 : null;
+    return {
+      agg,
+      row,
+      index,
+      stores: row.modeStoreKeys || [],
+      storeLabels: row.modeStores || [],
+      bucketKey: portfolioSelectionBucketKey(row),
+    };
+  })).filter((entry) => {
+    if (!ignoreStores && storeFilter.size && !entry.stores.some((store) => storeFilter.has(store))) return false;
+    if (!ignoreBuckets && bucketFilter.size && !bucketFilter.has(entry.bucketKey)) return false;
+    if (qn && !textMatchesQuery(`${entry.row.label} ${entry.row.brandLabel} ${entry.row.segment.label} ${entry.row.sizeLabel} ${entry.storeLabels.join(' ')} ${fmtPrice(entry.row.modePrice)} ${fmtPerLiter(entry.row.modePricePerLiter)}`, qn)) return false;
+    return true;
+  }).sort((a, b) =>
+    a.row.segment.label.localeCompare(b.row.segment.label, 'es') ||
+    a.row.brandLabel.localeCompare(b.row.brandLabel, 'es') ||
+    a.row.bucket.value - b.row.bucket.value ||
+    a.row.label.localeCompare(b.row.label, 'es'));
+}
+
+function renderPortfolioSelectionPanel(currentRows) {
+  const aggregates = portfolioSelectedAggregates(currentRows);
+  if (!state.portfolio.selectedPins.length) {
+    return `<div class="portfolio-section portfolio-selection empty-selection">
+      <div class="portfolio-section-head">
+        <h3>Seleccion del grafico</h3>
+        <p>Click en uno o varios pines para ver que SKUs, cadenas y precios explican su posicion.</p>
+      </div>
+    </div>`;
+  }
+  const selectedKeys = new Set(aggregates.map(portfolioPinKey));
+  if (state.portfolio.selectedPins.some((key) => !selectedKeys.has(key))) {
+    state.portfolio.selectedPins = state.portfolio.selectedPins.filter((key) => selectedKeys.has(key));
+  }
+  const storeOptions = portfolioSelectionStoreOptions(aggregates);
+  const bucketOptions = portfolioSelectionBucketOptions(aggregates);
+  state.portfolio.selectedStores = (state.portfolio.selectedStores || []).filter((store) => storeOptions.some((option) => option.value === store));
+  state.portfolio.selectedBuckets = (state.portfolio.selectedBuckets || []).filter((bucket) => bucketOptions.some((option) => option.value === bucket));
+  const skuRows = portfolioSelectionSkuRows(aggregates);
+  const skuRowsAllStores = portfolioSelectionSkuRows(aggregates, { ignoreStores: true });
+  const skuRowsAllBuckets = portfolioSelectionSkuRows(aggregates, { ignoreBuckets: true });
+  const avgIndex = weightedAvg(aggregates.filter((row) => portfolioOwner(row) === 'sarubbi'), (row) => row.index, (row) => row.n || 1);
+  const avgPpl = weightedAvg(aggregates, (row) => row.ppl, (row) => row.n || 1);
+  const sarubbiCount = aggregates.filter((row) => portfolioOwner(row) === 'sarubbi').length;
+  const compCount = aggregates.length - sarubbiCount;
+  const chips = aggregates.map((row) => {
+    const key = portfolioPinKey(row);
+    return `<button type="button" class="portfolio-selected-chip ${escape(portfolioOwner(row))}" data-remove-pin="${escape(key)}">
+      ${brandLogo({ brand: row.brand, brandLabel: row.brandLabel, group: portfolioOwner(row) })}
+      <span>${escape(row.brandLabel)}  -  ${escape(row.segmentLabel)}</span>
+      <b>${escape(portfolioIndexText(row.index))}</b>
+      <i aria-hidden="true">x</i>
+    </button>`;
+  }).join('');
+  const storeChips = `<button type="button" class="mode-chip ${state.portfolio.selectedStores.length ? '' : 'active'}" data-selection-store="">Todas <span>${skuRowsAllStores.length}</span></button>` +
+    storeOptions.map((option) => {
+      const active = state.portfolio.selectedStores.includes(option.value) ? ' active' : '';
+      const count = skuRowsAllStores.filter((entry) => entry.stores.includes(option.value)).length;
+      return `<button type="button" class="mode-chip${active}" data-selection-store="${escape(option.value)}">${escape(option.label)} <span>${count}</span></button>`;
+    }).join('');
+  const bucketChips = `<button type="button" class="mode-chip ${state.portfolio.selectedBuckets.length ? '' : 'active'}" data-selection-bucket="">Todos presentacions <span>${skuRowsAllBuckets.length}</span></button>` +
+    bucketOptions.map((option) => {
+      const active = state.portfolio.selectedBuckets.includes(option.value) ? ' active' : '';
+      const count = skuRowsAllBuckets.filter((entry) => entry.bucketKey === option.value).length;
+      return `<button type="button" class="mode-chip${active}" data-selection-bucket="${escape(option.value)}">${escape(option.label)} <span>${count}</span></button>`;
+    }).join('');
+  return `<div class="portfolio-section portfolio-selection">
+    <div class="portfolio-section-head">
+      <div>
+        <h3>Seleccion del grafico</h3>
+        <p>${aggregates.length} pines seleccionados: ${sarubbiCount} Sarubbi / ${compCount} competencia. La planilla muestra los SKUs que sostienen cada punto.</p>
+      </div>
+      <button type="button" class="btn" id="portfolioClearSelection">Limpiar</button>
+    </div>
+    <div class="portfolio-selected-chips">${chips}</div>
+    <div class="portfolio-selection-kpis">
+      <div><span>Indice Sarubbi seleccionado</span><b>${avgIndex == null ? '-' : `${avgIndex.toFixed(0)}%`}</b></div>
+      <div><span>Promedio seleccionado</span><b>${fmtPerLiter(avgPpl)}</b></div>
+      <div><span>SKUs visibles</span><b>${skuRows.length}</b></div>
+    </div>
+    <div class="portfolio-selection-filters">
+      <input id="portfolioSelectionQ" value="${escape(state.portfolio.selectionQ)}" placeholder="Filtrar SKU, marca, presentacion o cadena" autocomplete="off" />
+      <div>
+        <div class="portfolio-filter-label">Presentacions</div>
+        <div class="mode-chip-row">${bucketChips}</div>
+        <div class="portfolio-filter-label">Cadenas</div>
+        <div class="mode-chip-row">${storeChips}</div>
+      </div>
+    </div>
+    <div class="portfolio-sheet-wrap">
+      <table class="compact-table sheet-table portfolio-selection-table">
+        <thead><tr>
+          <th>SKU</th>
+          <th>Marca</th>
+          <th>${escape(portfolioSegmentColumnLabel(state.portfolio.category))} / presentacion</th>
+          <th>Cadenas moda</th>
+          <th class="price">Moda</th>
+          <th class="price">normalizado</th>
+          <th class="price">Index</th>
+          <th class="price">Rango</th>
+        </tr></thead>
+        <tbody>${skuRows.map((entry) => {
+          const row = entry.row;
+          const storeText = entry.storeLabels.join(', ');
+          return `<tr>
+            <td>${productLinkCell(row.sample, `<br><span class="table-sub">${row.count} registros  -  moda ${row.modeCount}/${row.count} (${row.modeShare.toFixed(0)}%)</span>`, row.label)}</td>
+            <td><b>${escape(row.brandLabel)}</b><br>${portfolioOwnerPill(row.group)}</td>
+            <td>${escape(row.segment.label)}<br><span class="table-sub">${escape(row.sizeLabel)}${row.packUnits > 1 ? `  -  pack x${row.packUnits}` : ''}</span></td>
+            <td><span class="sheet-muted">${escape(storeText || '-')}</span></td>
+            <td class="price">${fmtPrice(row.modePrice)}</td>
+            <td class="price">${fmtPerLiter(row.modePricePerLiter)}</td>
+            <td class="price"><b>${escape(portfolioIndexText(entry.index))}</b><br><span class="table-sub">base ${escape(entry.agg.benchmarkLabel || '-')}</span></td>
+            <td class="price">${fmtPrice(row.min)} - ${fmtPrice(row.max)}</td>
+          </tr>`;
+        }).join('') || '<tr><td colspan="8" class="empty compact">Sin SKUs para la seleccion y filtros aplicados.</td></tr>'}</tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function renderPortfolioDetail(category, segmentKey, brand) {
+  const allRows = strategyComparableRows().filter((entry) => {
+    if (entry.row.category !== category) return false;
+    if (segmentKey && entry.row.segment.key !== segmentKey) return false;
+    if (brand && entry.row.brand !== brand) return false;
+    return true;
+  });
+  const statusOptions = ['ok', 'below', 'above', 'missing']
+    .filter((key) => allRows.some((entry) => strategyStatus(entry.index, entry.targetRange).key === key))
+    .map((key) => ({ value: key, label: portfolioStatusLabel(key) }));
+  const bucketOptions = uniqueOptions(allRows, (entry) => String(entry.row.bucket.value), (_, entry) => entry.row.bucket.label);
+  state.portfolio.detailStatus = validSelectValue(statusOptions, state.portfolio.detailStatus);
+  state.portfolio.detailBucket = validSelectValue(bucketOptions, state.portfolio.detailBucket);
+  const qn = state.portfolio.detailQ || '';
+  const rows = allRows.filter((entry) => {
+    const statusKey = strategyStatus(entry.index, entry.targetRange).key;
+    if (state.portfolio.detailStatus && statusKey !== state.portfolio.detailStatus) return false;
+    if (state.portfolio.detailBucket && String(entry.row.bucket.value) !== state.portfolio.detailBucket) return false;
+    const refBrands = [...new Set(entry.benchmarkRows.map((row) => labelBrand(row)))].join(' ');
+    if (qn && !textMatchesQuery(`${entry.row.brandLabel} ${entry.row.label} ${entry.row.segment.label} ${entry.row.bucket.label} ${refBrands} ${portfolioIndexText(entry.index)} ${fmtPerLiter(entry.row.modePricePerLiter)} ${fmtPerLiter(entry.benchmarkPpl)}`, qn)) return false;
+    return true;
+  }).sort((a, b) =>
+    a.row.segment.label.localeCompare(b.row.segment.label, 'es') ||
+    a.row.brandLabel.localeCompare(b.row.brandLabel, 'es') ||
+    a.row.bucket.value - b.row.bucket.value);
+  return `<div class="portfolio-sheet-wrap">
+  <table class="compact-table sheet-table portfolio-detail-table">
+    <thead><tr>
+      <th><span class="th-title">Marca Sarubbi</span><input id="portfolioDetailQ" class="th-filter" value="${escape(state.portfolio.detailQ)}" placeholder="Filtrar" /></th>
+      <th><span class="th-title">${escape(portfolioSegmentColumnLabel(category))} / presentacion</span>${filterSelectHtml('portfolioDetailBucket', 'Todos', bucketOptions, state.portfolio.detailBucket)}</th>
+      <th><span class="th-title">Referencia usada</span></th>
+      <th class="price"><span class="th-title">Sarubbi normalizado</span></th>
+      <th class="price"><span class="th-title">Ref. normalizado</span></th>
+      <th class="price"><span class="th-title">Index</span></th>
+      <th><span class="th-title">Estado</span>${filterSelectHtml('portfolioDetailStatus', 'Todos', statusOptions, state.portfolio.detailStatus)}</th>
+    </tr></thead>
+    <tbody>${rows.map((entry) => {
+      const refBrands = [...new Set(entry.benchmarkRows.map((row) => labelBrand(row)))].slice(0, 4);
+      const moreRefs = Math.max(0, new Set(entry.benchmarkRows.map((row) => labelBrand(row))).size - refBrands.length);
+      return `<tr>
+      <td><b>${escape(entry.row.brandLabel)}</b><br><span class="table-sub">${escape(entry.row.label)}</span></td>
+      <td>${escape(entry.row.segment.label)}<br><span class="table-sub">${escape(entry.row.bucket.label)}</span></td>
+      <td><b>${escape(refBrands.join(', ') || 'Sin base')}</b>${moreRefs ? ` <span class="table-sub">+${moreRefs}</span>` : ''}<br><span class="table-sub">${entry.benchmarkRows.length} obs. equivalentes</span></td>
+      <td class="price">${fmtPerLiter(entry.row.modePricePerLiter)}</td>
+      <td class="price">${fmtPerLiter(entry.benchmarkPpl)}</td>
+      <td class="price"><b>${escape(portfolioIndexText(entry.index))}</b><div class="portfolio-index-mini"><i style="--x:${portfolioX(entry.index).toFixed(2)}%"></i></div></td>
+      <td>${strategyBadge(entry.index, entry.targetRange)}<span class="table-sub">Meta ${strategyTargetLabel(entry.targetRange)}</span></td>
+    </tr>`;
+    }).join('') || '<tr><td colspan="7" class="empty compact">Sin SKUs Sarubbi con benchmark equivalente para este filtro.</td></tr>'}</tbody>
+  </table>
+  </div>`;
+}
+
+function renderPortfolio() {
+  const root = $('#portfolioContent');
+  if (!root) return;
   if (!state.items.length) {
-    $('#execContent').innerHTML = '<div class="empty">Sin datos. Tocá "Actualizar precios" primero.</div>';
+    root.innerHTML = '<div class="empty">Sin datos.</div>';
     return;
   }
-  const items = state.items;
-  const total = items.length;
-  const bimbo = items.filter((i) => i.group === 'sarubbi');
-  const offers = items.filter((i) => i.listPrice && i.price && i.listPrice > i.price);
 
-  const byBrand = {};
-  for (const i of items) (byBrand[i.brand] ??= []).push(i);
-  const brandStats = Object.entries(byBrand).map(([brand, arr]) => {
-    const prices = arr.map((x) => x.price).filter((p) => p != null);
-    const avg = prices.length ? Math.round(prices.reduce((s, p) => s + p, 0) / prices.length) : null;
-    return { brand, group: arr[0].group, count: arr.length, avg, supersCovered: new Set(arr.map((x) => x.super)).size, offers: arr.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length };
+  const date = portfolioActiveDate();
+  const dates = portfolioDates();
+  const dateIndex = date ? dates.indexOf(date) : -1;
+  const sourceRows = portfolioApplyIndex(portfolioMarketRowsForDate(date));
+  const currentRows = portfolioApplyIndex(portfolioCurrentRows());
+  const category = state.portfolio.category || PORTFOLIO_CATEGORIES[0] || 'jamon_cocido';
+  const segmentOptions = portfolioSegmentOptions(currentRows, category);
+  if (state.portfolio.segment && !segmentOptions.some((row) => row.key === state.portfolio.segment)) state.portfolio.segment = '';
+  const brandOptions = portfolioBrandOptions(currentRows, category, state.portfolio.segment);
+  if (state.portfolio.brand && !brandOptions.some((row) => row.brand === state.portfolio.brand)) state.portfolio.brand = '';
+
+  const filteredRows = portfolioFilterRows(sourceRows);
+  const detailedSegment = state.portfolio.brand
+    ? (currentRows.find((row) => row.brand === state.portfolio.brand && row.category === category)?.segmentKey || state.portfolio.segment)
+    : state.portfolio.segment;
+  const dateLabel = date ? new Date(date).toLocaleString('es-UY', { dateStyle: 'short', timeStyle: 'short' }) : 'ultimo dato';
+  const maxDateIndex = Math.max(0, dates.length - 1);
+
+  root.innerHTML = `
+    <div class="portfolio-shell">
+      <div class="portfolio-hero">
+        <div>
+          <h2>Portafolio Sarubbi</h2>
+          <p>Lectura de price index por rubro Sarubbi. Cada marca se compara contra competencia de la misma categoria y presentacion comparable.</p>
+        </div>
+        <div class="portfolio-source-box">
+          <span>Fuente estrategia</span>
+          <b>${escape(state.strategy?.version || '2026')}</b>
+          <small>${escape(state.strategy?.source || 'Marketing Sarubbi Uruguay')}</small>
+        </div>
+      </div>
+
+      <div class="portfolio-toolbar">
+        <div class="portfolio-chip-row">
+          ${PORTFOLIO_CATEGORIES.map((cat) => `<button type="button" class="mode-chip ${cat === category ? 'active' : ''}" data-portfolio-category="${escape(cat)}">${escape(labelCategory(cat))}</button>`).join('')}
+        </div>
+        <select id="portfolioSegment">
+          <option value="">${escape(portfolioAllSegmentsLabel(category))}</option>
+          ${segmentOptions.map((option) => `<option value="${escape(option.key)}" ${state.portfolio.segment === option.key ? 'selected' : ''}>${escape(option.label)}</option>`).join('')}
+        </select>
+        <select id="portfolioBrand">
+          <option value="">Todas las marcas Sarubbi</option>
+          ${brandOptions.map((option) => `<option value="${escape(option.brand)}" ${state.portfolio.brand === option.brand ? 'selected' : ''}>${escape(option.label)}</option>`).join('')}
+        </select>
+        <div class="portfolio-time-control">
+          <button type="button" class="btn" id="portfolioPlay" ${dates.length < 2 ? 'disabled' : ''}>Animar</button>
+          <button type="button" class="btn" id="portfolioOrientation">${state.portfolio.orientation === 'vertical' ? 'Horizontal' : 'Vertical'}</button>
+          <input type="range" id="portfolioDate" min="0" max="${maxDateIndex}" value="${Math.max(0, dateIndex)}" ${dates.length < 2 ? 'disabled' : ''} />
+          <span>${escape(dateLabel)}</span>
+        </div>
+      </div>
+
+      ${portfolioSummary(filteredRows)}
+      ${renderPortfolioMap(filteredRows, `${labelCategory(category)} / ${state.portfolio.brand ? labelBrand({ brand: state.portfolio.brand, brandLabel: brandOptions.find((b) => b.brand === state.portfolio.brand)?.label }) : state.portfolio.segment ? segmentOptions.find((s) => s.key === state.portfolio.segment)?.label || portfolioSegmentKind(category) : portfolioAllSegmentsLabel(category).toLowerCase()}`)}
+      ${renderPortfolioSelectionPanel(currentRows)}
+
+      <div class="portfolio-section">
+        <div class="portfolio-section-head">
+          <h3>Timeline por rubro</h3>
+          <p>Move el corte historico y los logos cambian de posicion segun su price index de ese relevamiento.</p>
+        </div>
+        ${renderPortfolioMiniTracks(sourceRows, dateLabel)}
+      </div>
+
+      <div class="portfolio-data-stack">
+        <div class="portfolio-section">
+          <div class="portfolio-section-head"><h3>Datos en bruto</h3><p>Planilla agregada por marca y ${escape(portfolioSegmentKind(category))}. Filtra por texto, dueno, benchmark o estado para auditar el indice.</p></div>
+          ${renderPortfolioTable(filteredRows)}
+        </div>
+        <div class="portfolio-section">
+          <div class="portfolio-section-head"><h3>Detalle por presentacion</h3><p>Referencia usada para el price index. La base 100 se toma de la marca benchmark definida para cada categoria Sarubbi.</p></div>
+          ${renderPortfolioDetail(category, detailedSegment, state.portfolio.brand)}
+        </div>
+      </div>
+    </div>`;
+
+  root.querySelectorAll('[data-portfolio-category]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.portfolio.category = btn.dataset.portfolioCategory || PORTFOLIO_CATEGORIES[0] || 'jamon_cocido';
+      state.portfolio.segment = '';
+      state.portfolio.brand = '';
+      state.portfolio.selectedPins = [];
+      state.portfolio.selectedStores = [];
+      state.portfolio.selectedBuckets = [];
+      state.portfolio.selectionQ = '';
+      renderPortfolio();
+    });
+  });
+  $('#portfolioSegment')?.addEventListener('change', (e) => {
+    state.portfolio.segment = e.target.value;
+    state.portfolio.brand = '';
+    renderPortfolio();
+  });
+  $('#portfolioBrand')?.addEventListener('change', (e) => {
+    state.portfolio.brand = e.target.value;
+    const selected = currentRows.find((row) => row.category === state.portfolio.category && row.brand === state.portfolio.brand && portfolioOwner(row) === 'sarubbi');
+    if (selected) state.portfolio.segment = selected.segmentKey;
+    renderPortfolio();
+  });
+  $('#portfolioDate')?.addEventListener('input', (e) => {
+    const nextDate = dates[Number(e.target.value)] || dates[dates.length - 1] || '';
+    state.portfolio.date = nextDate;
+    renderPortfolio();
+  });
+  $('#portfolioPlay')?.addEventListener('click', () => {
+    if (dates.length < 2) return;
+    let i = Math.max(0, dates.indexOf(state.portfolio.date));
+    const tick = () => {
+      i = (i + 1) % dates.length;
+      state.portfolio.date = dates[i];
+      renderPortfolio();
+      if (i !== dates.length - 1) setTimeout(tick, 700);
+    };
+    tick();
+  });
+  $('#portfolioOrientation')?.addEventListener('click', () => {
+    state.portfolio.orientation = state.portfolio.orientation === 'vertical' ? 'horizontal' : 'vertical';
+    renderPortfolio();
+  });
+  bindPortfolioFilterInput(root, 'portfolioRawQ', 'rawQ');
+  bindPortfolioFilterSelect(root, 'portfolioRawOwner', 'rawOwner');
+  bindPortfolioFilterSelect(root, 'portfolioRawStatus', 'rawStatus');
+  bindPortfolioFilterSelect(root, 'portfolioRawBenchmark', 'rawBenchmark');
+  bindPortfolioFilterInput(root, 'portfolioDetailQ', 'detailQ');
+  bindPortfolioFilterSelect(root, 'portfolioDetailStatus', 'detailStatus');
+  bindPortfolioFilterSelect(root, 'portfolioDetailBucket', 'detailBucket');
+  bindPortfolioPins(root);
+  bindPortfolioLanes(root);
+  bindPortfolioSelection(root);
+  bindProductLinks(root);
+  applyClientCopy(root);
+}
+
+function setPortfolioPinTop(pin) {
+  const key = pin.dataset.pinKey;
+  if (!key) return;
+  const currentZ = Number(getComputedStyle(pin).zIndex) || 0;
+  state.portfolio.pinZ = Math.max(state.portfolio.pinZ || 40, currentZ) + 1;
+  state.portfolio.pinOrder[key] = state.portfolio.pinZ;
+  pin.style.setProperty('--z', state.portfolio.pinZ);
+  pin.classList.add('selected');
+}
+
+function activatePortfolioPin(pin) {
+  const key = pin.dataset.pinKey;
+  if (!key) return;
+  setPortfolioPinTop(pin);
+  if (!state.portfolio.selectedPins.includes(key)) state.portfolio.selectedPins.push(key);
+  renderPortfolio();
+}
+
+function bindPortfolioPins(root) {
+  root.querySelectorAll('.portfolio-point').forEach((pin) => {
+    pin.addEventListener('click', () => activatePortfolioPin(pin));
+    pin.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      activatePortfolioPin(pin);
+    });
+  });
+}
+
+function bindPortfolioLanes(root) {
+  let draggedKey = '';
+  root.querySelectorAll('.portfolio-lane[draggable="true"]').forEach((lane) => {
+    lane.addEventListener('dragstart', (e) => {
+      const dragSurface = e.target.closest('.portfolio-lane-drag, .portfolio-lane-title');
+      if (!dragSurface || e.target.closest('.portfolio-point')) {
+        e.preventDefault();
+        return;
+      }
+      draggedKey = lane.dataset.laneKey || '';
+      if (!draggedKey) {
+        e.preventDefault();
+        return;
+      }
+      lane.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', draggedKey);
+    });
+    lane.addEventListener('dragend', () => {
+      draggedKey = '';
+      root.querySelectorAll('.portfolio-lane').forEach((el) => el.classList.remove('dragging', 'drop-before', 'drop-after'));
+    });
+    lane.addEventListener('dragover', (e) => {
+      if (!draggedKey || draggedKey === lane.dataset.laneKey) return;
+      e.preventDefault();
+      const rect = lane.getBoundingClientRect();
+      const before = e.clientY < rect.top + rect.height / 2;
+      lane.classList.toggle('drop-before', before);
+      lane.classList.toggle('drop-after', !before);
+      e.dataTransfer.dropEffect = 'move';
+    });
+    lane.addEventListener('dragleave', () => lane.classList.remove('drop-before', 'drop-after'));
+    lane.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const source = e.dataTransfer.getData('text/plain') || draggedKey;
+      const target = lane.dataset.laneKey || '';
+      if (!source || !target || source === target) return;
+      const keys = root.querySelectorAll('.portfolio-lane[draggable="true"]');
+      const current = Array.from(keys).map((el) => el.dataset.laneKey).filter(Boolean);
+      const next = current.filter((key) => key !== source);
+      const targetIndex = next.indexOf(target);
+      const rect = lane.getBoundingClientRect();
+      const before = e.clientY < rect.top + rect.height / 2;
+      next.splice(before ? targetIndex : targetIndex + 1, 0, source);
+      state.portfolio.laneOrder[portfolioLaneOrderKey(state.portfolio.category)] = next;
+      savePortfolioPrefs();
+      renderPortfolio();
+    });
+  });
+}
+
+function bindPortfolioSelection(root) {
+  root.querySelector('#portfolioClearSelection')?.addEventListener('click', () => {
+    state.portfolio.selectedPins = [];
+    state.portfolio.selectedStores = [];
+    state.portfolio.selectedBuckets = [];
+    state.portfolio.selectionQ = '';
+    renderPortfolio();
+  });
+  root.querySelectorAll('[data-remove-pin]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.removePin;
+      state.portfolio.selectedPins = state.portfolio.selectedPins.filter((pin) => pin !== key);
+      if (!state.portfolio.selectedPins.length) {
+        state.portfolio.selectedStores = [];
+        state.portfolio.selectedBuckets = [];
+        state.portfolio.selectionQ = '';
+      }
+      renderPortfolio();
+    });
+  });
+  root.querySelector('#portfolioSelectionQ')?.addEventListener('input', (e) => {
+    state.portfolio.selectionQ = e.target.value;
+    renderPortfolio();
+    const next = document.querySelector('#portfolioSelectionQ');
+    if (next) {
+      next.focus();
+      next.setSelectionRange(next.value.length, next.value.length);
+    }
+  });
+  root.querySelectorAll('[data-selection-store]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const store = btn.dataset.selectionStore;
+      if (!store) state.portfolio.selectedStores = [];
+      else if (state.portfolio.selectedStores.includes(store)) {
+        state.portfolio.selectedStores = state.portfolio.selectedStores.filter((item) => item !== store);
+      } else {
+        state.portfolio.selectedStores.push(store);
+      }
+      renderPortfolio();
+    });
+  });
+  root.querySelectorAll('[data-selection-bucket]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const bucket = btn.dataset.selectionBucket;
+      if (!bucket) state.portfolio.selectedBuckets = [];
+      else if (state.portfolio.selectedBuckets.includes(bucket)) {
+        state.portfolio.selectedBuckets = state.portfolio.selectedBuckets.filter((item) => item !== bucket);
+      } else {
+        state.portfolio.selectedBuckets.push(bucket);
+      }
+      renderPortfolio();
+    });
+  });
+}
+
+function bindPortfolioFilterInput(root, id, key) {
+  const el = root.querySelector(`#${id}`);
+  if (!el) return;
+  el.addEventListener('input', (e) => {
+    state.portfolio[key] = e.target.value;
+    renderPortfolio();
+    const next = root.querySelector(`#${id}`);
+    if (next) {
+      next.focus();
+      next.setSelectionRange(next.value.length, next.value.length);
+    }
+  });
+}
+
+function bindPortfolioFilterSelect(root, id, key) {
+  const el = root.querySelector(`#${id}`);
+  if (!el) return;
+  el.addEventListener('change', (e) => {
+    state.portfolio[key] = e.target.value;
+    renderPortfolio();
+  });
+}
+
+function strategyComparableRows() {
+  const rows = skuModeRows().filter((row) => row.modePricePerLiter != null && row.bucket);
+  const byFormat = new Map();
+  for (const row of rows) {
+    const key = `${row.category}|${row.segment.key}|${row.bucket.value}`;
+    const group = byFormat.get(key) || [];
+    group.push(row);
+    byFormat.set(key, group);
+  }
+
+  return rows.filter((row) => row.group === 'sarubbi').map((row) => {
+    const formatRows = byFormat.get(`${row.category}|${row.segment.key}|${row.bucket.value}`) || [];
+    const competitors = formatRows.filter((entry) => entry.group === 'competencia');
+    const rule = strategyRule(row.segment.key);
+    const benchmarkBrand = indexBenchmarkBrandForSegment(row.segment.key);
+    const benchmarkSegment = indexBenchmarkSegmentForSegment(row.segment.key);
+    const benchmarkFormatRows = byFormat.get(`${row.category}|${benchmarkSegment}|${row.bucket.value}`) || [];
+    let benchmarkRows = benchmarkFormatRows.filter((entry) => entry.brand === benchmarkBrand);
+    if (!benchmarkRows.length) {
+      benchmarkRows = rows.filter((entry) => entry.category === row.category && entry.bucket?.value === row.bucket.value && entry.brand === benchmarkBrand);
+    }
+    if (!benchmarkRows.length && rule?.competitorBrands?.length) {
+      benchmarkRows = competitors.filter((entry) => rule.competitorBrands.includes(entry.brand));
+    }
+    if (!benchmarkRows.length) benchmarkRows = competitors;
+    const benchmarkPpl = weightedAvg(benchmarkRows, (entry) => entry.modePricePerLiter, (entry) => entry.modeCount);
+    const index = benchmarkPpl ? row.modePricePerLiter / benchmarkPpl * 100 : null;
+    const targetRange = strategyTargetRange(row.segment.key, row.brand);
+    const status = strategyStatus(index, targetRange);
+    const delta = status.delta == null ? null : status.delta;
+    return {
+      row,
+      rule,
+      benchmarkBrand,
+      benchmarkRows,
+      benchmarkPpl,
+      index,
+      targetRange,
+      status,
+      delta,
+    };
+  });
+}
+
+function strategyStatusRank(key) {
+  return { above: 0, below: 1, missing: 2, ok: 3 }[key] ?? 4;
+}
+
+function strategyFilterRows(rows) {
+  return rows.filter((entry) => {
+    const f = state.strategyFilters;
+    if (f.category && entry.row.category !== f.category) return false;
+    if (f.status && entry.status.key !== f.status) return false;
+    return true;
+  }).sort((a, b) =>
+    strategyStatusRank(a.status.key) - strategyStatusRank(b.status.key) ||
+    Math.abs(b.delta || 0) - Math.abs(a.delta || 0) ||
+    labelCategory(a.row.category).localeCompare(labelCategory(b.row.category), 'es') ||
+    a.row.segment.label.localeCompare(b.row.segment.label, 'es') ||
+    a.row.brandLabel.localeCompare(b.row.brandLabel, 'es') ||
+    a.row.bucket.value - b.row.bucket.value);
+}
+
+function renderStrategyChips(rows) {
+  const categories = values(rows.map((entry) => entry.row), 'category');
+  const categoryChips = `<button type="button" class="mode-chip ${state.strategyFilters.category ? '' : 'active'}" data-strategy-category="">Todos <span>${rows.length}</span></button>` +
+    categories.map((category) => {
+      const count = rows.filter((entry) => entry.row.category === category).length;
+      const active = state.strategyFilters.category === category ? ' active' : '';
+      return `<button type="button" class="mode-chip${active}" data-strategy-category="${escape(category)}">${escape(labelCategory(category))} <span>${count}</span></button>`;
+    }).join('');
+  const statusOptions = [
+    ['', 'Todos'],
+    ['above', 'Sobre objetivo'],
+    ['below', 'Debajo objetivo'],
+    ['ok', 'En objetivo'],
+    ['missing', 'Sin base'],
+  ];
+  const statusChips = statusOptions.map(([key, label]) => {
+    const count = key ? rows.filter((entry) => entry.status.key === key).length : rows.length;
+    const active = state.strategyFilters.status === key ? ' active' : '';
+    return `<button type="button" class="mode-chip${active}" data-strategy-status="${escape(key)}">${escape(label)} <span>${count}</span></button>`;
+  }).join('');
+  return `
+    <div class="mode-toolbar strategy-toolbar">
+      <div class="mode-filter-block">
+        <div class="mode-filter-label">Rubro</div>
+        <div class="mode-chip-row">${categoryChips}</div>
+      </div>
+      <div class="mode-filter-block wide">
+        <div class="mode-filter-label">Estado estrategia</div>
+        <div class="mode-chip-row">${statusChips}</div>
+      </div>
+    </div>`;
+}
+
+function strategyIndexBar(entry) {
+  if (entry.index == null) return '<span class="mode-index-empty">Sin base equivalente</span>';
+  const max = Math.max(140, entry.index, entry.targetRange[1], 100) + 10;
+  const indexLeft = Math.min(100, entry.index / max * 100);
+  const minLeft = Math.min(100, entry.targetRange[0] / max * 100);
+  const maxLeft = Math.min(100, entry.targetRange[1] / max * 100);
+  return `<div class="strategy-index">
+    <div class="strategy-index-head"><b>${entry.index.toFixed(0)}%</b><span>obj ${strategyTargetLabel(entry.targetRange)}</span></div>
+    <div class="strategy-track" style="--index-left:${indexLeft.toFixed(2)}%;--min-left:${minLeft.toFixed(2)}%;--max-left:${maxLeft.toFixed(2)}%">
+      <i class="strategy-range"></i><i class="strategy-dot"></i>
+    </div>
+  </div>`;
+}
+
+function renderStrategy() {
+  const root = $('#strategyContent');
+  if (!root) return;
+  if (!state.items.length) {
+    root.innerHTML = '<div class="empty">Sin datos.</div>';
+    return;
+  }
+  const allRows = strategyComparableRows();
+  const rows = strategyFilterRows(allRows);
+  const counts = {
+    ok: allRows.filter((entry) => entry.status.key === 'ok').length,
+    above: allRows.filter((entry) => entry.status.key === 'above').length,
+    below: allRows.filter((entry) => entry.status.key === 'below').length,
+    missing: allRows.filter((entry) => entry.status.key === 'missing').length,
+  };
+  const coverage = allRows.length ? Math.round((counts.ok / allRows.length) * 100) : 0;
+  root.innerHTML = `
+    <div class="exec-card lead strategy-lead">
+      <h3>Mapa de precio marketing</h3>
+      <p>Controla los SKUs Sarubbi contra el benchmark correcto por gama, sabor y presentacion. La fuente es <b>${escape(state.strategy?.source || 'portfolio-strategy.json')}</b>; no contiene PVS ni datos sensibles de precio sugerido.</p>
+    </div>
+    <div class="strategy-kpis">
+      <div class="strategy-kpi ok"><span>En objetivo</span><b>${counts.ok}</b><small>${coverage}% de SKUs comparables</small></div>
+      <div class="strategy-kpi above"><span>Sobre objetivo</span><b>${counts.above}</b><small>Revisar posicionamiento/precio</small></div>
+      <div class="strategy-kpi below"><span>Debajo objetivo</span><b>${counts.below}</b><small>Puede erosionar arquitectura</small></div>
+      <div class="strategy-kpi"><span>Sin base</span><b>${counts.missing}</b><small>Falta benchmark en mismo presentacion</small></div>
+    </div>
+    <div class="exec-card">
+      ${renderStrategyChips(allRows)}
+      <table class="compact-table strategy-table">
+        <thead><tr><th>Marca Sarubbi</th><th>Rubro / gama</th><th>Presentacion</th><th>Referencia 100</th><th class="price">Moda Sarubbi normalizado</th><th>Indice</th><th>Estado</th></tr></thead>
+        <tbody>${rows.map((entry) => {
+          const row = entry.row;
+          const compLabel = entry.benchmarkRows.length
+            ? `${entry.benchmarkRows.length} obs. / ${[...new Set(entry.benchmarkRows.map((r) => r.brandLabel))].slice(0, 3).join(', ')}`
+            : 'Sin competencia equivalente';
+          return `<tr>
+            <td><div class="mode-brand-stack">${brandLogo(row.sample)}</div>${productLinkCell(row.sample, `<br><span class="table-sub">${escape(row.label)}</span>`, row.brandLabel)}</td>
+            <td><b>${escape(labelCategory(row.category))}</b><br><span class="table-sub">${escape(row.segment.label)}  -  ${escape(entry.rule?.note || '')}</span></td>
+            <td>${escape(row.bucket.label)}${row.packUnits > 1 ? `<br><span class="table-sub">pack x${row.packUnits}</span>` : ''}</td>
+            <td>${entry.benchmarkRows.length ? brandLogo({ brand: entry.benchmarkBrand, brandLabel: entry.benchmarkRows[0]?.brandLabel || entry.benchmarkBrand }) : '<span class="mode-index-empty">Sin base</span>'}<br><span class="table-sub">${escape(compLabel)}</span></td>
+            <td class="price">${fmtPerLiter(row.modePricePerLiter)}<br><span class="table-sub">${fmtPrice(row.modePrice)} moda</span></td>
+            <td>${strategyIndexBar(entry)}</td>
+            <td>${strategyBadge(entry.index, entry.targetRange)}<br><span class="table-sub">Meta ${strategyTargetLabel(entry.targetRange)}</span></td>
+          </tr>`;
+        }).join('') || '<tr><td colspan="7" class="empty compact">Sin SKUs para los filtros aplicados.</td></tr>'}</tbody>
+      </table>
+    </div>`;
+
+  root.querySelectorAll('[data-strategy-category]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.strategyFilters.category = btn.dataset.strategyCategory || '';
+      renderStrategy();
+    });
+  });
+  root.querySelectorAll('[data-strategy-status]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.strategyFilters.status = btn.dataset.strategyStatus || '';
+      renderStrategy();
+    });
+  });
+  bindProductLinks(root);
+  applyClientCopy(root);
+}
+
+function renderExecutive() {
+  if (!state.items.length) {
+    $('#execContent').innerHTML = '<div class="empty">Sin datos.</div>';
+    return;
+  }
+  const sarubbi = state.items.filter((i) => i.group === 'sarubbi');
+  const comp = state.items.filter((i) => i.group === 'competencia');
+  const offers = state.items.filter((i) => i.listPrice && i.price && i.listPrice > i.price);
+  const rows = competitiveRows().slice(0, 8);
+  const pvs = state.items.filter((i) => i.suggestedPrice != null);
+  const pvsTop = pvs.slice().sort((a, b) => Math.abs(b.suggestedDeviationPct ?? 0) - Math.abs(a.suggestedDeviationPct ?? 0)).slice(0, 10);
+  const pvsAbove = pvs.filter((i) => i.suggestedStatus === 'above').length;
+  const pvsOk = pvs.filter((i) => i.suggestedStatus === 'ok').length;
+  const pvsBelow = pvs.filter((i) => i.suggestedStatus === 'below').length;
+  const strategyRowsAll = strategyComparableRows();
+  const strategyCounts = {
+    ok: strategyRowsAll.filter((entry) => entry.status.key === 'ok').length,
+    above: strategyRowsAll.filter((entry) => entry.status.key === 'above').length,
+    below: strategyRowsAll.filter((entry) => entry.status.key === 'below').length,
+    missing: strategyRowsAll.filter((entry) => entry.status.key === 'missing').length,
+  };
+  const strategyIssues = strategyRowsAll
+    .filter((entry) => entry.status.key !== 'ok')
+    .sort((a, b) => strategyStatusRank(a.status.key) - strategyStatusRank(b.status.key) || Math.abs(b.delta || 0) - Math.abs(a.delta || 0))
+    .slice(0, 8);
+
+  const byStore = values(state.items, 'super').map((store) => {
+    const arr = state.items.filter((i) => i.super === store);
+    const sarubbiCount = arr.filter((i) => i.group === 'sarubbi').length;
+    return { store, count: arr.length, sarubbiCount: sarubbiCount, avg: avg(arr.map((i) => i.price)), offers: arr.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length };
   }).sort((a, b) => b.count - a.count);
 
-  const bySuper = {};
-  for (const i of items) (bySuper[i.super] ??= []).push(i);
-  const superStats = SUPERS.map((s) => {
-    const arr = bySuper[s] || [];
-    const prices = arr.map((x) => x.price).filter((p) => p != null);
-    return {
-      super: s, count: arr.length,
-      avg: prices.length ? Math.round(prices.reduce((sum, p) => sum + p, 0) / prices.length) : null,
-      min: prices.length ? Math.min(...prices) : null,
-      max: prices.length ? Math.max(...prices) : null,
-      offers: arr.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length,
-      sarubbi: arr.filter((i) => i.group === 'sarubbi').length,
-    };
-  }).filter((s) => s.count);
-  const maxCount = Math.max(...superStats.map((s) => s.count));
-
-  const clustersWithSpread = state.clusters
-    .filter((g) => g.items.length >= 2)
-    .map((g) => {
-      const prices = g.items.map((x) => x.price).filter((p) => p != null);
-      const spread = prices.length ? Math.max(...prices) - Math.min(...prices) : 0;
-      const pct = prices.length ? (1 - Math.min(...prices) / Math.max(...prices)) * 100 : 0;
-      return { ...g, spread, pct };
-    })
-    .filter((g) => g.spread > 0)
-    .sort((a, b) => b.pct - a.pct)
-    .slice(0, 5);
-
-  const topDiscounts = offers
-    .map((o) => ({ ...o, pct: (1 - o.price / o.listPrice) * 100 }))
-    .sort((a, b) => b.pct - a.pct)
-    .slice(0, 5);
-  const pvpItems = items.filter((i) => suggestedFor(i)?.price != null);
-  const pvpRows = pvpItems
-    .sort((a, b) => Math.abs(gapFor(b) ?? 0) - Math.abs(gapFor(a) ?? 0))
-    .slice(0, 8);
-  const pvpAbove = pvpItems.filter((i) => gapStatus(gapFor(i)) === 'above').length;
+  const byBrand = values(state.items, 'brand').map((brand) => {
+    const arr = state.items.filter((i) => i.brand === brand);
+    return { brand, label: labelBrand(arr[0]), group: arr[0].group, category: arr[0].category, count: arr.length, stores: new Set(arr.map((i) => i.super)).size, avg: avg(arr.map((i) => i.price)) };
+  }).sort((a, b) => b.count - a.count);
 
   const date = new Date(state.generatedAt).toLocaleString('es-UY', { dateStyle: 'long', timeStyle: 'short' });
-
   $('#execContent').innerHTML = `
-    <div class="print-only" style="margin-bottom:20px;border-bottom:2px solid var(--rojo);padding-bottom:14px">
-      <img src="/logo.jpg" alt="Sarubbi" style="height:54px;width:auto;border-radius:6px;margin:0 0 10px;display:block">
-      <h1 style="margin:0;font-size:24px;color:var(--rojo)">Informe Ejecutivo · Sarubbi Retail Watch Uruguay</h1>
-      <p style="margin:6px 0 0;color:#555;font-size:12px">Generado: ${escape(date)} · Tata · Disco · El Dorado · Tienda Inglesa</p>
+    <div class="print-only report-head">
+      <h1>${escape(APP_COPY.productName)}</h1>
+      <p>Informe interno de precios ${escape(APP_COPY.targetOwnerLabel)}  -  ${escape(APP_COPY.domain)}  -  ${escape(date)}</p>
     </div>
-
-    <div class="kpis" style="margin-bottom:20px">
-      <div class="kpi"><div class="kpi-label">SKUs totales</div><div class="kpi-value">${total}</div><div class="kpi-sub">${bimbo.length} Sarubbi</div></div>
-      <div class="kpi azul"><div class="kpi-label">Marcas relevadas</div><div class="kpi-value">${brandStats.length}</div></div>
-      <div class="kpi verde"><div class="kpi-label">Ofertas vigentes</div><div class="kpi-value">${offers.length}</div><div class="kpi-sub">${Math.round(offers.length / total * 100)}% del catálogo</div></div>
-      <div class="kpi amarillo"><div class="kpi-label">Productos comparables</div><div class="kpi-value">${clustersWithSpread.length}</div><div class="kpi-sub">presentes en 2+ supers</div></div>
-      <div class="kpi azul"><div class="kpi-label">PVP cruzados</div><div class="kpi-value">${pvpItems.length}</div><div class="kpi-sub">${pvpAbove} sobre PVP</div></div>
-    </div>
-
-    <div class="exec-card" style="margin-bottom:16px">
+    <div class="exec-card lead">
       <h3>Resumen</h3>
-      <p style="margin:0;font-size:13px;line-height:1.6">${buildExecutiveSummary(bimbo)}</p>
+      <p>Se relevaron <b>${state.items.length}</b> registros: <b>${sarubbi.length}</b> de marcas Sarubbi y <b>${comp.length}</b> de competencia, en <b>${new Set(state.items.map((i) => i.super)).size}</b> fuentes con precio promedio Sarubbi de <b>${fmtPrice(avg(sarubbi.map((i) => i.price)))}</b>. Estrategia marketing: <b>${strategyCounts.ok}</b> en objetivo, <b>${strategyCounts.above}</b> sobre y <b>${strategyCounts.below}</b> debajo. Control PVS: <b>${pvsAbove}</b> sobre, <b>${pvsOk}</b> en regla y <b>${pvsBelow}</b> bajo sugerido.</p>
     </div>
+
+    <div id="reportAutomationPanel">${reportAutomationHtml()}</div>
 
     <div class="exec-grid">
       <div class="exec-card">
-        <h3>Performance por marca</h3>
+        <h3>Marcas relevadas</h3>
         <div class="brand-stats">
-          ${brandStats.map((b) => `
-            <div class="brand-stat">
-              <div>
-                <div class="brand-stat-name">${escape(b.brand)}</div>
-                <div class="brand-stat-detail">${b.count} SKUs · ${b.supersCovered}/4 supers · ${b.offers} ofertas</div>
-              </div>
-              <div style="text-align:right">
-                <div class="brand-stat-value">${fmtPrice(b.avg)}</div>
-                <div class="brand-stat-detail">precio promedio</div>
-              </div>
-            </div>
-          `).join('')}
+          ${byBrand.slice(0, 18).map((b) => `<div class="brand-stat">
+            <div><div class="brand-stat-name">${escape(b.label)}</div><div class="brand-stat-detail">${escape(labelOwner(b.group))}  -  ${escape(labelCategory(b.category))}  -  ${b.stores} cadenas</div></div>
+            <div class="stat-right"><div class="brand-stat-value">${b.count}</div><div class="brand-stat-detail">${fmtPrice(b.avg)}</div></div>
+          </div>`).join('')}
         </div>
       </div>
 
       <div class="exec-card">
-        <h3>Cobertura por supermercado</h3>
+        <h3>Cobertura por cadena</h3>
         <div class="super-bars">
-          ${superStats.map((s) => `
-            <div class="super-bar">
-              <div class="super-bar-header">
-                <span><span class="pill ${s.super}">${SUPER_LABEL[s.super]}</span> ${s.count} SKUs · ${s.offers} ofertas</span>
-                <span style="font-variant-numeric:tabular-nums">prom ${fmtPrice(s.avg)}</span>
-              </div>
-              <div class="super-bar-track">
-                <div class="super-bar-fill ${s.super}" style="width:${(s.count / maxCount * 100).toFixed(1)}%"></div>
-              </div>
-              <div style="font-size:11px;color:var(--texto-muted);margin-top:3px">Rango: ${fmtPrice(s.min)} — ${fmtPrice(s.max)}</div>
-            </div>
-          `).join('')}
+          ${byStore.map((s) => `<div class="super-bar">
+            <div class="super-bar-header"><span><span class="pill ${escape(s.store)}">${escape(labelStore(s.store))}</span> ${s.count} SKUs</span><span>${fmtPrice(s.avg)}</span></div>
+            <div class="super-bar-track"><div class="super-bar-fill ${escape(s.store)}" style="width:${Math.max(6, s.count / Math.max(...byStore.map((x) => x.count), 1) * 100).toFixed(1)}%"></div></div>
+            <div class="brand-stat-detail">${s.sarubbiCount} Sarubbi  -  ${s.offers} ofertas</div>
+          </div>`).join('')}
         </div>
       </div>
     </div>
 
-    <div class="exec-card" style="margin-bottom:16px">
-      <h3>Top 5 diferencias entre supermercados</h3>
-      <p style="margin:0 0 10px;font-size:12px;color:var(--texto-muted)">Productos con mayor diferencia % de precio entre supers (oportunidad de optimización de compra/venta).</p>
+    <div class="exec-card">
+      <h3>Lectura marketing</h3>
       <table>
-        <thead><tr><th>Producto</th><th>Marca</th><th class="price">Más barato</th><th class="price">Más caro</th><th class="price">Diferencia</th></tr></thead>
-        <tbody>
-          ${clustersWithSpread.map((g) => {
-            const prices = g.items.map((x) => x.price).filter((p) => p != null);
-            const minIt = g.items.find((x) => x.price === Math.min(...prices));
-            const maxIt = g.items.find((x) => x.price === Math.max(...prices));
-            return `<tr>
-              <td>${escape(g.label)}</td>
-              <td class="brand">${escape(g.brand)}</td>
-              <td class="price">${fmtPrice(minIt.price)} <span class="pill ${minIt.super}" style="font-size:9px">${SUPER_LABEL[minIt.super]}</span></td>
-              <td class="price">${fmtPrice(maxIt.price)} <span class="pill ${maxIt.super}" style="font-size:9px">${SUPER_LABEL[maxIt.super]}</span></td>
-              <td class="price" style="color:var(--rojo)">$ ${g.spread.toLocaleString('es-UY')} · ${g.pct.toFixed(1)}%</td>
-            </tr>`;
-          }).join('') || '<tr><td colspan="5" style="text-align:center;color:var(--texto-muted)">No hay productos comparables.</td></tr>'}
-        </tbody>
+        <thead><tr><th>Marca Sarubbi</th><th>Gama / presentacion</th><th>Referencia 100</th><th>Indice</th><th>Estado</th></tr></thead>
+        <tbody>${strategyIssues.map((entry) => `<tr>
+          <td>${brandLogo(entry.row.sample)}<br><span class="table-sub">${escape(entry.row.label)}</span></td>
+          <td>${escape(entry.row.segment.label)} / ${escape(entry.row.bucket.label)}</td>
+          <td>${entry.benchmarkRows.length ? escape(entry.benchmarkRows[0].brandLabel) : 'Sin base'}</td>
+          <td><b>${entry.index == null ? '-' : `${entry.index.toFixed(0)}%`}</b><br><span class="table-sub">obj ${strategyTargetLabel(entry.targetRange)}</span></td>
+          <td>${strategyBadge(entry.index, entry.targetRange)}</td>
+        </tr>`).join('') || '<tr><td colspan="5" class="empty compact">Todos los SKUs comparables estan dentro de objetivo.</td></tr>'}</tbody>
       </table>
     </div>
 
-    <div class="exec-card" style="margin-bottom:16px">
-      <h3>Top 5 mayores descuentos</h3>
+    <div class="exec-card">
+      <h3>Principales brechas normalizado</h3>
       <table>
-        <thead><tr><th>Producto</th><th>Marca</th><th>Super</th><th class="price">Lista</th><th class="price">Oferta</th><th>Descuento</th></tr></thead>
-        <tbody>
-          ${topDiscounts.map((o) => `<tr>
-              <td>${escape(o.name)}</td>
-              <td class="brand">${escape(o.brand)}</td>
-              <td><span class="pill ${o.super}">${SUPER_LABEL[o.super]}</span></td>
-              <td class="price list">${fmtPrice(o.listPrice)}</td>
-              <td class="price">${fmtPrice(o.price)}</td>
-              <td><span class="discount-badge">−${Math.round(o.pct)}%</span></td>
-            </tr>`).join('') || '<tr><td colspan="6" style="text-align:center;color:var(--texto-muted)">No hay ofertas.</td></tr>'}
-        </tbody>
+        <thead><tr><th>Categoria</th><th>Marca / gama / presentacion</th><th>Sarubbi normalizado</th><th>Competencia normalizado</th><th class="price">Brecha normalizado</th></tr></thead>
+        <tbody>${rows.map((r) => `<tr>
+          <td>${escape(labelCategory(r.category))}</td>
+          <td>${brandLogo(r.sarubbiBest.item)}<br><span class="table-sub">${escape(r.segment.label)} / ${escape(r.bucket.label)} / ${r.sarubbi.length} propios / ${r.comp.length} comp.</span></td>
+          <td><b>${fmtPerLiter(r.sarubbiAvgPerLiter)}</b><br><span class="table-sub">mejor: ${escape(entryDetail(r.sarubbiBest))}</span></td>
+          <td><b>${fmtPerLiter(r.compAvgPerLiter)}</b><br><span class="table-sub">mejor: ${escape(entryDetail(r.compBest))}</span></td>
+          <td class="price ${r.diff <= 0 ? 'min' : ''}">${r.diff > 0 ? '+' : r.diff < 0 ? '-' : ''}${fmtPerLiter(Math.abs(r.diff))}<br><span>${r.pct > 0 ? '+' : ''}${r.pct.toFixed(1)}%</span></td>
+        </tr>`).join('') || '<tr><td colspan="5" class="empty compact">Sin comparables normalizado.</td></tr>'}</tbody>
       </table>
     </div>
 
-    <div class="exec-card" style="margin-bottom:16px">
-      <h3>Control PVP sugerido</h3>
+    <div class="exec-card">
+      <h3>Control precio sugerido</h3>
       <table>
-        <thead><tr><th>Producto</th><th>Marca</th><th>Super</th><th class="price">Precio</th><th class="price">PVP</th><th class="price">GAP</th></tr></thead>
-        <tbody>
-          ${pvpRows.map((i) => {
-            const suggested = suggestedFor(i);
-            const gap = gapFor(i);
-            const status = gapStatus(gap);
-            return `<tr>
-              <td>${escape(i.name)}</td>
-              <td class="brand">${escape(i.brand)}</td>
-              <td><span class="pill ${i.super}">${SUPER_LABEL[i.super]}</span></td>
-              <td class="price">${fmtPrice(i.price)}</td>
-              <td class="price">${fmtPrice(suggested?.price)}</td>
-              <td class="price"><span class="gap-badge ${escape(status)}">${fmtPct(gap)}</span></td>
-            </tr>`;
-          }).join('') || '<tr><td colspan="6" style="text-align:center;color:var(--texto-muted)">Sin PVP cruzado.</td></tr>'}
-        </tbody>
+        <thead><tr><th>Producto</th><th>Cadena</th><th class="price">Precio</th><th class="price">PVS</th><th class="price">Desvio</th><th>Estado</th></tr></thead>
+        <tbody>${pvsTop.map((i) => `<tr>
+          <td>${escape(i.name)}<br><span class="suggested-ref">${escape(i.suggestedProduct || '-')}  -  ${escape(i.suggestedSource || '-')}</span></td>
+          <td><span class="pill ${escape(i.super)}">${escape(labelStore(i.super))}</span></td>
+          <td class="price">${fmtPrice(i.price)}</td><td class="price">${fmtPrice(i.suggestedPrice)}</td>
+          <td class="price suggested-dev ${escape(i.suggestedStatus || '')}">${fmtPct(i.suggestedDeviationPct)}</td><td>${suggestedBadge(i)}</td>
+        </tr>`).join('') || '<tr><td colspan="6" class="empty compact">Sin productos cruzados contra PVS.</td></tr>'}</tbody>
       </table>
     </div>
 
-    <div style="text-align:center;margin-top:24px" class="no-print">
-      <button class="btn azul btn-print" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
-      <a class="btn" href="/data/latest.pdf" download style="margin-left:8px">📄 Descargar PDF generado</a>
+    <div class="exec-card">
+      <h3>Top descuentos</h3>
+      <table>
+        <thead><tr><th>Producto</th><th>Marca</th><th>Cadena</th><th class="price">Lista</th><th class="price">Oferta</th><th>%</th></tr></thead>
+        <tbody>${offers.slice(0, 10).map((o) => `<tr>
+          <td>${escape(o.name)}</td><td class="brand">${escape(labelBrand(o))}</td><td><span class="pill ${escape(o.super)}">${escape(labelStore(o.super))}</span></td>
+          <td class="price list">${fmtPrice(o.listPrice)}</td><td class="price">${fmtPrice(o.price)}</td><td><span class="discount-badge">-${Math.round((1 - o.price / o.listPrice) * 100)}%</span></td>
+        </tr>`).join('') || '<tr><td colspan="6" class="empty compact">Sin ofertas.</td></tr>'}</tbody>
+      </table>
     </div>
-    <p class="print-only" style="margin-top:30px;font-size:10px;color:#555;text-align:center;border-top:1px solid #ccc;padding-top:10px">Datos relevados automáticamente.</p>
+
+    <div class="no-print report-actions">
+      <button class="btn blue btn-print" onclick="window.print()">Imprimir / PDF</button>
+      <a class="btn" href="/data/latest.pdf" download>PDF generado</a>
+    </div>
   `;
+  applyClientCopy($('#execContent'));
+  bindReportAutomationControls();
 }
 
-// ===== Tabs =====
 function updateTabBadges() {
-  const offers = state.items.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length;
-  const comparable = state.clusters.filter((g) => g.items.length >= 2).length;
   $('#badgeCatalog').textContent = state.items.length;
-  $('#badgeCompare').textContent = comparable;
-  $('#badgeOffers').textContent = offers;
-  $('#badgePrices').textContent = state.items.filter((i) => suggestedFor(i)?.price != null).length;
+  $('#badgeCompare').textContent = state.clusters.filter((g) => g.items.length >= 2).length;
+  $('#badgeMode').textContent = skuModeRows().length;
+  $('#badgeOffers').textContent = state.items.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length;
+  $('#badgeSuggested').textContent = state.items.filter((i) => i.suggestedPrice != null).length;
 }
 
 function switchTab(name) {
   state.view = name;
   $$('.tab').forEach((t) => t.classList.toggle('active', t.dataset.tab === name));
   $$('.view').forEach((v) => v.classList.toggle('active', v.id === 'view-' + name));
+  if (name === 'exec' && !state.reportAutomation.status && !state.reportAutomation.loading) loadReportAutomation();
 }
 
-// ===== Modal de evolución de precio =====
 function bindProductLinks(root) {
   root.querySelectorAll('.product-link').forEach((a) => {
     a.addEventListener('click', (e) => {
@@ -1033,41 +3600,61 @@ function bindProductLinks(root) {
   });
 }
 
+function branchBreakdownHtml(item) {
+  const bp = item.branchPrices;
+  if (!Array.isArray(bp) || bp.length < 2) return '';
+  const rows = bp.map((b) => {
+    const isCommon = Number(b.price) === Number(item.price);
+    return `<tr class="${isCommon ? 'is-common' : ''}">
+      <td>${escape(b.branch || '-')}</td>
+      <td class="price">${fmtPrice(b.price)}${isCommon ? ' <span class="common-tag">comun</span>' : ''}</td>
+    </tr>`;
+  }).join('');
+  const distinct = item.priceBreakdown?.length || 1;
+  const title = item.priceVaries
+    ? `Precio por local  -  varia (${distinct} precios distintos)`
+    : `Precio por local  -  igual en ${item.branchCount} locales`;
+  return `<h3>${escape(title)}</h3>
+    <table class="history-table branch-table"><thead><tr><th>Local</th><th class="price">Precio</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
 function openProductModal(key) {
   const item = state.items.find((i) => `${i.super}:${i.sku}` === key);
   if (!item) return;
+  const sourceUrl = productSourceUrl(item);
   const points = (state.history || [])
     .map((s) => ({ t: new Date(s.t).getTime(), p: s.prices[key] }))
     .filter((x) => x.p != null);
+  const modalThumb = productThumb(item, 'modal-product-thumb');
 
   $('#modalContent').innerHTML = `
-    <h2 style="margin:0 0 4px;font-size:18px">${escape(item.name)}</h2>
-    <div style="font-size:13px;color:var(--texto-muted);margin-bottom:14px">
-      <span style="text-transform:capitalize;font-weight:600">${escape(item.brand)}</span> ·
-      <span class="pill ${item.super}">${SUPER_LABEL[item.super]}</span> ·
-      <span style="color:var(--rojo);font-weight:700">Sarubbi</span>
+    <h2 class="modal-title">${modalThumb}<span>${escape(item.name)}</span></h2>
+    <div class="modal-meta">
+      ${ownerBadge(item.group)}
+      <span>${escape(labelBrand(item))}</span>
+      <span>${escape(labelCategory(item.category))}</span>
+      <span class="pill ${escape(item.super)}">${escape(labelStore(item.super))}</span>
+      ${item.branchCount > 1 ? `<span>${item.branchCount} locales</span>` : (item.branch ? `<span>${escape(item.branch)}</span>` : '')}
     </div>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">
-      <div class="kpi" style="padding:10px 12px"><div class="kpi-label">Precio actual</div><div style="font-size:20px;font-weight:800">${fmtPrice(item.price)}</div></div>
-      <div class="kpi azul" style="padding:10px 12px"><div class="kpi-label">Precio lista</div><div style="font-size:20px;font-weight:800">${fmtPrice(item.listPrice)}</div></div>
-      <div class="kpi verde" style="padding:10px 12px"><div class="kpi-label">Snapshots</div><div style="font-size:20px;font-weight:800">${points.length}</div></div>
+    <div class="modal-kpis">
+      <div class="kpi"><div class="kpi-label">Precio actual</div><div class="kpi-value">${fmtPrice(item.price)}</div></div>
+      <div class="kpi blue"><div class="kpi-label">Precio lista</div><div class="kpi-value">${fmtPrice(item.listPrice)}</div></div>
+      ${item.suggestedPrice != null ? `<div class="kpi pvs"><div class="kpi-label">PVS</div><div class="kpi-value">${fmtPrice(item.suggestedPrice)}</div><div class="kpi-sub">${fmtPct(item.suggestedDeviationPct)}  -  ${escape(SUGGESTED_LABEL[item.suggestedStatus] || '')}</div></div>` : ''}
+      <div class="kpi green"><div class="kpi-label">Snapshots</div><div class="kpi-value">${points.length}</div></div>
     </div>
-
-    <h3 style="font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--azul);margin:18px 0 8px">Evolución del precio</h3>
+    ${item.suggestedPrice != null ? `<div class="suggested-modal-note">Referencia PVS: <b>${escape(item.suggestedProduct || '-')}</b>  -  ${escape(item.suggestedSource || '-')}  -  PVP informe ${fmtPrice(item.suggestedObservedPvp)}</div>` : ''}
+    ${branchBreakdownHtml(item)}
+    <h3>Evolucion del precio</h3>
     ${renderSparkline(points)}
-    ${points.length >= 2 ? buildHistoryTable(points) : '<div class="empty" style="padding:14px">Hay ${points.length} snapshot(s). Necesitamos ≥2 para mostrar evolución. Volvé a actualizar precios en un rato.</div>'.replace('${points.length}', points.length)}
-
-    ${item.url ? `<div style="margin-top:16px;text-align:right"><a class="btn" href="${escape(item.url)}" target="_blank" rel="noopener">Ver en el super →</a></div>` : ''}
+    ${points.length >= 2 ? buildHistoryTable(points) : '<div class="empty compact">Se necesitan al menos dos snapshots para ver evolucion.</div>'}
+    ${sourceUrl ? `<div class="modal-actions"><a class="btn" href="${escape(sourceUrl)}" target="_blank" rel="noopener">Ver fuente</a></div>` : ''}
   `;
   $('#modal').classList.add('show');
 }
 
 function renderSparkline(points) {
-  if (points.length < 2) {
-    return '<div style="padding:40px;text-align:center;background:var(--crema);border-radius:10px;color:var(--texto-muted);font-size:13px">📈 Histórico aún no disponible (necesita al menos 2 snapshots).</div>';
-  }
-  const W = 600, H = 140, P = 20;
+  if (points.length < 2) return '<div class="spark-empty">Historico aun no disponible.</div>';
+  const W = 640, H = 150, P = 22;
   const xs = points.map((x) => x.t);
   const ys = points.map((x) => x.p);
   const minX = Math.min(...xs), maxX = Math.max(...xs);
@@ -1077,89 +3664,58 @@ function renderSparkline(points) {
   const xFor = (t) => P + ((t - minX) / Math.max(1, maxX - minX)) * (W - 2 * P);
   const yFor = (p) => H - P - ((p - ymin) / Math.max(1, ymax - ymin)) * (H - 2 * P);
   const d = points.map((pt, i) => `${i === 0 ? 'M' : 'L'} ${xFor(pt.t).toFixed(1)} ${yFor(pt.p).toFixed(1)}`).join(' ');
-  const area = `${d} L ${xFor(maxX).toFixed(1)} ${H - P} L ${xFor(minX).toFixed(1)} ${H - P} Z`;
-  const dots = points.map((pt) => `<circle cx="${xFor(pt.t).toFixed(1)}" cy="${yFor(pt.p).toFixed(1)}" r="3" fill="var(--rojo)" stroke="#fff" stroke-width="1.5"/>`).join('');
-  const labels = points.length <= 8 ? points.map((pt) => `<text x="${xFor(pt.t).toFixed(1)}" y="${(yFor(pt.p) - 8).toFixed(1)}" font-size="10" text-anchor="middle" fill="var(--azul)" font-weight="700">${pt.p}</text>`).join('') : '';
-  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;background:var(--crema);border-radius:10px;display:block">
-    <path d="${area}" fill="var(--rojo)" opacity=".12"/>
-    <path d="${d}" fill="none" stroke="var(--rojo)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    ${dots}${labels}
-  </svg>`;
+  const dots = points.map((pt) => `<circle cx="${xFor(pt.t).toFixed(1)}" cy="${yFor(pt.p).toFixed(1)}" r="3" fill="var(--red)" stroke="#fff" stroke-width="1.5"/>`).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" class="spark"><path d="${d}" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${dots}</svg>`;
 }
 
 function buildHistoryTable(points) {
   const rows = points.slice().reverse().slice(0, 10).map((pt, i, arr) => {
     const prev = arr[i + 1];
     const diff = prev ? pt.p - prev.p : 0;
-    const arrow = diff > 0 ? '<span style="color:var(--rojo)">▲</span>' : diff < 0 ? '<span style="color:var(--offer)">▼</span>' : '<span style="color:var(--texto-muted)">—</span>';
-    return `<tr><td>${new Date(pt.t).toLocaleString('es-UY', { dateStyle: 'short', timeStyle: 'short' })}</td><td class="price">${fmtPrice(pt.p)}</td><td>${arrow} ${diff ? (diff > 0 ? '+' : '') + diff : ''}</td></tr>`;
+    return `<tr><td>${new Date(pt.t).toLocaleString('es-UY', { dateStyle: 'short', timeStyle: 'short' })}</td><td class="price">${fmtPrice(pt.p)}</td><td>${diff ? `${diff > 0 ? '+' : ''}${fmtPrice(diff)}` : '-'}</td></tr>`;
   }).join('');
-  return `<table style="margin-top:10px">
-    <thead><tr><th>Fecha</th><th class="price">Precio</th><th>Cambio</th></tr></thead>
-    <tbody>${rows}</tbody>
-  </table>`;
+  return `<table class="history-table"><thead><tr><th>Fecha</th><th class="price">Precio</th><th>Cambio</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
 function closeModal() { $('#modal').classList.remove('show'); }
 
-// ===== Refresh =====
 async function pollUntilDone(initialGeneratedAt) {
   const start = Date.now();
-  const maxMs = 8 * 60 * 1000;
+  const maxMs = 20 * 60 * 1000;
   while (Date.now() - start < maxMs) {
-    await new Promise((r) => setTimeout(r, 15000));
+    await new Promise((r) => setTimeout(r, 5000));
     try {
-      const r = await fetch('/data/latest.json', { cache: 'no-store' });
-      if (r.ok) {
-        const d = await r.json();
-        if (d.generatedAt && d.generatedAt !== initialGeneratedAt) return d;
-      }
+      let statusData = null;
       const s = await fetch('/api/status', { cache: 'no-store' });
       if (s.ok) {
-        const sd = await s.json();
-        const elapsed = Math.round((Date.now() - start) / 1000);
-        $('#refreshBtn').innerHTML = `<span class="spinner"></span> ${sd.status === 'queued' ? 'En cola…' : 'Scraping…'} (${elapsed}s)`;
-        if (sd.status === 'completed' && sd.conclusion === 'failure') throw new Error('El scrape falló.');
+        statusData = await s.json();
+        if (isRefreshUnavailable(statusData)) throw new Error(refreshUnavailableMessage(statusData));
+        const elapsed = elapsedSecondsFromStatus(statusData, start);
+        renderRefreshProgress(statusData, elapsed);
+        const phaseLabel = statusData.progress?.phase === 'pdf'
+          ? 'PDF'
+          : (statusData.progress?.phase === 'demo' ? 'Demo' : (statusData.status === 'queued' ? 'En cola' : 'Relevando'));
+        $('#refreshBtn').innerHTML = `<span class="spinner"></span> ${phaseLabel} (${elapsed}s)`;
+        if (statusData.status === 'completed' && statusData.conclusion === 'failure') throw new Error('El relevamiento fallo.');
       }
-    } catch (e) { console.warn('poll', e); }
+
+      const r = await fetch('/data/latest.json', { cache: 'no-store' });
+      let latestData = null;
+      if (r.ok) {
+        latestData = await r.json();
+        if (latestData.generatedAt && latestData.generatedAt !== initialGeneratedAt && statusData?.status === 'completed') return latestData;
+      }
+      if (!statusData && latestData?.generatedAt && latestData.generatedAt !== initialGeneratedAt) return latestData;
+      if (statusData?.status === 'completed' && statusData.conclusion === 'success') {
+        if (latestData?.generatedAt) return latestData;
+        throw new Error('El relevamiento termino, pero no pude leer el archivo actualizado.');
+      }
+    } catch (e) {
+      if (/relevamiento fallo|archivo actualizado/i.test(e.message)) throw e;
+      console.warn('poll', e);
+    }
   }
-  throw new Error('Timeout esperando el nuevo scrape (>8 min).');
-}
-
-const GITHUB_TOKEN_KEY = 'sarubbi-gh-token';
-
-function getStoredToken() { return localStorage.getItem(GITHUB_TOKEN_KEY) || ''; }
-function setStoredToken(t) { if (t) localStorage.setItem(GITHUB_TOKEN_KEY, t); else localStorage.removeItem(GITHUB_TOKEN_KEY); }
-
-function showTokenModal(onSave) {
-  const existing = getStoredToken();
-  const modal = $('#modal');
-  $('#modalTitle').textContent = 'Configurar GitHub Token';
-  $('#modalBody').innerHTML = `
-    <p style="margin:0 0 12px;color:#555;font-size:14px">
-      Para actualizar precios manualmente se necesita un <strong>GitHub Personal Access Token</strong>
-      con permiso <code>workflow</code>.<br>
-      El token se guarda solo en este navegador (localStorage).
-    </p>
-    <div style="display:flex;gap:8px;align-items:center">
-      <input id="tokenInput" type="password" placeholder="ghp_…" value="${escape(existing)}"
-        style="flex:1;padding:8px 10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:monospace">
-      <button id="tokenSaveBtn" class="btn-primary" style="white-space:nowrap">Guardar</button>
-    </div>
-    <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
-      <a href="https://github.com/settings/tokens/new?scopes=workflow&description=Sarubbi+App" target="_blank"
-        style="font-size:12px;color:#1440C0">Crear token en GitHub →</a>
-      ${existing ? `<button id="tokenClearBtn" style="font-size:12px;color:#c00;background:none;border:none;cursor:pointer">Borrar token guardado</button>` : ''}
-    </div>`;
-  modal.style.display = 'flex';
-  $('#tokenSaveBtn').onclick = () => {
-    const t = $('#tokenInput').value.trim();
-    setStoredToken(t);
-    closeModal();
-    if (onSave && t) onSave(t);
-  };
-  const clearBtn = $('#tokenClearBtn');
-  if (clearBtn) clearBtn.onclick = () => { setStoredToken(''); closeModal(); };
+  throw new Error('Timeout esperando nuevo relevamiento.');
 }
 
 async function refresh() {
@@ -1168,86 +3724,32 @@ async function refresh() {
   const originalHTML = btn.innerHTML;
   const initial = state.generatedAt;
   try {
-    btn.innerHTML = '<span class="spinner"></span> Disparando…';
-    const storedToken = getStoredToken();
-    const body = storedToken ? JSON.stringify({ token: storedToken }) : '{}';
-    const resp = await fetch('/api/refresh', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body,
-    });
+    btn.innerHTML = '<span class="spinner"></span> Disparando';
+    const resp = await fetch('/api/refresh', { method: 'POST' });
     const data = await resp.json();
-    if (data.error === 'TOKEN_REQUIRED' || resp.status === 401) {
-      showTokenModal((t) => { if (t) refresh(); });
+    if (!resp.ok || data.ok === false) throw new Error(data.error || `HTTP ${resp.status}`);
+    if (isRefreshUnavailable(data)) {
+      renderRefreshProgress(data, 0);
+      toast(refreshUnavailableMessage(data));
       return;
     }
-    if (!resp.ok || data.ok === false) throw new Error(data.error || `HTTP ${resp.status}`);
-    toast('Scrape disparado. Esperando resultados (~3-5 min)…');
-    btn.innerHTML = '<span class="spinner"></span> Scraping…';
+    renderRefreshProgress(data, elapsedSecondsFromStatus(data, Date.now()));
+    toast('Relevamiento disparado. Esperando resultados.');
     await pollUntilDone(initial);
-    toast('Listo. Datos actualizados.', 'success');
+    toast('Datos actualizados.', 'success');
     await load();
   } catch (err) {
     toast('Error: ' + err.message, 'error');
+    renderHeader();
   } finally {
     btn.disabled = false;
     btn.innerHTML = originalHTML;
   }
 }
 
-async function importPriceList() {
-  const file = $('#priceFile').files?.[0];
-  if (!file) {
-    toast('Seleccioná un archivo CSV, JSON o Excel (.xlsx).', 'error');
-    return;
-  }
-  try {
-    const name = file.name.toLowerCase();
-    const storeOverride = $('#priceStore').value;
-    let rawRows;
-    if (name.endsWith('.xlsx') || name.endsWith('.xls')) {
-      const buffer = await file.arrayBuffer();
-      rawRows = rowsFromExcel(new Uint8Array(buffer), storeOverride);
-    } else if (name.endsWith('.json')) {
-      rawRows = rowsFromJson(await file.text());
-    } else {
-      rawRows = rowsFromCsv(await file.text());
-    }
-    const rows = normalizePriceRows(rawRows, storeOverride, file.name);
-    const d = rows._diagnostics || {};
-    if (!rows.length) {
-      const hints = [];
-      if (d.noPrice > 0) hints.push(`${d.noPrice} filas sin precio (columna: pvp_sugerido, pvp o precio)`);
-      if (d.noStore > 0) hints.push(`${d.noStore} filas con cadena no reconocida (usá Todos, Tata, Disco, El Dorado o Tienda Inglesa)`);
-      if (d.noProduct > 0) hints.push(`${d.noProduct} filas sin producto`);
-      throw new Error('No se encontraron filas validas.' + (hints.length ? ' ' + hints.join('; ') + '.' : ''));
-    }
-    state.priceList = rows;
-    saveLocalPriceList();
-    renderAll();
-    const warnParts = [];
-    if (d.noPrice > 0) warnParts.push(`${d.noPrice} sin precio`);
-    if (d.noStore > 0) warnParts.push(`${d.noStore} con cadena no reconocida`);
-    const warn = warnParts.length ? ` (ignoradas: ${warnParts.join(', ')})` : '';
-    toast(`Lista PVP importada: ${rows.length} lineas${warn}.`, 'success');
-  } catch (err) {
-    toast('Error importando PVP: ' + err.message, 'error');
-  }
-}
-
-function clearPriceList() {
-  state.priceList = [];
-  localStorage.removeItem(PRICE_LIST_KEY);
-  $('#priceFile').value = '';
-  renderAll();
-  toast('Lista PVP local limpia.', 'success');
-}
-
-// ===== Eventos =====
 function initEvents() {
   $$('.tab').forEach((t) => t.addEventListener('click', () => switchTab(t.dataset.tab)));
   $('#refreshBtn').addEventListener('click', refresh);
-  $('#tokenConfigBtn').addEventListener('click', () => showTokenModal());
   $('#catalogQ').addEventListener('input', (e) => { state.catalog.q = e.target.value; renderCatalog(); });
   $$('#tableCatalog th[data-sort]').forEach((th) => th.addEventListener('click', () => {
     const key = th.dataset.sort;
@@ -1257,21 +3759,37 @@ function initEvents() {
   }));
   $('#compareQ').addEventListener('input', (e) => { state.compare.q = e.target.value; renderCompare(); });
   $('#compareBrand').addEventListener('change', (e) => { state.compare.brand = e.target.value; renderCompare(); });
+  $('#compareCategory').addEventListener('change', (e) => { state.compare.category = e.target.value; renderCompare(); });
+  $('#compareList').addEventListener('change', (e) => {
+    const map = {
+      compareBrandFilter: 'brand',
+      compareCategoryFilter: 'category',
+      compareFormatFilter: 'format',
+      compareStoreFilter: 'store',
+    };
+    const key = map[e.target.id];
+    if (!key) return;
+    state.compare[key] = e.target.value;
+    renderCompare();
+  });
+  $('#modeQ').addEventListener('input', (e) => { state.mode.q = e.target.value; renderMode(); });
+  $('#modeBrandFilter').addEventListener('change', (e) => { state.mode.brand = e.target.value; renderMode(); });
+  $('#modeOwnerFilter').addEventListener('change', (e) => { state.mode.owner = e.target.value; renderMode(); });
+  $('#modeCategoryFilter').addEventListener('change', (e) => { state.mode.rubro = e.target.value || 'all'; state.mode.segment = ''; renderMode(); });
+  $('#modeSegmentFilter').addEventListener('change', (e) => { state.mode.segment = e.target.value; renderMode(); });
+  $('#modeStoreFilter').addEventListener('change', (e) => { state.mode.store = e.target.value; renderMode(); });
   $('#offersQ').addEventListener('input', (e) => { state.offers.q = e.target.value; renderOffers(); });
-  $('#priceImport').addEventListener('click', importPriceList);
-  $('#priceClear').addEventListener('click', clearPriceList);
+  $('#offersBrandFilter').addEventListener('change', (e) => { state.offers.brand = e.target.value; renderOffers(); });
+  $('#offersOwnerFilter').addEventListener('change', (e) => { state.offers.owner = e.target.value; renderOffers(); });
+  $('#offersCategoryFilter').addEventListener('change', (e) => { state.offers.category = e.target.value; renderOffers(); });
+  $('#offersStoreFilter').addEventListener('change', (e) => { state.offers.store = e.target.value; renderOffers(); });
+  $('#suggestedQ').addEventListener('input', (e) => { state.suggestedFilters.q = e.target.value; renderSuggested(); });
+  $('#suggestedStatus').addEventListener('change', (e) => { state.suggestedFilters.status = e.target.value; renderSuggested(); });
   $('#modal').addEventListener('click', (e) => { if (e.target.id === 'modal') closeModal(); });
   $('#modalClose').addEventListener('click', closeModal);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-  const logoEl = $('#logoSlot');
-  if (logoEl) logoEl.addEventListener('click', () => {
-    state.view = 'catalog';
-    $$('.tab').forEach((t) => t.classList.toggle('active', t.dataset.tab === 'catalog'));
-    $$('.view').forEach((v) => v.classList.toggle('active', v.id === 'view-catalog'));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 }
 
-loadLocalPriceList();
+loadPortfolioPrefs();
 initEvents();
 load();

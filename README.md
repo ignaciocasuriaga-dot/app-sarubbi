@@ -1,52 +1,53 @@
-# Precios Bimbo - Supermercados Uruguay
+# Sarubbi Retail Watch
 
-Monitor de precios de productos del Grupo Bimbo en Tata, Disco, El Dorado y Tienda Inglesa.
+Monitor comercial para armar una propuesta de valor a Sarubbi: precios online, competencia, ofertas, precio moda, referencia/PVS, alertas e informe PDF.
+
+## Que releva
+
+- Marcas Sarubbi y competidores: Schneck, Centenario, Cattivelli, Ottonello, Camposur, La Constancia y Picorel.
+- Cadenas online: Ta-Ta, Disco, Devoto, Geant, Tienda Inglesa, El Dorado, Ubesur y Tamisur.
+- Cargas manuales para cadenas o distribuidores sin catalogo online confiable.
+- Metricas comparables: precio por kg, por 100 g y por unidad/pieza segun la presentacion detectada.
 
 ## Uso local
 
-1. Ejecuta `INSTALAR.bat` una sola vez.
-2. Ejecuta `EJECUTAR.bat` cada vez que quieras relevar precios.
+```bash
+npm install
+npx playwright install chromium
+npm run scrape
+npm run pdf
+npm run serve
+```
 
-El proceso genera:
+El servidor local queda en `http://127.0.0.1:4173/`.
 
-- `public/data/latest.json`
-- `public/data/latest.csv`
-- `public/data/latest.pdf`
-- archivos fechados locales en `data/output/` (ignorados por Git)
+## Automatismo
 
-Para cruzar PVP sugerido en el scrape, copia tu lista a `data/suggested/precios_sugeridos.csv`.
-Tambien se puede importar una lista CSV/JSON desde la pestana PVP de la web; esa carga queda guardada en el navegador.
+`npm run serve` expone:
 
-## Web
+- `POST /api/refresh`: corre scrape y regenera PDF.
+- `GET /api/status`: estado del refresh local y proxima corrida automatica.
+- `GET /api/report/status`: estado de envio de reportes.
+- `POST /api/report/send`: envio manual del PDF por email si Resend esta configurado.
 
-Produccion: https://precios-bimbo.vercel.app
+Variables utiles:
 
-La web se despliega en Vercel desde `public/` y consume los archivos de `public/data/`.
+- `SARUBBI_AUTO_REFRESH=0` para apagar el refresh local diario.
+- `SARUBBI_AUTO_REFRESH_TIME=08:00` y `SARUBBI_AUTO_REFRESH_TZ=America/Montevideo`.
+- `SARUBBI_DB=data/history/sarubbi.db` para la base historica.
+- `REPORT_EMAIL_TO`, `RESEND_API_KEY`, `CRON_SECRET` para reportes automaticos.
 
-## Marcas relevadas
+## Datos
 
-- Los Sorchantes
-- Tia Rosa
-- Bimbo
-- Rapiditas
-- Artesano
-- Maestro Cubano
-- Merienda Hit y XL
-- Takis
-- Salmas (packs de 6 y 12)
-- Nutrabien / Nutra Bien
+- `public/data/latest.json`: dataset usado por la web.
+- `public/data/latest.csv`: exportable para analisis.
+- `public/data/latest.pdf`: informe ejecutivo.
+- `data/output/`: corridas fechadas locales.
+- `data/manual/`: CSVs manuales para sumar fuentes.
+- `data/suggested/precios_sugeridos.csv`: referencia/PVS opcional.
 
-## Actualizacion automatica
+## Deploy
 
-GitHub Actions ejecuta `.github/workflows/scrape.yml` dos veces por dia y tambien puede dispararse manualmente desde la web con el boton "Actualizar precios".
+El repo incluye GitHub Actions para correr el scrape dos veces por dia y commitear `public/data`. Vercel puede publicar directamente `public/`.
 
-Para que el boton funcione en Vercel, el proyecto necesita:
-
-- `GITHUB_TOKEN`
-- `GITHUB_REPO`
-
-## Si algo falla
-
-- Verifica Node.js: `node --version` debe ser v18 o superior.
-- Si un supermercado no responde, espera unos minutos y vuelve a correr el scrape.
-- Revisa `/api/status` en produccion para ver el ultimo estado del workflow.
+Esta app es un port independiente inspirado en Gondola/CCU, enfocado en Sarubbi y listo para evolucionar hacia una demo comercial.

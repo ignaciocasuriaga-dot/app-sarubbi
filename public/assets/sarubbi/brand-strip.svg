@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="190" viewBox="0 0 1200 190" role="img" aria-label="Sarubbi y competidores">
+  <rect width="1200" height="190" fill="#f5f8ff"/>
+  <rect x="24" y="24" width="260" height="142" rx="18" fill="#0b2f93"/>
+  <text x="154" y="108" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800" fill="#fff">SARUBBI</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="28">
+    <rect x="320" y="38" width="178" height="52" rx="14" fill="#e6f4ef"/>
+    <text x="409" y="73" text-anchor="middle" fill="#0f766e">Schneck</text>
+    <rect x="520" y="38" width="178" height="52" rx="14" fill="#fff1e8"/>
+    <text x="609" y="73" text-anchor="middle" fill="#9a3412">Centenario</text>
+    <rect x="720" y="38" width="178" height="52" rx="14" fill="#ffe9e7"/>
+    <text x="809" y="73" text-anchor="middle" fill="#b42318">Cattivelli</text>
+    <rect x="920" y="38" width="178" height="52" rx="14" fill="#eef2f6"/>
+    <text x="1009" y="73" text-anchor="middle" fill="#344054">Ottonello</text>
+    <rect x="320" y="108" width="178" height="52" rx="14" fill="#e9f8ec"/>
+    <text x="409" y="143" text-anchor="middle" fill="#166534">Camposur</text>
+    <rect x="520" y="108" width="178" height="52" rx="14" fill="#fff0f0"/>
+    <text x="609" y="143" text-anchor="middle" fill="#7f1d1d">Constancia</text>
+    <rect x="720" y="108" width="178" height="52" rx="14" fill="#f4e8ff"/>
+    <text x="809" y="143" text-anchor="middle" fill="#7e22ce">Picorel</text>
+    <rect x="920" y="108" width="178" height="52" rx="14" fill="#edf4ff"/>
+    <text x="1009" y="143" text-anchor="middle" fill="#175cd3">Retail UY</text>
+  </g>
+</svg>

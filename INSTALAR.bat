@@ -1,10 +1,10 @@
 @echo off
 chcp 65001 >nul
 cd /d "%~dp0"
-title Instalando Precios Bimbo
+title Instalando Sarubbi Retail Watch
 
 echo ============================================
-echo   INSTALACION - Precios Bimbo Uruguay
+echo   INSTALACION - Sarubbi Retail Watch
 echo ============================================
 echo.
 
