@@ -11,7 +11,7 @@ jobs:
         run: |
           TOKEN="${{ secrets.VERCEL_TOKEN }}"
           DISPATCH="${{ secrets.DISPATCH_TOKEN }}"
-          PROJECT="gondola-sarubbi"
+          PROJECT="app-sarubbi"
 
           echo "=== Vercel user ==="
           curl -sf "https://api.vercel.com/v2/user" -H "Authorization: Bearer $TOKEN" \

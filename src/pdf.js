@@ -1,296 +1,418 @@
 import { readFile, writeFile, readdir, mkdir } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { chromium } from 'playwright-extra';
-
-const SUPER_LABEL = { tata: 'Tata', disco: 'Disco', eldorado: 'El Dorado', tiendainglesa: 'Tienda Inglesa' };
-const SUPERS = ['tata', 'disco', 'eldorado', 'tiendainglesa'];
+import { chromium } from 'playwright';
+import {
+  CATEGORY_LABEL,
+  OWNER_LABEL,
+  STORE_LABEL,
+  brandLabel as brandNameLabel,
+  enrichProduct,
+  normalizeProductText,
+} from './brands.js';
+import {
+  benchmarkBrandForSegment,
+  competitiveSegment,
+  liquidProfile,
+  normalizeName,
+} from './lib/normalize.js';
 
 async function latestJson() {
+  if (existsSync('public/data/latest.json')) return 'public/data/latest.json';
   const dir = 'data/output';
   const files = existsSync(dir)
-    ? (await readdir(dir)).filter((f) => f.endsWith('.json')).sort().reverse()
+    ? (await readdir(dir)).filter((file) => file.endsWith('.json')).sort().reverse()
     : [];
   if (files.length) return join(dir, files[0]);
-  if (existsSync('public/data/latest.json')) return 'public/data/latest.json';
   throw new Error('No JSON data found. Run "node src/main.js" first.');
 }
 
 const escape = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const fmtPrice = (p) => (p == null ? '-' : '$ ' + p.toLocaleString('es-UY'));
-const fmtPct = (p) => (p == null ? '-' : `${p > 0 ? '+' : ''}${Number(p).toFixed(1)}%`);
-const cap = (s) => String(s).replace(/\b\w/g, (c) => c.toUpperCase());
+const fmtPrice = (p) => (p == null || !Number.isFinite(Number(p)) ? '-' : '$ ' + Number(p).toLocaleString('es-UY', { maximumFractionDigits: 0 }));
+const fmtPct = (p) => (p == null || !Number.isFinite(Number(p)) ? '-' : `${Number(p) > 0 ? '+' : ''}${Number(p).toFixed(1)}%`);
+const fmtDate = (value) => new Date(value || Date.now()).toLocaleString('es-UY', { dateStyle: 'long', timeStyle: 'short' });
+const labelStore = (s) => STORE_LABEL[s] || s || '-';
+const labelCategory = (c) => CATEGORY_LABEL[c] || c || '-';
+const labelOwner = (o) => OWNER_LABEL[o] || o || '-';
+const labelBrand = (item) => item.brandLabel || brandNameLabel(item.brand) || item.brand || '-';
+const SUGGESTED_LABEL = { above: 'Sobre referencia', ok: 'Cumple', below: 'Bajo referencia' };
 
-async function loadLogoDataUri() {
-  const logoPath = 'public/logo.jpg';
-  if (!existsSync(logoPath)) return null;
-  const logo = await readFile(logoPath);
-  return `data:image/jpeg;base64,${logo.toString('base64')}`;
+function logoDataUrl() {
+  const path = 'public/assets/sarubbi/sarubbi-brand.jpeg';
+  if (!existsSync(path)) return '';
+  return `data:image/jpeg;base64,${readFileSync(path).toString('base64')}`;
 }
 
-function stripAccents(s) {
-  return s.normalize('NFD').replace(/\p{Diacritic}/gu, '');
-}
-
-function normalizeName(name) {
-  return stripAccents(name.toLowerCase())
-    .replace(/\b(bimbo|los\s*sorchantes|sorchantes|maestro\s*cubano|nutra\s*bien|nutrabien|tia\s*rosa|rapiditas|merienda\s*hit|merienda\s*xl|takis|salmas|artesano)\b/g, ' ')
-    .replace(/\d+(?:[.,]\d+)?\s*(kg|kilos?|gr?|gramos|ml|cc|lts?|litros?|un|u|unid(?:ades?)?)\b/g, ' ')
-    .replace(/[^a-z0-9\s]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function extractSize(name) {
-  const m = name.match(/(\d+(?:[.,]\d+)?)\s*(kg|gr?|gramos|ml|cc|lts?|un|u|unidades?)/i);
-  if (!m) return null;
-  let value = Number(m[1].replace(',', '.'));
-  let unit = m[2].toLowerCase();
-  if (/^(g|gr|gramos)$/.test(unit)) unit = 'g';
-  else if (unit === 'kg') { unit = 'g'; value *= 1000; }
-  else if (/^(ml|cc)$/.test(unit)) unit = 'ml';
-  else if (/^(l|lt|lts)$/.test(unit)) { unit = 'ml'; value *= 1000; }
-  else unit = 'u';
-  return { value: Math.round(value), unit };
-}
-
-function clusterProducts(items) {
-  const tokens = (name) => new Set(normalizeName(name).split(' ').filter((w) => w.length > 1));
-  const jaccard = (a, b) => {
-    if (!a.size && !b.size) return 1;
-    let inter = 0;
-    for (const t of a) if (b.has(t)) inter++;
-    return inter / (a.size + b.size - inter);
-  };
-
-  const groups = [];
-  for (const item of items) {
-    const itemTokens = tokens(item.name);
-    const size = extractSize(item.name);
-    let best = null;
-    let bestScore = 0;
-    for (const group of groups) {
-      if (group.brand !== item.brand) continue;
-      if (size && group.size) {
-        if (size.unit !== group.size.unit) continue;
-        const ratio = Math.min(size.value, group.size.value) / Math.max(size.value, group.size.value);
-        if (ratio < 0.85) continue;
-      }
-      const score = jaccard(itemTokens, group.tokens);
-      if (score >= 0.55 && score > bestScore) {
-        best = group;
-        bestScore = score;
-      }
-    }
-    if (best) best.items.push(item);
-    else groups.push({ brand: item.brand, size, tokens: itemTokens, items: [item] });
+function normalizeItem(item) {
+  const clean = { ...item, name: normalizeProductText(item.name) };
+  const enriched = enrichProduct(clean, clean.name);
+  if (!enriched) {
+    return {
+      ...clean,
+      owner: clean.owner || clean.group || 'competencia',
+      group: clean.group || clean.owner || 'competencia',
+      brandLabel: clean.brandLabel || brandNameLabel(clean.brand),
+      category: clean.category || 'otros',
+      categoryLabel: CATEGORY_LABEL[clean.category] || CATEGORY_LABEL.otros,
+    };
   }
-
-  for (const group of groups) {
-    group.items.sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
-    group.label = group.items.slice().sort((a, b) => a.name.length - b.name.length)[0].name;
-  }
-  return groups;
+  return { ...clean, ...enriched };
 }
 
 function avg(values) {
-  const nums = values.filter((v) => v != null);
-  return nums.length ? Math.round(nums.reduce((sum, n) => sum + n, 0) / nums.length) : null;
+  const nums = values.map(Number).filter(Number.isFinite);
+  return nums.length ? nums.reduce((sum, n) => sum + n, 0) / nums.length : null;
 }
 
-function buildHtml({ items, generatedAt, brands = [], logoDataUri = null }) {
-  const date = new Date(generatedAt);
-  const fmtDate = date.toLocaleString('es-UY', { dateStyle: 'long', timeStyle: 'short' });
-  const bimboItems = items.filter((i) => i.group === 'bimbo');
-  const offers = bimboItems.filter((i) => i.listPrice && i.price && i.listPrice > i.price);
-  const prices = bimboItems.map((i) => i.price).filter((p) => p != null);
-  const clusters = clusterProducts(bimboItems).filter((g) => g.items.length >= 2);
+function unitSuffix(profile) {
+  if (profile?.metric === 'kg') return '$/kg';
+  if (profile?.metric === 'unit') return '$/unidad';
+  return '$/unidad';
+}
 
-  const byBrand = Object.entries(bimboItems.reduce((acc, item) => {
-    (acc[item.brand] ??= []).push(item);
+function fmtComparable(value, profile = null) {
+  if (value == null || !Number.isFinite(Number(value))) return '-';
+  return `$ ${Number(value).toLocaleString('es-UY', { maximumFractionDigits: 1 })} ${unitSuffix(profile)}`;
+}
+
+function priceMode(items) {
+  const buckets = new Map();
+  for (const item of items) {
+    if (item.price == null || !Number.isFinite(Number(item.price))) continue;
+    const price = Number(item.price);
+    const key = price.toFixed(2);
+    const bucket = buckets.get(key) || { price, count: 0, items: [] };
+    bucket.count += 1;
+    bucket.items.push(item);
+    buckets.set(key, bucket);
+  }
+  return [...buckets.values()].sort((a, b) => (b.count - a.count) || (a.price - b.price))[0] || null;
+}
+
+function comparableEntries(items) {
+  return items
+    .map((item) => {
+      const profile = liquidProfile(item);
+      if (!profile) return null;
+      return { item, profile, segment: competitiveSegment(item) };
+    })
+    .filter(Boolean);
+}
+
+function modeRows(items) {
+  const groups = {};
+  for (const entry of comparableEntries(items)) {
+    const { item, profile, segment } = entry;
+    const key = [
+      item.group,
+      item.category,
+      item.brand,
+      segment.key,
+      profile.bucket?.label,
+      normalizeName(item.name, labelBrand(item)),
+    ].join('|');
+    (groups[key] ??= { sample: item, segment, profile, items: [] }).items.push(item);
+  }
+  return Object.values(groups)
+    .map((group) => {
+      const mode = priceMode(group.items);
+      if (!mode) return null;
+      const prices = group.items.map((item) => Number(item.price)).filter(Number.isFinite);
+      const stores = [...new Set(group.items.map((item) => item.super))];
+      return {
+        ...group,
+        label: group.sample.name,
+        count: prices.length,
+        stores: stores.length,
+        min: Math.min(...prices),
+        max: Math.max(...prices),
+        avg: avg(prices),
+        modePrice: mode.price,
+        modeShare: prices.length ? (mode.count / prices.length) * 100 : 0,
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) =>
+      (a.sample.group === b.sample.group ? 0 : a.sample.group === 'sarubbi' ? -1 : 1)
+      || labelCategory(a.sample.category).localeCompare(labelCategory(b.sample.category), 'es')
+      || labelBrand(a.sample).localeCompare(labelBrand(b.sample), 'es')
+      || a.label.localeCompare(b.label, 'es'));
+}
+
+function competitiveRows(items) {
+  const entries = comparableEntries(items);
+  const competitors = new Map();
+  const own = new Map();
+  for (const entry of entries) {
+    const { item, segment } = entry;
+    const commonKey = `${item.category}|${segment.key}`;
+    if (item.group === 'sarubbi') {
+      const ownKey = `${commonKey}|${item.brand}`;
+      const group = own.get(ownKey) || {
+        category: item.category,
+        brand: item.brand,
+        brandLabel: labelBrand(item),
+        segment,
+        sarubbi: [],
+      };
+      group.sarubbi.push(entry);
+      own.set(ownKey, group);
+    } else {
+      const group = competitors.get(commonKey) || [];
+      group.push(entry);
+      competitors.set(commonKey, group);
+    }
+  }
+  return [...own.values()]
+    .map((row) => {
+      const comp = competitors.get(`${row.category}|${row.segment.key}`) || [];
+      if (!comp.length) return null;
+      const sarubbiAvg = avg(row.sarubbi.map((entry) => entry.profile.pricePerLiter));
+      const compAvg = avg(comp.map((entry) => entry.profile.pricePerLiter));
+      if (sarubbiAvg == null || compAvg == null) return null;
+      const profile = row.sarubbi[0]?.profile || comp[0]?.profile;
+      return {
+        ...row,
+        comp,
+        profile,
+        sarubbiAvg,
+        compAvg,
+        diff: sarubbiAvg - compAvg,
+        pct: compAvg ? ((sarubbiAvg / compAvg) - 1) * 100 : null,
+        benchmarkBrand: benchmarkBrandForSegment(row.segment.key),
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => Math.abs(b.pct || 0) - Math.abs(a.pct || 0));
+}
+
+function brandRows(items) {
+  return Object.entries(items.reduce((acc, item) => {
+    (acc[item.brand || 'sin_marca'] ??= []).push(item);
     return acc;
-  }, {})).map(([brand, arr]) => ({
-    brand,
-    count: arr.length,
-    avg: avg(arr.map((x) => x.price)),
-    supers: new Set(arr.map((x) => x.super)).size,
-    offers: arr.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length,
-  })).sort((a, b) => b.count - a.count);
-
-  const bySuper = SUPERS.map((superName) => {
-    const arr = bimboItems.filter((i) => i.super === superName);
-    const superPrices = arr.map((x) => x.price).filter((p) => p != null);
-    return {
-      super: superName,
+  }, {}))
+    .map(([brand, arr]) => ({
+      brand,
+      label: labelBrand(arr[0]),
+      owner: arr[0].group,
+      category: arr[0].category,
       count: arr.length,
-      avg: avg(superPrices),
-      min: superPrices.length ? Math.min(...superPrices) : null,
-      max: superPrices.length ? Math.max(...superPrices) : null,
-      offers: arr.filter((i) => i.listPrice && i.price && i.listPrice > i.price).length,
-    };
-  }).filter((s) => s.count);
+      stores: new Set(arr.map((item) => item.super)).size,
+      avg: avg(arr.map((item) => item.price)),
+    }))
+    .sort((a, b) => b.count - a.count);
+}
 
-  const topSpread = clusters.map((group) => {
-    const groupPrices = group.items.map((x) => x.price).filter((p) => p != null);
-    const min = groupPrices.length ? Math.min(...groupPrices) : null;
-    const max = groupPrices.length ? Math.max(...groupPrices) : null;
-    return {
-      ...group,
-      spread: min != null && max != null ? max - min : 0,
-      pct: min != null && max ? (1 - min / max) * 100 : 0,
-    };
-  }).filter((g) => g.spread > 0).sort((a, b) => b.pct - a.pct).slice(0, 8);
+function storeRows(items) {
+  return Object.entries(items.reduce((acc, item) => {
+    (acc[item.super || 'manual'] ??= []).push(item);
+    return acc;
+  }, {}))
+    .map(([store, arr]) => ({
+      store,
+      count: arr.length,
+      sarubbi: arr.filter((item) => item.group === 'sarubbi').length,
+      competitors: new Set(arr.filter((item) => item.group !== 'sarubbi').map((item) => item.brand)).size,
+      avg: avg(arr.map((item) => item.price)),
+      offers: arr.filter((item) => item.listPrice && item.price && item.listPrice > item.price).length,
+    }))
+    .sort((a, b) => b.count - a.count);
+}
 
-  const topDiscounts = offers
-    .map((o) => ({ ...o, pct: (1 - o.price / o.listPrice) * 100, savings: o.listPrice - o.price }))
-    .sort((a, b) => b.pct - a.pct)
-    .slice(0, 10);
+function metricRows(items) {
+  const rows = { kg: 0, unit: 0, item: 0 };
+  for (const item of items) {
+    const profile = liquidProfile(item);
+    rows[profile?.metric || 'item'] = (rows[profile?.metric || 'item'] || 0) + 1;
+  }
+  return [
+    { key: '$/kg', label: 'Peso', count: rows.kg || 0 },
+    { key: '$/unidad', label: 'Unidades', count: rows.unit || 0 },
+    { key: '$/pieza', label: 'Sin formato explicito', count: rows.item || 0 },
+  ];
+}
 
-  const suggested = bimboItems.filter((i) => i.suggestedPrice != null);
-  const suggestedAbove = suggested.filter((i) => i.suggestedStatus === 'above').length;
+function buildHtml({ items, generatedAt, scrapeResults = [] }) {
+  const data = items.map(normalizeItem);
+  const logoSrc = logoDataUrl();
+  const generated = fmtDate(generatedAt);
+  const sarubbi = data.filter((item) => item.group === 'sarubbi');
+  const comp = data.filter((item) => item.group !== 'sarubbi');
+  const suggested = data.filter((item) => item.suggestedPrice != null);
+  const mode = modeRows(data);
+  const competitive = competitiveRows(data).slice(0, 14);
+  const brands = brandRows(data);
+  const stores = storeRows(data);
+  const metrics = metricRows(data);
+  const offers = data
+    .filter((item) => item.listPrice && item.price && item.listPrice > item.price)
+    .sort((a, b) => (1 - a.price / a.listPrice) - (1 - b.price / b.listPrice))
+    .reverse()
+    .slice(0, 12);
   const suggestedRows = suggested
     .slice()
-    .sort((a, b) => Math.abs(b.gapPct ?? b.suggestedDeviationPct ?? 0) - Math.abs(a.gapPct ?? a.suggestedDeviationPct ?? 0))
+    .sort((a, b) => Math.abs(b.suggestedDeviationPct ?? 0) - Math.abs(a.suggestedDeviationPct ?? 0))
     .slice(0, 12);
-
-  const summary = `Se relevaron ${bimboItems.length} productos del Grupo Bimbo en ${new Set(bimboItems.map((i) => i.super)).size}/4 supermercados. Se detectaron ${byBrand.length} submarcas con precio promedio ${fmtPrice(avg(prices))}. Control PVP: ${suggested.length} productos cruzados.`;
-  const logo = logoDataUri ? `<img class="report-logo" src="${logoDataUri}" alt="Grupo Bimbo">` : '';
-  const headerLogo = logoDataUri ? `<img class="page-logo" src="${logoDataUri}" alt="Grupo Bimbo">` : '';
+  const categories = Object.keys(CATEGORY_LABEL).map((category) => {
+    const sarubbiRows = comparableEntries(data.filter((item) => item.category === category && item.group === 'sarubbi'));
+    const compRows = comparableEntries(data.filter((item) => item.category === category && item.group !== 'sarubbi'));
+    const sarubbiAvg = avg(sarubbiRows.map((entry) => entry.profile.pricePerLiter));
+    const compAvg = avg(compRows.map((entry) => entry.profile.pricePerLiter));
+    return {
+      category,
+      sarubbi: sarubbiRows.length,
+      comp: compRows.length,
+      sarubbiAvg,
+      compAvg,
+      profile: sarubbiRows[0]?.profile || compRows[0]?.profile,
+      gap: sarubbiAvg != null && compAvg ? ((sarubbiAvg / compAvg) - 1) * 100 : null,
+    };
+  }).filter((row) => row.sarubbi || row.comp);
 
   return `<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Informe Grupo Bimbo Uruguay</title>
+<title>Sarubbi Retail Watch - Informe</title>
 <style>
-  @page { size: A4; margin: 16mm 14mm; }
+  @page { size: A4; margin: 14mm 12mm; }
   * { box-sizing: border-box; }
-  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #1a1a1a; font-size: 10.5px; margin: 0; line-height: 1.5; }
-  .cover { page-break-after: always; min-height: 95vh; display: flex; flex-direction: column; justify-content: space-between; padding: 30px 10px; }
-  .cover-top { border-left: 6px solid #E1251B; padding-left: 22px; }
-  .report-logo { width: 170px; height: auto; display: block; margin: 0 0 24px; border-radius: 6px; }
-  .cover-eyebrow { font-size: 11px; color: #002E6D; text-transform: uppercase; letter-spacing: .15em; font-weight: 700; margin-bottom: 8px; }
-  h1 { font-size: 38px; margin: 0 0 8px; line-height: 1.15; font-weight: 800; }
-  h2 { font-size: 14px; margin: 0 0 12px; padding: 7px 14px; background: #002E6D; color: #fff; border-radius: 4px; display: inline-block; }
-  h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #002E6D; margin: 0 0 8px; }
-  .cover h2 { font-size: 18px; margin: 12px 0 0; color: #555; background: none; padding: 0; font-weight: 500; display: block; }
-  .cover-meta { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #666; line-height: 1.9; }
-  .cover-bottom { text-align: center; color: #999; font-size: 10px; }
-  .page-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #E1251B; padding-bottom: 8px; margin-bottom: 18px; }
-  .page-brand { display: flex; align-items: center; gap: 10px; }
-  .page-logo { height: 34px; width: auto; border-radius: 4px; display: block; }
-  .page-header .title { font-size: 14px; font-weight: 800; color: #E1251B; }
-  .page-header .meta { font-size: 10px; color: #888; }
-  section { page-break-inside: avoid; margin-bottom: 22px; }
-  .lead { font-size: 12px; line-height: 1.7; padding: 14px 18px; background: #fff8e7; border-left: 4px solid #E1251B; border-radius: 4px; margin-bottom: 18px; }
-  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 22px; }
-  .kpi { padding: 12px 14px; border: 1px solid #e8dfc8; border-radius: 8px; border-left: 4px solid #E1251B; }
-  .kpi-label { font-size: 9px; color: #666; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; }
-  .kpi-value { font-size: 20px; font-weight: 800; margin-top: 3px; }
-  .kpi-sub { font-size: 9px; color: #888; }
-  table { width: 100%; border-collapse: collapse; font-size: 10px; }
-  th { background: #fff8e7; padding: 7px 8px; text-align: left; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #002E6D; border-bottom: 2px solid #e8dfc8; }
-  td { padding: 6px 8px; border-bottom: 1px solid #f0e8d0; vertical-align: top; }
-  td.price, th.price { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
-  td.brand { color: #666; text-transform: capitalize; }
-  .gap.above { color: #E1251B; }
-  .gap.ok { color: #2e7d32; }
-  .gap.below { color: #002E6D; }
-  .pill { display: inline-block; padding: 1.5px 7px; border-radius: 8px; color: #fff; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
-  .pill.tata { background: #e5002b; }
-  .pill.disco { background: #0070d2; }
-  .pill.eldorado { background: #c8102e; }
-  .pill.tiendainglesa { background: #19744a; }
-  footer { margin-top: 24px; padding-top: 10px; border-top: 1px solid #ddd; text-align: center; color: #999; font-size: 8.5px; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #14213d; font-size: 10.5px; line-height: 1.45; }
+  .cover { min-height: 96vh; display: flex; flex-direction: column; justify-content: space-between; page-break-after: always; padding: 26px 0 28px 24px; border-left: 9px solid #16359a; }
+  .brand { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
+  .logo { width: 158px; height: auto; border-radius: 4px; }
+  .brand-sub { color: #16359a; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .12em; }
+  .brand-strip { height: 8px; width: 315px; margin-top: 10px; display: grid; grid-template-columns: 36% 18% 18% 14% 14%; overflow: hidden; border-radius: 999px; }
+  .brand-strip span:nth-child(1) { background: #16359a; }
+  .brand-strip span:nth-child(2) { background: #d91e36; }
+  .brand-strip span:nth-child(3) { background: #f3b61f; }
+  .brand-strip span:nth-child(4) { background: #159a6a; }
+  .brand-strip span:nth-child(5) { background: #212529; }
+  h1 { margin: 0; font-size: 37px; line-height: 1.08; color: #0d2583; }
+  h2 { display: inline-block; margin: 0 0 10px; padding: 6px 10px; background: #16359a; color: #fff; border-radius: 4px; font-size: 12px; }
+  h3 { margin: 0 0 8px; color: #16359a; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+  .meta { margin-top: 24px; padding-top: 14px; border-top: 1px solid #d9e2f2; color: #4b587c; line-height: 1.85; font-size: 12px; }
+  .page-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #d91e36; padding-bottom: 8px; margin-bottom: 16px; }
+  .title { color: #d91e36; font-weight: 900; font-size: 14px; }
+  .lead { background: #f6f8ff; border-left: 4px solid #16359a; padding: 12px 14px; margin-bottom: 16px; font-size: 11px; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 18px; }
+  .kpi { border: 1px solid #d9e2f2; border-left: 4px solid #16359a; border-radius: 6px; padding: 10px; }
+  .kpi-label { color: #59677d; font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; }
+  .kpi-value { font-size: 18px; font-weight: 900; margin-top: 2px; }
+  section { margin-bottom: 18px; page-break-inside: avoid; }
+  table { width: 100%; border-collapse: collapse; font-size: 9.2px; }
+  th { background: #f3f6ff; color: #16359a; text-align: left; padding: 6px 7px; border-bottom: 1px solid #d9e2f2; font-size: 7.8px; text-transform: uppercase; letter-spacing: .05em; }
+  td { padding: 5px 7px; border-bottom: 1px solid #edf1f8; vertical-align: top; }
+  .price { text-align: right; font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .positive { color: #d91e36; }
+  .negative { color: #108158; }
+  .pill { display: inline-block; border-radius: 999px; padding: 1px 6px; background: #16359a; color: #fff; font-size: 7.5px; font-weight: 800; text-transform: uppercase; }
+  .status { display: inline-block; border-radius: 4px; padding: 1px 5px; font-size: 7.5px; font-weight: 900; text-transform: uppercase; }
+  .status.above { background: rgba(217,30,54,.12); color: #d91e36; }
+  .status.ok { background: #e8f6ef; color: #108158; }
+  .status.below { background: rgba(22,53,154,.12); color: #16359a; }
+  .muted { color: #59677d; font-size: 8.3px; }
+  footer { margin-top: 24px; border-top: 1px solid #d9e2f2; padding-top: 8px; color: #59677d; text-align: center; font-size: 8px; }
 </style>
 </head>
 <body>
 <div class="cover">
   <div>
-    <div class="cover-top">
-      ${logo}
-      <div class="cover-eyebrow">Informe Ejecutivo</div>
-      <h1>Precios Grupo Bimbo<br>Uruguay</h1>
-      <h2>Relevamiento en supermercados online</h2>
+    <div class="brand">
+      ${logoSrc ? `<img class="logo" src="${logoSrc}" alt="Sarubbi">` : '<div class="brand-sub">Sarubbi</div>'}
+      <div><div class="brand-sub">Sarubbi Retail Watch</div><div class="brand-strip"><span></span><span></span><span></span><span></span><span></span></div></div>
     </div>
-    <div class="cover-meta">
-      <b>Fecha:</b> ${escape(fmtDate)}<br>
-      <b>Supermercados:</b> Tata · Disco · El Dorado · Tienda Inglesa<br>
-      <b>SKUs analizados:</b> ${bimboItems.length}<br>
-      <b>Submarcas configuradas:</b> ${brands.length || byBrand.length}<br>
-      <b>Control PVP:</b> ${suggested.length} productos cruzados
+    <h1>Monitor comercial<br>de precios y gondola</h1>
+    <div class="meta">
+      <b>Fecha:</b> ${escape(generated)}<br>
+      <b>Registros:</b> ${data.length}<br>
+      <b>Productos Sarubbi:</b> ${sarubbi.length}<br>
+      <b>Competencia:</b> ${comp.length}<br>
+      <b>Cadenas:</b> ${stores.length}<br>
+      <b>Referencia/PVS:</b> ${suggested.length} productos cruzados<br>
+      <b>Fuentes OK:</b> ${scrapeResults.filter((r) => r.ok).length}/${scrapeResults.length}
     </div>
   </div>
-  <div class="cover-bottom">Generado automaticamente con datos relevados de los sitios oficiales.</div>
+  <div>Datos online y cargas manuales para presentar la oportunidad Sarubbi.</div>
 </div>
 
-<div class="page-header">
-  <div class="page-brand">${headerLogo}<div class="title">Resumen Ejecutivo</div></div>
-  <div class="meta">${escape(fmtDate)}</div>
+<div class="page-header"><div class="title">Resumen ejecutivo</div><div>${escape(generated)}</div></div>
+<p class="lead">Se consolidaron <b>${data.length}</b> registros de chacinados, carnes y congelados. El tablero compara Sarubbi contra Schneck, Centenario, Cattivelli, Ottonello, Camposur, La Constancia y Picorel con metricas normalizadas por peso, por 100 g y por unidad cuando el formato lo permite.</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="kpi-label">SKUs Sarubbi</div><div class="kpi-value">${sarubbi.length}</div></div>
+  <div class="kpi"><div class="kpi-label">Competencia</div><div class="kpi-value">${comp.length}</div></div>
+  <div class="kpi"><div class="kpi-label">Cadenas</div><div class="kpi-value">${stores.length}</div></div>
+  <div class="kpi"><div class="kpi-label">Marcas</div><div class="kpi-value">${brands.length}</div></div>
 </div>
 
 <section>
-  <p class="lead">${escape(summary)}</p>
-  <div class="kpis">
-    <div class="kpi"><div class="kpi-label">SKUs</div><div class="kpi-value">${bimboItems.length}</div><div class="kpi-sub">Grupo Bimbo</div></div>
-    <div class="kpi"><div class="kpi-label">Submarcas</div><div class="kpi-value">${byBrand.length}</div><div class="kpi-sub">detectadas</div></div>
-    <div class="kpi"><div class="kpi-label">Promedio</div><div class="kpi-value">${fmtPrice(avg(prices))}</div><div class="kpi-sub">precio actual</div></div>
-    <div class="kpi"><div class="kpi-label">Ofertas</div><div class="kpi-value">${offers.length}</div><div class="kpi-sub">${bimboItems.length ? Math.round(offers.length / bimboItems.length * 100) : 0}% del catalogo</div></div>
-    <div class="kpi"><div class="kpi-label">PVP cruzados</div><div class="kpi-value">${suggested.length}</div><div class="kpi-sub">${suggestedAbove} sobre PVP</div></div>
-  </div>
-</section>
-
-<section>
-  <h2>Cobertura por submarca</h2>
+  <h2>Cobertura de datos</h2>
   <table>
-    <thead><tr><th>Submarca</th><th class="price">SKUs</th><th class="price">Supers</th><th class="price">Precio prom.</th><th class="price">Ofertas</th></tr></thead>
-    <tbody>${byBrand.map((b) => `<tr><td><b>${escape(cap(b.brand))}</b></td><td class="price">${b.count}</td><td class="price">${b.supers}/4</td><td class="price">${fmtPrice(b.avg)}</td><td class="price">${b.offers}</td></tr>`).join('')}</tbody>
+    <thead><tr><th>Cadena</th><th class="price">Registros</th><th class="price">Sarubbi</th><th class="price">Competidores</th><th class="price">Promedio</th><th class="price">Ofertas</th></tr></thead>
+    <tbody>${stores.map((s) => `<tr><td><span class="pill">${escape(labelStore(s.store))}</span></td><td class="price">${s.count}</td><td class="price">${s.sarubbi}</td><td class="price">${s.competitors}</td><td class="price">${fmtPrice(s.avg)}</td><td class="price">${s.offers}</td></tr>`).join('')}</tbody>
   </table>
 </section>
 
 <section>
-  <h2>Cobertura por supermercado</h2>
+  <h2>Metricas comparables</h2>
   <table>
-    <thead><tr><th>Super</th><th class="price">SKUs</th><th class="price">Prom.</th><th class="price">Rango</th><th class="price">Ofertas</th></tr></thead>
-    <tbody>${bySuper.map((s) => `<tr><td><span class="pill ${s.super}">${SUPER_LABEL[s.super]}</span></td><td class="price">${s.count}</td><td class="price">${fmtPrice(s.avg)}</td><td class="price">${fmtPrice(s.min)} - ${fmtPrice(s.max)}</td><td class="price">${s.offers}</td></tr>`).join('')}</tbody>
+    <thead><tr><th>Tipo</th><th>Uso</th><th class="price">Registros</th></tr></thead>
+    <tbody>${metrics.map((m) => `<tr><td><b>${escape(m.key)}</b></td><td>${escape(m.label)}</td><td class="price">${m.count}</td></tr>`).join('')}</tbody>
   </table>
 </section>
 
-<section style="page-break-before:always">
-  <div class="page-header"><div class="page-brand">${headerLogo}<div class="title">Oportunidades</div></div><div class="meta">${escape(fmtDate)}</div></div>
-  <h2>Diferencias entre supermercados</h2>
+<section>
+  <h2>Sarubbi vs competencia por categoria</h2>
   <table>
-    <thead><tr><th>Producto</th><th>Submarca</th><th class="price">Mas barato</th><th class="price">Mas caro</th><th class="price">Diferencia</th></tr></thead>
-    <tbody>${topSpread.map((g) => {
-      const groupPrices = g.items.map((x) => x.price).filter((p) => p != null);
-      const minIt = g.items.find((x) => x.price === Math.min(...groupPrices));
-      const maxIt = g.items.find((x) => x.price === Math.max(...groupPrices));
-      return `<tr><td>${escape(g.label)}</td><td class="brand">${escape(g.brand)}</td><td class="price"><span class="pill ${minIt.super}">${SUPER_LABEL[minIt.super]}</span> ${fmtPrice(minIt.price)}</td><td class="price"><span class="pill ${maxIt.super}">${SUPER_LABEL[maxIt.super]}</span> ${fmtPrice(maxIt.price)}</td><td class="price" style="color:#E1251B">$ ${g.spread.toLocaleString('es-UY')} · ${g.pct.toFixed(1)}%</td></tr>`;
-    }).join('') || '<tr><td colspan="5" style="text-align:center;color:#999">No hay productos comparables.</td></tr>'}</tbody>
+    <thead><tr><th>Categoria</th><th class="price">Sarubbi</th><th class="price">Comp.</th><th class="price">Prom. Sarubbi</th><th class="price">Prom. comp.</th><th class="price">Brecha</th></tr></thead>
+    <tbody>${categories.map((c) => `<tr><td>${escape(labelCategory(c.category))}</td><td class="price">${c.sarubbi}</td><td class="price">${c.comp}</td><td class="price">${fmtComparable(c.sarubbiAvg, c.profile)}</td><td class="price">${fmtComparable(c.compAvg, c.profile)}</td><td class="price ${c.gap > 0 ? 'positive' : 'negative'}">${fmtPct(c.gap)}</td></tr>`).join('') || '<tr><td colspan="6">Sin categorias comparables.</td></tr>'}</tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Precio moda por SKU</h2>
+  <table>
+    <thead><tr><th>Dueno</th><th>SKU</th><th>Marca</th><th>Categoria</th><th>Presentacion</th><th class="price">Moda</th><th class="price">Rango</th></tr></thead>
+    <tbody>${mode.slice(0, 18).map((r) => `<tr><td>${escape(labelOwner(r.sample.group))}</td><td><b>${escape(r.label)}</b><br><span class="muted">${r.count} obs. / ${r.stores} cadenas</span></td><td>${escape(labelBrand(r.sample))}</td><td>${escape(labelCategory(r.sample.category))}</td><td>${escape(r.segment.label)}</td><td class="price">${fmtPrice(r.modePrice)}<br><span class="muted">${r.modeShare.toFixed(0)}%</span></td><td class="price">${fmtPrice(r.min)} - ${fmtPrice(r.max)}</td></tr>`).join('') || '<tr><td colspan="7">Sin precios moda.</td></tr>'}</tbody>
+  </table>
+</section>
+
+<section style="page-break-before: always">
+  <div class="page-header"><div class="title">Brechas accionables</div><div>${escape(generated)}</div></div>
+  <h2>Presentaciones comparables</h2>
+  <p class="muted">Cada fila compara una marca Sarubbi contra competidores de la misma categoria y presentacion. El benchmark sugerido es automatico por rubro.</p>
+  <table>
+    <thead><tr><th>Categoria</th><th>Marca Sarubbi</th><th>Presentacion</th><th>Benchmark</th><th class="price">Sarubbi</th><th class="price">Comp.</th><th class="price">Brecha</th></tr></thead>
+    <tbody>${competitive.map((r) => `<tr><td>${escape(labelCategory(r.category))}</td><td><b>${escape(r.brandLabel)}</b></td><td>${escape(r.segment.label)}<br><span class="muted">${r.sarubbi.length} propios / ${r.comp.length} comp.</span></td><td>${escape(brandNameLabel(r.benchmarkBrand) || r.benchmarkBrand)}</td><td class="price">${fmtComparable(r.sarubbiAvg, r.profile)}</td><td class="price">${fmtComparable(r.compAvg, r.profile)}</td><td class="price ${r.diff > 0 ? 'positive' : 'negative'}">${fmtComparable(Math.abs(r.diff), r.profile)}<br>${fmtPct(r.pct)}</td></tr>`).join('') || '<tr><td colspan="7">Sin presentaciones comparables.</td></tr>'}</tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Control referencia/PVS</h2>
+  <table>
+    <thead><tr><th>Producto</th><th>Cadena</th><th class="price">Precio</th><th class="price">Referencia</th><th class="price">Desvio</th><th>Estado</th></tr></thead>
+    <tbody>${suggestedRows.map((item) => `<tr><td><b>${escape(item.name)}</b><br><span class="muted">${escape(item.suggestedProduct || '-')} - ${escape(item.suggestedSource || '-')}</span></td><td>${escape(labelStore(item.super))}</td><td class="price">${fmtPrice(item.price)}</td><td class="price">${fmtPrice(item.suggestedPrice)}</td><td class="price ${item.suggestedStatus === 'above' ? 'positive' : item.suggestedStatus === 'below' ? 'negative' : ''}">${fmtPct(item.suggestedDeviationPct)}</td><td><span class="status ${escape(item.suggestedStatus || '')}">${escape(SUGGESTED_LABEL[item.suggestedStatus] || '-')}</span></td></tr>`).join('') || '<tr><td colspan="6">Sin lista oficial cargada todavia. El modulo queda preparado para CSV/JSON.</td></tr>'}</tbody>
   </table>
 </section>
 
 <section>
   <h2>Top descuentos detectados</h2>
   <table>
-    <thead><tr><th>Producto</th><th>Submarca</th><th>Super</th><th class="price">Lista</th><th class="price">Oferta</th><th class="price">Ahorra</th><th class="price">%</th></tr></thead>
-    <tbody>${topDiscounts.map((o) => `<tr><td>${escape(o.name)}</td><td class="brand">${escape(o.brand)}</td><td><span class="pill ${o.super}">${SUPER_LABEL[o.super]}</span></td><td class="price">${fmtPrice(o.listPrice)}</td><td class="price">${fmtPrice(o.price)}</td><td class="price">${fmtPrice(o.savings)}</td><td class="price">${Math.round(o.pct)}%</td></tr>`).join('') || '<tr><td colspan="7" style="text-align:center;color:#999">No hay ofertas activas.</td></tr>'}</tbody>
+    <thead><tr><th>Producto</th><th>Marca</th><th>Cadena</th><th class="price">Lista</th><th class="price">Oferta</th><th class="price">%</th></tr></thead>
+    <tbody>${offers.map((o) => `<tr><td>${escape(o.name)}</td><td>${escape(labelBrand(o))}</td><td>${escape(labelStore(o.super))}</td><td class="price">${fmtPrice(o.listPrice)}</td><td class="price">${fmtPrice(o.price)}</td><td class="price">${Math.round((1 - o.price / o.listPrice) * 100)}%</td></tr>`).join('') || '<tr><td colspan="6">Sin ofertas detectadas.</td></tr>'}</tbody>
   </table>
 </section>
 
 <section>
-  <h2>Control PVP sugerido</h2>
+  <h2>Marcas relevadas</h2>
   <table>
-    <thead><tr><th>Producto</th><th>Submarca</th><th>Super</th><th class="price">Precio</th><th class="price">PVP</th><th class="price">GAP</th></tr></thead>
-    <tbody>${suggestedRows.map((i) => {
-      const gap = i.gapPct ?? i.suggestedDeviationPct;
-      const status = i.suggestedStatus || '';
-      return `<tr><td>${escape(i.name)}<br><span style="color:#888;font-size:8.5px">${escape(i.suggestedProduct || '')}</span></td><td class="brand">${escape(i.brand)}</td><td><span class="pill ${i.super}">${SUPER_LABEL[i.super]}</span></td><td class="price">${fmtPrice(i.price)}</td><td class="price">${fmtPrice(i.suggestedPrice)}</td><td class="price gap ${escape(status)}">${fmtPct(gap)}</td></tr>`;
-    }).join('') || '<tr><td colspan="6" style="text-align:center;color:#999">Sin PVP cruzado.</td></tr>'}</tbody>
+    <thead><tr><th>Marca</th><th>Dueno</th><th>Categoria dominante</th><th class="price">Registros</th><th class="price">Cadenas</th><th class="price">Promedio</th></tr></thead>
+    <tbody>${brands.map((b) => `<tr><td><b>${escape(b.label)}</b></td><td>${escape(labelOwner(b.owner))}</td><td>${escape(labelCategory(b.category))}</td><td class="price">${b.count}</td><td class="price">${b.stores}</td><td class="price">${fmtPrice(b.avg)}</td></tr>`).join('')}</tbody>
   </table>
 </section>
 
-<footer>Informe generado automaticamente · Datos relevados de Tata, Disco, El Dorado y Tienda Inglesa · Uso interno.</footer>
+<footer>Informe generado automaticamente para propuesta Sarubbi Retail Watch.</footer>
 </body>
 </html>`;
 }
@@ -298,13 +420,12 @@ function buildHtml({ items, generatedAt, brands = [], logoDataUri = null }) {
 async function main() {
   const jsonPath = process.argv[2] || (await latestJson());
   const data = JSON.parse(await readFile(jsonPath, 'utf8'));
-  console.log(`Input: ${jsonPath} (${data.items.length} productos)`);
+  console.log(`Input: ${jsonPath} (${(data.items || []).length} productos)`);
 
-  const logoDataUri = await loadLogoDataUri();
-  const html = buildHtml({ ...data, logoDataUri });
+  const html = buildHtml(data);
   const htmlPath = jsonPath.replace(/\.json$/, '.html');
   const pdfPath = jsonPath.replace(/\.json$/, '.pdf');
-  await writeFile(htmlPath, html);
+  await writeFile(htmlPath, html, 'utf8');
 
   const browser = await chromium.launch();
   const page = await browser.newPage();
@@ -313,7 +434,7 @@ async function main() {
     path: pdfPath,
     format: 'A4',
     printBackground: true,
-    margin: { top: '16mm', bottom: '16mm', left: '14mm', right: '14mm' },
+    margin: { top: '14mm', bottom: '14mm', left: '12mm', right: '12mm' },
   });
   await browser.close();
 
@@ -325,4 +446,7 @@ async function main() {
   console.log('OK Copiado a public/data/latest.pdf');
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

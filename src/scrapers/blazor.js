@@ -1,21 +1,22 @@
 import { launchBrowser, randomDelay } from '../browser.js';
-import { matchedBrand, brandGroup } from '../brands.js';
+import { enrichProduct } from '../brands.js';
 
 async function searchTermBlazor(page, baseUrl, term) {
   const url = `${baseUrl}/productos/keyword/${encodeURIComponent(term)}`;
-  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 25000 });
 
+  // Blazor renderiza via WebSocket. Esperamos hasta ver precios reales.
   await page.waitForFunction(() => {
     const text = document.body.innerText || '';
     const matches = text.match(/\$\s*\d+[.,]?\d*/g) || [];
     return matches.filter((m) => !/\$\s*0(\D|$)/.test(m)).length >= 3;
-  }, { timeout: 25000 }).catch(() => {});
+  }, { timeout: 6000 }).catch(() => {});
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 1; i += 1) {
     await page.evaluate(() => window.scrollBy(0, window.innerHeight * 2));
-    await randomDelay(700, 1200);
+    await randomDelay(250, 450);
   }
-  await randomDelay(1500, 2500);
+  await randomDelay(250, 450);
 
   return page.evaluate(() => {
     const links = document.querySelectorAll('a[href*="/product/"]');
@@ -41,48 +42,81 @@ async function searchTermBlazor(page, baseUrl, term) {
       if (!name) return;
 
       const priceMatches = text.match(/\$\s*[\d.,]+/g) || [];
-      const prices = priceMatches
+      const rawPrices = priceMatches
         .map((m) => Number(m.replace(/[^\d,]/g, '').replace(',', '.')))
         .filter((n) => n > 0 && n < 100000);
+      const prices = rawPrices.filter((n) => n >= 20);
+      const pricePool = prices.length ? prices : rawPrices;
+      const maxPrice = pricePool.length ? Math.max(...pricePool) : null;
+      const productPrices = maxPrice != null && maxPrice >= 80
+        ? pricePool.filter((n) => !(n <= 35 && maxPrice / n >= 3))
+        : pricePool;
+      const finalPrices = productPrices.length ? productPrices : pricePool;
 
       bySku.set(sku, {
         sku, name,
-        price: prices.length ? Math.min(...prices) : null,
-        listPrice: prices.length > 1 ? Math.max(...prices) : null,
+        price: finalPrices.length ? Math.min(...finalPrices) : null,
+        listPrice: finalPrices.length > 1 ? Math.max(...finalPrices) : null,
         url: href,
         cardText: text,
       });
     });
-    return [...bySku.values()];
+    return [...bySku.values()].map(({ cardText, ...rest }) => rest);
   });
 }
 
-async function scrapeBlazorSite({ store, baseUrl, terms }) {
+async function scrapeBlazorSite({ store, baseUrl, terms, progress = () => {} }) {
   const { browser, context } = await launchBrowser({ headless: true });
   const page = await context.newPage();
   const bySku = new Map();
   try {
-    for (const term of terms) {
+    for (let index = 0; index < terms.length; index += 1) {
+      const term = terms[index];
       let items;
-      try { items = await searchTermBlazor(page, baseUrl, term); }
-      catch (e) { console.error(`  WARN ${store} "${term}": ${e.message}`); continue; }
+      progress({
+        status: 'term_start',
+        term,
+        termIndex: index + 1,
+        termTotal: terms.length,
+        found: bySku.size,
+      });
+      try {
+        items = await searchTermBlazor(page, baseUrl, term);
+      } catch (e) {
+        progress({
+          status: 'term_error',
+          term,
+          termIndex: index + 1,
+          termTotal: terms.length,
+          found: bySku.size,
+          error: e.message,
+        });
+        console.error(`  WARN ${store} "${term}": ${e.message}`);
+        continue;
+      }
 
       for (const i of items) {
-        const haystack = `${i.name} ${i.cardText || ''}`;
-        const brand = matchedBrand(haystack);
-        if (!brand || bySku.has(i.sku)) continue;
-        bySku.set(i.sku, {
+        const product = enrichProduct({
           super: store,
           sku: i.sku,
           name: i.name,
-          brand,
-          group: brandGroup(brand),
           price: i.price,
           listPrice: i.listPrice,
           currency: 'UYU',
           url: i.url,
-        });
+        }, i.name);
+        if (!product) continue;
+        if (bySku.has(i.sku)) continue;
+        bySku.set(i.sku, product);
       }
+      progress({
+        status: 'term_done',
+        term,
+        termIndex: index + 1,
+        termTotal: terms.length,
+        fetched: items.length,
+        found: bySku.size,
+      });
     }
     return [...bySku.values()];
   } finally {
@@ -90,13 +124,17 @@ async function scrapeBlazorSite({ store, baseUrl, terms }) {
   }
 }
 
-export const scrapeDisco = (terms) => scrapeBlazorSite({ store: 'disco', baseUrl: 'https://www.disco.com.uy', terms });
+export const scrapeDisco = (terms, progress) => scrapeBlazorSite({ store: 'disco', baseUrl: 'https://www.disco.com.uy', terms, progress });
+export const scrapeDevoto = (terms, progress) => scrapeBlazorSite({ store: 'devoto', baseUrl: 'https://www.devoto.com.uy', terms, progress });
+export const scrapeGeant = (terms, progress) => scrapeBlazorSite({ store: 'geant', baseUrl: 'https://www.geant.com.uy', terms, progress });
 
 import { fileURLToPath } from 'node:url';
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const { SEARCH_TERMS } = await import('../brands.js');
-  scrapeDisco(SEARCH_TERMS).then((items) => {
+  const which = process.argv[2] || 'disco';
+  const fn = which === 'devoto' ? scrapeDevoto : which === 'geant' ? scrapeGeant : scrapeDisco;
+  fn(SEARCH_TERMS).then((items) => {
     console.log(JSON.stringify(items, null, 2));
-    console.error(`OK disco: ${items.length} productos`);
+    console.error(`OK ${which}: ${items.length} productos`);
   }).catch((e) => { console.error(e); process.exit(1); });
 }

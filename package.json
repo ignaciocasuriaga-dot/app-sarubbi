@@ -4,13 +4,25 @@
   "description": "Monitor de precios de fiambres Sarubbi y competencia en supermercados uruguayos",
   "type": "module",
   "scripts": {
-    "start": "node src/main.js",
-    "scrape": "node src/main.js sarubbi",
+    "start": "node scripts/serve-public.js",
+    "serve": "node scripts/serve-public.js",
+    "scrape": "node src/main.js",
     "scrape:tata": "node src/scrapers/tata.js",
     "scrape:tiendainglesa": "node src/scrapers/tiendainglesa.js",
     "scrape:disco": "node src/scrapers/blazor.js disco",
+    "scrape:devoto": "node src/scrapers/blazor.js devoto",
+    "scrape:geant": "node src/scrapers/blazor.js geant",
     "scrape:eldorado": "node src/scrapers/eldorado.js",
-    "pdf": "node src/pdf.js"
+    "scrape:ubesur": "node src/scrapers/superencasa.js ubesur",
+    "scrape:tamisur": "node src/scrapers/superencasa.js tamisur",
+    "scrape:manual": "node src/scrapers/manual.js",
+    "pdf": "node src/pdf.js",
+    "audit": "node scripts/audit-catalog.js",
+    "backfill": "node scripts/backfill.js",
+    "revalidate": "node scripts/revalidate-latest.js",
+    "data:hydrate": "node scripts/hydrate-public-data.js",
+    "report:send": "node scripts/send-report-email.js",
+    "report:dry-run": "node scripts/send-report-email.js --dry-run"
   },
   "dependencies": {
     "playwright": "^1.49.0",

@@ -1,4 +1,4 @@
-import { matchedBrand, brandGroup } from '../brands.js';
+import { enrichProduct } from '../brands.js';
 
 const ENDPOINT = 'https://www.eldorado.com.uy/api/catalog_system/pub/products/search';
 const HEADERS = {
@@ -6,11 +6,6 @@ const HEADERS = {
   'User-Agent':
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
 };
-
-// VTEX full-text supports multi-word queries fine; just pass them through.
-function searchInputsFor(term) {
-  return [String(term ?? '').trim()].filter(Boolean);
-}
 
 function offerFrom(product) {
   const item = product.items?.[0];
@@ -24,19 +19,20 @@ function offerFrom(product) {
   };
 }
 
-const PAGE_SIZE = 50;
-const MAX_RESULTS = 500;
+const PAGE_SIZE = 50;   // VTEX limita cada página a 50 (_to - _from <= 49)
+const MAX_RESULTS = 2500; // tope duro de VTEX para products/search
 
-async function fetchPage(term, from) {
+async function fetchPage(term, from, to) {
   const url = new URL(ENDPOINT);
   url.searchParams.set('ft', term);
   url.searchParams.set('_from', String(from));
-  url.searchParams.set('_to', String(from + PAGE_SIZE - 1));
+  url.searchParams.set('_to', String(to));
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 30000);
   try {
     const resp = await fetch(url, { headers: HEADERS, signal: controller.signal });
     if (!resp.ok) {
+      // VTEX responde 416 al pasar el tope de paginación: lo tratamos como "no hay más".
       if (resp.status === 416 && from > 0) return [];
       throw new Error(`HTTP ${resp.status}`);
     }
@@ -50,44 +46,63 @@ async function fetchPage(term, from) {
 async function searchTerm(term) {
   const all = [];
   for (let from = 0; from < MAX_RESULTS; from += PAGE_SIZE) {
-    const page = await fetchPage(term, from);
+    const page = await fetchPage(term, from, from + PAGE_SIZE - 1);
     all.push(...page);
-    if (page.length < PAGE_SIZE) break;
+    if (page.length < PAGE_SIZE) break; // última página
   }
   return all;
 }
 
-export async function scrapeElDorado(terms) {
+export async function scrapeElDorado(terms, progress = () => {}) {
   const bySku = new Map();
-  const searched = new Set();
-  for (const rawTerm of terms) {
-    const inputs = searchInputsFor(rawTerm);
-    for (const term of inputs) {
-      if (!term || searched.has(term)) continue;
-      searched.add(term);
-
-      let products;
-      try { products = await searchTerm(term); }
-      catch (e) { console.error(`  WARN eldorado "${term}": ${e.message}`); continue; }
-
-      for (const product of products) {
-        const base = offerFrom(product);
-        const haystack = `${product.brand ?? ''} ${product.productName ?? ''} ${base.name ?? ''} ${(product.categories ?? []).join(' ')}`;
-        const brand = matchedBrand(haystack);
-        if (!brand || bySku.has(base.sku)) continue;
-        bySku.set(base.sku, {
-          super: 'eldorado',
-          sku: base.sku,
-          name: base.name,
-          brand,
-          group: brandGroup(brand),
-          price: base.price,
-          listPrice: base.listPrice,
-          currency: 'UYU',
-          url: base.url,
-        });
-      }
+  for (let index = 0; index < terms.length; index += 1) {
+    const term = terms[index];
+    let products;
+    progress({
+      status: 'term_start',
+      term,
+      termIndex: index + 1,
+      termTotal: terms.length,
+      found: bySku.size,
+    });
+    try { products = await searchTerm(term); }
+    catch (e) {
+      progress({
+        status: 'term_error',
+        term,
+        termIndex: index + 1,
+        termTotal: terms.length,
+        found: bySku.size,
+        error: e.message,
+      });
+      console.error(`  eldorado "${term}": ${e.message}`);
+      continue;
     }
+
+    for (const product of products) {
+      const base = offerFrom(product);
+      const haystack = `${product.brand ?? ''} ${product.productName ?? ''} ${base.name ?? ''}`;
+      const baseItem = {
+        super: 'eldorado',
+        sku: base.sku,
+        name: base.name,
+        price: base.price,
+        listPrice: base.listPrice,
+        currency: 'UYU',
+        url: base.url,
+      };
+      const enriched = enrichProduct(baseItem, haystack) ?? enrichProduct(baseItem, product.brand ?? '');
+      if (!enriched || bySku.has(enriched.sku)) continue;
+      bySku.set(enriched.sku, enriched);
+    }
+    progress({
+      status: 'term_done',
+      term,
+      termIndex: index + 1,
+      termTotal: terms.length,
+      fetched: products.length,
+      found: bySku.size,
+    });
   }
   return [...bySku.values()];
 }
@@ -97,6 +112,6 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const { SEARCH_TERMS } = await import('../brands.js');
   scrapeElDorado(SEARCH_TERMS).then((items) => {
     console.log(JSON.stringify(items, null, 2));
-    console.error(`OK El Dorado: ${items.length} productos`);
+    console.error(`El Dorado: ${items.length} productos`);
   }).catch((e) => { console.error(e); process.exit(1); });
 }

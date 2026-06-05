@@ -9,7 +9,17 @@ const THRESHOLD_PCT = Number(process.env.ALERT_THRESHOLD_PCT || 5);
 
 const HISTORY = 'public/data/history.jsonl';
 const PRODUCTS = 'public/data/products.json';
-const SUPER_LABEL = { tata: 'Tata', disco: 'Disco', eldorado: 'El Dorado', tiendainglesa: 'Tienda Inglesa' };
+const SUPER_LABEL = {
+  tata: 'Ta-Ta',
+  disco: 'Disco',
+  devoto: 'Devoto',
+  geant: 'Geant',
+  eldorado: 'El Dorado',
+  tiendainglesa: 'Tienda Inglesa',
+  ubesur: 'Ubesur',
+  tamisur: 'Tamisur',
+  manual: 'Carga manual',
+};
 
 if (!TOKEN || !CHAT) {
   console.log('Telegram not configured. Skip.');
@@ -83,7 +93,7 @@ const fmtChange = (change) => {
 };
 
 const fmtDate = new Date(curr.t).toLocaleString('es-UY', { dateStyle: 'short', timeStyle: 'short' });
-let msg = `Precios Bimbo - ${fmtDate}\n\n`;
+let msg = `Sarubbi Retail Watch - ${fmtDate}\n\n`;
 
 if (drops.length) {
   msg += `Bajadas (top ${drops.length}):\n${drops.map(fmtChange).join('\n')}\n\n`;
@@ -97,7 +107,7 @@ if (newProducts.length) {
 if (removedProducts.length) {
   msg += `Productos que ya no aparecen: ${removedProducts.length}\n`;
 }
-msg += '\nVer todo: https://precios-bimbo.vercel.app';
+msg += `\nVer todo: ${process.env.APP_URL || 'https://sarubbi-retail-watch.vercel.app'}`;
 
 const resp = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
   method: 'POST',

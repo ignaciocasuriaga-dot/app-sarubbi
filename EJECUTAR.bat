@@ -1,10 +1,10 @@
 @echo off
 chcp 65001 >nul
 cd /d "%~dp0"
-title Precios Bimbo - Ejecutando
+title Sarubbi Retail Watch - Ejecutando
 
 echo ============================================
-echo   Relevando precios Bimbo en 4 supers
+echo   Relevando precios Sarubbi y competencia
 echo ============================================
 echo.
 
@@ -17,8 +17,8 @@ if not exist "node_modules" (
     exit /b 1
 )
 
-echo [1/2] Bajando precios de Tata, Disco, El Dorado y Tienda Inglesa...
-echo       Tarda alrededor de 1-2 minutos.
+echo [1/2] Bajando precios de cadenas online y cargas manuales...
+echo       Puede tardar varios minutos segun las fuentes disponibles.
 echo.
 call node src\main.js
 if errorlevel 1 goto error

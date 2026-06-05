@@ -1,14 +1,14 @@
 import { existsSync, readFileSync } from 'node:fs';
-import { ALL_BRANDS } from './brands.js';
+import { ALL_BRANDS, stripAccents } from './brands.js';
 
 const SUGGESTED_PATH = process.env.SUGGESTED_PATH || 'data/suggested/precios_sugeridos.csv';
-const SUPERS = ['tata', 'disco', 'eldorado', 'tiendainglesa'];
 const DEFAULT_TOLERANCE_PCT = 0.5;
-
 const STOP_WORDS = new Set([
-  'bimbo', 'pan', 'galleta', 'galletas', 'galletitas', 'tortilla', 'tortillas',
-  'tostada', 'tostadas', 'tostadita', 'tostaditas', 'producto', 'pack',
-  'unidad', 'unidades', 'un', 'u', 'gr', 'g', 'kg', 'ml', 'cc', 'lt', 'lts',
+  'sarubbi', 'schneck', 'centenario', 'cattivelli', 'ottonello', 'camposur', 'constancia', 'picorel',
+  'jamon', 'cocido', 'crudo', 'fiambre', 'feteado', 'fetas', 'pancho', 'panchos',
+  'frankfurter', 'salchicha', 'salame', 'salamin', 'chorizo', 'mortadela', 'panceta',
+  'hamburguesa', 'empanada', 'producto', 'pack', 'unidad', 'unidades',
+  'kg', 'kilo', 'kilos', 'gr', 'g', 'gramos', 'un', 'u',
   'de', 'del', 'la', 'el', 'los', 'las', 'con', 'sin', 'y', 'al', 'para', 'x',
 ]);
 
@@ -16,30 +16,35 @@ const STORE_ALIASES = new Map([
   ['tata', 'tata'],
   ['ta ta', 'tata'],
   ['ta-ta', 'tata'],
-  ['super tata', 'tata'],
   ['disco', 'disco'],
+  ['devoto', 'devoto'],
+  ['geant', 'geant'],
   ['el dorado', 'eldorado'],
   ['eldorado', 'eldorado'],
-  ['super el dorado', 'eldorado'],
   ['tienda inglesa', 'tiendainglesa'],
   ['tiendainglesa', 'tiendainglesa'],
+  ['frog', 'frog'],
+  ['tamisur', 'tamisur'],
+  ['ubesur', 'ubesur'],
+  ['kinko', 'kinko'],
+  ['macro mercado', 'macromercado'],
+  ['macromercado', 'macromercado'],
+  ['macro', 'macromercado'],
+  ['manual', 'manual'],
 ]);
 
 const HEADER_ALIASES = {
-  super: ['super', 'cadena', 'supermercado', 'tienda'],
+  super: ['super', 'cadena', 'supermercado', 'tienda', 'store'],
   sku: ['sku', 'codigo', 'cod_sku', 'codigo_sku', 'id_producto', 'id'],
-  brand: ['marca', 'brand', 'submarca'],
+  brand: ['marca', 'brand'],
+  category: ['categoria', 'category', 'rubro'],
   product: ['producto', 'nombre', 'descripcion', 'descripcion_producto', 'articulo'],
-  suggestedPrice: ['pvp_sugerido', 'pvpSugerido', 'precio_sugerido', 'precioSugerido', 'suggestedPrice', 'pvs', 'pvp', 'precio'],
+  suggestedPrice: ['pvp_sugerido', 'precio_sugerido', 'suggestedPrice', 'referencia', 'precio_referencia', 'pvs', 'pvp', 'precio'],
   source: ['fuente', 'origen', 'lista', 'archivo'],
   note: ['nota', 'observacion', 'comentario'],
 };
 
 let cache = null;
-
-function stripAccents(value) {
-  return String(value ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '');
-}
 
 function norm(value) {
   return stripAccents(value)
@@ -50,10 +55,7 @@ function norm(value) {
 }
 
 function headerKey(value) {
-  return stripAccents(value)
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '_')
-    .replace(/^_+|_+$/g, '');
+  return norm(value).replace(/\s+/g, '_');
 }
 
 function numberOrNull(value) {
@@ -82,7 +84,6 @@ function csvRows(text, delimiter = csvDelimiter(text)) {
   let row = [];
   let cell = '';
   let quoted = false;
-
   for (let i = 0; i < text.length; i += 1) {
     const ch = text[i];
     const next = text[i + 1];
@@ -90,11 +91,8 @@ function csvRows(text, delimiter = csvDelimiter(text)) {
       if (ch === '"' && next === '"') {
         cell += '"';
         i += 1;
-      } else if (ch === '"') {
-        quoted = false;
-      } else {
-        cell += ch;
-      }
+      } else if (ch === '"') quoted = false;
+      else cell += ch;
       continue;
     }
     if (ch === '"') quoted = true;
@@ -106,9 +104,7 @@ function csvRows(text, delimiter = csvDelimiter(text)) {
       rows.push(row);
       row = [];
       cell = '';
-    } else if (ch !== '\r') {
-      cell += ch;
-    }
+    } else if (ch !== '\r') cell += ch;
   }
   row.push(cell);
   if (row.some((v) => String(v).trim() !== '')) rows.push(row);
@@ -136,7 +132,7 @@ function pick(record, aliases) {
   return '';
 }
 
-export function normalizeStore(value) {
+function normalizeStore(value) {
   const normalized = norm(value);
   if (!normalized) return null;
   if (['todos', 'todas', 'all', 'global'].includes(normalized)) return 'all';
@@ -144,61 +140,31 @@ export function normalizeStore(value) {
 }
 
 function normalizeStoreList(value) {
+  if (Array.isArray(value)) return [...new Set(value.map(normalizeStore).filter(Boolean))];
   const raw = String(value ?? '').trim();
   if (!raw) return [];
   const parts = raw.split(/[;|/]+/).map(normalizeStore).filter(Boolean);
-  if (parts.includes('all')) return SUPERS;
+  if (parts.includes('all')) return [...new Set(STORE_ALIASES.values())];
   return [...new Set(parts)];
 }
 
 function normalizeBrand(value) {
   const normalized = norm(value);
   if (!normalized) return null;
-  const custom = new Map([
-    ['nutra bien', 'nutrabien'],
-    ['el maestro cubano', 'maestro cubano'],
-    ['maestro cubano', 'maestro cubano'],
-    ['tia rosa', 'tia rosa'],
-    ['tia rossa', 'tia rosa'],
-    ['sorchantes', 'los sorchantes'],
-    ['los sorchantes', 'los sorchantes'],
-    ['merienda hit', 'merienda hit'],
-    ['hit', 'merienda hit'],
-    ['merienda xl', 'merienda xl'],
-    ['xl', 'merienda xl'],
-    ['sanissimo salmas', 'salmas'],
-    ['sanisimo salmas', 'salmas'],
-  ]);
-  if (custom.has(normalized)) return custom.get(normalized);
   for (const brand of ALL_BRANDS) {
     if (norm(brand) === normalized) return brand;
   }
   return null;
 }
 
-function tokens(value) {
-  return norm(value)
-    .split(' ')
-    .filter((token) => token.length > 1 && !STOP_WORDS.has(token));
-}
-
-function extractSize(value) {
-  const text = stripAccents(value).toLowerCase().replace(',', '.');
-  let m = text.match(/(\d+(?:\.\d+)?)\s*(kg|kilos?)\b/);
+function comparableProfile(value) {
+  const text = norm(value).replace(/(\d),(\d)/g, '$1.$2');
+  let m = text.match(/(\d+(?:\.\d+)?)\s*(kg|kilo|kilos)\b/);
   if (m) return { unit: 'g', value: Math.round(Number(m[1]) * 1000) };
-
   m = text.match(/(\d+(?:\.\d+)?)\s*(g|gr|gramos)\b/);
   if (m) return { unit: 'g', value: Math.round(Number(m[1])) };
-
-  m = text.match(/(\d+(?:\.\d+)?)\s*(l|lt|lts|litros?)\b/);
-  if (m) return { unit: 'ml', value: Math.round(Number(m[1]) * 1000) };
-
-  m = text.match(/(\d+(?:\.\d+)?)\s*(ml|cc)\b/);
-  if (m) return { unit: 'ml', value: Math.round(Number(m[1])) };
-
   m = text.match(/\bx\s*(\d+)\b/) || text.match(/(\d+)\s*(u|un|unid|unidades)\b/);
   if (m) return { unit: 'u', value: Number(m[1]) };
-
   return null;
 }
 
@@ -206,8 +172,14 @@ function sizeScore(rowSize, itemSize) {
   if (!rowSize) return 0;
   if (!itemSize || rowSize.unit !== itemSize.unit) return null;
   const ratio = Math.min(rowSize.value, itemSize.value) / Math.max(rowSize.value, itemSize.value);
-  if (ratio < 0.85) return null;
+  if (ratio < 0.82) return null;
   return 30 + Math.round(ratio * 10);
+}
+
+function tokens(value) {
+  return norm(value)
+    .split(' ')
+    .filter((token) => token.length > 1 && !STOP_WORDS.has(token));
 }
 
 function overlapScore(row, item) {
@@ -218,98 +190,96 @@ function overlapScore(row, item) {
   for (const token of wanted) if (got.has(token)) overlap += 1;
   const ratio = overlap / wanted.size;
   if (ratio === 0) return null;
-  return { score: Math.round(ratio * 30), ratio };
+  return Math.round(ratio * 30);
 }
 
 function rowFromRecord(record, index) {
   const stores = normalizeStoreList(pick(record, HEADER_ALIASES.super));
   const product = String(pick(record, HEADER_ALIASES.product)).trim();
   const brand = normalizeBrand(pick(record, HEADER_ALIASES.brand));
+  const category = headerKey(pick(record, HEADER_ALIASES.category)) || '';
   const suggestedPrice = numberOrNull(pick(record, HEADER_ALIASES.suggestedPrice));
   const sku = String(pick(record, HEADER_ALIASES.sku)).trim();
   if (suggestedPrice == null || (!sku && !product) || !stores.length) return null;
-
   return {
     index,
     stores,
     sku,
     brand,
+    category,
     product,
     productNorm: norm(product),
-    size: extractSize(product),
+    profile: comparableProfile(product),
     suggestedPrice,
     source: String(pick(record, HEADER_ALIASES.source)).trim() || SUGGESTED_PATH,
     note: String(pick(record, HEADER_ALIASES.note)).trim(),
   };
 }
 
+function rowsFromJson(parsed) {
+  return (parsed.rows || []).map((row, index) => ({
+    index,
+    stores: normalizeStoreList(row.stores || row.super || row.cadena || 'all'),
+    sku: String(row.sku || '').trim(),
+    brand: normalizeBrand(row.brand || row.marca),
+    category: headerKey(row.category || row.categoria || ''),
+    product: String(row.product || row.producto || row.name || row.nombre || '').trim(),
+    productNorm: norm(row.product || row.producto || row.name || row.nombre || ''),
+    profile: comparableProfile(row.product || row.producto || row.name || row.nombre || ''),
+    suggestedPrice: numberOrNull(row.suggestedPrice ?? row.pvp ?? row.precio),
+    source: row.source || row.fuente || parsed.sourceFile || SUGGESTED_PATH,
+    note: row.note || row.nota || '',
+  })).filter((row) => row.suggestedPrice != null && row.stores.length && (row.sku || row.product));
+}
+
 function loadSuggestedSource() {
   if (cache) return cache;
   if (!existsSync(SUGGESTED_PATH)) {
-    cache = {
-      sourceFile: null,
-      importedAt: null,
-      tolerancePct: DEFAULT_TOLERANCE_PCT,
-      rows: [],
-      rowsWithSuggested: [],
-    };
+    cache = { sourceFile: null, importedAt: null, tolerancePct: DEFAULT_TOLERANCE_PCT, rows: [], rowsWithSuggested: [] };
     return cache;
   }
 
   const text = readFileSync(SUGGESTED_PATH, 'utf8');
-  const rows = recordsFromCsv(text)
-    .map(rowFromRecord)
-    .filter(Boolean);
+  let parsed = null;
+  if (/\.json$/i.test(SUGGESTED_PATH)) {
+    parsed = JSON.parse(text);
+  }
+  const rows = parsed
+    ? rowsFromJson(parsed)
+    : recordsFromCsv(text).map(rowFromRecord).filter(Boolean);
+
   cache = {
-    sourceFile: SUGGESTED_PATH,
-    importedAt: null,
-    tolerancePct: DEFAULT_TOLERANCE_PCT,
+    sourceFile: parsed?.sourceFile || SUGGESTED_PATH,
+    importedAt: parsed?.importedAt || new Date().toISOString(),
+    tolerancePct: numberOrNull(parsed?.tolerancePct) ?? DEFAULT_TOLERANCE_PCT,
     rows,
     rowsWithSuggested: rows.filter((row) => row.suggestedPrice != null),
   };
   return cache;
 }
 
-function exactSkuMatch(source, item) {
-  if (!item?.sku) return null;
-  const sku = String(item.sku);
-  return source.rowsWithSuggested.find((row) =>
-    row.sku && row.sku === sku && row.stores.includes(item.super));
-}
-
 function scoreRow(row, item) {
   if (!row.stores.includes(item.super)) return null;
   if (row.brand && row.brand !== item.brand) return null;
-
-  let score = row.brand ? 30 : 8;
-  const itemSize = extractSize(item.name);
-  const size = sizeScore(row.size, itemSize);
+  if (row.category && item.category && row.category !== item.category) return null;
+  if (row.sku && String(row.sku) === String(item.sku)) return 100;
+  const size = sizeScore(row.profile, comparableProfile(item.name));
   if (size == null) return null;
-  score += size;
-
-  if (row.productNorm && row.productNorm === norm(item.name)) score += 45;
   const overlap = overlapScore(row, item);
   if (overlap == null) return null;
-  score += overlap.score;
-
-  if (row.size && overlap.ratio < 0.2) return null;
-  if (!row.size && overlap.ratio < 0.45) return null;
-  return score;
+  return (row.brand ? 25 : 8) + size + overlap;
 }
 
 export function matchSuggested(item) {
-  if (!item || item.price == null) return null;
+  if (!item || item.group !== 'sarubbi' || item.price == null) return null;
   const source = loadSuggestedSource();
-  const skuMatch = exactSkuMatch(source, item);
-  if (skuMatch) return skuMatch;
-
   let best = null;
   for (const row of source.rowsWithSuggested) {
     const score = scoreRow(row, item);
     if (score == null) continue;
     if (!best || score > best.score) best = { row, score };
   }
-  return best && best.score >= 45 ? best.row : null;
+  return best?.row || null;
 }
 
 export function applySuggestedPrices(items) {
@@ -317,28 +287,19 @@ export function applySuggestedPrices(items) {
   return (items || []).map((item) => {
     const row = matchSuggested(item);
     if (!row) return item;
-
-    const gap = row.suggestedPrice
+    const deviation = row.suggestedPrice
       ? ((Number(item.price) - row.suggestedPrice) / row.suggestedPrice) * 100
       : null;
-    const gapPct = gap == null ? null : Number(gap.toFixed(2));
-    const status = gapPct == null
-      ? null
-      : gapPct > source.tolerancePct
-        ? 'above'
-        : gapPct < -source.tolerancePct
-          ? 'below'
-          : 'ok';
-
+    const tolerance = source.tolerancePct ?? DEFAULT_TOLERANCE_PCT;
+    const status = deviation == null ? null : deviation > tolerance ? 'above' : deviation < -tolerance ? 'below' : 'ok';
     return {
       ...item,
       suggestedPrice: row.suggestedPrice,
-      gapPct,
-      suggestedDeviationPct: gapPct,
+      suggestedDeviationPct: deviation == null ? null : Number(deviation.toFixed(2)),
       suggestedStatus: status,
       suggestedSource: row.source,
       suggestedProduct: row.product,
-      suggestedNote: row.note,
+      suggestedNote: row.note || '',
     };
   });
 }
@@ -346,10 +307,15 @@ export function applySuggestedPrices(items) {
 export function suggestedSummary(items) {
   const source = loadSuggestedSource();
   const matched = (items || []).filter((item) => item.suggestedPrice != null);
+  const counts = {
+    ok: matched.filter((item) => item.suggestedStatus === 'ok').length,
+    above: matched.filter((item) => item.suggestedStatus === 'above').length,
+    below: matched.filter((item) => item.suggestedStatus === 'below').length,
+  };
   const byStore = {};
   for (const item of matched) {
     const store = item.super || 'sin_cadena';
-    byStore[store] ??= { matched: 0, above: 0, ok: 0, below: 0 };
+    byStore[store] ??= { matched: 0, ok: 0, above: 0, below: 0 };
     byStore[store].matched += 1;
     if (item.suggestedStatus) byStore[store][item.suggestedStatus] += 1;
   }
@@ -360,13 +326,7 @@ export function suggestedSummary(items) {
     totalRows: source.rows.length,
     rowsWithSuggested: source.rowsWithSuggested.length,
     matchedItems: matched.length,
-    above: matched.filter((item) => item.suggestedStatus === 'above').length,
-    ok: matched.filter((item) => item.suggestedStatus === 'ok').length,
-    below: matched.filter((item) => item.suggestedStatus === 'below').length,
+    ...counts,
     byStore,
   };
-}
-
-export function resetSuggestedCacheForTests() {
-  cache = null;
 }

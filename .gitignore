@@ -2,6 +2,7 @@ node_modules/
 data/recon/
 data/recon_search/
 data/catalog/
+data/history/
 data/output/
 public/data/latest.html
 *.log
