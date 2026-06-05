@@ -73,6 +73,8 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: team_areBh3uJmHqEP9P04uDvdkKa
           VERCEL_PROJECT_ID: prj_EUbu8RM1OsUpsmXvikc2TyVMS1w4
+          VERCEL_SCOPE: edgardos-projects-77ef7890
+          VERCEL_TELEMETRY_DISABLED: 1
         run: |
           if [ -z "$VERCEL_TOKEN" ]; then
             echo "VERCEL_TOKEN secret is missing."
@@ -80,4 +82,4 @@ jobs:
           fi
           mkdir -p .vercel
           printf '{"orgId":"%s","projectId":"%s"}' "$VERCEL_ORG_ID" "$VERCEL_PROJECT_ID" > .vercel/project.json
-          npx vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN"
+          npx vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE"
