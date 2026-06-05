@@ -1299,14 +1299,15 @@ function elapsedSecondsFromStatus(statusData, fallbackStart) {
 
 function refreshUnavailableMessage(data = {}) {
   const raw = String(data.message || data.error || '');
-  if (/GITHUB_TOKEN|GITHUB_REPO|workflow scrape\.yml|GitHub returned 404/i.test(raw)) {
+  if (/TOKEN_REQUIRED|GITHUB_TOKEN|GITHUB_REPO|workflow scrape\.yml|GitHub returned 404/i.test(raw)) {
     return 'Relevamiento remoto no configurado en este despliegue.';
   }
   return raw || 'Relevamiento remoto no disponible.';
 }
 
 function isRefreshUnavailable(data) {
-  return data?.status === 'unavailable' || data?.configured === false || data?.skipped === true;
+  const raw = String(data?.message || data?.error || '');
+  return data?.status === 'unavailable' || data?.configured === false || data?.skipped === true || /TOKEN_REQUIRED/i.test(raw);
 }
 
 function renderRefreshProgress(statusData, elapsedSeconds) {
@@ -3825,12 +3826,12 @@ async function refresh() {
     btn.innerHTML = '<span class="spinner"></span> Disparando';
     const resp = await fetch('/api/refresh', { method: 'POST' });
     const data = await resp.json();
-    if (!resp.ok || data.ok === false) throw new Error(data.error || `HTTP ${resp.status}`);
     if (isRefreshUnavailable(data)) {
       renderRefreshProgress(data, 0);
       toast(refreshUnavailableMessage(data));
       return;
     }
+    if (!resp.ok || data.ok === false) throw new Error(data.error || `HTTP ${resp.status}`);
     renderRefreshProgress(data, elapsedSecondsFromStatus(data, Date.now()));
     toast('Relevamiento disparado. Esperando resultados.');
     await pollUntilDone(initial);
