@@ -56,7 +56,7 @@ export default async function handler(req, res) {
           : run.status === 'in_progress'
             ? 'Workflow de GitHub Actions en ejecucion'
             : run.conclusion === 'success'
-              ? 'Workflow terminado; publicando datos'
+              ? 'Actualizacion finalizada correctamente'
               : run.conclusion === 'failure'
                 ? 'Workflow fallo'
                 : 'Workflow finalizado',
